@@ -148,49 +148,121 @@ body {
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 111, 60, 0); }
 }
 
+.nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent-flame);
+  box-shadow: 0 0 10px var(--accent-flame-glow);
+}
+
 /* Hero Section */
 .hero {
-  padding: 70px 0 50px;
+  padding: 40px 0 50px;
   text-align: center;
   position: relative;
 }
 
-.hero-avatar-wrap {
+/* Autumnal Frame & Landscape Banner */
+.hero-banner-container {
+  max-width: 960px;
+  margin: 0 auto 36px;
   position: relative;
-  width: 170px;
-  height: 170px;
-  margin: 0 auto 24px;
 }
 
-.hero-avatar {
+.hero-banner-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 6px;
+  background: linear-gradient(135deg, #d9480f 0%, #f59f00 35%, #8b1e0f 70%, #e8590c 100%);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(232, 89, 12, 0.35),
+    0 0 80px rgba(245, 159, 0, 0.15);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-banner-frame:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(255, 111, 60, 0.5),
+    0 0 90px rgba(255, 193, 7, 0.25);
+}
+
+.hero-banner-inner {
+  position: relative;
+  border-radius: calc(var(--radius-lg) - 4px);
+  overflow: hidden;
+  background: #18110e;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+.hero-banner-img {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  height: auto;
+  max-height: 480px;
+  display: block;
   object-fit: cover;
-  border: 3px solid var(--accent-flame);
-  box-shadow: 0 0 30px var(--accent-flame-glow), 0 0 60px rgba(255, 193, 7, 0.2);
-  transition: transform var(--transition-smooth);
+  object-position: center 30%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-avatar:hover {
-  transform: scale(1.04) rotate(1deg);
+.hero-banner-frame:hover .hero-banner-img {
+  transform: scale(1.015);
 }
 
-.hero-star-badge {
+.banner-overlay-tag {
   position: absolute;
-  bottom: 6px;
-  right: 6px;
-  background: var(--bg-primary);
-  border: 2px solid var(--accent-gold);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  bottom: 14px;
+  right: 16px;
+  background: rgba(18, 13, 11, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  color: var(--accent-gold);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  color: var(--accent-gold);
-  box-shadow: 0 0 12px var(--accent-gold-glow);
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.banner-leaf-accent {
+  position: absolute;
+  font-size: 1.6rem;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  z-index: 2;
+  user-select: none;
+}
+
+.leaf-top-left {
+  top: -12px;
+  left: -12px;
+  transform: rotate(-25deg);
+}
+
+.leaf-top-right {
+  top: -12px;
+  right: -12px;
+  transform: rotate(25deg);
+}
+
+.leaf-bottom-left {
+  bottom: -12px;
+  left: -12px;
+  transform: rotate(-65deg);
+}
+
+.leaf-bottom-right {
+  bottom: -12px;
+  right: -12px;
+  transform: rotate(65deg);
 }
 
 .hero-title {
