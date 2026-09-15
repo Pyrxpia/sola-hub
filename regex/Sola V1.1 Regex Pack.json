@@ -1,0 +1,1260 @@
+[
+  {
+    "id": "8edbf2db-37c0-4a6b-80f5-5a090f5b790c",
+    "scriptName": "Sola Core: Multi-Newline Collapser",
+    "findRegex": "/\\n{3,}/g",
+    "replaceString": "\n\n",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5cc2d409-640f-4001-810d-1e0b0c7f26f7",
+    "scriptName": "Sola Core: Smart Quotes to Straight",
+    "findRegex": "/[\u201c\u201d]/g",
+    "replaceString": "\"",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d90f7091-4366-42b9-9c53-60bfa46fded4",
+    "scriptName": "Sola Core: Smart Single-Quotes to Straight",
+    "findRegex": "/[\u2018\u2019]/g",
+    "replaceString": "'",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "7f0a00b1-d493-4748-86c3-1f379a329743",
+    "scriptName": "Sola Core: Asterisk Dialogue Cleaner",
+    "findRegex": "/\\*(\"[^\"]+\")\\*/g",
+    "replaceString": "$1",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "13e49193-acb6-4455-b87b-93ebaee0a56f",
+    "scriptName": "Sola Note: OOC Co-Author Box",
+    "findRegex": "/\\(\\([oO][oO][cC]:?[ \t]*([\\s\\S]*?)\\)\\)/g",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcac Sola: Co-Author Note (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#E07A5F;line-height:1.55;font-style:italic;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9979ab0f-0d07-45b1-8357-fe66c664f686",
+    "scriptName": "Sola Core: Dangling Sentence Trimmer",
+    "findRegex": "/(?:\\n|\\s)+[^.!?\"'\u201d\u2019~\\n]+$/g",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8687f0d1-2138-4766-b250-1d4e7c3da0dc",
+    "scriptName": "Sola Core: Slop Scrubber (Optional)",
+    "findRegex": "/\\b(?:a testament to|unspoken understanding|electricity crackled|predatory smirk)\\b/gi",
+    "replaceString": "...",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eb0942e3-6a46-4d43-9579-6da7bf22e7ad",
+    "scriptName": "Sola Note: Director Marginalia",
+    "findRegex": "/Sola:\\s*\\*\\[?([^\\n\\*\\]]+)\\]?\\*/gi",
+    "replaceString": "<div style=\"margin:8px 0 0;padding:8px 12px;background:rgba(224,122,95,0.1);border-left:3px solid #E07A5F;border-radius:0 6px 6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;color:#E07A5F;font-style:italic;\"><span style=\"font-weight:700;color:#F4A261;font-style:normal;margin-right:4px;\">\u2728 Sola:</span>\u201c$1\u201d</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3b0b0ec7-d6ff-47ed-956b-54ef67b546a9",
+    "scriptName": "Sola Chip: Feeling Engine TFDY",
+    "findRegex": "/\\bT=([0-3])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}F=([0-3])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}D=([0-3])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}Y=([0-3])[ \\t]{0,4}([\\u2191\\u2193])?/gi",
+    "replaceString": "<div style=\"display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;font-family:inherit;font-size:0.8em;line-height:1.5;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(244,162,97,0.12);border:1px solid rgba(244,162,97,0.45);border-radius:4px;color:#F4A261;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Tenderness $1/3<span style=\"padding-left:4px;font-weight:700;\">$2</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Fury $3/3<span style=\"padding-left:4px;font-weight:700;\">$4</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(154,168,122,0.12);border:1px solid rgba(154,168,122,0.45);border-radius:4px;color:#9AA87A;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Dread $5/3<span style=\"padding-left:4px;font-weight:700;\">$6</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(243,183,75,0.12);border:1px solid rgba(243,183,75,0.45);border-radius:4px;color:#F3B74B;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Yearning $7/3<span style=\"padding-left:4px;font-weight:700;\">$8</span></span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f28429ba-b4ec-49af-8e85-d1f68a88fefb",
+    "scriptName": "Sola Chip: Bond Shift (+)",
+    "findRegex": "/Shift:\\s*\\+([^\\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">\u25b2 +</span><span style=\"color:#81B29A;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "76d7d992-a3e7-4975-8fe1-6f4f28eee4cb",
+    "scriptName": "Sola Chip: Bond Shift (-)",
+    "findRegex": "/Shift:\\s*-([^\\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">\u25bc \u2212</span><span style=\"color:#EE6C4D;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6013f7a5-3c69-414a-8de3-bf290f17e158",
+    "scriptName": "Sola Chip: Arrow - Bullseye",
+    "findRegex": "/Trajectory:\\s*Bullseye[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\ud83c\udfaf BULLSEYE \u00b7 Decisive Success</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f617b5d0-219d-4350-aecc-d29ab9f6d67c",
+    "scriptName": "Sola Chip: Arrow - Grazing Shot",
+    "findRegex": "/Trajectory:\\s*Grazing Shot[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(221,161,94,0.12);border:1px solid rgba(221,161,94,0.45);border-radius:4px;color:#DDA15E;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\u26a1 GRAZING SHOT \u00b7 Success with Complication</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6d969807-d9b5-4710-987a-1b5a6a8c6c45",
+    "scriptName": "Sola Chip: Arrow - Wind Drift",
+    "findRegex": "/Trajectory:\\s*Wind Drift[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\ud83d\udca8 WIND DRIFT \u00b7 Dramatic Failure</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "bbbfc6d2-fc70-49ec-ba64-128d63bf8dc5",
+    "scriptName": "Sola Chip: Celestial - Dawn",
+    "findRegex": "/Time:\\s*(Dawn|Sunrise)([^\\n]*)/gi",
+    "replaceString": "Time: \ud83c\udf05 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "51d122f8-c070-4103-8a00-da947bfb2461",
+    "scriptName": "Sola Chip: Celestial - Daylight",
+    "findRegex": "/Time:\\s*(Morning|Midday|Noon|Afternoon)([^\\n]*)/gi",
+    "replaceString": "Time: \u2600\ufe0f $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d5263067-dbd5-4b1b-948a-a1395d62a619",
+    "scriptName": "Sola Chip: Celestial - Dusk",
+    "findRegex": "/Time:\\s*(Dusk|Sunset|Twilight|Evening)([^\\n]*)/gi",
+    "replaceString": "Time: \ud83c\udf07 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6d8e8253-3c6d-4b3b-95d2-9104e3f036e8",
+    "scriptName": "Sola Chip: Celestial - Night",
+    "findRegex": "/Time:\\s*(Night|Midnight|Late Night)([^\\n]*)/gi",
+    "replaceString": "Time: \ud83c\udf19 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null,
+    "id": "18ae69ba-09ac-4500-84fe-a79b1fae1360",
+    "scriptName": "Sola Meta: Field Label",
+    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
+    "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> "
+  },
+  {
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null,
+    "id": "4de6466d-42d9-45ee-ac04-72afdd64742d",
+    "scriptName": "Sola Meta: Subject Line",
+    "findRegex": "/^\\[?([A-Z][A-Za-z'\u2019\\-]{1,20}(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?)\\]?:?[ \\t]{0,4}$/gm",
+    "replaceString": "<span style=\"color:#F0DCC4;font-weight:700;letter-spacing:0.4px;\">$1:</span>"
+  },
+  {
+    "id": "9b0d6272-c0c4-4439-a130-b222ec2fb6d6",
+    "scriptName": "Sola Card: Feeling Engine Telemetry",
+    "findRegex": "/<fengine\\b[^>]*>([\\s\\S]*?)<\\/fengine>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcca Sola: Feeling Engine Telemetry (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c442604a-618f-497f-862b-6a943d43860b",
+    "scriptName": "Sola Card: Bond & Chemistry Radar",
+    "findRegex": "/<bond\\b[^>]*>([\\s\\S]*?)<\\/bond>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(224,122,95,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#E07A5F;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udc9e Sola: Bond & Chemistry Radar (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #E07A5F;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "355e65ee-5118-4475-87fc-1abeeb266c03",
+    "scriptName": "Sola Card: Thought Cabinet",
+    "findRegex": "/<cabinet\\b[^>]*>([\\s\\S]*?)<\\/cabinet>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcad Sola: Thought Cabinet (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "564d6d96-12c4-40f5-8541-a6d4952513d6",
+    "scriptName": "Sola Card: The Wind's Arrow",
+    "findRegex": "/<arrow\\b[^>]*>([\\s\\S]*?)<\\/arrow>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(238,108,77,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#EE6C4D;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udff9 Sola: The Wind's Arrow (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #EE6C4D;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f000c187-eb6c-4b78-bae9-cda905093da5",
+    "scriptName": "Sola Card: Chapter Break",
+    "findRegex": "/<chapter\\b[^>]*>([\\s\\S]*?)<\\/chapter>/gi",
+    "replaceString": "<div style=\"margin:16px 0;padding:14px 16px;text-align:center;background:rgba(42,28,20,0.6);border-top:1px solid rgba(192,108,84,0.45);border-bottom:1px solid rgba(192,108,84,0.45);border-radius:6px;\"><div style=\"font-family:inherit;font-size:1.05em;font-weight:700;color:#C06C54;letter-spacing:0.12em;text-transform:uppercase;\">\u2726 Chapter Break \u2726</div><div style=\"margin-top:6px;font-family:inherit;font-size:0.9em;font-style:italic;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6fe1683c-6da9-4878-8a5f-4d878de5d0ad",
+    "scriptName": "Sola Card: Calendar & Chronology",
+    "findRegex": "/<date\\b[^>]*>([\\s\\S]*?)<\\/date>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(221,161,94,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#DDA15E;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udd70\ufe0f Sola: Calendar & Chronology (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #DDA15E;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "dcc9f28c-1305-4659-8162-a8b13353ec04",
+    "scriptName": "Sola Card: Omen Deck",
+    "findRegex": "/<omen\\b[^>]*>([\\s\\S]*?)<\\/omen>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(154,168,122,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#9AA87A;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udfb4 Sola: Omen Deck (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #9AA87A;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c866c93e-e728-48f0-8645-177850ee80ad",
+    "scriptName": "Sola Card: Wardrobe & Physical State",
+    "findRegex": "/<wardrobe\\b[^>]*>([\\s\\S]*?)<\\/wardrobe>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83e\udde5 Sola: Wardrobe & Physical State (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "518e4b56-f543-41a5-a931-07bfdd281960",
+    "scriptName": "Sola Card: Carried Inventory & Gear",
+    "findRegex": "/<inventory\\b[^>]*>([\\s\\S]*?)<\\/inventory>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udde1\ufe0f Sola: Carried Inventory & Gear (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9210d8b6-cdd6-4c40-8c8b-7649381fdee1",
+    "scriptName": "Sola Card: Scene Cast & Local Facts",
+    "findRegex": "/<scene_cast\\b[^>]*>([\\s\\S]*?)<\\/scene_cast>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udc65 Sola: Scene Cast & Local Facts (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3cc5909e-9b87-414d-9b1f-b8ba9936198e",
+    "scriptName": "Sola Card: Scene State Dossier",
+    "findRegex": "/<scene_state\\b[^>]*>([\\s\\S]*?)<\\/scene_state>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udccb Sola: Scene State Dossier (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8a7db072-65c4-45e2-90ad-1ee199dac4c9",
+    "scriptName": "Sola Saver: Feeling Engine",
+    "findRegex": "/<fengine[\\s\\S]*?<\\/fengine>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "10f6d448-5abb-4224-af4b-6a036e884096",
+    "scriptName": "Sola Saver: Wardrobe & Inventory",
+    "findRegex": "/<(wardrobe|inventory)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "24947874-57a1-4485-9bbb-b854548eaaa9",
+    "scriptName": "Sola Saver: Scene Cast & Dossier",
+    "findRegex": "/<(scene_cast|scene_state)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 3,
+    "maxDepth": null
+  },
+  {
+    "id": "422cb864-dfd5-436e-9781-af5ebbeca026",
+    "scriptName": "Sola Saver: Bond Radar",
+    "findRegex": "/<bond[\\s\\S]*?<\\/bond>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "b4cd2ba7-cc5b-417a-9ab0-62628892942b",
+    "scriptName": "Sola Saver: Calendar",
+    "findRegex": "/<date[\\s\\S]*?<\\/date>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 3,
+    "maxDepth": null
+  },
+  {
+    "id": "70d806c3-73eb-4ab6-a91a-df6cbffc4e89",
+    "scriptName": "Sola Saver: Master Telemetry (All Trackers)",
+    "findRegex": "/<(fengine|wardrobe|inventory|scene_cast|scene_state|cabinet|arrow|omen|date|story_notes|solatag)\\b[\\s\\S]{0,50000}?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "5c95b74c-83f7-4791-8013-d9c7f54506bc",
+    "scriptName": "Sola Voice: Tag Close",
+    "findRegex": "/<\\s*\\/\\s*(?:marigold|amber|coral|copper|terracotta|sage|rose|denim)(?::[a-z]+)?>/gi",
+    "replaceString": "</font></span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8116dd3a-99b7-4a32-aec2-781c4efbd976",
+    "scriptName": "Sola Voice: Marigold",
+    "findRegex": "/<marigold(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#F4A261\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c1ab49f5-e24a-45bb-bea1-cf50fd13b148",
+    "scriptName": "Sola Voice: Amber",
+    "findRegex": "/<amber(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#F3B74B\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "35ce47a0-b481-4e07-a84a-114ddea6496f",
+    "scriptName": "Sola Voice: Coral",
+    "findRegex": "/<coral(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#EE6C4D\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8cff4efe-bd40-4259-90ce-4f881b4b879c",
+    "scriptName": "Sola Voice: Copper",
+    "findRegex": "/<copper(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#E07A5F\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "396a7927-d3e6-47b0-ab62-acf9944f2eee",
+    "scriptName": "Sola Voice: Terracotta",
+    "findRegex": "/<terracotta(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#C06C54\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6fb454bd-c3e0-44bf-9c37-6c353c49840c",
+    "scriptName": "Sola Voice: Sage",
+    "findRegex": "/<sage(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#9AA87A\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f383bde9-76fa-4b2f-8f9d-1b3164936572",
+    "scriptName": "Sola Voice: Rose",
+    "findRegex": "/<rose(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#F4845F\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "a75473a4-dae7-46ce-8aa3-2c2800827d2a",
+    "scriptName": "Sola Voice: Denim",
+    "findRegex": "/<denim(?::([a-z]+))?>/gi",
+    "replaceString": "<span data-col=\"#7A8B99\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ef4b8001-3473-4072-a46d-51277d57013b",
+    "scriptName": "Sola Voice: Tone Whisper",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"whisper\">/gi",
+    "replaceString": "<span style=\"color: $1;font-size:0.88em;font-style:italic;opacity:0.8;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "60827e02-ab6e-47e1-84f5-6731af696448",
+    "scriptName": "Sola Voice: Tone Tremble",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"tremble\">/gi",
+    "replaceString": "<span style=\"color: $1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8b0d4ad0-b19a-4781-b396-ea0b7bad3ed2",
+    "scriptName": "Sola Voice: Tone Bite",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"bite\">/gi",
+    "replaceString": "<span style=\"color: $1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eaa4bba2-8044-49e4-8f08-39800091edf8",
+    "scriptName": "Sola Voice: Tone Steady & Default",
+    "findRegex": "/<span data-col=\"([^\"]+)\"(?: data-tone=\"(?:steady)?\")?>/gi",
+    "replaceString": "<span style=\"color: $1;font-weight:500;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6e240880-3257-43af-9b4d-9ce73b3e701a",
+    "scriptName": "Sola Voice: Fallback Tone Whisper",
+    "findRegex": "/<([a-z]+):whisper>/gi",
+    "replaceString": "<span style=\"color: $1;font-size:0.88em;font-style:italic;opacity:0.8;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "938d9161-2cde-4e20-91fe-2c89cb1aa2ff",
+    "scriptName": "Sola Voice: Fallback Tone Tremble",
+    "findRegex": "/<([a-z]+):tremble>/gi",
+    "replaceString": "<span style=\"color: $1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d796be29-e06c-468c-8582-774bcce2e80b",
+    "scriptName": "Sola Voice: Fallback Tone Bite",
+    "findRegex": "/<([a-z]+):bite>/gi",
+    "replaceString": "<span style=\"color: $1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "64f3dfdf-ebab-49fb-9692-79095e1e814a",
+    "scriptName": "Sola Voice: Fallback Tone Steady",
+    "findRegex": "/<([a-z]+):steady>/gi",
+    "replaceString": "<span style=\"color: $1;font-weight:500;\"><font color=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b5b1c83a-c29a-4c04-a17d-6d0b2bd06d94",
+    "scriptName": "Sola Voice: Fallback Tag Close",
+    "findRegex": "/<\\s*\\/\\s*[a-z]+:[a-z]+>/gi",
+    "replaceString": "</font></span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9c4c281b-59e5-4aea-9ae9-722e7919ed40",
+    "scriptName": "Sola Scene: Discord Message Row",
+    "findRegex": "/<msg\\s{1,8}sender=['\\\"]([^'\\\"]{1,100})['\\\"](?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/msg>|$)/gis",
+    "replaceString": "<div style=\"display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;\"><div style=\"width:32px;height:32px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.85em;color:#2A1A12;box-shadow:0 2px 8px rgba(0,0,0,0.35);\">\ud83d\udcac</div><div style=\"flex-grow:1;min-width:0;\"><div style=\"display:flex;align-items:baseline;gap:8px;\"><span style=\"font-weight:600;color:#F4A261;font-size:0.92em;\">$1</span><span style=\"font-size:0.72em;color:#BC9B78;\">$2</span></div><div style=\"margin-top:2px;color:#F0DCC4;font-size:0.9em;line-height:1.5;\">$3</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9ea14443-a882-4800-892e-61a5e86ce4fe",
+    "scriptName": "Sola Scene: Discord Container (Open)",
+    "findRegex": "/<discord_chat(?:\\s{1,8}channel=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>/gi",
+    "replaceString": "<div style=\"background:rgba(38,30,27,0.92);border:1px solid rgba(244,162,97,0.22);border-radius:8px;padding:12px;margin:14px 0;box-shadow:0 4px 18px rgba(0,0,0,0.4);font-family:inherit;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid rgba(244,162,97,0.18);font-family:inherit;font-size:0.78em;font-weight:600;letter-spacing:0.7px;text-transform:uppercase;color:#BC9B78;\"><span style=\"color:#F4A261;font-size:1.15em;\">#</span><span>$1</span><span style=\"margin-left:auto;padding:2px 8px;background:rgba(244,162,97,0.12);border:1px solid rgba(244,162,97,0.45);border-radius:4px;color:#F4A261;font-size:0.85em;letter-spacing:0.4px;\">Direct Message</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ed0d5d06-28a4-4f32-b916-466d1a39ad59",
+    "scriptName": "Sola Scene: Discord Container (Close)",
+    "findRegex": "/<\\/discord_chat>/gi",
+    "replaceString": "</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "fc22b4ff-c267-410e-9e09-68c57249a3b7",
+    "scriptName": "Sola Scene: SMS Bubble (Outgoing)",
+    "findRegex": "/<bubble\\s{1,8}from=['\\\"]([^'\\\"]{1,100})['\\\"]\\s{1,8}outgoing=['\\\"]?(?:true|yes)['\\\"]?(?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/bubble>|$)/gis",
+    "replaceString": "<div style=\"display:flex;flex-direction:column;align-items:flex-end;margin-bottom:10px;\"><span style=\"margin:0 10px 3px 0;font-size:0.72em;color:#BC9B78;\">$1 \u2022 $2</span><div style=\"max-width:80%;padding:8px 14px;background:linear-gradient(135deg,#F4A261,#E07A5F);border-radius:14px 14px 4px 14px;color:#2A1A12;font-size:0.9em;line-height:1.45;box-shadow:0 2px 8px rgba(0,0,0,0.25);\">$3</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "94fbff6d-83e0-4d4a-aabd-994f8e63c2ac",
+    "scriptName": "Sola Scene: SMS Bubble (Incoming)",
+    "findRegex": "/<bubble\\s{1,8}from=['\\\"]([^'\\\"]{1,100})['\\\"](?:\\s{1,8}outgoing=['\\\"]?false['\\\"]?)?(?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/bubble>|$)/gis",
+    "replaceString": "<div style=\"display:flex;flex-direction:column;align-items:flex-start;margin-bottom:10px;\"><span style=\"margin:0 0 3px 10px;font-size:0.72em;color:#BC9B78;\">$1 \u2022 $2</span><div style=\"max-width:80%;padding:8px 14px;background:rgba(56,44,39,0.92);border:1px solid rgba(244,162,97,0.18);border-radius:14px 14px 14px 4px;color:#F0DCC4;font-size:0.9em;line-height:1.45;box-shadow:0 2px 8px rgba(0,0,0,0.25);\">$3</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "003c2753-b0be-4b91-8edf-2e8b4069cb08",
+    "scriptName": "Sola Scene: SMS Container (Open)",
+    "findRegex": "/<sms_chat(?:\\s{1,8}contact=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>/gi",
+    "replaceString": "<div style=\"background:rgba(26,18,14,0.94);border:1px solid rgba(244,162,97,0.2);border-radius:8px;padding:14px;margin:14px 0;max-width:460px;box-shadow:0 4px 18px rgba(0,0,0,0.4);font-family:inherit;\"><div style=\"text-align:center;padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid rgba(244,162,97,0.16);font-family:inherit;font-size:0.78em;font-weight:600;letter-spacing:0.7px;text-transform:uppercase;color:#BC9B78;\">\ud83d\udcac $1</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "37e64d99-fc3d-4526-aef2-74d463b26022",
+    "scriptName": "Sola Scene: SMS Container (Close)",
+    "findRegex": "/<\\/sms_chat>/gi",
+    "replaceString": "</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "03d580d7-b472-4496-b751-013947ae1e64",
+    "scriptName": "Sola Scene: Parchment Letter",
+    "findRegex": "/<parchment(?:\\s{1,8}title=['\\\"]([^'\\\"]{1,200})['\\\"])?\\s{0,8}>([\\s\\S]{0,20000}?)(?:<\\/parchment>|$)/gis",
+    "replaceString": "<div style=\"background:#F6EEDF;border:1px solid #DCCDB6;border-left:4px solid #C06C54;border-radius:8px;padding:16px 18px;margin:14px 0;box-shadow:0 6px 20px rgba(0,0,0,0.3);font-family:serif;line-height:1.6;color:#3A2418;\"><div style=\"padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid #DCCDB6;font-weight:700;font-size:1.02em;color:#8A5A2B;letter-spacing:0.4px;\">\ud83d\udcdc $1</div><div style=\"white-space:pre-wrap;font-style:italic;\">$2</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "85e304f7-51e2-4b43-9585-48908416223b",
+    "scriptName": "Sola Scene: Terminal Log",
+    "findRegex": "/<terminal(?:\\s{1,8}title=['\\\"]([^'\\\"]{1,200})['\\\"])?\\s{0,8}>([\\s\\S]{0,20000}?)(?:<\\/terminal>|$)/gis",
+    "replaceString": "<div style=\"background:#17110E;border:1px solid rgba(244,162,97,0.25);border-left:3px solid #F4A261;border-radius:8px;padding:12px 14px;margin:14px 0;box-shadow:0 4px 18px rgba(0,0,0,0.4);font-family:monospace;font-size:0.88em;line-height:1.5;color:#F3B74B;\"><div style=\"padding-bottom:6px;margin-bottom:8px;border-bottom:1px solid rgba(244,162,97,0.18);font-size:0.85em;color:#BC9B78;letter-spacing:0.7px;text-transform:uppercase;\">\ud83d\udcbb $1</div><div style=\"white-space:pre-wrap;color:#F3B74B;\">$2</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "438bf889-5efe-4a6b-b9f6-faa69c1d6de6",
+    "scriptName": "Sola Scene: Strip HTML Markers",
+    "findRegex": "/<!--\\s*HTML_(?:START|END)\\s*-->/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null,
+    "id": "bb6ee562-322e-4a2c-8394-ccabee00d010",
+    "scriptName": "Sola HUD: Digest",
+    "findRegex": "/T([0-3])[ \\t]{1,6}F([0-3])[ \\t]{1,6}D([0-3])[ \\t]{1,6}Y([0-3])[ \\t]{0,6}<\\/\\s{0,8}summary\\s{0,8}>/gi",
+    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#EE6C4D;font-weight:700;\">F$2</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#9AA87A;font-weight:700;\">D$3</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#F3B74B;font-weight:700;\">Y$4</span></summary>"
+  },
+  {
+    "id": "18192faf-3091-4209-8165-c1a5070c5e18",
+    "scriptName": "Sola HUD: Open",
+    "findRegex": "/<\\s{0,8}sola_hud\\s{0,8}>\\s{0,8}<\\s{0,8}details\\s{0,8}>\\s{0,8}<\\s{0,8}summary\\s{0,8}>([\\s\\S]{0,300}?)(?:[ \\t]{0,8}(\\|[ \\t]{0,8}[\\s\\S]{0,3000}?))?<\\s{0,8}\\/\\s{0,8}summary\\s{0,8}>/gi",
+    "replaceString": "<details style=\"margin:16px 0;background:rgba(26,18,14,0.94);border:1px solid rgba(244,162,97,0.45);border-left:4px solid #F4A261;border-radius:8px;box-shadow:0 6px 22px rgba(0,0,0,0.45);overflow:hidden;font-family:inherit;\"><summary style=\"cursor:pointer;padding:12px 14px;background:linear-gradient(90deg,rgba(244,162,97,0.18),rgba(26,18,14,0.2));font-weight:700;color:#F3B74B;letter-spacing:1px;text-transform:uppercase;text-shadow:0 0 8px rgba(243,183,75,0.25);outline:none;user-select:none;\">$1<span style=\"float:right;font-weight:600;text-transform:none;letter-spacing:0.3px;color:#BC9B78;font-size:0.82em;\">$2</span></summary><div style=\"padding:2px 10px 0;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e34ce6ae-11cb-455a-9d0e-edbd57c29541",
+    "scriptName": "Sola HUD: Close",
+    "findRegex": "/<\\s{0,8}\\/\\s{0,8}details\\s{0,8}>\\s{0,8}<\\s{0,8}\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
+    "replaceString": "</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "643c7017-059e-4e8a-b3f9-e6ddc6589fef",
+    "scriptName": "Sola Saver: Immersive Props (HTML Blocks)",
+    "findRegex": "/<!--\\s{0,8}HTML_START\\s{0,8}-->[\\s\\S]{0,50000}?<!--\\s{0,8}HTML_END\\s{0,8}-->/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "d8a5b400-2fbc-48a7-b2cd-47160c65c570",
+    "scriptName": "Sola Saver: Showrunner HUD",
+    "findRegex": "/<\\s{0,8}sola_hud\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "7cb54b48-94ac-482a-bba0-9567b65ae95f",
+    "scriptName": "Sola Card: Director Notebook & Story Seeds",
+    "findRegex": "/<\\s{0,8}story_notes\\b[^>]{0,200}>([\\s\\S]{0,20000}?)<\\s{0,8}\\/\\s{0,8}story_notes\\s{0,8}>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcd3 Sola: Director Notebook & Story Seeds (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "7d906007-ac8c-4280-8632-9a44b7a37484",
+    "scriptName": "Sola Saver: Director Notebook",
+    "findRegex": "/<\\s{0,8}story_notes\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}story_notes\\s{0,8}>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "e43b1782-9f6b-4e1a-8c29-4d6b5e0c8192",
+    "scriptName": "Sola Card: Character Trait Ledger",
+    "findRegex": "/<solatag\\b[^>]*>([\\s\\S]{0,50000}?)<\\/solatag>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udff7\ufe0f Sola: Character Trait Ledger (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c1f72a45-6d8b-4b10-91a3-2e5a7d9b4c83",
+    "scriptName": "Sola Saver: Character Trait Ledger",
+    "findRegex": "/<solatag[\\s\\S]{0,50000}?<\\/solatag>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  }
+]

@@ -1,0 +1,376 @@
+[
+  {
+    "id": "8edbf2db-37c0-4a6b-80f5-5a090f5b790c",
+    "scriptName": "Sola: Multi-Newline Collapser",
+    "findRegex": "/\\n{3,}/g",
+    "replaceString": "\n\n",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5cc2d409-640f-4001-810d-1e0b0c7f26f7",
+    "scriptName": "Sola: Smart-Quotes to Straight Quotes",
+    "findRegex": "/[“”]/g",
+    "replaceString": "\"",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d90f7091-4366-42b9-9c53-60bfa46fded4",
+    "scriptName": "Sola: Smart Single-Quotes to Straight",
+    "findRegex": "/[‘’]/g",
+    "replaceString": "'",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "7f0a00b1-d493-4748-86c3-1f379a329743",
+    "scriptName": "Sola: Asterisk Dialogue Cleaner",
+    "findRegex": "/\\*(\"[^\"]+\")\\*/g",
+    "replaceString": "$1",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "13e49193-acb6-4455-b87b-93ebaee0a56f",
+    "scriptName": "Sola: OOC Co-Author Box",
+    "findRegex": "/\\(\\([oO][oO][cC]:?[ \t]*([\\s\\S]*?)\\)\\)/g",
+    "replaceString": "<details style=\"margin: 0.5rem 0; border: 1px solid rgba(244,162,97,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F4A261;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F4A261; outline: none; user-select: none;\">💬 Sola: Co-Author Note (Click to peek)</summary><div style=\"margin-top: 0.5rem; padding: 0.5rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #F4A261; white-space: pre-wrap; font-style: italic; color: #E07A5F;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9979ab0f-0d07-45b1-8357-fe66c664f686",
+    "scriptName": "Sola: Dangling Sentence Trimmer",
+    "findRegex": "/(?:\\n|\\s)+[^.!?\"'”’~\\n]+$/g",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8687f0d1-2138-4766-b250-1d4e7c3da0dc",
+    "scriptName": "Sola: Slop Scrubber (Optional)",
+    "findRegex": "/\\b(?:a testament to|unspoken understanding|electricity crackled|predatory smirk)\\b/gi",
+    "replaceString": "...",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9b0d6272-c0c4-4439-a130-b222ec2fb6d6",
+    "scriptName": "Sola: Feeling Engine Telemetry (Warm Palette)",
+    "findRegex": "/<fengine\\b[^>]*>([\\s\\S]*?)<\\/fengine>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(244,162,97,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F4A261;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F4A261; outline: none; user-select: none;\">📊 Sola: Feeling Engine Telemetry (Click to expand)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #EE6C4D; white-space: pre-wrap; font-family: monospace; font-size: 0.9em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c442604a-618f-497f-862b-6a943d43860b",
+    "scriptName": "Sola: Bond & Chemistry Radar (Warm Palette)",
+    "findRegex": "/<bond\\b[^>]*>([\\s\\S]*?)<\\/bond>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(238,108,77,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #EE6C4D;\"><summary style=\"cursor: pointer; font-weight: 600; color: #EE6C4D; outline: none; user-select: none;\">💞 Sola's Bond & Chemistry Radar (Click to expand)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #EE6C4D; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F4845F;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "355e65ee-5118-4475-87fc-1abeeb266c03",
+    "scriptName": "Sola: Thought Cabinet (Warm Palette)",
+    "findRegex": "/<cabinet\\b[^>]*>([\\s\\S]*?)<\\/cabinet>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(243,183,75,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F3B74B;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F3B74B; outline: none; user-select: none;\">💭 Sola's Thought Cabinet (Click to peek)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #F3B74B; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F4A261;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "564d6d96-12c4-40f5-8541-a6d4952513d6",
+    "scriptName": "Sola: The Wind's Arrow (Warm Palette)",
+    "findRegex": "/<arrow\\b[^>]*>([\\s\\S]*?)<\\/arrow>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(244,162,97,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F4A261;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F4A261; outline: none; user-select: none;\">🏹 The Wind's Arrow: Fate Check (Click to expand)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #E07A5F; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f000c187-eb6c-4b78-bae9-cda905093da5",
+    "scriptName": "Sola: Episodic Chapter Breaks (Warm Palette)",
+    "findRegex": "/<chapter\\b[^>]*>([\\s\\S]*?)<\\/chapter>/gi",
+    "replaceString": "<div style=\"margin: 1.25rem 0; text-align: center; border-top: 1px solid rgba(192,108,84,0.4); border-bottom: 1px solid rgba(192,108,84,0.4); padding: 0.75rem; background: rgba(42,28,20,0.6); border-radius: 6px;\"><div style=\"font-size: 1.1em; font-weight: 700; color: #C06C54; letter-spacing: 0.08em; text-transform: uppercase;\">✦ CHAPTER BREAK ✦</div><div style=\"margin-top: 0.4rem; white-space: pre-wrap; font-style: italic; color: #F4A261; font-size: 0.92em;\">$1</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "dcc9f28c-1305-4659-8162-a8b13353ec04",
+    "scriptName": "Sola: Omen Deck (Warm Palette)",
+    "findRegex": "/<omen\\b[^>]*>([\\s\\S]*?)<\\/omen>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(154,168,122,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #9AA87A;\"><summary style=\"cursor: pointer; font-weight: 600; color: #9AA87A; outline: none; user-select: none;\">🎴 Sola's Omen Deck (Click to reveal)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #9AA87A; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c866c93e-e728-48f0-8645-177850ee80ad",
+    "scriptName": "Sola: Wardrobe Tracker (Warm Palette)",
+    "findRegex": "/<wardrobe\\b[^>]*>([\\s\\S]*?)<\\/wardrobe>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(244,162,97,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F4A261;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F4A261; outline: none; user-select: none;\">🧥 Sola: Wardrobe & Physical State (Click to peek)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #F4A261; white-space: pre-wrap; font-family: monospace; font-size: 0.9em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "518e4b56-f543-41a5-a931-07bfdd281960",
+    "scriptName": "Sola: Inventory Tracker (Warm Palette)",
+    "findRegex": "/<inventory\\b[^>]*>([\\s\\S]*?)<\\/inventory>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(238,108,77,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #EE6C4D;\"><summary style=\"cursor: pointer; font-weight: 600; color: #EE6C4D; outline: none; user-select: none;\">🗡️ Sola: Carried Inventory & Gear (Click to inspect)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #EE6C4D; white-space: pre-wrap; font-family: monospace; font-size: 0.9em; line-height: 1.5; color: #F4845F;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9210d8b6-cdd6-4c40-8c8b-7649381fdee1",
+    "scriptName": "Sola: Active Scene Cast & Facts (Warm Palette)",
+    "findRegex": "/<scene_cast\\b[^>]*>([\\s\\S]*?)<\\/scene_cast>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(154,168,122,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #9AA87A;\"><summary style=\"cursor: pointer; font-weight: 600; color: #9AA87A; outline: none; user-select: none;\">👥 Sola: Scene Cast & Local Facts (Click to reveal)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #9AA87A; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3cc5909e-9b87-414d-9b1f-b8ba9936198e",
+    "scriptName": "Sola: Unified Scene Dossier (Warm Palette)",
+    "findRegex": "/<scene_state\\b[^>]*>([\\s\\S]*?)<\\/scene_state>/gi",
+    "replaceString": "<details style=\"margin: 0.75rem 0; border: 1px solid rgba(244,162,97,0.45); border-radius: 8px; background: rgba(42,28,20,0.75); padding: 0.5rem 0.75rem; font-family: inherit; font-size: 0.88em; color: #F4A261;\"><summary style=\"cursor: pointer; font-weight: 600; color: #F4A261; outline: none; user-select: none;\">📋 Sola: Scene State Dossier (Click to expand)</summary><div style=\"margin-top: 0.5rem; padding: 0.6rem; background: rgba(20,12,8,0.6); border-radius: 6px; border-left: 3px solid #E07A5F; white-space: pre-wrap; font-family: inherit; font-size: 0.92em; line-height: 1.5; color: #F3B74B;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8a7db072-65c4-45e2-90ad-1ee199dac4c9",
+    "scriptName": "Sola: Retire Previous Feeling Engines (Context Saver)",
+    "findRegex": "/<fengine[\\s\\S]*?<\\/fengine>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "10f6d448-5abb-4224-af4b-6a036e884096",
+    "scriptName": "Sola: Retire Previous Wardrobe & Inventory (Context Saver)",
+    "findRegex": "/<(wardrobe|inventory)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "24947874-57a1-4485-9bbb-b854548eaaa9",
+    "scriptName": "Sola: Retire Previous Scene Cast & Dossiers (Context Saver)",
+    "findRegex": "/<(scene_cast|scene_state)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 3,
+    "maxDepth": null
+  },
+  {
+    "id": "422cb864-dfd5-436e-9781-af5ebbeca026",
+    "scriptName": "Sola: Retire Previous Bonds (Context Saver)",
+    "findRegex": "/<bond[\\s\\S]*?<\\/bond>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "70d806c3-73eb-4ab6-a91a-df6cbffc4e89",
+    "scriptName": "Sola: Master Telemetry Context Saver (All Trackers)",
+    "findRegex": "/<(fengine|wardrobe|inventory|scene_cast|scene_state|cabinet|arrow|omen)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  }
+]
