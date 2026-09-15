@@ -2,7 +2,7 @@
 
 Welcome to the official repository and GitHub Pages hub for **Sola**!
 
-- 🌐 **Live Website:** [https://Pyrxpia.github.io/sola/](https://Pyrxpia.github.io/sola/) (or your GitHub Pages URL)
+- 🌐 **Live Website:** [https://Pyrxpia.github.io/sola-hub/](https://Pyrxpia.github.io/sola-hub/) (or your GitHub Pages URL)
 - 📖 **Rentry Mirror:** [https://rentry.co/Pyrxpia](https://rentry.co/Pyrxpia)
 
 ---
