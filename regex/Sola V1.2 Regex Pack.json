@@ -319,7 +319,7 @@
     "maxDepth": null,
     "id": "18ae69ba-09ac-4500-84fe-a79b1fae1360",
     "scriptName": "Sola Meta: Field Label",
-    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
+    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos|Orientation|Orbit|Mask|Internal|Audit)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
     "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> "
   },
   {
@@ -614,7 +614,7 @@
   {
     "id": "70d806c3-73eb-4ab6-a91a-df6cbffc4e89",
     "scriptName": "Sola Saver: Master Telemetry (All Trackers)",
-    "findRegex": "/<(fengine|wardrobe|inventory|scene_cast|scene_state|cabinet|arrow|omen|date|story_notes|solatag)\\b[\\s\\S]{0,50000}?<\\/\\1>/gi",
+    "findRegex": "/<(fengine|wardrobe|inventory|scene_cast|scene_state|cabinet|arrow|omen|date|story_notes|solatag|char_matrix)\\b[\\s\\S]{0,50000}?<\\/\\1>/gi",
     "replaceString": "",
     "trimStrings": [],
     "placement": [
@@ -1303,6 +1303,40 @@
     "runOnEdit": false,
     "substituteRegex": 0,
     "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "751c94e0-3c30-4fa1-99a1-95e39117fce5",
+    "scriptName": "Sola Card: Character Matrix",
+    "findRegex": "/<char_matrix\\b[^>]*>([\\s\\S]{0,50000}?)<\\/char_matrix>/gi",
+    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83e\uddec Sola: {{char}} Matrix & Persona Audit (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b34bf2aa-b678-4219-98b9-e0da6f00f3c6",
+    "scriptName": "Sola Saver: Character Matrix",
+    "findRegex": "/<char_matrix\\b[\\s\\S]{0,50000}?<\\/char_matrix>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
     "maxDepth": null
   }
 ]
