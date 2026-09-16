@@ -319,7 +319,7 @@
     "maxDepth": null,
     "id": "18ae69ba-09ac-4500-84fe-a79b1fae1360",
     "scriptName": "Sola Meta: Field Label",
-    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos|Orientation|Orbit|Mask|Internal|Audit)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
+    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos|Orientation|Orbit|Mask|Internal|Audit|Traits)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
     "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> "
   },
   {
