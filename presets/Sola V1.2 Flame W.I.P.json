@@ -684,7 +684,7 @@
     {
       "identifier": "module-tracker-reminder",
       "name": "[Module] Tracker Reminder \ud83d\udccc",
-      "content": "{{// Recency tracker reminder: dynamically injects active telemetry output reminders via getvar.}}\n{{trim}}\n{{getvar::mod_track_fengine}}{{getvar::mod_track_seed}}{{getvar::mod_track_bond}}{{getvar::mod_track_arrow}}{{getvar::mod_track_wardrobe}}{{getvar::mod_track_inventory}}{{getvar::mod_track_cast}}{{getvar::mod_track_omen}}{{getvar::mod_track_dossier}}{{getvar::mod_track_date}}{{getvar::mod_track_charmatrix}}{{getvar::mod_color}}{{getvar::mod_solahud}}",
+      "content": "{{// Recency tracker reminder: dynamically injects active telemetry and module reminders via getvar.}}\n{{trim}}\n{{getvar::mod_balancer}}{{getvar::mod_pacing}}{{getvar::mod_tempo}}{{getvar::mod_action}}{{getvar::mod_voice}}{{getvar::mod_vocal}}{{getvar::mod_pov}}{{getvar::mod_track_fengine}}{{getvar::mod_track_seed}}{{getvar::mod_track_bond}}{{getvar::mod_track_arrow}}{{getvar::mod_track_wardrobe}}{{getvar::mod_track_inventory}}{{getvar::mod_track_cast}}{{getvar::mod_track_omen}}{{getvar::mod_track_dossier}}{{getvar::mod_track_date}}{{getvar::mod_track_charmatrix}}{{getvar::mod_color}}{{getvar::mod_solahud}}",
       "role": "system",
       "system_prompt": false,
       "injection_position": 1,
