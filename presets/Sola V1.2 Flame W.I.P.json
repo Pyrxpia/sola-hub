@@ -399,8 +399,9 @@
       "role": "system",
       "system_prompt": false,
       "injection_position": 1,
+      "injection_depth": 0,
       "injection_order": 0,
-      "injection_depth": 0
+      "forbid_overrides": false
     },
     {
       "identifier": "cat-combat-intimacy",
@@ -651,23 +652,12 @@
     {
       "identifier": "jailbreak",
       "name": "[Core] Post-History Instructions (In-Chat Anchor)",
-      "content": "## Post-History\n- Before writing, review every `<core>` module; apply every rule that bears on this turn.\n- Eliminate purple prose, limit the use of blue and beige prose, repetitive crutches, and narration filler.\n- Never exceed ~400–500 words / ~4–5 paragraphs; scale down to the user's turn. A quiet turn may run far shorter than the ceiling.\n- A boundary is a breath, not an ending. Stop mid-momentum — mid-conversation, mid-action, right after a dynamic shift before anyone reacts, or after new information drops before it's processed. The scene stays active, unclosed, demanding. No concluding, summarizing, or philosophical closers.",
+      "content": "## Post-History\n- Before writing, review every `<core>` module; apply every rule that bears on this turn.\n- Eliminate purple prose, limit the use of blue and beige prose, repetitive crutches, and narration filler.\n- Never exceed ~400–500 words / ~4–5 paragraphs; scale down to the user's turn.\n- A boundary is a breath, not an ending. Stop mid-momentum — mid-conversation, mid-action, right after a dynamic shift before anyone reacts, or after new information drops before it's processed. The scene stays active, unclosed, demanding. No concluding, summarizing, or philosophical closers.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 1,
       "injection_depth": 0,
       "injection_order": 0,
-      "forbid_overrides": false
-    },
-    {
-      "identifier": "block6d09d51c-a9f5-4be4-a8e6-071921062384",
-      "name": "Module: GLM 5.3 Flash Pacing",
-      "content": "<pacing>\n## Pacing\n- Be blunt and direct with words.\n- Focus on getting a point across.\n- Conversation should be exact with little run off.\n</pacing>",
-      "role": "system",
-      "system_prompt": false,
-      "injection_position": 0,
-      "injection_depth": 4,
-      "injection_order": 100,
       "forbid_overrides": false
     },
     {
@@ -734,6 +724,17 @@
       "injection_position": 1,
       "injection_order": 0,
       "injection_depth": 0
+    },
+    {
+      "identifier": "block6d09d51c-a9f5-4be4-a8e6-071921062384",
+      "name": "Module: GLM 5.3 Flash Pacing",
+      "content": "<pacing>\n## Pacing\n- Be blunt and direct with words.\n- Focus on getting a point across.\n- Conversation should be exact with little run off.\n</pacing>",
+      "role": "system",
+      "system_prompt": false,
+      "injection_position": 1,
+      "injection_depth": 0,
+      "injection_order": 0,
+      "forbid_overrides": false
     }
   ],
   "prompt_order": [
@@ -989,10 +990,6 @@
           "enabled": true
         },
         {
-          "identifier": "block6d09d51c-a9f5-4be4-a8e6-071921062384",
-          "enabled": false
-        },
-        {
           "identifier": "blockb9e7cc0e-e4a6-48ad-a8fe-d707b101e66f",
           "enabled": false
         },
@@ -1014,6 +1011,10 @@
         },
         {
           "identifier": "module-reasoning-lightning-review",
+          "enabled": false
+        },
+        {
+          "identifier": "block6d09d51c-a9f5-4be4-a8e6-071921062384",
           "enabled": false
         }
       ]
