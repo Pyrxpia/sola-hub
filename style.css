@@ -380,7 +380,13 @@ body {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 22px;
+}
+
+@media (min-width: 860px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .card {
