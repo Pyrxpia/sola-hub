@@ -19,7 +19,7 @@
   {
     "id": "5cc2d409-640f-4001-810d-1e0b0c7f26f7",
     "scriptName": "Sola Core: Smart Quotes to Straight",
-    "findRegex": "/[\u201c\u201d]/g",
+    "findRegex": "/[“”]/g",
     "replaceString": "\"",
     "trimStrings": [],
     "placement": [
@@ -36,7 +36,7 @@
   {
     "id": "d90f7091-4366-42b9-9c53-60bfa46fded4",
     "scriptName": "Sola Core: Smart Single-Quotes to Straight",
-    "findRegex": "/[\u2018\u2019]/g",
+    "findRegex": "/[‘’]/g",
     "replaceString": "'",
     "trimStrings": [],
     "placement": [
@@ -71,7 +71,7 @@
     "id": "13e49193-acb6-4455-b87b-93ebaee0a56f",
     "scriptName": "Sola Note: OOC Co-Author Box",
     "findRegex": "/\\(\\([oO][oO][cC]:?[ \t]*([\\s\\S]*?)\\)\\)/g",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcac Sola: Co-Author Note (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#E07A5F;line-height:1.55;font-style:italic;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">💬 Sola: Co-Author Note (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#E07A5F;line-height:1.55;font-style:italic;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -87,7 +87,7 @@
   {
     "id": "9979ab0f-0d07-45b1-8357-fe66c664f686",
     "scriptName": "Sola Core: Dangling Sentence Trimmer",
-    "findRegex": "/(?:\\n|\\s)+[^.!?\"'\u201d\u2019~\\n]+$/g",
+    "findRegex": "/(?:\\n|\\s)+[^.!?\"'”’~\\n]+$/g",
     "replaceString": "",
     "trimStrings": [],
     "placement": [
@@ -122,7 +122,7 @@
     "id": "eb0942e3-6a46-4d43-9579-6da7bf22e7ad",
     "scriptName": "Sola Note: Director Marginalia",
     "findRegex": "/Sola:\\s*\\*\\[?([^\\n\\*\\]]+)\\]?\\*/gi",
-    "replaceString": "<div style=\"margin:8px 0 0;padding:8px 12px;background:rgba(224,122,95,0.1);border-left:3px solid #E07A5F;border-radius:0 6px 6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;color:#E07A5F;font-style:italic;\"><span style=\"font-weight:700;color:#F4A261;font-style:normal;margin-right:4px;\">\u2728 Sola:</span>\u201c$1\u201d</div>",
+    "replaceString": "<div style=\"margin:8px 0 0;padding:8px 12px;background:rgba(224,122,95,0.1);border-left:3px solid #E07A5F;border-radius:0 6px 6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;color:#E07A5F;font-style:italic;\"><span style=\"font-weight:700;color:#F4A261;font-style:normal;margin-right:4px;\">✨ Sola:</span>“$1”</div>",
     "trimStrings": [],
     "placement": [
       2
@@ -153,10 +153,27 @@
     "maxDepth": null
   },
   {
+    "id": "f28429ba-b4ec-49af-8e85-d1f68a88fed0",
+    "scriptName": "Sola Chip: Bond Shift (Dual +/-)",
+    "findRegex": "/Shift:\\s*\\+([^\n\\/]+?)\\s*\\/\\s*-([^\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;display:flex;flex-wrap:wrap;gap:8px;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▲ +</span><span style=\"color:#81B29A;font-weight:500;\"></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▼ −</span><span style=\"color:#EE6C4D;font-weight:500;\"></span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
     "id": "f28429ba-b4ec-49af-8e85-d1f68a88fefb",
     "scriptName": "Sola Chip: Bond Shift (+)",
     "findRegex": "/Shift:\\s*\\+([^\\n]+)/gi",
-    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">\u25b2 +</span><span style=\"color:#81B29A;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▲ +</span><span style=\"color:#81B29A;font-weight:500;margin-left:6px;\">$1</span></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -173,7 +190,7 @@
     "id": "76d7d992-a3e7-4975-8fe1-6f4f28eee4cb",
     "scriptName": "Sola Chip: Bond Shift (-)",
     "findRegex": "/Shift:\\s*-([^\\n]+)/gi",
-    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">\u25bc \u2212</span><span style=\"color:#EE6C4D;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▼ −</span><span style=\"color:#EE6C4D;font-weight:500;margin-left:6px;\">$1</span></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -190,7 +207,7 @@
     "id": "6013f7a5-3c69-414a-8de3-bf290f17e158",
     "scriptName": "Sola Chip: Arrow - Bullseye",
     "findRegex": "/Trajectory:\\s*Bullseye[^\\n]*/gi",
-    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\ud83c\udfaf BULLSEYE \u00b7 Decisive Success</div>",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">🎯 BULLSEYE · Decisive Success</div>",
     "trimStrings": [],
     "placement": [
       2
@@ -207,7 +224,7 @@
     "id": "f617b5d0-219d-4350-aecc-d29ab9f6d67c",
     "scriptName": "Sola Chip: Arrow - Grazing Shot",
     "findRegex": "/Trajectory:\\s*Grazing Shot[^\\n]*/gi",
-    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(221,161,94,0.12);border:1px solid rgba(221,161,94,0.45);border-radius:4px;color:#DDA15E;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\u26a1 GRAZING SHOT \u00b7 Success with Complication</div>",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(221,161,94,0.12);border:1px solid rgba(221,161,94,0.45);border-radius:4px;color:#DDA15E;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">⚡ GRAZING SHOT · Success with Complication</div>",
     "trimStrings": [],
     "placement": [
       2
@@ -224,7 +241,7 @@
     "id": "6d969807-d9b5-4710-987a-1b5a6a8c6c45",
     "scriptName": "Sola Chip: Arrow - Wind Drift",
     "findRegex": "/Trajectory:\\s*Wind Drift[^\\n]*/gi",
-    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">\ud83d\udca8 WIND DRIFT \u00b7 Dramatic Failure</div>",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">💨 WIND DRIFT · Dramatic Failure</div>",
     "trimStrings": [],
     "placement": [
       2
@@ -241,7 +258,7 @@
     "id": "bbbfc6d2-fc70-49ec-ba64-128d63bf8dc5",
     "scriptName": "Sola Chip: Celestial - Dawn",
     "findRegex": "/Time:\\s*(Dawn|Sunrise)([^\\n]*)/gi",
-    "replaceString": "Time: \ud83c\udf05 $1$2",
+    "replaceString": "Time: 🌅 $1$2",
     "trimStrings": [],
     "placement": [
       2
@@ -258,7 +275,7 @@
     "id": "51d122f8-c070-4103-8a00-da947bfb2461",
     "scriptName": "Sola Chip: Celestial - Daylight",
     "findRegex": "/Time:\\s*(Morning|Midday|Noon|Afternoon)([^\\n]*)/gi",
-    "replaceString": "Time: \u2600\ufe0f $1$2",
+    "replaceString": "Time: ☀️ $1$2",
     "trimStrings": [],
     "placement": [
       2
@@ -275,7 +292,7 @@
     "id": "d5263067-dbd5-4b1b-948a-a1395d62a619",
     "scriptName": "Sola Chip: Celestial - Dusk",
     "findRegex": "/Time:\\s*(Dusk|Sunset|Twilight|Evening)([^\\n]*)/gi",
-    "replaceString": "Time: \ud83c\udf07 $1$2",
+    "replaceString": "Time: 🌇 $1$2",
     "trimStrings": [],
     "placement": [
       2
@@ -292,7 +309,7 @@
     "id": "6d8e8253-3c6d-4b3b-95d2-9104e3f036e8",
     "scriptName": "Sola Chip: Celestial - Night",
     "findRegex": "/Time:\\s*(Night|Midnight|Late Night)([^\\n]*)/gi",
-    "replaceString": "Time: \ud83c\udf19 $1$2",
+    "replaceString": "Time: 🌙 $1$2",
     "trimStrings": [],
     "placement": [
       2
@@ -336,14 +353,14 @@
     "maxDepth": null,
     "id": "4de6466d-42d9-45ee-ac04-72afdd64742d",
     "scriptName": "Sola Meta: Subject Line",
-    "findRegex": "/^\\[?([A-Z][A-Za-z'\u2019\\-]{1,20}(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?(?: [A-Z][A-Za-z'\u2019\\-]{1,20})?)\\]?:?[ \\t]{0,4}$/gm",
+    "findRegex": "/^\\[?([A-Z][A-Za-z'’\\-]{1,20}(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?)\\]?:?[ \\t]{0,4}$/gm",
     "replaceString": "<span style=\"color:#F0DCC4;font-weight:700;letter-spacing:0.4px;\">$1:</span>"
   },
   {
     "id": "9b0d6272-c0c4-4439-a130-b222ec2fb6d6",
     "scriptName": "Sola Card: Feeling Engine Telemetry",
     "findRegex": "/<fengine\\b[^>]*>([\\s\\S]*?)<\\/fengine>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcca Sola: Feeling Engine Telemetry (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">📊 Sola: Feeling Engine Telemetry (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -360,7 +377,7 @@
     "id": "c442604a-618f-497f-862b-6a943d43860b",
     "scriptName": "Sola Card: Bond & Chemistry Radar",
     "findRegex": "/<bond\\b[^>]*>([\\s\\S]*?)<\\/bond>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(224,122,95,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#E07A5F;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udc9e Sola: Bond & Chemistry Radar (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #E07A5F;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(224,122,95,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#E07A5F;letter-spacing:0.2px;outline:none;user-select:none;\">💞 Sola: Bond & Chemistry Radar (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #E07A5F;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -377,7 +394,7 @@
     "id": "355e65ee-5118-4475-87fc-1abeeb266c03",
     "scriptName": "Sola Card: Thought Cabinet",
     "findRegex": "/<cabinet\\b[^>]*>([\\s\\S]*?)<\\/cabinet>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcad Sola: Thought Cabinet (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">💭 Sola: Thought Cabinet (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -394,7 +411,7 @@
     "id": "564d6d96-12c4-40f5-8541-a6d4952513d6",
     "scriptName": "Sola Card: The Wind's Arrow",
     "findRegex": "/<arrow\\b[^>]*>([\\s\\S]*?)<\\/arrow>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(238,108,77,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#EE6C4D;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udff9 Sola: The Wind's Arrow (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #EE6C4D;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(238,108,77,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#EE6C4D;letter-spacing:0.2px;outline:none;user-select:none;\">🏹 Sola: The Wind's Arrow (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #EE6C4D;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -411,7 +428,7 @@
     "id": "f000c187-eb6c-4b78-bae9-cda905093da5",
     "scriptName": "Sola Card: Chapter Break",
     "findRegex": "/<chapter\\b[^>]*>([\\s\\S]*?)<\\/chapter>/gi",
-    "replaceString": "<div style=\"margin:16px 0;padding:14px 16px;text-align:center;background:rgba(42,28,20,0.6);border-top:1px solid rgba(192,108,84,0.45);border-bottom:1px solid rgba(192,108,84,0.45);border-radius:6px;\"><div style=\"font-family:inherit;font-size:1.05em;font-weight:700;color:#C06C54;letter-spacing:0.12em;text-transform:uppercase;\">\u2726 Chapter Break \u2726</div><div style=\"margin-top:6px;font-family:inherit;font-size:0.9em;font-style:italic;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></div>",
+    "replaceString": "<div style=\"margin:16px 0;padding:14px 16px;text-align:center;background:rgba(42,28,20,0.6);border-top:1px solid rgba(192,108,84,0.45);border-bottom:1px solid rgba(192,108,84,0.45);border-radius:6px;\"><div style=\"font-family:inherit;font-size:1.05em;font-weight:700;color:#C06C54;letter-spacing:0.12em;text-transform:uppercase;\">✦ Chapter Break ✦</div><div style=\"margin-top:6px;font-family:inherit;font-size:0.9em;font-style:italic;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -428,7 +445,7 @@
     "id": "6fe1683c-6da9-4878-8a5f-4d878de5d0ad",
     "scriptName": "Sola Card: Calendar & Chronology",
     "findRegex": "/<date\\b[^>]*>([\\s\\S]*?)<\\/date>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(221,161,94,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#DDA15E;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udd70\ufe0f Sola: Calendar & Chronology (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #DDA15E;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(221,161,94,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#DDA15E;letter-spacing:0.2px;outline:none;user-select:none;\">🕰️ Sola: Calendar & Chronology (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #DDA15E;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -445,7 +462,7 @@
     "id": "dcc9f28c-1305-4659-8162-a8b13353ec04",
     "scriptName": "Sola Card: Omen Deck",
     "findRegex": "/<omen\\b[^>]*>([\\s\\S]*?)<\\/omen>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(154,168,122,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#9AA87A;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udfb4 Sola: Omen Deck (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #9AA87A;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(154,168,122,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#9AA87A;letter-spacing:0.2px;outline:none;user-select:none;\">🎴 Sola: Omen Deck (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #9AA87A;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -462,7 +479,7 @@
     "id": "c866c93e-e728-48f0-8645-177850ee80ad",
     "scriptName": "Sola Card: Wardrobe & Physical State",
     "findRegex": "/<wardrobe\\b[^>]*>([\\s\\S]*?)<\\/wardrobe>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83e\udde5 Sola: Wardrobe & Physical State (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">🧥 Sola: Wardrobe & Physical State (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -479,7 +496,7 @@
     "id": "518e4b56-f543-41a5-a931-07bfdd281960",
     "scriptName": "Sola Card: Carried Inventory & Gear",
     "findRegex": "/<inventory\\b[^>]*>([\\s\\S]*?)<\\/inventory>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udde1\ufe0f Sola: Carried Inventory & Gear (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">🗡️ Sola: Carried Inventory & Gear (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -496,7 +513,7 @@
     "id": "9210d8b6-cdd6-4c40-8c8b-7649381fdee1",
     "scriptName": "Sola Card: Scene Cast & Local Facts",
     "findRegex": "/<scene_cast\\b[^>]*>([\\s\\S]*?)<\\/scene_cast>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udc65 Sola: Scene Cast & Local Facts (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">👥 Sola: Scene Cast & Local Facts (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -513,7 +530,7 @@
     "id": "3cc5909e-9b87-414d-9b1f-b8ba9936198e",
     "scriptName": "Sola Card: Scene State Dossier",
     "findRegex": "/<scene_state\\b[^>]*>([\\s\\S]*?)<\\/scene_state>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udccb Sola: Scene State Dossier (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">📋 Sola: Scene State Dossier (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -938,7 +955,7 @@
     "id": "9c4c281b-59e5-4aea-9ae9-722e7919ed40",
     "scriptName": "Sola Scene: Discord Message Row",
     "findRegex": "/<msg\\s{1,8}sender=['\\\"]([^'\\\"]{1,100})['\\\"](?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/msg>|$)/gis",
-    "replaceString": "<div style=\"display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;\"><div style=\"width:34px;height:34px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.85em;color:#1A0F0A;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,0.3);\">\ud83d\udcac</div><div style=\"flex-grow:1;min-width:0;\"><div style=\"display:flex;align-items:baseline;gap:8px;\"><span style=\"font-weight:700;color:#F4A261;font-size:0.92em;\">$1</span><span style=\"font-size:0.72em;color:#BC9B78;opacity:0.8;\">$2</span></div><div style=\"margin-top:3px;color:#F0DCC4;font-size:0.92em;line-height:1.5;\">$3</div></div></div>",
+    "replaceString": "<div style=\"display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;\"><div style=\"width:34px;height:34px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.85em;color:#1A0F0A;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,0.3);\">💬</div><div style=\"flex-grow:1;min-width:0;\"><div style=\"display:flex;align-items:baseline;gap:8px;\"><span style=\"font-weight:700;color:#F4A261;font-size:0.92em;\">$1</span><span style=\"font-size:0.72em;color:#BC9B78;opacity:0.8;\">$2</span></div><div style=\"margin-top:3px;color:#F0DCC4;font-size:0.92em;line-height:1.5;\">$3</div></div></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1023,7 +1040,7 @@
     "id": "003c2753-b0be-4b91-8edf-2e8b4069cb08",
     "scriptName": "Sola Scene: SMS Container (Open)",
     "findRegex": "/<sms_chat(?:\\s{1,8}contact=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>/gi",
-    "replaceString": "<div style=\"background:rgba(22,15,12,0.96);border:1px solid rgba(244,162,97,0.25);border-radius:14px;padding:14px;margin:16px 0;max-width:440px;box-shadow:0 8px 24px rgba(0,0,0,0.45);font-family:inherit;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid rgba(244,162,97,0.15);\"><div style=\"width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.75em;color:#1A0F0A;font-weight:700;\">\ud83d\udcf1</div><div><div style=\"font-weight:700;font-size:0.88em;color:#F4A261;\">$1</div><div style=\"font-size:0.68em;color:#9AA87A;\">\u25cf Connected \u00b7 Encrypted</div></div></div>",
+    "replaceString": "<div style=\"background:rgba(22,15,12,0.96);border:1px solid rgba(244,162,97,0.25);border-radius:14px;padding:14px;margin:16px 0;max-width:440px;box-shadow:0 8px 24px rgba(0,0,0,0.45);font-family:inherit;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid rgba(244,162,97,0.15);\"><div style=\"width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.75em;color:#1A0F0A;font-weight:700;\">📱</div><div><div style=\"font-weight:700;font-size:0.88em;color:#F4A261;\">$1</div><div style=\"font-size:0.68em;color:#9AA87A;\">● Connected · Encrypted</div></div></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1057,7 +1074,7 @@
     "id": "03d580d7-b472-4496-b751-013947ae1e64",
     "scriptName": "Sola Scene: Parchment Letter",
     "findRegex": "/<parchment(?:\\s{1,8}title=['\\\"]([^'\\\"]{1,200})['\\\"])?\\s{0,8}>([\\s\\S]{0,20000}?)(?:<\\/parchment>|$)/gis",
-    "replaceString": "<div style=\"background:#F7F1E5;border:1px solid #D8C8B0;border-left:5px solid #C06C54;border-radius:6px;padding:18px 20px;margin:16px 0;box-shadow:inset 0 0 30px rgba(160,110,60,0.12),0 6px 20px rgba(0,0,0,0.35);font-family:serif;color:#352014;line-height:1.65;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:8px;margin-bottom:14px;border-bottom:1px solid rgba(192,108,84,0.3);font-weight:700;font-size:1.02em;color:#8F4733;letter-spacing:0.4px;\"><span>\u269c\ufe0f</span><span>$1</span></div><div style=\"font-style:italic;white-space:pre-wrap;\">$2</div></div>",
+    "replaceString": "<div style=\"background:#F7F1E5;border:1px solid #D8C8B0;border-left:5px solid #C06C54;border-radius:6px;padding:18px 20px;margin:16px 0;box-shadow:inset 0 0 30px rgba(160,110,60,0.12),0 6px 20px rgba(0,0,0,0.35);font-family:serif;color:#352014;line-height:1.65;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:8px;margin-bottom:14px;border-bottom:1px solid rgba(192,108,84,0.3);font-weight:700;font-size:1.02em;color:#8F4733;letter-spacing:0.4px;\"><span>⚜️</span><span>$1</span></div><div style=\"font-style:italic;white-space:pre-wrap;\">$2</div></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1091,7 +1108,7 @@
     "id": 101,
     "scriptName": "Sola Scene: Push Notification",
     "findRegex": "/<notification(?:\\s+app=['\"]([^'\"]+)['\"])?(?:\\s+from=['\"]([^'\"]+)['\"])?(?:\\s+time=['\"]([^'\"]+)['\"])?\\s*>([\\s\\S]{0,10000}?)(?:<\\/notification>|$)/gis",
-    "replaceString": "<div style=\"background:rgba(26,18,14,0.95);border:1px solid rgba(244,162,97,0.32);border-radius:14px;padding:12px 16px;margin:14px auto;max-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-family:inherit;\"><div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;\"><div style=\"display:flex;align-items:center;gap:6px;\"><span style=\"font-size:0.75em;background:linear-gradient(135deg,#F4A261,#E07A5F);color:#1A0F0A;padding:2px 6px;border-radius:5px;font-weight:800;\">\ud83d\udd14</span><span style=\"font-size:0.72em;font-weight:700;color:#BC9B78;text-transform:uppercase;letter-spacing:0.5px;\">$1</span></div><span style=\"font-size:0.7em;color:rgba(188,155,120,0.7);\">$3</span></div><div style=\"font-size:0.88em;font-weight:700;color:#F4A261;margin-bottom:2px;\">$2</div><div style=\"font-size:0.86em;color:#F0DCC4;line-height:1.45;\">$4</div></div>",
+    "replaceString": "<div style=\"background:rgba(26,18,14,0.95);border:1px solid rgba(244,162,97,0.32);border-radius:14px;padding:12px 16px;margin:14px auto;max-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-family:inherit;\"><div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;\"><div style=\"display:flex;align-items:center;gap:6px;\"><span style=\"font-size:0.75em;background:linear-gradient(135deg,#F4A261,#E07A5F);color:#1A0F0A;padding:2px 6px;border-radius:5px;font-weight:800;\">🔔</span><span style=\"font-size:0.72em;font-weight:700;color:#BC9B78;text-transform:uppercase;letter-spacing:0.5px;\">$1</span></div><span style=\"font-size:0.7em;color:rgba(188,155,120,0.7);\">$3</span></div><div style=\"font-size:0.88em;font-weight:700;color:#F4A261;margin-bottom:2px;\">$2</div><div style=\"font-size:0.86em;color:#F0DCC4;line-height:1.45;\">$4</div></div>",
     "trimStrings": [],
     "placement": [
       1,
@@ -1103,7 +1120,7 @@
     "id": 102,
     "scriptName": "Sola Scene: Cinematic Break (Location & Time)",
     "findRegex": "/<scene_break\\s+location=['\"]([^'\"]+)['\"](?:\\s+time=['\"]([^'\"]+)['\"])?\\s*\\/?>/gi",
-    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">\u2726 $1 \u00b7 $2 \u2726</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $1 · $2 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
     "trimStrings": [],
     "placement": [
       1,
@@ -1115,7 +1132,7 @@
     "id": 103,
     "scriptName": "Sola Scene: Cinematic Break (Time & Location)",
     "findRegex": "/<scene_break\\s+time=['\"]([^'\"]+)['\"]\\s+location=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
-    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">\u2726 $2 \u00b7 $1 \u2726</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $2 · $1 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
     "trimStrings": [],
     "placement": [
       1,
@@ -1127,7 +1144,7 @@
     "id": 104,
     "scriptName": "Sola Scene: Cinematic Break (Text)",
     "findRegex": "/<scene_break\\s+text=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
-    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">\u2726 $1 \u2726</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $1 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
     "trimStrings": [],
     "placement": [
       1,
@@ -1156,7 +1173,7 @@
     "id": "18192faf-3091-4209-8165-c1a5070c5e18",
     "scriptName": "Sola HUD: Open",
     "findRegex": "/<\\s{0,8}sola_hud(?:\\s+digest=['\"]([^'\"]{0,300})['\"])?\\s*>\\s*(?:<\\s{0,8}details\\s{0,8}>\\s*<\\s{0,8}summary\\s{0,8}>([\\s\\S]{0,300}?)(?:[ \\t]{0,8}(\\|[ \\t]{0,8}[\\s\\S]{0,3000}?))?<\\s{0,8}\\/\\s{0,8}summary\\s{0,8}>)?/gi",
-    "replaceString": "<details style=\"margin:16px 0;background:rgba(20,14,10,0.95);border:1px solid rgba(244,162,97,0.35);border-left:4px solid #F4A261;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.5);overflow:hidden;font-family:inherit;\"><summary style=\"cursor:pointer;padding:12px 16px;background:linear-gradient(90deg,rgba(244,162,97,0.16),rgba(20,14,10,0.3));font-weight:700;color:#F3B74B;letter-spacing:1px;text-transform:uppercase;text-shadow:0 0 10px rgba(243,183,75,0.3);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;\"><span>\u2727 SOLA SHOWRUNNER HUD</span><span style=\"font-size:0.8em;font-weight:600;text-transform:none;letter-spacing:0.3px;color:#BC9B78;background:rgba(244,162,97,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(244,162,97,0.2);\">$1$3</span></summary><div style=\"padding:10px 14px;\">",
+    "replaceString": "<div><details style=\"margin:16px 0;background:rgba(20,14,10,0.95);border:1px solid rgba(244,162,97,0.35);border-left:4px solid #F4A261;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.5);overflow:hidden;font-family:inherit;\"><summary style=\"cursor:pointer;padding:12px 16px;background:linear-gradient(90deg,rgba(244,162,97,0.16),rgba(20,14,10,0.3));font-weight:700;color:#F3B74B;letter-spacing:1px;text-transform:uppercase;text-shadow:0 0 10px rgba(243,183,75,0.3);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;\"><span>✧ SOLA SHOWRUNNER HUD</span><span style=\"font-size:0.8em;font-weight:600;text-transform:none;letter-spacing:0.3px;color:#BC9B78;background:rgba(244,162,97,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(244,162,97,0.2);\">$1$3</span></summary><div style=\"padding:10px 14px;\">",
     "trimStrings": [],
     "placement": [
       2
@@ -1184,13 +1201,13 @@
     "id": "bb6ee562-322e-4a2c-8394-ccabee00d010",
     "scriptName": "Sola HUD: Digest",
     "findRegex": "/T([0-3])[ \\t]{1,6}F([0-3])[ \\t]{1,6}D([0-3])[ \\t]{1,6}Y([0-3])/gi",
-    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#EE6C4D;font-weight:700;\">F$2</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#9AA87A;font-weight:700;\">D$3</span><span style=\"color:rgba(188,155,120,0.65);\"> \u00b7 </span><span style=\"color:#F3B74B;font-weight:700;\">Y$4</span>"
+    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#EE6C4D;font-weight:700;\">F$2</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#9AA87A;font-weight:700;\">D$3</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#F3B74B;font-weight:700;\">Y$4</span>"
   },
   {
     "id": "e34ce6ae-11cb-455a-9d0e-edbd57c29541",
     "scriptName": "Sola HUD: Close",
-    "findRegex": "/<\\s{0,8}(?:\\/\\s{0,8}details\\s{0,8}>\\s*<\\s{0,8})?\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
-    "replaceString": "</div></details>",
+    "findRegex": "/<\\s{0,8}\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
+    "replaceString": "</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1241,7 +1258,7 @@
     "id": "7cb54b48-94ac-482a-bba0-9567b65ae95f",
     "scriptName": "Sola Card: Director Notebook & Story Seeds",
     "findRegex": "/<\\s{0,8}story_notes\\b[^>]{0,200}>([\\s\\S]{0,20000}?)<\\s{0,8}\\/\\s{0,8}story_notes\\s{0,8}>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83d\udcd3 Sola: Director Notebook & Story Seeds (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">📓 Sola: Director Notebook & Story Seeds (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1275,7 +1292,7 @@
     "id": "e43b1782-9f6b-4e1a-8c29-4d6b5e0c8192",
     "scriptName": "Sola Card: Character Trait Ledger",
     "findRegex": "/<solatag\\b[^>]*>([\\s\\S]{0,50000}?)<\\/solatag>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83c\udff7\ufe0f Sola: Character Trait Ledger (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">🏷️ Sola: Character Trait Ledger (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
@@ -1309,7 +1326,7 @@
     "id": "751c94e0-3c30-4fa1-99a1-95e39117fce5",
     "scriptName": "Sola Card: Character Matrix",
     "findRegex": "/<char_matrix\\b[^>]*>([\\s\\S]{0,50000}?)<\\/char_matrix>/gi",
-    "replaceString": "<details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">\ud83e\uddec Sola: {{char}} Matrix & Persona Audit (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details>",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">🧬 Sola: {{char}} Matrix & Persona Audit (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
     "trimStrings": [],
     "placement": [
       2
