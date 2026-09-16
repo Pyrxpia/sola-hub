@@ -784,7 +784,7 @@
   {
     "id": "ef4b8001-3473-4072-a46d-51277d57013b",
     "scriptName": "Sola Voice: Tone Whisper",
-    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"whisper\">/gi",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"whisper(?:ing)?\">/gi",
     "replaceString": "<span style=\"color:$1;font-size:0.88em;font-style:italic;opacity:0.85;\">",
     "trimStrings": [],
     "placement": [
@@ -801,7 +801,7 @@
   {
     "id": "60827e02-ab6e-47e1-84f5-6731af696448",
     "scriptName": "Sola Voice: Tone Tremble",
-    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"tremble\">/gi",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"trembl(?:e|ing)\">/gi",
     "replaceString": "<span style=\"color:$1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
     "trimStrings": [],
     "placement": [
@@ -818,7 +818,7 @@
   {
     "id": "8b0d4ad0-b19a-4781-b396-ea0b7bad3ed2",
     "scriptName": "Sola Voice: Tone Bite",
-    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"bite\">/gi",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"bit(?:e|ing)\">/gi",
     "replaceString": "<span style=\"color:$1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\">",
     "trimStrings": [],
     "placement": [
@@ -852,7 +852,7 @@
   {
     "id": "6e240880-3257-43af-9b4d-9ce73b3e701a",
     "scriptName": "Sola Voice: Fallback Tone Whisper",
-    "findRegex": "/<(?:color:)?([a-z]+):whisper>/gi",
+    "findRegex": "/<(?:color:)?([a-z]+):whisper(?:ing)?>/gi",
     "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-size:0.88em;font-style:italic;opacity:0.85;\">",
     "trimStrings": [],
     "placement": [
@@ -869,7 +869,7 @@
   {
     "id": "938d9161-2cde-4e20-91fe-2c89cb1aa2ff",
     "scriptName": "Sola Voice: Fallback Tone Tremble",
-    "findRegex": "/<(?:color:)?([a-z]+):tremble>/gi",
+    "findRegex": "/<(?:color:)?([a-z]+):trembl(?:e|ing)?>/gi",
     "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
     "trimStrings": [],
     "placement": [
@@ -886,7 +886,7 @@
   {
     "id": "d796be29-e06c-468c-8582-774bcce2e80b",
     "scriptName": "Sola Voice: Fallback Tone Bite",
-    "findRegex": "/<(?:color:)?([a-z]+):bite>/gi",
+    "findRegex": "/<(?:color:)?([a-z]+):bit(?:e|ing)?>/gi",
     "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\">",
     "trimStrings": [],
     "placement": [
