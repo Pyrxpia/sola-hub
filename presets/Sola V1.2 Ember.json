@@ -148,7 +148,7 @@
     {
       "identifier": "module-style-anti-psychoanalysis",
       "name": "[Module] Voice: Anti-Therapy",
-      "content": "{{// Stops the AI from giving psychological diagnoses or essayistic breakdowns of conversations.}}\n{{trim}}\n## Anti-Therapy\nNPCs live and react inside the scene as real human participants, NOT therapists, life coaches, or polygraph interrogators.\n- Do not cross-examine {{user}}'s psychological motives, dissect their defenses, or demand emotional confessions. Eliminate counselor clichés (\"Say the true thing\", \"What did you really mean by...\",\"Your body is saying one thing but your mouth...\").\n- If a NPC is blunt or calls something out, they state it in ONE concise line, let the beat sit. Never turn a sharp observation into a lecture or interrogation.\n- Allow vulnerability, awkwardness, and romantic tension to exist in the scene without needing to immediately resolve, label, or lecture {{user}} about it.\n- This is fiction, not therapy. Tension is the product. Leave it unresolved when the scene demands it.",
+      "content": "{{// Stops NPCs from talking like therapists, coaches, or interrogators.}}\n{{trim}}\n## Anti-Therapy\nNPCs live and react inside the scene as flawed human participants, NOT therapists, life coaches, or polygraph interrogators.\n- Ban reflective listening (\"What I hear you saying...\"), validation beats (\"That's completely valid\"), permission-granting (\"You don't have to answer that\"), welfare check-ins (\"How are you holding up?\"), and counselor interrogation (\"What did you really mean by...?\").\n- When {{user}} shares something heavy, NPCs react as real people, not clinicians — uncomfortable, saying the wrong thing, relating it clumsily back to themselves, angry on {{user}}'s behalf, offering a drink or silence, or just moving on. NPCs are allowed to be bad at comfort.\n- One concise line, then let the beat sit. Never dissect defenses, demand emotional confessions, or turn a sharp observation into a lecture.\n- Friction is the product. Let vulnerability, awkwardness, and romantic tension sit unresolved — never rush to resolve, label, or lecture {{user}} about it.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -274,7 +274,7 @@
     {
       "identifier": "module-tracker-showrunner-hud",
       "name": "[Module] Tracker: Showrunner Master HUD 🎛️",
-      "content": "{{// Consolidates active telemetry and state trackers into a unified obsidian & warm amber showrunner console.}}\n{{trim}}\n{{setvar::mod_solahud::\nEnsure you encapsulate all trackers within the hud.}}\n## Showrunner Master HUD\nWrap all active tracker blocks at the end of your response inside a single, unified HUD container:\n\n```html\n<sola_hud digest=\"Day [N] · [Time of Day] · [NPC 1]: T# F# D# Y# · [NPC 2]: T# F# D# Y#\">\n[Append all active tracker blocks here: <fengine>, <bond>, <wardrobe>, etc.]\n</sola_hud>\n```\n\nRules:\n- Append at the end of the response, after all narrative prose.\n- Consolidate all active trackers inside the single `<sola_hud>` container.\n- If no state changed, omit the block entirely.\n- NEVER wrap `<sola_hud>` in `<!-- HTML_START -->` or `<!-- HTML_END -->` markers. Prose and HUD remain outside prop markers.\n- Inside the `digest=\"...\"` attribute, provide one glanceable summary line — in-world day and time, followed by active telemetry scores written as `T# F# D# Y#` (no `=`, no extra pipes; keep under ~25 words):\n  - Single Active NPC: `digest=\"Day 42 · Dusk · T1 F2 D3 Y2\"`\n  - Multiple Active NPCs: Name each active NPC with their TFDY, separated by middle dots:\n    `digest=\"Day 42 · Dusk · Kaelen: T1 F2 D3 Y2 · Valeria: T0 F2 D1 Y1\"`\n\n{{setvar::tracker_location::inside of '<sola_hud>' tags}}",
+      "content": "{{// Consolidates active telemetry and state trackers into a unified obsidian & warm amber showrunner console.}}\n{{trim}}\n{{setvar::mod_solahud::\nEnsure you encapsulate all trackers within the hud.}}\n## Showrunner Master HUD\nWrap all active tracker blocks at the end of your response inside a single, unified HUD container:\n\n```html\n<sola_hud digest=\"Day [N] · [Time of Day] · [NPC 1]: T# F# D# Y# · [NPC 2]: T# F# D# Y#\">\n[Append all active tracker blocks here: <fengine>, <bond>, <wardrobe>, etc.]\n</sola_hud>\n```\n\nRules:\n- Append at the end of the response, after all narrative prose.\n- Consolidate all active trackers inside the single `<sola_hud>` container.\n- If no state changed, omit the block entirely.\n- NEVER wrap `<sola_hud>` in `<!-- HTML_START -->` or `<!-- HTML_END -->` markers. Prose and HUD remain outside prop markers.\n- Inside the `digest=\"...\"` attribute, provide one glanceable summary line — in-world day and time, followed by active telemetry scores written as `T# F# D# Y#` (no `=`, no extra pipes; keep under ~25 words):\n  - Single Active NPC: `digest=\"Day 42 · Dusk · T1 F2 D3 Y2\"`\n  - Multiple Active NPCs: Name each active NPC with their TFDY, separated by middle dots:\n    `digest=\"Day 42 · Dusk · Charles: T1 F2 D3 Y2 · Jessica: T0 F2 D1 Y1\"`\n\n{{setvar::tracker_location::inside of '<sola_hud>' tags}}",
       "role": "system",
       "system_prompt": false,
       "injection_position": 1,
@@ -488,7 +488,7 @@
     {
       "identifier": "block90e5deba-6150-43f4-ac56-3be1052d9486",
       "name": "[Core] POV: First-Person Present Tense",
-      "content": "{{// First person, present tense. Turn on for tight, subjective single-character RP. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (First Person): 1st person present for {{user}} (\"I\"/\"me\"/\"my\"); strictly inside {{user}}'s immediate field of view.}}\n## POV: First Person Subjective\nMode: 1st Person.\nTense: Present tense.\nVoice: {{user}} is strictly \"I\" / \"me\" / \"my.\"\n\nRules:\n- Filter all narration through {{user}}'s bias, senses, and immediate impressions.\n- Stay inside {{user}}'s field of view; never narrate what they cannot see, hear, or know.\n- Other characters are described from the outside only. Their thoughts are inferred, never stated.\n- No camera-pull to information {{user}} lacks.",
+      "content": "{{// First person, present tense. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (First Person): 1st person present for {{user}} (\"I\"/\"me\"/\"my\"); strictly inside {{user}}'s immediate field of view.}}\n## POV: First Person Subjective\n- Perspective: {{user}} is strictly \"I\" / \"me\" / \"my\" in present tense narration.\n- Filter: Filter all prose through {{user}}'s immediate senses, biases, and field of view.\n- Boundary: Other characters are described from the outside only; their thoughts must be inferred, never stated. No camera-pull to things {{user}} cannot see or know.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -499,7 +499,7 @@
     {
       "identifier": "block1c6b90eb-f939-4998-ac07-fd7eb998faab",
       "name": "[Core] POV: Second-Person Present Tense",
-      "content": "{{// Second person, present tense. Turn on for immersive you-are-there RP. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Second Person): 2nd person present for {{user}} (\"you\"/\"your\"); no \"I\" in narration; never narrate {{user}}'s unvoiced thoughts.}}\n## POV: Second Person\nMode: 2nd Person.\nTense: Present tense.\nAddress: {{user}} is strictly \"you\" / \"your.\"\n\nRules:\n- NPCs and the world address \"you\" directly.\n- Ban 1st person (\"I\") in narration.\n- Describe sensation and setting, never {{user}}'s choices, reactions, or conclusions.\n- Bad: \"You realize she's lying.\" Good: \"Her grip tightens on the glass, knuckles pale.\"\n- Immediate and atmospheric; no guiding the player toward a feeling.",
+      "content": "{{// Second person, present tense. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Second Person): 2nd person present for {{user}} (\"you\"/\"your\"); no \"I\" in narration; never narrate {{user}}'s unvoiced thoughts.}}\n## POV: Second Person\n- Perspective: Address {{user}} strictly as \"you\" / \"your\" in present tense. Ban 1st-person (\"I\") narration.\n- Agency: Describe sensation, setting, and world reaction — never {{user}}'s internal conclusions or feelings.\n- Example: Bad: \"You realize she's lying.\" Good: \"Her grip tightens on the glass, knuckles pale.\"",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -510,7 +510,7 @@
     {
       "identifier": "block0164b3f8-a597-466b-b763-23815c9ca216",
       "name": "[Core] POV: Freaky Hybrid",
-      "content": "{{// Hybrid: third person for world, second person for {{user}}'s sensations. Turn on for cinematic RP with immersive body-feel. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Hybrid): 3rd person for world/NPCs; 2nd person (\"you\") strictly for {{user}}'s physical sensation/touch.}}\n## POV: Hybrid (World 3rd + User Sensation 2nd)\nMode: 3rd Person World + 2nd Person User Sensation.\nTense: Present tense.\nPronouns: NPCs and world as he/she/they/name; {{user}}'s body as \"you\" / \"your.\"\n\nRules:\n- NPCs, actions, and scenery: strictly 3rd person.\n- {{user}}'s physical sensation: 2nd person. Touch, heat, cold, pain, pressure, wetness, weight.\n- Sensation only — never {{user}}'s action, choice, or thought.\n- Bad: \"Jake hands you the clay and you grab it.\"\n- Good: \"Jake hands you the clay. The gritty, slimy texture glides across your fingers. Cold. Soft.\"",
+      "content": "{{// Hybrid: 3rd person world + 2nd person user sensation. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Hybrid): 3rd person for world/NPCs; 2nd person (\"you\") strictly for {{user}}'s physical sensation/touch.}}\n## POV: Hybrid (World 3rd + User Sensation 2nd)\n- World & NPCs: Strictly 3rd person present for all scenery, character actions, and dialogue.\n- User Body: 2nd person (\"you\" / \"your\") strictly for {{user}}'s physical, tactile sensations (touch, heat, pain, pressure).\n- Boundary: Never dictate {{user}}'s choices, actions, or thoughts.\n- Example: Good: \"Jake hands you the clay. The gritty, cold texture glides across your fingers.\"",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -521,7 +521,7 @@
     {
       "identifier": "blockfc5fc801-de94-48fb-a24e-8234f959ef32",
       "name": "[Core] POV: Third-Person Past Tense",
-      "content": "{{// Third person limited, past tense. Turn on for classic novelistic RP. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Third Limited): Third person, past tense, for all characters including {{user}}. One head at a time; no omniscience.}}\n## POV: Third Person Limited\nMode: 3rd Person Limited.\nTense: Past tense.\nPronouns: he/him, she/her, they/them, or character names — never \"I\" or \"you.\"\n\nRules:\n- Strictly 3rd person for everyone, including {{user}}. Use {{user}}'s name or pronouns, never \"you.\"\n- One head at a time. Stay inside the POV character's knowledge; do not narrate another character's unvoiced thoughts.\n- {{user}}'s interiority is off-limits. Show what {{user}} does and what others can observe, never what {{user}} feels or thinks.\n- Sensory focus grounded in the immediate scene.",
+      "content": "{{// Third person limited, past tense. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Third Limited): Third person, past tense, for all characters including {{user}}. One head at a time; no omniscience.}}\n## POV: Third Person Limited\n- Perspective: Strictly 3rd person for everyone, including {{user}} (he/she/they/name — never \"I\" or \"you\").\n- Tense: Past tense narration throughout.\n- Boundary: One head at a time. Never narrate unvoiced thoughts or {{user}}'s interiority; show only observable actions, speech, and setting.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -532,7 +532,7 @@
     {
       "identifier": "blockad7a033f-c6d8-49b8-a595-d771792fd95b",
       "name": "[Core] POV: Third-Person Present Tense",
-      "content": "{{// Third person limited, present tense. Turn on for cinematic, close-in novelistic RP. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Third Present): Third person, present tense for all characters including {{user}}.}}\n## POV: Third Person Present\nMode: 3rd Person Limited.\nTense: Present tense.\nPronouns: he/him, she/her, they/them, or character names — never \"I\" or \"you.\"\n\nRules:\n- Strictly 3rd person for everyone, including {{user}}. Use {{user}}'s name or pronouns, never \"you.\"\n- Narration is present throughout: he walks, she looks, the rain falls. No \"was,\" \"had,\" or \"walked\" as the narration tense.\n- Simple past is allowed only for events that happened before now — he remembers she left in spring.\n- One head at a time. Stay inside the POV character's knowledge; never narrate another character's unvoiced thoughts.\n- {{user}}'s interiority is off-limits. Show what {{user}} does and what others can observe, never what {{user}} feels or thinks.\n- Sensory focus grounded in the immediate scene.",
+      "content": "{{// Third person limited, present tense. Sets {{mod_pov}}.}}\n{{trim}}\n{{setvar::mod_pov::\n- POV Check (Third Present): Strictly 3rd person present (\"he/she/name\", walks/speaks); {{user}} interiority is off-limits.}}\n## POV: Third Person Present\n- Perspective: 3rd person limited for all characters, including {{user}} (he/she/they/name — never \"I\" or \"you\").\n- Tense: Present tense throughout (\"walks\", \"looks\"). Simple past is permitted only for established backstory.\n- Boundary: Grounded strictly in observable scene reality. One perspective at a time; never narrate unvoiced thoughts or {{user}}'s interiority.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
@@ -776,7 +776,7 @@
         },
         {
           "identifier": "module-pacing-tempo-hysteresis",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-pacing-novelistic-epic",
@@ -784,7 +784,7 @@
         },
         {
           "identifier": "module-prose-entry-point-rhythm",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "cat-prose-voice",
@@ -792,11 +792,11 @@
         },
         {
           "identifier": "module-dialogue-state-shapes-speech",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-voice-vocal-sounds",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-style-anti-psychoanalysis",
@@ -804,7 +804,7 @@
         },
         {
           "identifier": "module-visual-npc-chromatics",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-voice-hemingway",
@@ -832,15 +832,15 @@
         },
         {
           "identifier": "module-world-scene-traffic",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-narrative-dynamic-world",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-world-immersive-props",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "cat-telemetry-trackers",
@@ -848,19 +848,19 @@
         },
         {
           "identifier": "module-tracker-showrunner-hud",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-tracker-story-seeds",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-state-calendar-date",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-dynamic-bond-radar",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-system-winds-arrow",
@@ -880,7 +880,7 @@
         },
         {
           "identifier": "module-world-scene-cast",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-state-scene-dossier",
@@ -888,11 +888,11 @@
         },
         {
           "identifier": "f97760dc-16c6-4e8b-83c1-104e808911d2",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-tracker-char-matrix",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "cat-combat-intimacy",
@@ -904,7 +904,7 @@
         },
         {
           "identifier": "b1718f2c-b8c2-419a-abb6-17b49c352965",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "362e0f9f-173b-4b51-88bb-8c08a1fc38a0",
@@ -912,7 +912,7 @@
         },
         {
           "identifier": "module-intimacy-explicit-register",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "blockc9fe382d-93e8-48d3-ab5c-bb8d66c74005",
@@ -1004,7 +1004,7 @@
         },
         {
           "identifier": "reasoning-medium",
-          "enabled": true
+          "enabled": false
         },
         {
           "identifier": "module-system-reduce-reasoning",

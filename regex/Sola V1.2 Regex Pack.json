@@ -155,7 +155,7 @@
   {
     "id": "f28429ba-b4ec-49af-8e85-d1f68a88fed0",
     "scriptName": "Sola Chip: Bond Shift (Dual +/-)",
-    "findRegex": "/Shift:\\s*\\+([^\n\\/]+?)\\s*\\/\\s*-([^\n]+)/gi",
+    "findRegex": "/Shift:\\s*\\+([^",
     "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;display:flex;flex-wrap:wrap;gap:8px;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▲ +</span><span style=\"color:#81B29A;font-weight:500;\"></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▼ −</span><span style=\"color:#EE6C4D;font-weight:500;\"></span></div>",
     "trimStrings": [],
     "placement": [
@@ -323,23 +323,10 @@
     "maxDepth": null
   },
   {
-    "trimStrings": [],
-    "placement": [
-      2
-    ],
-    "disabled": false,
-    "markdownOnly": true,
-    "promptOnly": false,
-    "runOnEdit": true,
-    "substituteRegex": 0,
-    "minDepth": null,
-    "maxDepth": null,
     "id": "18ae69ba-09ac-4500-84fe-a79b1fae1360",
     "scriptName": "Sola Meta: Field Label",
     "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos|Orientation|Orbit|Mask|Internal|Audit|Traits)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
-    "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> "
-  },
-  {
+    "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> ",
     "trimStrings": [],
     "placement": [
       2
@@ -350,11 +337,24 @@
     "runOnEdit": true,
     "substituteRegex": 0,
     "minDepth": null,
-    "maxDepth": null,
+    "maxDepth": null
+  },
+  {
     "id": "4de6466d-42d9-45ee-ac04-72afdd64742d",
     "scriptName": "Sola Meta: Subject Line",
     "findRegex": "/^\\[?([A-Z][A-Za-z'’\\-]{1,20}(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?)\\]?:?[ \\t]{0,4}$/gm",
-    "replaceString": "<span style=\"color:#F0DCC4;font-weight:700;letter-spacing:0.4px;\">$1:</span>"
+    "replaceString": "<span style=\"color:#F0DCC4;font-weight:700;letter-spacing:0.4px;\">$1:</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
   },
   {
     "id": "9b0d6272-c0c4-4439-a130-b222ec2fb6d6",
@@ -1105,7 +1105,7 @@
     "maxDepth": null
   },
   {
-    "id": 101,
+    "id": "101",
     "scriptName": "Sola Scene: Push Notification",
     "findRegex": "/<notification(?:\\s+app=['\"]([^'\"]+)['\"])?(?:\\s+from=['\"]([^'\"]+)['\"])?(?:\\s+time=['\"]([^'\"]+)['\"])?\\s*>([\\s\\S]{0,10000}?)(?:<\\/notification>|$)/gis",
     "replaceString": "<div style=\"background:rgba(26,18,14,0.95);border:1px solid rgba(244,162,97,0.32);border-radius:14px;padding:12px 16px;margin:14px auto;max-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-family:inherit;\"><div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;\"><div style=\"display:flex;align-items:center;gap:6px;\"><span style=\"font-size:0.75em;background:linear-gradient(135deg,#F4A261,#E07A5F);color:#1A0F0A;padding:2px 6px;border-radius:5px;font-weight:800;\">🔔</span><span style=\"font-size:0.72em;font-weight:700;color:#BC9B78;text-transform:uppercase;letter-spacing:0.5px;\">$1</span></div><span style=\"font-size:0.7em;color:rgba(188,155,120,0.7);\">$3</span></div><div style=\"font-size:0.88em;font-weight:700;color:#F4A261;margin-bottom:2px;\">$2</div><div style=\"font-size:0.86em;color:#F0DCC4;line-height:1.45;\">$4</div></div>",
@@ -1114,10 +1114,16 @@
       1,
       2
     ],
-    "disabled": false
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
   },
   {
-    "id": 102,
+    "id": "102",
     "scriptName": "Sola Scene: Cinematic Break (Location & Time)",
     "findRegex": "/<scene_break\\s+location=['\"]([^'\"]+)['\"](?:\\s+time=['\"]([^'\"]+)['\"])?\\s*\\/?>/gi",
     "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $1 · $2 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
@@ -1126,10 +1132,16 @@
       1,
       2
     ],
-    "disabled": false
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
   },
   {
-    "id": 103,
+    "id": "103",
     "scriptName": "Sola Scene: Cinematic Break (Time & Location)",
     "findRegex": "/<scene_break\\s+time=['\"]([^'\"]+)['\"]\\s+location=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
     "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $2 · $1 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
@@ -1138,10 +1150,16 @@
       1,
       2
     ],
-    "disabled": false
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
   },
   {
-    "id": 104,
+    "id": "104",
     "scriptName": "Sola Scene: Cinematic Break (Text)",
     "findRegex": "/<scene_break\\s+text=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
     "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:24px 0;gap:14px;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(244,162,97,0.35));\"></div><div style=\"font-size:0.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F3B74B;background:rgba(26,18,14,0.94);padding:4px 16px;border-radius:20px;border:1px solid rgba(244,162,97,0.3);box-shadow:0 0 12px rgba(244,162,97,0.15);\">✦ $1 ✦</div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.35),transparent);\"></div></div>",
@@ -1150,7 +1168,13 @@
       1,
       2
     ],
-    "disabled": false
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
   },
   {
     "id": "438bf889-5efe-4a6b-b9f6-faa69c1d6de6",
@@ -1187,6 +1211,10 @@
     "maxDepth": null
   },
   {
+    "id": "bb6ee562-322e-4a2c-8394-ccabee00d010",
+    "scriptName": "Sola HUD: Digest",
+    "findRegex": "/T[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}F[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}D[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}Y[=:]?([0-3])([\\u2191\\u2193])?/gi",
+    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1$2</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#EE6C4D;font-weight:700;\">F$3$4</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#9AA87A;font-weight:700;\">D$5$6</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#F3B74B;font-weight:700;\">Y$7$8</span>",
     "trimStrings": [],
     "placement": [
       2
@@ -1197,11 +1225,7 @@
     "runOnEdit": true,
     "substituteRegex": 0,
     "minDepth": null,
-    "maxDepth": null,
-    "id": "bb6ee562-322e-4a2c-8394-ccabee00d010",
-    "scriptName": "Sola HUD: Digest",
-    "findRegex": "/T[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}F[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}D[=:]?([0-3])([\\u2191\\u2193])?[ \\t]{1,6}Y[=:]?([0-3])([\\u2191\\u2193])?/gi",
-    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1$2</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#EE6C4D;font-weight:700;\">F$3$4</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#9AA87A;font-weight:700;\">D$5$6</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#F3B74B;font-weight:700;\">Y$7$8</span>"
+    "maxDepth": null
   },
   {
     "id": "e34ce6ae-11cb-455a-9d0e-edbd57c29541",
