@@ -1356,7 +1356,7 @@
       2
     ],
     "disabled": false,
-    "markdownOnly": false,
+    "markdownOnly": true,
     "promptOnly": false,
     "runOnEdit": true,
     "substituteRegex": 0,
