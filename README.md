@@ -15,3 +15,4 @@ Welcome to the official repository and GitHub Pages home for **Sola**!
 - **V1.2 Flame:** Complete author build with Showrunner Master HUD, dynamic recency synchronization, and anti-therapy behavioral gates.
 - **V1.2 Ember:** Clean foundation build with streamlined POVs and lightweight token footprint.
 - **V1.2 Regex Companion Pack:** Formatted visual cards for telemetry, feeling engines, and character matrix audits.
+- **Sola Character Card:** Official SillyTavern character card (CCv3 PNG) pre-configured with Sola's persona, greeting, and system prompt.
