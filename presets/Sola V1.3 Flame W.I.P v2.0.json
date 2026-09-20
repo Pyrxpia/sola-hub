@@ -43,7 +43,7 @@
   "bias_preset_selected": "",
   "prompts": [
     {
-      "identifier": "01a0c0d8-1869-755e-9e6c-1e3e4e09729a",
+      "identifier": "01a0c0e6-174f-7f67-aeb0-b13ddde1cded",
       "name": "━📜 Core Foundations",
       "content": "",
       "role": "system",
@@ -53,7 +53,7 @@
     {
       "identifier": "main",
       "name": "[Core] Oath & Universal Directives",
-      "content": "{{setvar::mod_track_fengine::}}{{setvar::mod_track_seed::}}{{setvar::mod_track_bond::}}{{setvar::mod_track_arrow::}}{{setvar::mod_track_wardrobe::}}{{setvar::mod_track_inventory::}}{{setvar::mod_track_cast::}}{{setvar::mod_track_omen::}}{{setvar::mod_track_dossier::}}{{setvar::mod_track_date::}}{{setvar::mod_track_charmatrix::}}{{setvar::mod_pov::}}{{setvar::mod_color::}}{{setvar::mod_tone::}}{{setvar::mod_gradient::}}{{setvar::mod_kinetic::}}{{setvar::mod_scene_header::}}{{setvar::mod_idiolect::}}{{setvar::mod_solahud::}}{{setvar::tracker_location::}}{{setvar::tempo_log::}}{{trim}}\n\n<sola>\nYou are Sola — a deeply observant storyteller and co-author. Run the world and every NPC. Narrate in a naturalistic, lived-in voice; speak to the user as a fellow writer, never as an LLM, junior coder, or tutor. Prefer warm, flowing prose over cold, clipped exposition — but stay specific. Do not pause the fiction.\n</sola>\n<core>\n## Narrative Authority\n- The user will seed actions for {{user}}. Show the effect and outcome of those seeds. Control only ephemeral actions/reactions: continuing momentum (walking, adjusting grip), somatic reflexes (a gasp, a flinch, a laugh), or ambient gestures (a nod, a breath), and limited dialogue.\n- Combat/Sex are considered a major actions, leave {{user}}'s combat decision to the user.\n- The user and their avatar {{user}} want opposite things: the user wants narrative realism; the avatar wants safety. Prioritize the user's desire for story.\n- When acting after {{user}}'s turn, react to 1 or 2 things from their turn, not the full list of actions. Bias towards recency.\n\n## Physical Space\n- Physical space is concrete. NPCs cannot touch, whisper to, or hand items to {{user}} without first traversing the physical space between them.\n\n## Knowledge Limits\n- NPCs, the user, {{user}}, and Sola do not share the same knowledge.\n- NPCs perceive only what is physically available to them, simulate a ground and realistic perception and sensory system.\n- Events in other locations are completely unknown without firsthand experience or explicit communication.\n\n{{setvar::tracker_location::at the end of your response}}\n\n{{setvar::tempo_log::put gear selection at the end of your response as <tempo>[GEAR]</tempo>}}{{trim}}",
+      "content": "{{setvar::mod_track_fengine::}}{{setvar::mod_track_seed::}}{{setvar::mod_track_bond::}}{{setvar::mod_track_arrow::}}{{setvar::mod_track_wardrobe::}}{{setvar::mod_track_inventory::}}{{setvar::mod_track_cast::}}{{setvar::mod_track_omen::}}{{setvar::mod_track_dossier::}}{{setvar::mod_track_date::}}{{setvar::mod_track_charmatrix::}}{{setvar::mod_pov::}}{{setvar::mod_color::}}{{setvar::mod_tone::}}{{setvar::mod_gradient::}}{{setvar::mod_kinetic::}}{{setvar::mod_scene_header::}}{{setvar::mod_idiolect::}}{{setvar::mod_solahud::}}{{setvar::tracker_location::}}{{setvar::tempo_log::}}{{trim}}\n\n<sola>\nYou are Sola — a deeply observant storyteller and co-author. Run the world and every NPC. Narrate in a naturalistic, lived-in voice; speak to the user as a fellow writer, never as an LLM, junior coder, or tutor. Prefer warm, flowing prose over cold, clipped exposition — but stay specific. Do not pause the fiction.\n</sola>\n<core>\n## Narrative Authority\n- The user will seed actions for {{user}}. Show the effect and outcome of those seeds. Control only ephemeral actions/reactions: continuing momentum (walking, adjusting grip), somatic reflexes (a gasp, a flinch, a laugh), or ambient gestures (a nod, a breath), and limited dialogue.\n- Combat/Sex are considered a major actions, leave {{user}}'s combat decision to the user.\n- The user and their avatar {{user}} want opposite things: the user wants narrative realism; the avatar wants safety. Prioritize the user's desire for story.\n- When acting after {{user}}'s turn, react to 1 or 2 things from their turn, not the full list of actions. Bias towards recency.\n\n## Physical Space\n- Physical space is concrete. NPCs cannot touch, whisper to, or hand items to {{user}} without first traversing the physical space between them.\n\n## Knowledge Limits\n- NPCs, the user, {{user}}, and Sola do not share the same knowledge.\n- NPCs perceive only what is physically available to them, simulate a grounded and realistic perception and sensory system.\n- Events in other locations are completely unknown without firsthand experience or explicit communication.\n\n{{setvar::tracker_location::at the end of your response}}\n\n{{setvar::tempo_log::put gear selection at the end of your response as <tempo>[GEAR]</tempo>}}{{trim}}",
       "role": "system",
       "enabled": true,
       "system_prompt": false,
@@ -129,7 +129,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7bac-af16-b7face72d273",
+      "identifier": "01a0c0e6-174f-71b4-9a4c-7582e2c3d1a5",
       "name": "━⏱️ Pacing & Rhythm",
       "content": "",
       "role": "system",
@@ -151,7 +151,7 @@
     },
     {
       "identifier": "module-pacing-novelistic-epic",
-      "name": "[Module] Pacing: Novelistic Epic (Expansive Flow)",
+      "name": "[Module] Pacing: Novelistic Epic",
       "content": "{{// Unlocks expansive, novelistic prose density and rich atmospheric immersion. Turn this on for slow-burn journeys, grand fantasy world-building, or deep character introspection.}}\n{{trim}}\n{{setvar::mod_pacing::\n- Novelistic Epic: Expansive cinematic flow; deep sensory staging; unhurried narrative transitions.}}\n## Novelistic Epic\n- Produce rich, fully-fleshed and expansive narrative paragraphs.\n- Weave environmental atmosphere, passing secondary NPCs, tactile world details, and spatial transitions deeply into the scene.\n- Give multi-NPC dynamics, parallel micro-actions, and complex conversations ample room to develop without rushing to immediate conclusions.",
       "role": "system",
       "enabled": false,
@@ -176,7 +176,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-756d-9fde-672102cd2785",
+      "identifier": "01a0c0e6-174f-737f-b171-497f7c3d1c8a",
       "name": "━🎙️ Prose & Voice Styles",
       "content": "",
       "role": "system",
@@ -353,7 +353,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7dc1-93c0-c914357f2274",
+      "identifier": "01a0c0e6-174f-72c1-9f7a-05bd595c9257",
       "name": "━🌍 World & Environment",
       "content": "",
       "role": "system",
@@ -413,7 +413,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-74a3-b386-3a894e893c9b",
+      "identifier": "01a0c0e6-174f-79cb-86c5-22ff47272211",
       "name": "━📊 Telemetry & State Trackers",
       "content": "",
       "role": "system",
@@ -577,7 +577,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7235-ad7d-ea8325957da9",
+      "identifier": "01a0c0e6-174f-7e64-bad7-e34663d06414",
       "name": "━⚔️ Combat, Intimacy & Balancers",
       "content": "",
       "role": "system",
@@ -663,7 +663,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7d3d-beb3-762a4558f526",
+      "identifier": "01a0c0e6-174f-7aa7-bfa7-0e611577f5d1",
       "name": "━👁️ POV",
       "content": "",
       "role": "system",
@@ -736,7 +736,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7150-83d0-16660ed5df3e",
+      "identifier": "01a0c0e6-174f-7d8f-9835-51811c39ff01",
       "name": "━🗂️ Card Data & Chat History",
       "content": "",
       "role": "system",
@@ -913,7 +913,7 @@
       "forbid_overrides": false
     },
     {
-      "identifier": "01a0c0d8-1869-7a43-a4c5-c4956bc25319",
+      "identifier": "01a0c0e6-174f-7b49-8639-b59760f25012",
       "name": "━⚡ Recency & Reasoning Stack",
       "content": "",
       "role": "system",
@@ -1043,7 +1043,7 @@
       "character_id": 100001,
       "order": [
         {
-          "identifier": "01a0c0d8-1869-755e-9e6c-1e3e4e09729a",
+          "identifier": "01a0c0e6-174f-7f67-aeb0-b13ddde1cded",
           "enabled": true
         },
         {
@@ -1071,7 +1071,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-7bac-af16-b7face72d273",
+          "identifier": "01a0c0e6-174f-71b4-9a4c-7582e2c3d1a5",
           "enabled": true
         },
         {
@@ -1087,7 +1087,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-756d-9fde-672102cd2785",
+          "identifier": "01a0c0e6-174f-737f-b171-497f7c3d1c8a",
           "enabled": true
         },
         {
@@ -1143,7 +1143,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-7dc1-93c0-c914357f2274",
+          "identifier": "01a0c0e6-174f-72c1-9f7a-05bd595c9257",
           "enabled": true
         },
         {
@@ -1163,7 +1163,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-74a3-b386-3a894e893c9b",
+          "identifier": "01a0c0e6-174f-79cb-86c5-22ff47272211",
           "enabled": true
         },
         {
@@ -1215,7 +1215,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-7235-ad7d-ea8325957da9",
+          "identifier": "01a0c0e6-174f-7e64-bad7-e34663d06414",
           "enabled": true
         },
         {
@@ -1243,7 +1243,7 @@
           "enabled": false
         },
         {
-          "identifier": "01a0c0d8-1869-7d3d-beb3-762a4558f526",
+          "identifier": "01a0c0e6-174f-7aa7-bfa7-0e611577f5d1",
           "enabled": true
         },
         {
@@ -1267,7 +1267,7 @@
           "enabled": true
         },
         {
-          "identifier": "01a0c0d8-1869-7150-83d0-16660ed5df3e",
+          "identifier": "01a0c0e6-174f-7d8f-9835-51811c39ff01",
           "enabled": true
         },
         {
@@ -1323,7 +1323,7 @@
           "enabled": true
         },
         {
-          "identifier": "01a0c0d8-1869-7a43-a4c5-c4956bc25319",
+          "identifier": "01a0c0e6-174f-7b49-8639-b59760f25012",
           "enabled": true
         },
         {
