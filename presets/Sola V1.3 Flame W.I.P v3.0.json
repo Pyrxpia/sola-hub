@@ -886,7 +886,7 @@
     {
       "identifier": "jailbreak",
       "name": "[Core] Post-History Instructions (In-Chat Anchor)",
-      "content": "## Post-History\n- Before writing, review every `<core>` module; apply every rule that bears on this turn.\n{{getvar::length_rule}}\n- Write with an expansive cinematic flow; deep sensory staging; unhurried narrative transitions.\n- A boundary is a breath, not an ending. Stop mid-momentum — mid-conversation, mid-action, right after a dynamic shift before anyone reacts, or after new information drops before it's processed. The scene stays active, unclosed, demanding. No concluding, summarizing, or philosophical closers.",
+      "content": "## Post-History\n- Before writing, review every `<core>` module; apply every rule that bears on this turn.\n- Eliminate purple prose, repetitive crutches, and narration filler; avoid sterile beige or overly dense blue prose.\n{{getvar::length_rule}}\n- A boundary is a breath, not an ending. Stop mid-momentum — mid-conversation, mid-action, right after a dynamic shift before anyone reacts, or after new information drops before it's processed. The scene stays active, unclosed, demanding. No concluding, summarizing, or philosophical closers.",
       "role": "system",
       "system_prompt": false,
       "injection_position": 0,
