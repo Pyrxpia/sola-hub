@@ -1,0 +1,2586 @@
+[
+  {
+    "id": "8edbf2db-37c0-4a6b-80f5-5a090f5b790c",
+    "scriptName": "Sola Core: Multi-Newline Collapser",
+    "findRegex": "/\\n{3,}/g",
+    "replaceString": "\n\n",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5cc2d409-640f-4001-810d-1e0b0c7f26f7",
+    "scriptName": "Sola Core: Smart Quotes to Straight",
+    "findRegex": "/[“”]/g",
+    "replaceString": "\"",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d90f7091-4366-42b9-9c53-60bfa46fded4",
+    "scriptName": "Sola Core: Smart Single-Quotes to Straight",
+    "findRegex": "/[‘’]/g",
+    "replaceString": "'",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "7f0a00b1-d493-4748-86c3-1f379a329743",
+    "scriptName": "Sola Core: Asterisk Dialogue Cleaner",
+    "findRegex": "/\\*(\"[^\"]+\")\\*/g",
+    "replaceString": "$1",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "13e49193-acb6-4455-b87b-93ebaee0a56f",
+    "scriptName": "Sola Note: OOC Co-Author Box",
+    "findRegex": "/\\(\\([oO][oO][cC]:?[ \t]*([\\s\\S]*?)\\)\\)/g",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">💬 Sola: Co-Author Note (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#E07A5F;line-height:1.55;font-style:italic;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9979ab0f-0d07-45b1-8357-fe66c664f686",
+    "scriptName": "Sola Core: Dangling Sentence Trimmer",
+    "findRegex": "/(?:\\n|\\s)+[^.!?\"'”’~\\n]+$/g",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8687f0d1-2138-4766-b250-1d4e7c3da0dc",
+    "scriptName": "Sola Core: Slop Scrubber (Optional)",
+    "findRegex": "/\\b(?:a testament to|unspoken understanding|electricity crackled|predatory smirk)\\b/gi",
+    "replaceString": "...",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": true,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eb0942e3-6a46-4d43-9579-6da7bf22e7ad",
+    "scriptName": "Sola Note: Director Marginalia",
+    "findRegex": "/Sola:\\s*\\*\\[?([^\\n\\*\\]]+)\\]?\\*/gi",
+    "replaceString": "<div style=\"margin:8px 0 0;padding:8px 12px;background:rgba(224,122,95,0.1);border-left:3px solid #E07A5F;border-radius:0 6px 6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;color:#E07A5F;font-style:italic;\"><span style=\"font-weight:700;color:#F4A261;font-style:normal;margin-right:4px;\">✨ Sola:</span>“$1”</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3b0b0ec7-d6ff-47ed-956b-54ef67b546a9",
+    "scriptName": "Sola Chip: Feeling Engine TFDY",
+    "findRegex": "/\\bT=([0-4])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}F=([0-4])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}D=([0-4])[ \\t]{0,4}([\\u2191\\u2193])?\\s{0,8}\\|\\s{0,8}Y=([0-4])[ \\t]{0,4}([\\u2191\\u2193])?/gi",
+    "replaceString": "<div style=\"display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;font-family:inherit;font-size:0.8em;line-height:1.5;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(244,162,97,0.12);border:1px solid rgba(244,162,97,0.45);border-radius:4px;color:#F4A261;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Tenderness $1/4<span style=\"padding-left:4px;font-weight:700;\">$2</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Fury $3/4<span style=\"padding-left:4px;font-weight:700;\">$4</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(154,168,122,0.12);border:1px solid rgba(154,168,122,0.45);border-radius:4px;color:#9AA87A;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Dread $5/4<span style=\"padding-left:4px;font-weight:700;\">$6</span></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(243,183,75,0.12);border:1px solid rgba(243,183,75,0.45);border-radius:4px;color:#F3B74B;font-size:0.8em;font-weight:700;letter-spacing:0.3px;\">Yearning $7/4<span style=\"padding-left:4px;font-weight:700;\">$8</span></span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f28429ba-b4ec-49af-8e85-d1f68a88fed0",
+    "scriptName": "Sola Chip: Bond Shift (Dual +/-)",
+    "findRegex": "/Shift:\\s*\\+([^\n\\/]+?)\\s*\\/\\s*-([^\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;display:flex;flex-wrap:wrap;gap:8px;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▲ +</span><span style=\"color:#81B29A;font-weight:500;\"></span><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▼ −</span><span style=\"color:#EE6C4D;font-weight:500;\"></span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f28429ba-b4ec-49af-8e85-d1f68a88fefb",
+    "scriptName": "Sola Chip: Bond Shift (+)",
+    "findRegex": "/Shift:\\s*\\+([^\\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▲ +</span><span style=\"color:#81B29A;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "76d7d992-a3e7-4975-8fe1-6f4f28eee4cb",
+    "scriptName": "Sola Chip: Bond Shift (-)",
+    "findRegex": "/Shift:\\s*-([^\\n]+)/gi",
+    "replaceString": "<div style=\"margin:6px 0;font-family:inherit;font-size:0.88em;line-height:1.55;\"><span style=\"display:inline-block;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-size:0.9em;font-weight:700;letter-spacing:0.3px;\">▼ −</span><span style=\"color:#EE6C4D;font-weight:500;margin-left:6px;\">$1</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6013f7a5-3c69-414a-8de3-bf290f17e158",
+    "scriptName": "Sola Chip: Arrow - Bullseye",
+    "findRegex": "/Trajectory:\\s*(?:🎯\\s*)?Bullseye[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(129,178,154,0.12);border:1px solid rgba(129,178,154,0.45);border-radius:4px;color:#81B29A;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">🎯 BULLSEYE · Decisive Success</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f617b5d0-219d-4350-aecc-d29ab9f6d67c",
+    "scriptName": "Sola Chip: Arrow - Grazing Shot",
+    "findRegex": "/Trajectory:\\s*(?:🏹|⚡)?\\s*Grazing Shot[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(221,161,94,0.12);border:1px solid rgba(221,161,94,0.45);border-radius:4px;color:#DDA15E;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">⚡ GRAZING SHOT · Success with Complication</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6d969807-d9b5-4710-987a-1b5a6a8c6c45",
+    "scriptName": "Sola Chip: Arrow - Wind Drift",
+    "findRegex": "/Trajectory:\\s*(?:💨\\s*)?Wind Drift[^\\n]*/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:6px 0;padding:4px 10px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-family:inherit;font-size:0.88em;font-weight:700;letter-spacing:0.4px;\">💨 WIND DRIFT · Dramatic Failure</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "549f7ee0-c507-4827-af4f-2903236598c6",
+    "scriptName": "Sola Chip: Tempo - Drive",
+    "findRegex": "/<tempo>\\s*\\[?DRIVE\\]?\\s*<\\/tempo>/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:4px 0;padding:2px 8px;background:rgba(238,108,77,0.12);border:1px solid rgba(238,108,77,0.45);border-radius:4px;color:#EE6C4D;font-family:inherit;font-size:0.8em;font-weight:700;letter-spacing:0.4px;\">⚡ DRIVE</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "07ce080a-5ce1-44ea-92ee-4f7c4f85db6d",
+    "scriptName": "Sola Chip: Tempo - Steady",
+    "findRegex": "/<tempo>\\s*\\[?STEADY\\]?\\s*<\\/tempo>/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:4px 0;padding:2px 8px;background:rgba(243,183,75,0.12);border:1px solid rgba(243,183,75,0.45);border-radius:4px;color:#F3B74B;font-family:inherit;font-size:0.8em;font-weight:700;letter-spacing:0.4px;\">⚙️ STEADY</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "153532b5-079a-4a90-80f6-99003ac982bf",
+    "scriptName": "Sola Chip: Tempo - Neutral",
+    "findRegex": "/<tempo>\\s*\\[?NEUTRAL\\]?\\s*<\\/tempo>/gi",
+    "replaceString": "<div style=\"display:inline-block;margin:4px 0;padding:2px 8px;background:rgba(122,139,153,0.12);border:1px solid rgba(122,139,153,0.45);border-radius:4px;color:#7A8B99;font-family:inherit;font-size:0.8em;font-weight:700;letter-spacing:0.4px;\">⏸️ NEUTRAL</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "bbbfc6d2-fc70-49ec-ba64-128d63bf8dc5",
+    "scriptName": "Sola Chip: Celestial - Dawn",
+    "findRegex": "/Time:\\s*(Dawn|Sunrise)([^\\n]*)/gi",
+    "replaceString": "Time: 🌅 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "51d122f8-c070-4103-8a00-da947bfb2461",
+    "scriptName": "Sola Chip: Celestial - Daylight",
+    "findRegex": "/Time:\\s*(Morning|Midday|Noon|Afternoon)([^\\n]*)/gi",
+    "replaceString": "Time: ☀️ $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d5263067-dbd5-4b1b-948a-a1395d62a619",
+    "scriptName": "Sola Chip: Celestial - Dusk",
+    "findRegex": "/Time:\\s*(Dusk|Sunset|Twilight|Evening)([^\\n]*)/gi",
+    "replaceString": "Time: 🌇 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6d8e8253-3c6d-4b3b-95d2-9104e3f036e8",
+    "scriptName": "Sola Chip: Celestial - Night",
+    "findRegex": "/Time:\\s*(Night|Midnight|Late Night)([^\\n]*)/gi",
+    "replaceString": "Time: 🌙 $1$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "18ae69ba-09ac-4500-84fe-a79b1fae1360",
+    "scriptName": "Sola Meta: Field Label",
+    "findRegex": "/^(Observable Facts|Active Speakers|Ambient NPCs|Consequence|Trajectory|Atmosphere|Boundaries|Chemistry|Condition|Concealed|Inventory|Calendar|Friction|Location|Wardrobe|Boundary|In-Hand|Threads|Motives|Horizon|Elapsed|Dynamic|Meaning|Carried|Present|Subtext|Thought|Teaser|Gamble|Layers|Seeds|Shift|Tells|Facts|Time|Pair|Roll|Card|Cast|Gear|Room|Day|Neg|Pos|Orientation|Orbit|Mask|Internal|Audit|Traits|Voice)[ \\t]{0,2}[:=][ \\t]{1,4}/gm",
+    "replaceString": "<span style=\"color:#F4A261;font-weight:600;\">$1:</span> ",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "4de6466d-42d9-45ee-ac04-72afdd64742d",
+    "scriptName": "Sola Meta: Subject Line",
+    "findRegex": "/^\\[?([A-Z][A-Za-z'’\\-]{1,20}(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?(?: [A-Z][A-Za-z'’\\-]{1,20})?)\\]?:?[ \\t]{0,4}$/gm",
+    "replaceString": "<span style=\"color:#F0DCC4;font-weight:700;letter-spacing:0.4px;\">$1:</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9b0d6272-c0c4-4439-a130-b222ec2fb6d6",
+    "scriptName": "Sola Card: Feeling Engine Telemetry",
+    "findRegex": "/<fengine\\b[^>]*>([\\s\\S]*?)<\\/fengine>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">📊 Sola: Feeling Engine Telemetry (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c442604a-618f-497f-862b-6a943d43860b",
+    "scriptName": "Sola Card: Bond & Chemistry Radar",
+    "findRegex": "/<bond\\b[^>]*>([\\s\\S]*?)<\\/bond>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(224,122,95,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#E07A5F;letter-spacing:0.2px;outline:none;user-select:none;\">💞 Sola: Bond & Chemistry Radar (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #E07A5F;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "355e65ee-5118-4475-87fc-1abeeb266c03",
+    "scriptName": "Sola Card: Thought Cabinet",
+    "findRegex": "/<cabinet\\b[^>]*>([\\s\\S]*?)<\\/cabinet>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">💭 Sola: Thought Cabinet (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "564d6d96-12c4-40f5-8541-a6d4952513d6",
+    "scriptName": "Sola Card: The Wind's Arrow",
+    "findRegex": "/<arrow\\b[^>]*>([\\s\\S]*?)<\\/arrow>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(238,108,77,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#EE6C4D;letter-spacing:0.2px;outline:none;user-select:none;\">🏹 Sola: The Wind's Arrow (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #EE6C4D;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f000c187-eb6c-4b78-bae9-cda905093da5",
+    "scriptName": "Sola Card: Chapter Break",
+    "findRegex": "/<chapter\\b[^>]*>([\\s\\S]*?)<\\/chapter>/gi",
+    "replaceString": "<div style=\"margin:16px 0;padding:14px 16px;text-align:center;background:rgba(42,28,20,0.6);border-top:1px solid rgba(192,108,84,0.45);border-bottom:1px solid rgba(192,108,84,0.45);border-radius:6px;\"><div style=\"font-family:inherit;font-size:1.05em;font-weight:700;color:#C06C54;letter-spacing:0.12em;text-transform:uppercase;\">✦ Chapter Break ✦</div><div style=\"margin-top:6px;font-family:inherit;font-size:0.9em;font-style:italic;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6fe1683c-6da9-4878-8a5f-4d878de5d0ad",
+    "scriptName": "Sola Card: Calendar & Chronology",
+    "findRegex": "/<date\\b[^>]*>([\\s\\S]*?)<\\/date>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(221,161,94,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#DDA15E;letter-spacing:0.2px;outline:none;user-select:none;\">🕰️ Sola: Calendar & Chronology (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #DDA15E;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "dcc9f28c-1305-4659-8162-a8b13353ec04",
+    "scriptName": "Sola Card: Omen Deck",
+    "findRegex": "/<omen\\b[^>]*>([\\s\\S]*?)<\\/omen>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(154,168,122,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#9AA87A;letter-spacing:0.2px;outline:none;user-select:none;\">🎴 Sola: Omen Deck (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #9AA87A;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c866c93e-e728-48f0-8645-177850ee80ad",
+    "scriptName": "Sola Card: Wardrobe & Physical State",
+    "findRegex": "/<wardrobe\\b[^>]*>([\\s\\S]*?)<\\/wardrobe>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">🧥 Sola: Wardrobe & Physical State (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "518e4b56-f543-41a5-a931-07bfdd281960",
+    "scriptName": "Sola Card: Carried Inventory & Gear",
+    "findRegex": "/<inventory\\b[^>]*>([\\s\\S]*?)<\\/inventory>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(192,108,84,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#C06C54;letter-spacing:0.2px;outline:none;user-select:none;\">🗡️ Sola: Carried Inventory & Gear (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #C06C54;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9210d8b6-cdd6-4c40-8c8b-7649381fdee1",
+    "scriptName": "Sola Card: Scene Cast & Local Facts",
+    "findRegex": "/<scene_cast\\b[^>]*>([\\s\\S]*?)<\\/scene_cast>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">👥 Sola: Scene Cast & Local Facts (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3cc5909e-9b87-414d-9b1f-b8ba9936198e",
+    "scriptName": "Sola Card: Scene State Dossier",
+    "findRegex": "/<scene_state\\b[^>]*>([\\s\\S]*?)<\\/scene_state>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(244,162,97,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F4A261;letter-spacing:0.2px;outline:none;user-select:none;\">📋 Sola: Scene State Dossier (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F4A261;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(244,162,97,0.45) transparent;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8a7db072-65c4-45e2-90ad-1ee199dac4c9",
+    "scriptName": "Sola Saver: Feeling Engine",
+    "findRegex": "/<fengine[\\s\\S]*?<\\/fengine>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "10f6d448-5abb-4224-af4b-6a036e884096",
+    "scriptName": "Sola Saver: Wardrobe & Inventory",
+    "findRegex": "/<(wardrobe|inventory)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "24947874-57a1-4485-9bbb-b854548eaaa9",
+    "scriptName": "Sola Saver: Scene Cast & Dossier",
+    "findRegex": "/<(scene_cast|scene_state)\\b[\\s\\S]*?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 3,
+    "maxDepth": null
+  },
+  {
+    "id": "422cb864-dfd5-436e-9781-af5ebbeca026",
+    "scriptName": "Sola Saver: Bond Radar",
+    "findRegex": "/<bond[\\s\\S]*?<\\/bond>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "b4cd2ba7-cc5b-417a-9ab0-62628892942b",
+    "scriptName": "Sola Saver: Calendar",
+    "findRegex": "/<date[\\s\\S]*?<\\/date>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 3,
+    "maxDepth": null
+  },
+  {
+    "id": "70d806c3-73eb-4ab6-a91a-df6cbffc4e89",
+    "scriptName": "Sola Saver: Master Telemetry (All Trackers)",
+    "findRegex": "/<(fengine|wardrobe|inventory|scene_cast|scene_state|cabinet|arrow|omen|date|story_notes|solatag|char_matrix)\\b[\\s\\S]{0,50000}?<\\/\\1>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "5c95b74c-83f7-4791-8013-d9c7f54506bc",
+    "scriptName": "Sola Voice: Tag Close",
+    "findRegex": "/<\\s*\\/\\s*(?:color(?::[a-z:]+)?|marigold|amber|cider|coral|copper|terracotta|sage|rose|denim|slate|indigo|heather|ash|mist|pine|obsidian)(?::[a-z0-9_:-]+)?>/gi",
+    "replaceString": "</span></font>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8116dd3a-99b7-4a32-aec2-781c4efbd976",
+    "scriptName": "Sola Voice: Marigold",
+    "findRegex": "/<(?:color:)?marigold(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#F4A261\"><span data-col=\"#F4A261\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c1ab49f5-e24a-45bb-bea1-cf50fd13b148",
+    "scriptName": "Sola Voice: Amber",
+    "findRegex": "/<(?:color:)?amber(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#F3B74B\"><span data-col=\"#F3B74B\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "35ce47a0-b481-4e07-a84a-114ddea6496f",
+    "scriptName": "Sola Voice: Coral",
+    "findRegex": "/<(?:color:)?coral(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#EE6C4D\"><span data-col=\"#EE6C4D\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8cff4efe-bd40-4259-90ce-4f881b4b879c",
+    "scriptName": "Sola Voice: Copper",
+    "findRegex": "/<(?:color:)?copper(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#E07A5F\"><span data-col=\"#E07A5F\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "396a7927-d3e6-47b0-ab62-acf9944f2eee",
+    "scriptName": "Sola Voice: Terracotta",
+    "findRegex": "/<(?:color:)?terracotta(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#C06C54\"><span data-col=\"#C06C54\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6fb454bd-c3e0-44bf-9c37-6c353c49840c",
+    "scriptName": "Sola Voice: Sage",
+    "findRegex": "/<(?:color:)?sage(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#9AA87A\"><span data-col=\"#9AA87A\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f383bde9-76fa-4b2f-8f9d-1b3164936572",
+    "scriptName": "Sola Voice: Rose",
+    "findRegex": "/<(?:color:)?rose(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#F4845F\"><span data-col=\"#F4845F\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "a75473a4-dae7-46ce-8aa3-2c2800827d2a",
+    "scriptName": "Sola Voice: Denim",
+    "findRegex": "/<(?:color:)?denim(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#7A8B99\"><span data-col=\"#7A8B99\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b806a8e0-1b15-4edd-8ce4-9e25c2981462",
+    "scriptName": "Sola Voice: Cider",
+    "findRegex": "/<(?:color:)?cider(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#E9A036\"><span data-col=\"#E9A036\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "1e48bb6a-78ac-43f0-acd0-23d8179454b1",
+    "scriptName": "Sola Voice: Slate",
+    "findRegex": "/<(?:color:)?slate(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#8FA4B2\"><span data-col=\"#8FA4B2\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "db9de7b9-6f70-41e0-a05a-46ffea5216ec",
+    "scriptName": "Sola Voice: Indigo",
+    "findRegex": "/<(?:color:)?indigo(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#8592E6\"><span data-col=\"#8592E6\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "4ae08375-328e-4ae3-93f1-1ee1be6f14da",
+    "scriptName": "Sola Voice: Heather",
+    "findRegex": "/<(?:color:)?heather(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#B08EA2\"><span data-col=\"#B08EA2\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "350f59d2-8339-4d50-b75a-c3c04a10adbe",
+    "scriptName": "Sola Voice: Ash",
+    "findRegex": "/<(?:color:)?ash(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#BAC3C7\"><span data-col=\"#BAC3C7\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "a4c1f46e-4e73-43c5-a9e0-58a79363121e",
+    "scriptName": "Sola Voice: Mist",
+    "findRegex": "/<(?:color:)?mist(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#98B9C7\"><span data-col=\"#98B9C7\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b35cf548-474c-4049-9fa7-9bdb175562a4",
+    "scriptName": "Sola Voice: Pine",
+    "findRegex": "/<(?:color:)?pine(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#789E8A\"><span data-col=\"#789E8A\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "679263d6-f31f-43c9-a671-1f351cc49970",
+    "scriptName": "Sola Voice: Obsidian",
+    "findRegex": "/<(?:color:)?obsidian(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<font color=\"#A3948A\"><span data-col=\"#A3948A\" data-tone=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ef4b8001-3473-4072-a46d-51277d57013b",
+    "scriptName": "Sola Voice: Tone Whisper",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"whisper(?:ing)?\">/gi",
+    "replaceString": "<span style=\"color:$1;font-size:0.88em;font-style:italic;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "60827e02-ab6e-47e1-84f5-6731af696448",
+    "scriptName": "Sola Voice: Tone Tremble",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"trembl(?:e|ing)\">/gi",
+    "replaceString": "<span style=\"color:$1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8b0d4ad0-b19a-4781-b396-ea0b7bad3ed2",
+    "scriptName": "Sola Voice: Tone Bite",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"bit(?:e|ing)\">/gi",
+    "replaceString": "<span style=\"color:$1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5ac53439-3fd5-4df4-a600-16c73bc8c356",
+    "scriptName": "Sola Voice: Kinetic Heavy",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"heavy\">/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;font-size:1.16em;font-weight:900;letter-spacing:0.5px;line-height:1.2;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8e0bafa5-625f-4c38-8f41-d09cab68b1e7",
+    "scriptName": "Sola Voice: Kinetic Tilt (Dynamic)",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"tilt(?::| deg=\"?)(-?\\d+(?:\\.\\d+)?)(?:deg)?\"?>/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;transform:rotate($2deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "2095b2a0-08e5-42b4-b177-51feb99b8a1c",
+    "scriptName": "Sola Voice: Kinetic Tilt (Right)",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"tilt:(?:right|alt)\">/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;transform:rotate(3.5deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f0985449-8ee1-434b-baf2-861c04877bcf",
+    "scriptName": "Sola Voice: Kinetic Tilt",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"tilt(?::left)?\">/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;transform:rotate(-3.5deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "a3a55eeb-6789-4e40-8013-c865bf9c8aed",
+    "scriptName": "Sola Voice: Kinetic Fracture",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"fracture\">/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;transform:skew(-5deg);letter-spacing:1.5px;font-weight:700;text-shadow:1.5px 0 rgba(238,108,77,0.7),-1.5px 0 rgba(133,146,230,0.7);\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "116312bd-b00d-4d90-94c6-d985ead47c93",
+    "scriptName": "Sola Voice: Kinetic Stretch",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"stretch\">/gi",
+    "replaceString": "<span style=\"color:$1;letter-spacing:3.5px;font-weight:300;opacity:0.88;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "76c9b9ed-6fad-4c65-8877-ba48b69a0af7",
+    "scriptName": "Sola Voice: Kinetic Echo",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"echo\">/gi",
+    "replaceString": "<span style=\"color:$1;letter-spacing:1.5px;opacity:0.65;text-shadow:0 0 5px rgba(240,220,196,0.35);\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "0ed783f8-442f-4acb-959b-283d424b1ab3",
+    "scriptName": "Sola Voice: Kinetic Crush",
+    "findRegex": "/<span data-col=\"([^\"]+)\" data-tone=\"crush\">/gi",
+    "replaceString": "<span style=\"color:$1;display:inline-block;font-weight:800;letter-spacing:-0.8px;transform:scaleY(0.92);opacity:0.95;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eaa4bba2-8044-49e4-8f08-39800091edf8",
+    "scriptName": "Sola Voice: Tone Steady & Default",
+    "findRegex": "/<span data-col=\"([^\"]+)\"(?: data-tone=\"(?:steady|[a-z]*)\")?>/gi",
+    "replaceString": "<span style=\"color:$1;font-weight:500;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6e240880-3257-43af-9b4d-9ce73b3e701a",
+    "scriptName": "Sola Voice: Fallback Tone Whisper",
+    "findRegex": "/<(?:color:)?(?!(?:(?:dusk|solstice|eclipse|wildwood|hearth|mistveil))\\b)([a-z]+):whisper(?:ing)?>/gi",
+    "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-size:0.88em;font-style:italic;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "938d9161-2cde-4e20-91fe-2c89cb1aa2ff",
+    "scriptName": "Sola Voice: Fallback Tone Tremble",
+    "findRegex": "/<(?:color:)?(?!(?:(?:dusk|solstice|eclipse|wildwood|hearth|mistveil))\\b)([a-z]+):trembl(?:e|ing)?>/gi",
+    "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d796be29-e06c-468c-8582-774bcce2e80b",
+    "scriptName": "Sola Voice: Fallback Tone Bite",
+    "findRegex": "/<(?:color:)?(?!(?:(?:dusk|solstice|eclipse|wildwood|hearth|mistveil))\\b)([a-z]+):bit(?:e|ing)?>/gi",
+    "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "64f3dfdf-ebab-49fb-9692-79095e1e814a",
+    "scriptName": "Sola Voice: Fallback Tone Steady",
+    "findRegex": "/<(?:color:)?(?!(?:(?:dusk|solstice|eclipse|wildwood|hearth|mistveil))\\b)([a-z]+):steady>/gi",
+    "replaceString": "<font color=\"$1\"><span style=\"color:$1;font-weight:500;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b5b1c83a-c29a-4c04-a17d-6d0b2bd06d94",
+    "scriptName": "Sola Voice: Fallback Tag Close",
+    "findRegex": "/<\\s*\\/\\s*(?:color:)?(?!(?:(?:dusk|solstice|eclipse|wildwood|hearth|mistveil))\\b)[a-z]+:[a-z]+>/gi",
+    "replaceString": "</span></font>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "404ae525-a16a-4032-aca4-13ef6f23c2fe",
+    "scriptName": "Sola Voice: Standalone Whisper",
+    "findRegex": "/<whisper>/gi",
+    "replaceString": "<span style=\"font-size:0.88em;font-style:italic;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "2e08c3d6-7813-4878-aaec-9e778cf8dacf",
+    "scriptName": "Sola Voice: Standalone Tremble",
+    "findRegex": "/<trembl(?:e|ing)>/gi",
+    "replaceString": "<span style=\"font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "2ecb6ed7-6b03-4464-892f-b2b01fee866e",
+    "scriptName": "Sola Voice: Standalone Bite",
+    "findRegex": "/<bit(?:e|ing)>/gi",
+    "replaceString": "<span style=\"font-weight:700;letter-spacing:0.4px;text-shadow:0 0 4px rgba(0,0,0,0.45);\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5340b6ad-110f-44a9-8410-5e2e997765ad",
+    "scriptName": "Sola Voice: Standalone Steady",
+    "findRegex": "/<steady>/gi",
+    "replaceString": "<span style=\"font-weight:500;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "f91e04fd-c991-4698-8c65-6f43669c6d35",
+    "scriptName": "Sola Voice: Standalone Tone Close",
+    "findRegex": "/<\\s*\\/\\s*(?:whisper|trembl(?:e|ing)|bit(?:e|ing)|steady)>/gi",
+    "replaceString": "</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eeea3ed9-8b46-485f-9c60-cddd97f32f2e",
+    "scriptName": "Sola Gradient: Tag Close",
+    "findRegex": "/<\\s*\\/\\s*(?:gradient:)?(?:dusk|solstice|eclipse|wildwood|hearth|mistveil|gradient)(?::[a-z0-9_:-]+)?\\s*>/gi",
+    "replaceString": "</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e5e872d0-415b-44cf-9e2d-cdac27f39696",
+    "scriptName": "Sola Gradient: Dusk",
+    "findRegex": "/<(?:gradient:)?dusk(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#F3B74B,#8592E6\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ff2f6510-a895-4e9b-b188-1fc4a65f04d0",
+    "scriptName": "Sola Gradient: Solstice",
+    "findRegex": "/<(?:gradient:)?solstice(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#F4A261,#EE6C4D\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b2f58a0d-1bc7-45d1-8072-c5ff5dcaa25e",
+    "scriptName": "Sola Gradient: Eclipse",
+    "findRegex": "/<(?:gradient:)?eclipse(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#A3948A,#7A8B99\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "837c3874-1b3d-4efe-8c5f-da0df5b66efb",
+    "scriptName": "Sola Gradient: Wildwood",
+    "findRegex": "/<(?:gradient:)?wildwood(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#9AA87A,#789E8A\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "fc4d33b8-9255-46a4-a658-02f95fc2cecc",
+    "scriptName": "Sola Gradient: Hearth",
+    "findRegex": "/<(?:gradient:)?hearth(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#E07A5F,#C06C54\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "10c4ac26-dbdb-4f8f-96e8-9028a0bca4d7",
+    "scriptName": "Sola Gradient: Mistveil",
+    "findRegex": "/<(?:gradient:)?mistveil(?::([a-z0-9_:-]+))?>/gi",
+    "replaceString": "<span data-grad=\"#B08EA2,#98B9C7\" data-mod=\"$1\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "cf69d2ce-c034-41c7-8964-4c4328d8e74d",
+    "scriptName": "Sola Gradient Mod: Whisper",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"whisper(?:ing)?\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:0.88em;font-style:italic;opacity:0.85;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "cb3e0c6f-a876-4e21-93dc-262b80ba30e4",
+    "scriptName": "Sola Gradient Mod: Tremble",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"trembl(?:e|ing)\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-style:italic;letter-spacing:1.2px;opacity:0.85;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "630c8f96-6f2b-4ae6-96cc-0f337ce2e90a",
+    "scriptName": "Sola Gradient Mod: Bite",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"bit(?:e|ing)\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;letter-spacing:0.4px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "73288357-8cef-42b2-bb1a-bfad8767c212",
+    "scriptName": "Sola Gradient Mod: Heavy",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"heavy\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;font-size:1.16em;font-weight:900;letter-spacing:0.5px;line-height:1.2;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "67939d51-b7d4-4999-be28-ca63fd4ce2d0",
+    "scriptName": "Sola Gradient Mod: Tilt (Dynamic)",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"tilt(?::| deg=\"?)(-?\\d+(?:\\.\\d+)?)(?:deg)?\"?>/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;transform:rotate($3deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "1f457825-fac3-416d-8929-644af41d4c3b",
+    "scriptName": "Sola Gradient Mod: Tilt (Right)",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"tilt:(?:right|alt)\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;transform:rotate(3.5deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "70f17e3e-cdf5-4e40-b0d7-c2d32014894a",
+    "scriptName": "Sola Gradient Mod: Tilt",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"tilt(?::left)?\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;transform:rotate(-3.5deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "29ac8030-bddb-417d-9536-cfac1a503e2c",
+    "scriptName": "Sola Gradient Mod: Stretch",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"stretch\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:3.5px;font-weight:300;opacity:0.88;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6088ce84-33ff-48c8-905e-5c68d8fd11db",
+    "scriptName": "Sola Gradient Mod: Echo",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"echo\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1.5px;opacity:0.65;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5f16acf2-ff11-407f-8654-b02b3e165286",
+    "scriptName": "Sola Gradient Mod: Crush",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"crush\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;font-weight:800;letter-spacing:-0.8px;transform:scaleY(0.92);opacity:0.95;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "6a8154e5-f962-4ff6-af7c-c1fc59ebdba6",
+    "scriptName": "Sola Gradient Mod: Fracture",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\" data-mod=\"fracture\">/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:inline-block;transform:skew(-5deg);letter-spacing:1.5px;font-weight:700;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "03fb69a2-5025-438c-9904-f7d0933e6680",
+    "scriptName": "Sola Gradient Mod: Default Steady",
+    "findRegex": "/<span data-grad=\"([^,]+),([^\"]+)\"(?: data-mod=\"(?:steady|[a-z]*)\")?>/gi",
+    "replaceString": "<span style=\"color:$1;background:linear-gradient(135deg,$1,$2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "dd756cb8-c446-4f5a-9772-99102eb9d1d9",
+    "scriptName": "Sola Kinetic: Tag Close",
+    "findRegex": "/<\\s*\\/\\s*(?:kinetic:)?(?:heavy|tilt|fracture|stretch|echo|crush|kinetic)(?::[a-z0-9_:-]+)?\\s*>/gi",
+    "replaceString": "</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "154d45a2-fa80-4b0b-99cf-d5e23a56e9ff",
+    "scriptName": "Sola Kinetic: Heavy",
+    "findRegex": "/<(?:kinetic:)?heavy>/gi",
+    "replaceString": "<span style=\"display:inline-block;font-size:1.16em;font-weight:900;letter-spacing:0.5px;line-height:1.2;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "0df97795-2f45-48e6-a155-076991eabd08",
+    "scriptName": "Sola Kinetic: Tilt (Dynamic)",
+    "findRegex": "/<(?:kinetic:)?tilt(?::| deg=\"?)(-?\\d+(?:\\.\\d+)?)(?:deg)?\"?>/gi",
+    "replaceString": "<span style=\"display:inline-block;transform:rotate($1deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "45a20950-b35b-464a-8591-000305182708",
+    "scriptName": "Sola Kinetic: Tilt (Right)",
+    "findRegex": "/<(?:kinetic:)?tilt:(?:right|alt)>/gi",
+    "replaceString": "<span style=\"display:inline-block;transform:rotate(3.5deg);font-style:italic;margin:0 2px;\">",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "20dcda90-eba8-4fe6-b6e1-b9143bcc07c2",
+    "scriptName": "Sola Kinetic: Tilt",
+    "findRegex": "/<(?:kinetic:)?tilt(?::left)?>/gi",
+    "replaceString": "<span style=\"display:inline-block;transform:rotate(-3.5deg);font-style:italic;margin:0 2px;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "94d3c7b8-4f1c-4d24-97f6-7e4716b08d69",
+    "scriptName": "Sola Kinetic: Fracture",
+    "findRegex": "/<(?:kinetic:)?fracture>/gi",
+    "replaceString": "<span style=\"display:inline-block;transform:skew(-5deg);letter-spacing:1.5px;font-weight:700;text-shadow:1.5px 0 rgba(238,108,77,0.7),-1.5px 0 rgba(133,146,230,0.7);\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "bbf0b9aa-8d7f-49f3-8aa8-f846530887fc",
+    "scriptName": "Sola Kinetic: Stretch",
+    "findRegex": "/<(?:kinetic:)?stretch>/gi",
+    "replaceString": "<span style=\"letter-spacing:3.5px;font-weight:300;opacity:0.88;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "fc340db3-f091-45d6-96aa-aa5dc5a68ed7",
+    "scriptName": "Sola Kinetic: Echo",
+    "findRegex": "/<(?:kinetic:)?echo>/gi",
+    "replaceString": "<span style=\"letter-spacing:1.5px;opacity:0.55;text-shadow:0 0 5px rgba(240,220,196,0.35);\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "20310dca-5798-438f-842c-b81322095186",
+    "scriptName": "Sola Kinetic: Crush",
+    "findRegex": "/<(?:kinetic:)?crush>/gi",
+    "replaceString": "<span style=\"display:inline-block;font-weight:800;letter-spacing:-0.8px;transform:scaleY(0.92);opacity:0.95;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9c4c281b-59e5-4aea-9ae9-722e7919ed40",
+    "scriptName": "Sola Scene: Discord Message Row",
+    "findRegex": "/<msg\\s{1,8}sender=['\\\"]([^'\\\"]{1,100})['\\\"](?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/msg>|$)/gis",
+    "replaceString": "<div style=\"display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;\"><div style=\"width:34px;height:34px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.85em;color:#1A0F0A;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,0.3);\">💬</div><div style=\"flex-grow:1;min-width:0;\"><div style=\"display:flex;align-items:baseline;gap:8px;\"><span style=\"font-weight:700;color:#F4A261;font-size:0.92em;\">$1</span><span style=\"font-size:0.72em;color:#BC9B78;opacity:0.8;\">$2</span></div><div style=\"margin-top:3px;color:#F0DCC4;font-size:0.92em;line-height:1.5;\">$3</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9ea14443-a882-4800-892e-61a5e86ce4fe",
+    "scriptName": "Sola Scene: Discord Container (Open)",
+    "findRegex": "/<discord_chat(?:\\s{1,8}channel=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>/gi",
+    "replaceString": "<div style=\"background:rgba(30,24,21,0.95);border:1px solid rgba(244,162,97,0.25);border-radius:10px;padding:14px;margin:16px 0;box-shadow:0 6px 20px rgba(0,0,0,0.45);font-family:inherit;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid rgba(244,162,97,0.18);\"><span style=\"color:#F4A261;font-weight:700;font-size:1.1em;\">#</span><span style=\"font-weight:700;color:#F4A261;font-size:0.92em;\">$1</span><span style=\"margin-left:auto;font-size:0.7em;color:#9AA87A;background:rgba(154,168,122,0.12);padding:2px 8px;border-radius:12px;border:1px solid rgba(154,168,122,0.3);\">Channel</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ed0d5d06-28a4-4f32-b916-466d1a39ad59",
+    "scriptName": "Sola Scene: Discord Container (Close)",
+    "findRegex": "/<\\/discord_chat>/gi",
+    "replaceString": "</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "fc22b4ff-c267-410e-9e09-68c57249a3b7",
+    "scriptName": "Sola Scene: SMS Bubble (Outgoing)",
+    "findRegex": "/<bubble\\s{1,8}from=['\\\"]([^'\\\"]{1,100})['\\\"]\\s{1,8}outgoing=['\\\"]?(?:true|yes)['\\\"]?(?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/bubble>|$)/gis",
+    "replaceString": "<div style=\"display:flex;flex-direction:column;align-items:flex-end;margin-bottom:10px;\"><div style=\"max-width:82%;padding:9px 14px;background:linear-gradient(135deg,#F4A261,#E07A5F);color:#1A0F0A;border-radius:16px 16px 4px 16px;box-shadow:0 2px 8px rgba(0,0,0,0.25);font-size:0.9em;line-height:1.45;font-weight:500;\">$3</div><span style=\"margin:3px 8px 0 0;font-size:0.68em;color:#BC9B78;opacity:0.75;\">$2</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "94fbff6d-83e0-4d4a-aabd-994f8e63c2ac",
+    "scriptName": "Sola Scene: SMS Bubble (Incoming)",
+    "findRegex": "/<bubble\\s{1,8}from=['\\\"]([^'\\\"]{1,100})['\\\"](?:\\s{1,8}outgoing=['\\\"]?false['\\\"]?)?(?:\\s{1,8}time=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>([\\s\\S]{0,10000}?)(?:<\\/bubble>|$)/gis",
+    "replaceString": "<div style=\"display:flex;flex-direction:column;align-items:flex-start;margin-bottom:10px;\"><span style=\"margin:0 0 3px 8px;font-size:0.72em;font-weight:600;color:#F4A261;\">$1</span><div style=\"max-width:82%;padding:9px 14px;background:rgba(52,38,32,0.95);border:1px solid rgba(244,162,97,0.2);color:#F0DCC4;border-radius:16px 16px 16px 4px;box-shadow:0 2px 8px rgba(0,0,0,0.2);font-size:0.9em;line-height:1.45;\">$3</div><span style=\"margin:3px 0 0 8px;font-size:0.68em;color:#BC9B78;opacity:0.75;\">$2</span></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "003c2753-b0be-4b91-8edf-2e8b4069cb08",
+    "scriptName": "Sola Scene: SMS Container (Open)",
+    "findRegex": "/<sms_chat(?:\\s{1,8}contact=['\\\"]([^'\\\"]{1,100})['\\\"])?\\s{0,8}>/gi",
+    "replaceString": "<div style=\"background:rgba(22,15,12,0.96);border:1px solid rgba(244,162,97,0.25);border-radius:14px;padding:14px;margin:16px 0;max-width:440px;box-shadow:0 8px 24px rgba(0,0,0,0.45);font-family:inherit;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:10px;margin-bottom:14px;border-bottom:1px solid rgba(244,162,97,0.15);\"><div style=\"width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E07A5F);display:flex;align-items:center;justify-content:center;font-size:0.75em;color:#1A0F0A;font-weight:700;\">📱</div><div><div style=\"font-weight:700;font-size:0.88em;color:#F4A261;\">$1</div><div style=\"font-size:0.68em;color:#9AA87A;\">● Connected · Encrypted</div></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "37e64d99-fc3d-4526-aef2-74d463b26022",
+    "scriptName": "Sola Scene: SMS Container (Close)",
+    "findRegex": "/<\\/sms_chat>/gi",
+    "replaceString": "</div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "03d580d7-b472-4496-b751-013947ae1e64",
+    "scriptName": "Sola Scene: Parchment Letter",
+    "findRegex": "/<parchment(?:\\s{1,8}title=['\\\"]([^'\\\"]{1,200})['\\\"])?\\s{0,8}>([\\s\\S]{0,20000}?)(?:<\\/parchment>|$)/gis",
+    "replaceString": "<div style=\"background:#F7F1E5;border:1px solid #D8C8B0;border-left:5px solid #C06C54;border-radius:6px;padding:18px 20px;margin:16px 0;box-shadow:inset 0 0 30px rgba(160,110,60,0.12),0 6px 20px rgba(0,0,0,0.35);font-family:serif;color:#352014;line-height:1.65;\"><div style=\"display:flex;align-items:center;gap:8px;padding-bottom:8px;margin-bottom:14px;border-bottom:1px solid rgba(192,108,84,0.3);font-weight:700;font-size:1.02em;color:#8F4733;letter-spacing:0.4px;\"><span>⚜️</span><span>$1</span></div><div style=\"font-style:italic;white-space:pre-wrap;\">$2</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "85e304f7-51e2-4b43-9585-48908416223b",
+    "scriptName": "Sola Scene: Terminal Log",
+    "findRegex": "/<terminal(?:\\s{1,8}title=['\\\"]([^'\\\"]{1,200})['\\\"])?\\s{0,8}>([\\s\\S]{0,20000}?)(?:<\\/terminal>|$)/gis",
+    "replaceString": "<div style=\"background:#0F0B09;border:1px solid rgba(244,162,97,0.3);border-radius:8px;overflow:hidden;margin:16px 0;box-shadow:0 6px 22px rgba(0,0,0,0.55);\"><div style=\"background:rgba(244,162,97,0.08);padding:7px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(244,162,97,0.18);\"><span style=\"width:9px;height:9px;border-radius:50%;background:#EE6C4D;display:inline-block;\"></span><span style=\"width:9px;height:9px;border-radius:50%;background:#F3B74B;display:inline-block;\"></span><span style=\"width:9px;height:9px;border-radius:50%;background:#9AA87A;display:inline-block;\"></span><span style=\"margin-left:8px;font-family:monospace;font-size:0.78em;color:#BC9B78;letter-spacing:0.8px;text-transform:uppercase;\">$1</span></div><div style=\"padding:14px;font-family:monospace;font-size:0.88em;color:#F3B74B;line-height:1.55;white-space:pre-wrap;text-shadow:0 0 6px rgba(243,183,75,0.25);\">$2</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "101",
+    "scriptName": "Sola Scene: Push Notification",
+    "findRegex": "/<notification(?:\\s+app=['\"]([^'\"]+)['\"])?(?:\\s+from=['\"]([^'\"]+)['\"])?(?:\\s+time=['\"]([^'\"]+)['\"])?\\s*>([\\s\\S]{0,10000}?)(?:<\\/notification>|$)/gis",
+    "replaceString": "<div style=\"background:rgba(26,18,14,0.95);border:1px solid rgba(244,162,97,0.32);border-radius:14px;padding:12px 16px;margin:14px auto;max-width:400px;box-shadow:0 8px 24px rgba(0,0,0,0.5);font-family:inherit;\"><div style=\"display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;\"><div style=\"display:flex;align-items:center;gap:6px;\"><span style=\"font-size:0.75em;background:linear-gradient(135deg,#F4A261,#E07A5F);color:#1A0F0A;padding:2px 6px;border-radius:5px;font-weight:800;\">🔔</span><span style=\"font-size:0.72em;font-weight:700;color:#BC9B78;text-transform:uppercase;letter-spacing:0.5px;\">$1</span></div><span style=\"font-size:0.7em;color:rgba(188,155,120,0.7);\">$3</span></div><div style=\"font-size:0.88em;font-weight:700;color:#F4A261;margin-bottom:2px;\">$2</div><div style=\"font-size:0.86em;color:#F0DCC4;line-height:1.45;\">$4</div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "39cbf529-8323-49fa-96ed-b2916ae24c12",
+    "scriptName": "Sola Scene: Header - Explicit Override (Dusk)",
+    "findRegex": "/<scene_header\\b[^>]*?\\bsky=['\"](?:dusk|sunset)['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"](?:[^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"])?[^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(243,183,75,0.55);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(238,108,77,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 65px, #FFFFFF 0%, #F3B74B 35%, #EE6C4D 70%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 45px, #FFFFFF 0%, #F4A261 40%, rgba(238,108,77,0.8) 80%, transparent 100%), radial-gradient(4px 4px at 550px 50px, #FFF0DF 0%, #E9A036 40%, rgba(192,108,84,0.8) 75%, transparent 100%), radial-gradient(3px 3px at 320px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(3.5px 3.5px at 620px 80px, #FFF2CD 0%, #EE6C4D 50%, transparent 100%), radial-gradient(2px 2px at 440px 30px, #F3B74B, transparent), radial-gradient(2px 2px at 520px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 360px 105px, #E07A5F, transparent), radial-gradient(2px 2px at 580px 100px, #F4845F, transparent), radial-gradient(1.2px 1.2px at 210px 40px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 42px, rgba(243,183,75,0.85), transparent), radial-gradient(1px 1px at 490px 15px, rgba(255,255,255,0.95), transparent), linear-gradient(90deg, transparent 0%, rgba(243,183,75,0.2) 15%, rgba(255,250,235,1) 50%, rgba(243,183,75,0.2) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF2CD 12%, #F3B74B 24%, #EE6C4D 44%, rgba(192,108,84,0.5) 64%, rgba(45,16,30,0.85) 82%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #050207 0%, #120611 35%, #2a0e1b 65%, #6e2724 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F3B74B;display:inline-block;box-shadow:0 0 10px #F3B74B, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(243,183,75,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F3B74B;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4A261;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(243,183,75,0.7), 0 0 45px rgba(238,108,77,0.45), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(243,183,75,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🔥</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#F3B74B,#EE6C4D);color:#12080a;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(238,108,77,0.4);display:flex;align-items:center;gap:5px;\"><span>🌇</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ba25bd12-6dbb-4090-a8bd-2ed402e9533a",
+    "scriptName": "Sola Scene: Header - Explicit Override (Dawn)",
+    "findRegex": "/<scene_header\\b[^>]*?\\bsky=['\"]dawn['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"](?:[^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"])?[^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(244,132,95,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(192,108,84,0.25), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 55px, #FFFFFF 0%, #FFF0DF 30%, #F4845F 65%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 40px, #FFF0DF 0%, #F4A261 40%, rgba(192,108,84,0.7) 75%, transparent 100%), radial-gradient(4px 4px at 560px 45px, #FFF2CD 0%, #9AA87A 40%, transparent 100%), radial-gradient(3px 3px at 310px 65px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 640px 70px, #F3B74B, transparent), radial-gradient(2px 2px at 280px 75px, #F4845F, transparent), radial-gradient(2px 2px at 440px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 510px 20px, #9AA87A, transparent), radial-gradient(1.5px 1.5px at 190px 35px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 38px, rgba(244,162,97,0.9), transparent), radial-gradient(1.2px 1.2px at 360px 95px, rgba(255,255,255,0.85), transparent), radial-gradient(1.5px 1.5px at 610px 90px, rgba(154,168,122,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(244,132,95,0.25) 15%, rgba(255,240,235,1) 50%, rgba(244,132,95,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF0DF 12%, #F4A261 24%, #C06C54 44%, rgba(110,70,89,0.55) 68%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #08050d 0%, #170c18 35%, #351a28 65%, #6e333a 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F4A261;display:inline-block;box-shadow:0 0 10px #F4A261, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(244,132,95,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F4A261;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4845F;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(244,132,95,0.7), 0 0 40px rgba(192,108,84,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(244,132,95,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌄</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#F4A261,#C06C54);color:#1A0F0A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(192,108,84,0.4);display:flex;align-items:center;gap:5px;\"><span>🌅</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "9e6ff7e3-4284-4192-960a-8cd59a23fd2b",
+    "scriptName": "Sola Scene: Header - Explicit Override (Noir)",
+    "findRegex": "/<scene_header\\b[^>]*?\\bsky=['\"](?:noir|rain|storm)['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"](?:[^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"])?[^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(143,164,178,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(22,36,51,0.5), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:linear-gradient(160deg, transparent 40%, rgba(168,218,220,0.18) 50%, transparent 60%), radial-gradient(2px 2px at 250px 40px, rgba(168,218,220,0.85), transparent), radial-gradient(2.5px 2.5px at 680px 50px, rgba(168,218,220,0.9), transparent), radial-gradient(2px 2px at 450px 80px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 350px 30px, rgba(168,218,220,0.8), transparent), radial-gradient(1.8px 1.8px at 570px 65px, rgba(168,218,220,0.8), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.15) 20%, rgba(220,240,255,0.9) 50%, rgba(168,218,220,0.15) 80%, transparent 100%), radial-gradient(ellipse at 50% 115%, rgba(168,218,220,0.4) 0%, rgba(69,123,157,0.3) 30%, rgba(22,36,51,0.8) 65%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #04070a 0%, #0c1520 40%, #162433 75%, #22374c 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8FA4B2;display:inline-block;box-shadow:0 0 10px #8FA4B2, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(143,164,178,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8FA4B2;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#7A8B99;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(168,218,220,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(143,164,178,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌧️</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#8FA4B2,#162433);color:#E6EEF2;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(0,0,0,0.6);display:flex;align-items:center;gap:5px;\"><span>⚡</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "24f0d7a8-7324-4e81-b2fb-33e58c6db344",
+    "scriptName": "Sola Scene: Header - Explicit Override (Day)",
+    "findRegex": "/<scene_header\\b[^>]*?\\bsky=['\"](?:day|noon)['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"](?:[^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"])?[^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(168,218,220,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(69,123,157,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4.5px 4.5px at 520px 50px, #FFFFFF 0%, #FFF2CD 30%, #F3B74B 60%, transparent 100%), radial-gradient(4px 4px at 410px 65px, #FFFFFF 0%, #F4A261 35%, rgba(238,108,77,0.7) 70%, transparent 100%), radial-gradient(3.5px 3.5px at 640px 40px, #FFF0DF 0%, #E9A036 40%, transparent 100%), radial-gradient(4px 4px at 330px 45px, #FFFFFF 0%, #FFF2CD 40%, rgba(168,218,220,0.7) 75%, transparent 100%), radial-gradient(3px 3px at 580px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 460px 25px, #FFF0DF, transparent), radial-gradient(2px 2px at 380px 95px, #F3B74B, transparent), radial-gradient(2.5px 2.5px at 690px 75px, #F4A261, transparent), radial-gradient(2px 2px at 250px 70px, #E9A036, transparent), radial-gradient(2.5px 2.5px at 780px 55px, #FFF2CD, transparent), radial-gradient(2px 2px at 540px 110px, #F4845F, transparent), radial-gradient(1.5px 1.5px at 180px 45px, rgba(255,255,255,0.95), transparent), radial-gradient(1.2px 1.2px at 490px 15px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 610px 20px, rgba(243,183,75,0.85), transparent), radial-gradient(1.2px 1.2px at 740px 95px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 290px 110px, rgba(255,240,223,0.85), transparent), radial-gradient(1px 1px at 430px 80px, rgba(255,255,255,0.95), transparent), radial-gradient(1.5px 1.5px at 820px 40px, rgba(244,162,97,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.25) 15%, rgba(255,255,255,1) 50%, rgba(168,218,220,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 65%, #FFFFFF 0%, #FFF2CD 15%, #F3B74B 28%, #457B9D 55%, transparent 85%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #0d1b2a 0%, #162c46 30%, #295370 65%, #6a9ab5 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#A8DADC;display:inline-block;box-shadow:0 0 10px #A8DADC, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(168,218,220,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#A8DADC;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#457B9D;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(168,218,220,0.5), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(168,218,220,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">☀️</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#A8DADC,#457B9D);color:#0D1B2A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(69,123,157,0.4);display:flex;align-items:center;gap:5px;\"><span>☀️</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "72e85d93-7476-4b3d-9a68-6e8c2e1c95e1",
+    "scriptName": "Sola Scene: Header - Explicit Override (Night)",
+    "findRegex": "/<scene_header\\b[^>]*?\\bsky=['\"](?:night|stars)['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"](?:[^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"])?[^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(133,146,230,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(133,146,230,0.15), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(1.8px 1.8px at 120px 35px, rgba(255,255,255,0.98), transparent), radial-gradient(1.2px 1.2px at 280px 70px, rgba(195,228,255,0.88), transparent), radial-gradient(2.2px 2.2px at 420px 25px, rgba(255,255,255,1), transparent), radial-gradient(1.2px 1.2px at 640px 80px, rgba(195,228,255,0.85), transparent), radial-gradient(1.8px 1.8px at 780px 30px, rgba(255,255,255,0.95), transparent), radial-gradient(2px 2px at 840px 65px, rgba(195,228,255,0.9), transparent), radial-gradient(1px 1px at 510px 90px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 350px 105px, rgba(195,228,255,0.85), transparent), radial-gradient(1.2px 1.2px at 210px 45px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 710px 45px, rgba(195,228,255,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(133,146,230,0.2) 20%, rgba(225,240,255,0.95) 50%, rgba(133,146,230,0.2) 80%, transparent 100%), radial-gradient(ellipse at 50% 102%, rgba(225,240,255,0.9) 0%, rgba(133,146,230,0.45) 25%, rgba(69,123,157,0.3) 50%, rgba(15,23,42,0.8) 75%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #020408 0%, #060b14 35%, #0c1626 70%, #152238 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8592E6;display:inline-block;box-shadow:0 0 10px #8592E6, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(133,146,230,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8592E6;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#8FA4B2;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(133,146,230,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(133,146,230,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌌</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#8592E6,#457B9D);color:#04070A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(133,146,230,0.4);display:flex;align-items:center;gap:5px;\"><span>🌙</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e4d7ceb8-c2ba-4e10-b89b-94cfef112ac6",
+    "scriptName": "Sola Scene: Header - Dynamic Weather (Rain/Storm) Full",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]*?\\b(?:rain(?:ing)?|storm(?:s|y)?|downpour|drizzle|thunder|tempest|hail|blizzard|heavy fog|dense fog)\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(143,164,178,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(22,36,51,0.5), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:linear-gradient(160deg, transparent 40%, rgba(168,218,220,0.18) 50%, transparent 60%), radial-gradient(2px 2px at 250px 40px, rgba(168,218,220,0.85), transparent), radial-gradient(2.5px 2.5px at 680px 50px, rgba(168,218,220,0.9), transparent), radial-gradient(2px 2px at 450px 80px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 350px 30px, rgba(168,218,220,0.8), transparent), radial-gradient(1.8px 1.8px at 570px 65px, rgba(168,218,220,0.8), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.15) 20%, rgba(220,240,255,0.9) 50%, rgba(168,218,220,0.15) 80%, transparent 100%), radial-gradient(ellipse at 50% 115%, rgba(168,218,220,0.4) 0%, rgba(69,123,157,0.3) 30%, rgba(22,36,51,0.8) 65%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #04070a 0%, #0c1520 40%, #162433 75%, #22374c 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8FA4B2;display:inline-block;box-shadow:0 0 10px #8FA4B2, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(143,164,178,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8FA4B2;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#7A8B99;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(168,218,220,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(143,164,178,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌧️</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#8FA4B2,#162433);color:#E6EEF2;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(0,0,0,0.6);display:flex;align-items:center;gap:5px;\"><span>⚡</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5e4713be-bd5b-45db-8c0c-63879c8b6ad5",
+    "scriptName": "Sola Scene: Header - Dynamic Weather (Rain/Storm) Compact",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]*?\\b(?:rain(?:ing)?|storm(?:s|y)?|downpour|drizzle|thunder|tempest|hail|blizzard|heavy fog|dense fog)\\b[^'\"]*)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(143,164,178,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(22,36,51,0.5), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:linear-gradient(160deg, transparent 40%, rgba(168,218,220,0.18) 50%, transparent 60%), radial-gradient(2px 2px at 250px 40px, rgba(168,218,220,0.85), transparent), radial-gradient(2.5px 2.5px at 680px 50px, rgba(168,218,220,0.9), transparent), radial-gradient(2px 2px at 450px 80px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 350px 30px, rgba(168,218,220,0.8), transparent), radial-gradient(1.8px 1.8px at 570px 65px, rgba(168,218,220,0.8), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.15) 20%, rgba(220,240,255,0.9) 50%, rgba(168,218,220,0.15) 80%, transparent 100%), radial-gradient(ellipse at 50% 115%, rgba(168,218,220,0.4) 0%, rgba(69,123,157,0.3) 30%, rgba(22,36,51,0.8) 65%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #04070a 0%, #0c1520 40%, #162433 75%, #22374c 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8FA4B2;display:inline-block;box-shadow:0 0 10px #8FA4B2, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(143,164,178,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8FA4B2;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#7A8B99;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(168,218,220,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(143,164,178,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#8FA4B2,#162433);color:#E6EEF2;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(0,0,0,0.6);display:flex;align-items:center;gap:5px;\"><span>⚡</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "989fa05f-456b-4674-83a6-ec0008fb7fe7",
+    "scriptName": "Sola Scene: Header - Dynamic Dusk (Wind-Swept Emberdrift)",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dusk|sunset|twilight|sundown|evening|(?:0?[5-7]|1[7-9]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]*?\\b(?:wind(?:y|s)?|gale|breeze|draft(?:y|s)?|gust(?:s|y)?|chill(?:y)?|dust(?:y)?|drift(?:ing|s)?)\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(238,108,77,0.55);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(224,122,95,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 620px 40px, #FFFFFF 0%, #EE6C4D 40%, rgba(224,122,95,0.8) 75%, transparent 100%), radial-gradient(3.5px 3.5px at 710px 25px, #FFF0DF 0%, #F3B74B 35%, #EE6C4D 70%, transparent 100%), radial-gradient(3px 3px at 490px 65px, #FFFFFF 0%, #F4A261 40%, rgba(192,108,84,0.7) 80%, transparent 100%), radial-gradient(4px 4px at 380px 95px, #FFFFFF 0%, #E9A036 40%, transparent 100%), radial-gradient(3px 3px at 270px 115px, #FFF2CD 0%, #EE6C4D 50%, transparent 100%), radial-gradient(2px 2px at 790px 20px, #F3B74B, transparent), radial-gradient(2.5px 2.5px at 660px 55px, #F4845F, transparent), radial-gradient(2px 2px at 540px 75px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 430px 90px, #E07A5F, transparent), radial-gradient(1.2px 1.2px at 760px 48px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 580px 35px, rgba(243,183,75,0.85), transparent), radial-gradient(1px 1px at 470px 50px, rgba(255,255,255,0.95), transparent), linear-gradient(90deg, transparent 0%, rgba(238,108,77,0.2) 15%, rgba(255,250,235,1) 50%, rgba(238,108,77,0.2) 85%, transparent 100%), radial-gradient(ellipse at 42% 108%, #FFFFFF 0%, #FFF2CD 12%, #F3B74B 24%, #EE6C4D 44%, rgba(192,108,84,0.5) 64%, rgba(45,16,30,0.85) 82%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #050207 0%, #140510 35%, #2e0c19 65%, #732320 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#EE6C4D;display:inline-block;box-shadow:0 0 10px #EE6C4D, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(238,108,77,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#EE6C4D;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4A261;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(243,183,75,0.7), 0 0 45px rgba(238,108,77,0.45), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(238,108,77,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">💨</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#EE6C4D,#C06C54);color:#12080a;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(238,108,77,0.4);display:flex;align-items:center;gap:5px;\"><span>🌇</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5c371c56-4302-4d1a-b44c-2ba8aed12274",
+    "scriptName": "Sola Scene: Header - Dynamic Dusk (Thermal Plume)",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dusk|sunset|twilight|sundown|evening|(?:0?[5-7]|1[7-9]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]*?\\b(?:fire|smoke|smoky|ash(?:es)?|smolder(?:ing)?|flame(?:s)?|forge|hearth|warm|heat|still|quiet|calm)\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(243,183,75,0.55);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(238,108,77,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 65px, #FFFFFF 0%, #F3B74B 35%, #EE6C4D 70%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 45px, #FFFFFF 0%, #F4A261 40%, rgba(238,108,77,0.8) 80%, transparent 100%), radial-gradient(4px 4px at 550px 50px, #FFF0DF 0%, #E9A036 40%, rgba(192,108,84,0.8) 75%, transparent 100%), radial-gradient(3px 3px at 320px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(3.5px 3.5px at 620px 80px, #FFF2CD 0%, #EE6C4D 50%, transparent 100%), radial-gradient(2px 2px at 440px 30px, #F3B74B, transparent), radial-gradient(2px 2px at 520px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 360px 105px, #E07A5F, transparent), radial-gradient(2px 2px at 580px 100px, #F4845F, transparent), radial-gradient(1.2px 1.2px at 210px 40px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 42px, rgba(243,183,75,0.85), transparent), radial-gradient(1px 1px at 490px 15px, rgba(255,255,255,0.95), transparent), linear-gradient(90deg, transparent 0%, rgba(243,183,75,0.2) 15%, rgba(255,250,235,1) 50%, rgba(243,183,75,0.2) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF2CD 12%, #F3B74B 24%, #EE6C4D 44%, rgba(192,108,84,0.5) 64%, rgba(45,16,30,0.85) 82%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #050207 0%, #120611 35%, #2a0e1b 65%, #6e2724 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F3B74B;display:inline-block;box-shadow:0 0 10px #F3B74B, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(243,183,75,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F3B74B;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4A261;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(243,183,75,0.7), 0 0 45px rgba(238,108,77,0.45), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(243,183,75,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🔥</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#F3B74B,#EE6C4D);color:#12080a;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(238,108,77,0.4);display:flex;align-items:center;gap:5px;\"><span>🌇</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "8d9d2251-8a78-4387-9cc5-eedac67fa3d4",
+    "scriptName": "Sola Scene: Header - Dynamic Dusk (Twilight Emberfall)",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dusk|sunset|twilight|sundown|evening|(?:0?[5-7]|1[7-9]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(192,108,84,0.55);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(192,108,84,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 160px 50px, #FFFFFF 0%, #F4845F 40%, rgba(192,108,84,0.8) 75%, transparent 100%), radial-gradient(3.5px 3.5px at 240px 35px, #FFF0DF 0%, #EE6C4D 40%, transparent 100%), radial-gradient(2.5px 2.5px at 120px 85px, #F3B74B, transparent), radial-gradient(2px 2px at 200px 95px, #E07A5F, transparent), radial-gradient(4px 4px at 720px 55px, #FFFFFF 0%, #F3B74B 40%, rgba(238,108,77,0.8) 75%, transparent 100%), radial-gradient(3.5px 3.5px at 640px 35px, #FFF0DF 0%, #E9A036 40%, transparent 100%), radial-gradient(2.5px 2.5px at 780px 75px, #F4A261, transparent), radial-gradient(2px 2px at 690px 95px, #EE6C4D, transparent), radial-gradient(2px 2px at 450px 25px, #FFF2CD, transparent), radial-gradient(2px 2px at 530px 20px, #F4845F, transparent), radial-gradient(1.5px 1.5px at 80px 40px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 820px 45px, rgba(255,242,205,0.9), transparent), linear-gradient(90deg, transparent 0%, rgba(192,108,84,0.2) 15%, rgba(255,240,225,1) 50%, rgba(192,108,84,0.2) 85%, transparent 100%), radial-gradient(ellipse at 50% 115%, #FFFFFF 0%, #F4A261 15%, #EE6C4D 30%, #C06C54 50%, rgba(45,16,30,0.9) 80%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #040106 0%, #0e040c 35%, #240915 65%, #5a1a1e 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#C06C54;display:inline-block;box-shadow:0 0 10px #C06C54, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(192,108,84,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#C06C54;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4845F;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(244,132,95,0.7), 0 0 45px rgba(192,108,84,0.5), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(192,108,84,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🍷</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#C06C54,#6E4659);color:#FFF0DF;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(192,108,84,0.4);display:flex;align-items:center;gap:5px;\"><span>🌆</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "3618d64b-3ec9-4b81-9572-c58a1c977a84",
+    "scriptName": "Sola Scene: Header - Dynamic Dusk Compact",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dusk|sunset|twilight|sundown|evening|(?:0?[5-7]|1[7-9]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(243,183,75,0.55);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(238,108,77,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 65px, #FFFFFF 0%, #F3B74B 35%, #EE6C4D 70%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 45px, #FFFFFF 0%, #F4A261 40%, rgba(238,108,77,0.8) 80%, transparent 100%), radial-gradient(4px 4px at 550px 50px, #FFF0DF 0%, #E9A036 40%, rgba(192,108,84,0.8) 75%, transparent 100%), radial-gradient(3px 3px at 320px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(3.5px 3.5px at 620px 80px, #FFF2CD 0%, #EE6C4D 50%, transparent 100%), radial-gradient(2px 2px at 440px 30px, #F3B74B, transparent), radial-gradient(2px 2px at 520px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 360px 105px, #E07A5F, transparent), radial-gradient(2px 2px at 580px 100px, #F4845F, transparent), radial-gradient(1.2px 1.2px at 210px 40px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 42px, rgba(243,183,75,0.85), transparent), radial-gradient(1px 1px at 490px 15px, rgba(255,255,255,0.95), transparent), linear-gradient(90deg, transparent 0%, rgba(243,183,75,0.2) 15%, rgba(255,250,235,1) 50%, rgba(243,183,75,0.2) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF2CD 12%, #F3B74B 24%, #EE6C4D 44%, rgba(192,108,84,0.5) 64%, rgba(45,16,30,0.85) 82%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #050207 0%, #120611 35%, #2a0e1b 65%, #6e2724 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F3B74B;display:inline-block;box-shadow:0 0 10px #F3B74B, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(243,183,75,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F3B74B;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4A261;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(243,183,75,0.7), 0 0 45px rgba(238,108,77,0.45), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(243,183,75,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#F3B74B,#EE6C4D);color:#12080a;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(238,108,77,0.4);display:flex;align-items:center;gap:5px;\"><span>🌇</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "bed9c5b0-d91a-4e8b-ba98-49224317cc86",
+    "scriptName": "Sola Scene: Header - Dynamic Dawn Full",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dawn|sunrise|daybreak|morning|0?[5-8]:\\d{2}\\s*(?:am|a\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(244,132,95,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(192,108,84,0.25), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 55px, #FFFFFF 0%, #FFF0DF 30%, #F4845F 65%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 40px, #FFF0DF 0%, #F4A261 40%, rgba(192,108,84,0.7) 75%, transparent 100%), radial-gradient(4px 4px at 560px 45px, #FFF2CD 0%, #9AA87A 40%, transparent 100%), radial-gradient(3px 3px at 310px 65px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 640px 70px, #F3B74B, transparent), radial-gradient(2px 2px at 280px 75px, #F4845F, transparent), radial-gradient(2px 2px at 440px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 510px 20px, #9AA87A, transparent), radial-gradient(1.5px 1.5px at 190px 35px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 38px, rgba(244,162,97,0.9), transparent), radial-gradient(1.2px 1.2px at 360px 95px, rgba(255,255,255,0.85), transparent), radial-gradient(1.5px 1.5px at 610px 90px, rgba(154,168,122,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(244,132,95,0.25) 15%, rgba(255,240,235,1) 50%, rgba(244,132,95,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF0DF 12%, #F4A261 24%, #C06C54 44%, rgba(110,70,89,0.55) 68%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #08050d 0%, #170c18 35%, #351a28 65%, #6e333a 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F4A261;display:inline-block;box-shadow:0 0 10px #F4A261, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(244,132,95,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F4A261;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4845F;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(244,132,95,0.7), 0 0 40px rgba(192,108,84,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(244,132,95,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌄</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#F4A261,#C06C54);color:#1A0F0A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(192,108,84,0.4);display:flex;align-items:center;gap:5px;\"><span>🌅</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "55457120-e03c-4607-b737-4bdaa2182e7b",
+    "scriptName": "Sola Scene: Header - Dynamic Dawn Compact",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:dawn|sunrise|daybreak|morning|0?[5-8]:\\d{2}\\s*(?:am|a\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(244,132,95,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(192,108,84,0.25), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4px 4px at 480px 55px, #FFFFFF 0%, #FFF0DF 30%, #F4845F 65%, transparent 100%), radial-gradient(3.5px 3.5px at 390px 40px, #FFF0DF 0%, #F4A261 40%, rgba(192,108,84,0.7) 75%, transparent 100%), radial-gradient(4px 4px at 560px 45px, #FFF2CD 0%, #9AA87A 40%, transparent 100%), radial-gradient(3px 3px at 310px 65px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 640px 70px, #F3B74B, transparent), radial-gradient(2px 2px at 280px 75px, #F4845F, transparent), radial-gradient(2px 2px at 440px 25px, #FFF0DF, transparent), radial-gradient(2.5px 2.5px at 510px 20px, #9AA87A, transparent), radial-gradient(1.5px 1.5px at 190px 35px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 730px 38px, rgba(244,162,97,0.9), transparent), radial-gradient(1.2px 1.2px at 360px 95px, rgba(255,255,255,0.85), transparent), radial-gradient(1.5px 1.5px at 610px 90px, rgba(154,168,122,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(244,132,95,0.25) 15%, rgba(255,240,235,1) 50%, rgba(244,132,95,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 105%, #FFFFFF 0%, #FFF0DF 12%, #F4A261 24%, #C06C54 44%, rgba(110,70,89,0.55) 68%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #08050d 0%, #170c18 35%, #351a28 65%, #6e333a 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#F4A261;display:inline-block;box-shadow:0 0 10px #F4A261, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(244,132,95,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#F4A261;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#F4845F;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(244,132,95,0.7), 0 0 40px rgba(192,108,84,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(244,132,95,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#F4A261,#C06C54);color:#1A0F0A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(192,108,84,0.4);display:flex;align-items:center;gap:5px;\"><span>🌅</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "eadb2ff9-d0d6-4f99-a473-9dad68dc506c",
+    "scriptName": "Sola Scene: Header - Dynamic Day Full",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:noon|midday|afternoon|daytime|(?:1[0-2]|0?[1-4]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(168,218,220,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(69,123,157,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4.5px 4.5px at 520px 50px, #FFFFFF 0%, #FFF2CD 30%, #F3B74B 60%, transparent 100%), radial-gradient(4px 4px at 410px 65px, #FFFFFF 0%, #F4A261 35%, rgba(238,108,77,0.7) 70%, transparent 100%), radial-gradient(3.5px 3.5px at 640px 40px, #FFF0DF 0%, #E9A036 40%, transparent 100%), radial-gradient(4px 4px at 330px 45px, #FFFFFF 0%, #FFF2CD 40%, rgba(168,218,220,0.7) 75%, transparent 100%), radial-gradient(3px 3px at 580px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 460px 25px, #FFF0DF, transparent), radial-gradient(2px 2px at 380px 95px, #F3B74B, transparent), radial-gradient(2.5px 2.5px at 690px 75px, #F4A261, transparent), radial-gradient(2px 2px at 250px 70px, #E9A036, transparent), radial-gradient(2.5px 2.5px at 780px 55px, #FFF2CD, transparent), radial-gradient(2px 2px at 540px 110px, #F4845F, transparent), radial-gradient(1.5px 1.5px at 180px 45px, rgba(255,255,255,0.95), transparent), radial-gradient(1.2px 1.2px at 490px 15px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 610px 20px, rgba(243,183,75,0.85), transparent), radial-gradient(1.2px 1.2px at 740px 95px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 290px 110px, rgba(255,240,223,0.85), transparent), radial-gradient(1px 1px at 430px 80px, rgba(255,255,255,0.95), transparent), radial-gradient(1.5px 1.5px at 820px 40px, rgba(244,162,97,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.25) 15%, rgba(255,255,255,1) 50%, rgba(168,218,220,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 65%, #FFFFFF 0%, #FFF2CD 15%, #F3B74B 28%, #457B9D 55%, transparent 85%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #0d1b2a 0%, #162c46 30%, #295370 65%, #6a9ab5 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#A8DADC;display:inline-block;box-shadow:0 0 10px #A8DADC, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(168,218,220,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#A8DADC;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#457B9D;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(168,218,220,0.5), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(168,218,220,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">☀️</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#A8DADC,#457B9D);color:#0D1B2A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(69,123,157,0.4);display:flex;align-items:center;gap:5px;\"><span>☀️</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "ccf1ce2d-6d99-49d9-8d77-7ea0aa9d4f9e",
+    "scriptName": "Sola Scene: Header - Dynamic Day Compact",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]*?\\b(?:noon|midday|afternoon|daytime|(?:1[0-2]|0?[1-4]):\\d{2}\\s*(?:pm|p\\.m\\.))\\b[^'\"]*)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(168,218,220,0.5);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 45px rgba(69,123,157,0.3), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(4.5px 4.5px at 520px 50px, #FFFFFF 0%, #FFF2CD 30%, #F3B74B 60%, transparent 100%), radial-gradient(4px 4px at 410px 65px, #FFFFFF 0%, #F4A261 35%, rgba(238,108,77,0.7) 70%, transparent 100%), radial-gradient(3.5px 3.5px at 640px 40px, #FFF0DF 0%, #E9A036 40%, transparent 100%), radial-gradient(4px 4px at 330px 45px, #FFFFFF 0%, #FFF2CD 40%, rgba(168,218,220,0.7) 75%, transparent 100%), radial-gradient(3px 3px at 580px 85px, #FFFFFF 0%, #F3B74B 50%, transparent 100%), radial-gradient(2.5px 2.5px at 460px 25px, #FFF0DF, transparent), radial-gradient(2px 2px at 380px 95px, #F3B74B, transparent), radial-gradient(2.5px 2.5px at 690px 75px, #F4A261, transparent), radial-gradient(2px 2px at 250px 70px, #E9A036, transparent), radial-gradient(2.5px 2.5px at 780px 55px, #FFF2CD, transparent), radial-gradient(2px 2px at 540px 110px, #F4845F, transparent), radial-gradient(1.5px 1.5px at 180px 45px, rgba(255,255,255,0.95), transparent), radial-gradient(1.2px 1.2px at 490px 15px, rgba(255,242,205,0.9), transparent), radial-gradient(1.5px 1.5px at 610px 20px, rgba(243,183,75,0.85), transparent), radial-gradient(1.2px 1.2px at 740px 95px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 290px 110px, rgba(255,240,223,0.85), transparent), radial-gradient(1px 1px at 430px 80px, rgba(255,255,255,0.95), transparent), radial-gradient(1.5px 1.5px at 820px 40px, rgba(244,162,97,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(168,218,220,0.25) 15%, rgba(255,255,255,1) 50%, rgba(168,218,220,0.25) 85%, transparent 100%), radial-gradient(ellipse at 50% 65%, #FFFFFF 0%, #FFF2CD 15%, #F3B74B 28%, #457B9D 55%, transparent 85%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #0d1b2a 0%, #162c46 30%, #295370 65%, #6a9ab5 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#A8DADC;display:inline-block;box-shadow:0 0 10px #A8DADC, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(168,218,220,0.35);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#A8DADC;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#457B9D;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(168,218,220,0.5), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(168,218,220,0.35);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#A8DADC,#457B9D);color:#0D1B2A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(69,123,157,0.4);display:flex;align-items:center;gap:5px;\"><span>☀️</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "d5d98374-823c-4da2-97d9-4e93edb57c4f",
+    "scriptName": "Sola Scene: Header - Night Full",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"][^>]*?\\b(?:atmosphere|weather|mood)=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(133,146,230,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(133,146,230,0.15), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(1.8px 1.8px at 120px 35px, rgba(255,255,255,0.98), transparent), radial-gradient(1.2px 1.2px at 280px 70px, rgba(195,228,255,0.88), transparent), radial-gradient(2.2px 2.2px at 420px 25px, rgba(255,255,255,1), transparent), radial-gradient(1.2px 1.2px at 640px 80px, rgba(195,228,255,0.85), transparent), radial-gradient(1.8px 1.8px at 780px 30px, rgba(255,255,255,0.95), transparent), radial-gradient(2px 2px at 840px 65px, rgba(195,228,255,0.9), transparent), radial-gradient(1px 1px at 510px 90px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 350px 105px, rgba(195,228,255,0.85), transparent), radial-gradient(1.2px 1.2px at 210px 45px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 710px 45px, rgba(195,228,255,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(133,146,230,0.2) 20%, rgba(225,240,255,0.95) 50%, rgba(133,146,230,0.2) 80%, transparent 100%), radial-gradient(ellipse at 50% 102%, rgba(225,240,255,0.9) 0%, rgba(133,146,230,0.45) 25%, rgba(69,123,157,0.3) 50%, rgba(15,23,42,0.8) 75%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #020408 0%, #060b14 35%, #0c1626 70%, #152238 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8592E6;display:inline-block;box-shadow:0 0 10px #8592E6, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(133,146,230,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8592E6;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#8FA4B2;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(133,146,230,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(133,146,230,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:600;color:#F0DCC4;\"><span style=\"font-size:1em;\">🌌</span><span style=\"color:#E07A5F;text-transform:uppercase;letter-spacing:0.8px;font-size:0.9em;font-weight:700;\">Atmosphere:</span><span>$3</span></span><span style=\"background:linear-gradient(135deg,#8592E6,#457B9D);color:#04070A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(133,146,230,0.4);display:flex;align-items:center;gap:5px;\"><span>🌙</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "5f404c8a-0e20-4ace-b83a-eb15949cf8c3",
+    "scriptName": "Sola Scene: Header - Night Compact",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\btime=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(133,146,230,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(133,146,230,0.15), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(1.8px 1.8px at 120px 35px, rgba(255,255,255,0.98), transparent), radial-gradient(1.2px 1.2px at 280px 70px, rgba(195,228,255,0.88), transparent), radial-gradient(2.2px 2.2px at 420px 25px, rgba(255,255,255,1), transparent), radial-gradient(1.2px 1.2px at 640px 80px, rgba(195,228,255,0.85), transparent), radial-gradient(1.8px 1.8px at 780px 30px, rgba(255,255,255,0.95), transparent), radial-gradient(2px 2px at 840px 65px, rgba(195,228,255,0.9), transparent), radial-gradient(1px 1px at 510px 90px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 350px 105px, rgba(195,228,255,0.85), transparent), radial-gradient(1.2px 1.2px at 210px 45px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 710px 45px, rgba(195,228,255,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(133,146,230,0.2) 20%, rgba(225,240,255,0.95) 50%, rgba(133,146,230,0.2) 80%, transparent 100%), radial-gradient(ellipse at 50% 102%, rgba(225,240,255,0.9) 0%, rgba(133,146,230,0.45) 25%, rgba(69,123,157,0.3) 50%, rgba(15,23,42,0.8) 75%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #020408 0%, #060b14 35%, #0c1626 70%, #152238 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8592E6;display:inline-block;box-shadow:0 0 10px #8592E6, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(133,146,230,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8592E6;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#8FA4B2;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(133,146,230,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$1</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(133,146,230,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#8592E6,#457B9D);color:#04070A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(133,146,230,0.4);display:flex;align-items:center;gap:5px;\"><span>🌙</span><span>$2</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "a2ac2d99-52dd-4812-8121-a4320e727e05",
+    "scriptName": "Sola Scene: Header - Fallback (Time First)",
+    "findRegex": "/<scene_header\\b(?:(?!sky=)[^>])*?\\btime=['\"]([^'\"]+)['\"][^>]*?\\blocation=['\"]([^'\"]+)['\"][^>]*?\\/?>/gi",
+    "replaceString": "<div style=\"position:relative;margin:20px auto;max-width:960px;border-radius:14px;overflow:hidden;border:1px solid rgba(133,146,230,0.4);box-shadow:0 24px 70px rgba(0,0,0,0.95), 0 0 40px rgba(133,146,230,0.15), inset 0 0 60px rgba(0,0,0,0.7);background:#070308;\"><div style=\"height:170px;position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:16px 24px;box-sizing:border-box;background:radial-gradient(1.8px 1.8px at 120px 35px, rgba(255,255,255,0.98), transparent), radial-gradient(1.2px 1.2px at 280px 70px, rgba(195,228,255,0.88), transparent), radial-gradient(2.2px 2.2px at 420px 25px, rgba(255,255,255,1), transparent), radial-gradient(1.2px 1.2px at 640px 80px, rgba(195,228,255,0.85), transparent), radial-gradient(1.8px 1.8px at 780px 30px, rgba(255,255,255,0.95), transparent), radial-gradient(2px 2px at 840px 65px, rgba(195,228,255,0.9), transparent), radial-gradient(1px 1px at 510px 90px, rgba(255,255,255,0.8), transparent), radial-gradient(1.5px 1.5px at 350px 105px, rgba(195,228,255,0.85), transparent), radial-gradient(1.2px 1.2px at 210px 45px, rgba(255,255,255,0.9), transparent), radial-gradient(1.5px 1.5px at 710px 45px, rgba(195,228,255,0.85), transparent), linear-gradient(90deg, transparent 0%, rgba(133,146,230,0.2) 20%, rgba(225,240,255,0.95) 50%, rgba(133,146,230,0.2) 80%, transparent 100%), radial-gradient(ellipse at 50% 102%, rgba(225,240,255,0.9) 0%, rgba(133,146,230,0.45) 25%, rgba(69,123,157,0.3) 50%, rgba(15,23,42,0.8) 75%, transparent 100%), linear-gradient(173deg, transparent 72%, rgba(22,10,14,0.75) 73%, rgba(15,7,10,0.98) 78%), linear-gradient(187deg, transparent 74%, rgba(32,14,19,0.65) 75%, rgba(15,7,10,0.98) 80%), linear-gradient(180deg, #020408 0%, #060b14 35%, #0c1626 70%, #152238 100%);background-size:100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 2px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;background-position:center center, center center, center center, center center, center center, center center, center center, center center, center center, center center, center 126px, center center, center center, center center, center center;background-repeat:no-repeat;\"><div style=\"display:flex;justify-content:space-between;align-items:center;font-size:0.68em;letter-spacing:2.2px;font-weight:700;color:rgba(255,242,205,0.75);text-transform:uppercase;\"><span style=\"display:flex;align-items:center;gap:8px;\"><span style=\"width:7px;height:7px;border-radius:50%;background:#8592E6;display:inline-block;box-shadow:0 0 10px #8592E6, 0 0 4px #FFF;\"></span><span>SOLA CHRONICLE // SCENE ESTABLISHMENT</span></span><span style=\"background:rgba(10,5,8,0.6);border:1px solid rgba(133,146,230,0.3);padding:3px 10px;border-radius:4px;font-family:monospace;letter-spacing:1.5px;color:#8592E6;\">2.39:1 · 50MM ANAMORPHIC</span></div><div style=\"text-align:center;margin:auto 0;position:relative;z-index:2;\"><div style=\"font-size:0.68em;letter-spacing:4px;font-weight:800;color:#8FA4B2;text-transform:uppercase;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,0.9);\">─── LOCATION DOSSIER ───</div><div style=\"font-size:1.65em;font-weight:900;letter-spacing:3px;color:#FFF8EC;text-transform:uppercase;font-family:'Cinzel', 'Playfair Display', Georgia, serif;text-shadow:0 0 20px rgba(133,146,230,0.7), 0 0 40px rgba(69,123,157,0.4), 0 4px 16px rgba(0,0,0,0.95);\">$2</div></div><div style=\"display:flex;justify-content:space-between;align-items:center;background:rgba(14,8,12,0.85);backdrop-filter:blur(10px);border:1px solid rgba(133,146,230,0.3);border-radius:24px;padding:6px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.6);margin:0 auto;width:calc(100% - 10px);box-sizing:border-box;\"><span style=\"display:flex;align-items:center;gap:7px;font-size:0.75em;font-weight:700;color:#F4A261;letter-spacing:1.2px;\"><span>📍</span><span>PRIMARY SCENE ESTABLISHMENT</span></span><span style=\"background:linear-gradient(135deg,#8592E6,#457B9D);color:#04070A;font-weight:800;font-size:0.74em;padding:4px 14px;border-radius:16px;letter-spacing:0.8px;box-shadow:0 2px 10px rgba(133,146,230,0.4);display:flex;align-items:center;gap:5px;\"><span>🌙</span><span>$1</span></span></div></div></div>",
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "trimStrings": [],
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "102",
+    "scriptName": "Sola Scene: Cinematic Break (Location & Time)",
+    "findRegex": "/<scene_break\\s+location=['\"]([^'\"]+)['\"](?:\\s+time=['\"]([^'\"]+)['\"])?\\s*\\/?>/gi",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:28px 0;gap:12px;font-family:inherit;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(224,122,95,0.2) 40%,rgba(244,162,97,0.55));\"></div><div style=\"display:inline-flex;align-items:center;font-size:0.75em;font-weight:700;text-transform:uppercase;background:linear-gradient(180deg,rgba(38,22,16,0.96),rgba(22,12,8,0.98));padding:5px 18px;border-radius:20px;border:1px solid rgba(244,162,97,0.42);box-shadow:inset 0 1px 0 rgba(243,183,75,0.3),0 2px 14px rgba(224,122,95,0.22);\"><span style=\"color:#EE6C4D;margin-right:8px;font-size:0.9em;opacity:0.9;\">✧</span><span style=\"color:#F3B74B;letter-spacing:1.8px;\">$1</span><span style=\"color:#E07A5F;margin:0 10px;font-size:0.75em;opacity:0.75;\">◆</span><span style=\"color:#E8D5B5;letter-spacing:1.2px;font-weight:600;opacity:0.95;\">$2</span><span style=\"color:#EE6C4D;margin-left:8px;font-size:0.9em;opacity:0.9;\">✧</span></div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.55),rgba(224,122,95,0.2) 60%,transparent);\"></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "103",
+    "scriptName": "Sola Scene: Cinematic Break (Time & Location)",
+    "findRegex": "/<scene_break\\s+time=['\"]([^'\"]+)['\"]\\s+location=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:28px 0;gap:12px;font-family:inherit;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(224,122,95,0.2) 40%,rgba(244,162,97,0.55));\"></div><div style=\"display:inline-flex;align-items:center;font-size:0.75em;font-weight:700;text-transform:uppercase;background:linear-gradient(180deg,rgba(38,22,16,0.96),rgba(22,12,8,0.98));padding:5px 18px;border-radius:20px;border:1px solid rgba(244,162,97,0.42);box-shadow:inset 0 1px 0 rgba(243,183,75,0.3),0 2px 14px rgba(224,122,95,0.22);\"><span style=\"color:#EE6C4D;margin-right:8px;font-size:0.9em;opacity:0.9;\">✧</span><span style=\"color:#F3B74B;letter-spacing:1.8px;\">$2</span><span style=\"color:#E07A5F;margin:0 10px;font-size:0.75em;opacity:0.75;\">◆</span><span style=\"color:#E8D5B5;letter-spacing:1.2px;font-weight:600;opacity:0.95;\">$1</span><span style=\"color:#EE6C4D;margin-left:8px;font-size:0.9em;opacity:0.9;\">✧</span></div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.55),rgba(224,122,95,0.2) 60%,transparent);\"></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "104",
+    "scriptName": "Sola Scene: Cinematic Break (Text)",
+    "findRegex": "/<scene_break\\s+text=['\"]([^'\"]+)['\"]\\s*\\/?>/gi",
+    "replaceString": "<div style=\"display:flex;align-items:center;justify-content:center;margin:28px 0;gap:12px;font-family:inherit;\"><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,transparent,rgba(224,122,95,0.2) 40%,rgba(244,162,97,0.55));\"></div><div style=\"display:inline-flex;align-items:center;font-size:0.75em;font-weight:700;text-transform:uppercase;background:linear-gradient(180deg,rgba(38,22,16,0.96),rgba(22,12,8,0.98));padding:5px 18px;border-radius:20px;border:1px solid rgba(244,162,97,0.42);box-shadow:inset 0 1px 0 rgba(243,183,75,0.3),0 2px 14px rgba(224,122,95,0.22);\"><span style=\"color:#EE6C4D;margin-right:8px;font-size:0.9em;opacity:0.9;\">✧</span><span style=\"color:#F3B74B;letter-spacing:1.8px;\">$1</span><span style=\"color:#EE6C4D;margin-left:8px;font-size:0.9em;opacity:0.9;\">✧</span></div><div style=\"flex-grow:1;height:1px;background:linear-gradient(90deg,rgba(244,162,97,0.55),rgba(224,122,95,0.2) 60%,transparent);\"></div></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "438bf889-5efe-4a6b-b9f6-faa69c1d6de6",
+    "scriptName": "Sola Scene: Strip HTML Markers",
+    "findRegex": "/<!--\\s*HTML_(?:START|END)\\s*-->/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "18192faf-3091-4209-8165-c1a5070c5e18",
+    "scriptName": "Sola HUD: Open",
+    "findRegex": "/<\\s{0,8}sola_hud(?:\\s+digest=['\"]([^'\"]{0,300})['\"])?\\s*>\\s*(?:<\\s{0,8}details\\s{0,8}>\\s*<\\s{0,8}summary\\s{0,8}>([\\s\\S]{0,300}?)(?:[ \\t]{0,8}(\\|[ \\t]{0,8}[\\s\\S]{0,3000}?))?<\\s{0,8}\\/\\s{0,8}summary\\s{0,8}>)?/gi",
+    "replaceString": "<div><details style=\"margin:16px 0;background:rgba(20,14,10,0.95);border:1px solid rgba(244,162,97,0.35);border-left:4px solid #F4A261;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,0.5);overflow:hidden;font-family:inherit;\"><summary style=\"cursor:pointer;padding:12px 16px;background:linear-gradient(90deg,rgba(244,162,97,0.16),rgba(20,14,10,0.3));font-weight:700;color:#F3B74B;letter-spacing:1px;text-transform:uppercase;text-shadow:0 0 10px rgba(243,183,75,0.3);outline:none;user-select:none;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;\"><span>✧ SOLA SHOWRUNNER HUD</span><span style=\"font-size:0.8em;font-weight:600;text-transform:none;letter-spacing:0.3px;color:#BC9B78;background:rgba(244,162,97,0.08);padding:3px 10px;border-radius:20px;border:1px solid rgba(244,162,97,0.2);\">$1$3</span></summary><div style=\"padding:10px 14px;\">",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "bb6ee562-322e-4a2c-8394-ccabee00d010",
+    "scriptName": "Sola HUD: Digest",
+    "findRegex": "/T[=:]?([0-4])([\\u2191\\u2193])?[ \\t]{1,6}F[=:]?([0-4])([\\u2191\\u2193])?[ \\t]{1,6}D[=:]?([0-4])([\\u2191\\u2193])?[ \\t]{1,6}Y[=:]?([0-4])([\\u2191\\u2193])?/gi",
+    "replaceString": "<span style=\"color:#F4A261;font-weight:700;\">T$1$2</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#EE6C4D;font-weight:700;\">F$3$4</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#9AA87A;font-weight:700;\">D$5$6</span><span style=\"color:rgba(188,155,120,0.65);\"> · </span><span style=\"color:#F3B74B;font-weight:700;\">Y$7$8</span>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e34ce6ae-11cb-455a-9d0e-edbd57c29541",
+    "scriptName": "Sola HUD: Close",
+    "findRegex": "/<\\s{0,8}\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
+    "replaceString": "</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "643c7017-059e-4e8a-b3f9-e6ddc6589fef",
+    "scriptName": "Sola Saver: Immersive Props (HTML Blocks)",
+    "findRegex": "/<!--\\s{0,8}HTML_START\\s{0,8}-->(?![\\s\\S]{0,200}?<\\s{0,8}sola_hud\\b)[\\s\\S]{0,50000}?<!--\\s{0,8}HTML_END\\s{0,8}-->/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 2,
+    "maxDepth": null
+  },
+  {
+    "id": "d8a5b400-2fbc-48a7-b2cd-47160c65c570",
+    "scriptName": "Sola Saver: Showrunner HUD",
+    "findRegex": "/<\\s{0,8}sola_hud\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}sola_hud\\s{0,8}>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "7cb54b48-94ac-482a-bba0-9567b65ae95f",
+    "scriptName": "Sola Card: Director Notebook & Story Seeds",
+    "findRegex": "/<\\s{0,8}story_notes\\b[^>]{0,200}>([\\s\\S]{0,20000}?)<\\s{0,8}\\/\\s{0,8}story_notes\\s{0,8}>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">📓 Sola: Director Notebook & Story Seeds (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "7d906007-ac8c-4280-8632-9a44b7a37484",
+    "scriptName": "Sola Saver: Director Notebook",
+    "findRegex": "/<\\s{0,8}story_notes\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}story_notes\\s{0,8}>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "e43b1782-9f6b-4e1a-8c29-4d6b5e0c8192",
+    "scriptName": "Sola Card: Character Trait Ledger",
+    "findRegex": "/<solatag\\b[^>]*>([\\s\\S]{0,50000}?)<\\/solatag>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">🏷️ Sola: Character Trait Ledger (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "c1f72a45-6d8b-4b10-91a3-2e5a7d9b4c83",
+    "scriptName": "Sola Saver: Character Trait Ledger",
+    "findRegex": "/<solatag[\\s\\S]{0,50000}?<\\/solatag>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": false,
+    "substituteRegex": 0,
+    "minDepth": 5,
+    "maxDepth": null
+  },
+  {
+    "id": "751c94e0-3c30-4fa1-99a1-95e39117fce5",
+    "scriptName": "Sola Card: Character Matrix",
+    "findRegex": "/<char_matrix\\b[^>]*>([\\s\\S]{0,50000}?)<\\/char_matrix>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">🧬 Sola: {{char}} Matrix & Persona Audit (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(30,20,14,0.72);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;font-family:serif;white-space:pre-wrap;max-height:380px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(243,183,75,0.45) transparent;\">$1</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "b34bf2aa-b678-4219-98b9-e0da6f00f3c6",
+    "scriptName": "Sola Saver: Character Matrix",
+    "findRegex": "/<char_matrix\\b[\\s\\S]{0,50000}?<\\/char_matrix>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  },
+  {
+    "id": "1f5482b6-fc7e-41bb-9700-137ed9f348ec",
+    "scriptName": "Sola Saver: Tempo",
+    "findRegex": "/<tempo>[\\s\\S]*?<\\/tempo>/gi",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": 4,
+    "maxDepth": null
+  }
+]
