@@ -460,7 +460,24 @@
   },
   {
     "id": "395f3083-d398-498d-ad56-c90d9dd3f4c0",
-    "scriptName": "Sola Card: Thought Engine",
+    "scriptName": "Sola Card: Thought Engine (Named)",
+    "findRegex": "/<thought_engine(?::([^\\s>]+)|\\b[^>]*?\\b(?:char|name)=['\\\"]?([^'\\\">\\s]+)['\\\"]?)[^>]*>([\\s\\S]*?)<\\/thought_engine>/gi",
+    "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">💭 Sola: Thought Engine — $1$2 (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$3</div></details></div>",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+  },
+  {
+    "id": "e8b3636f-c80d-4308-96ac-ad74ef1b586d",
+    "scriptName": "Sola Card: Thought Engine (Fallback)",
     "findRegex": "/<thought_engine\\b[^>]*>([\\s\\S]*?)<\\/thought_engine>/gi",
     "replaceString": "<div><details style=\"margin:12px 0;background:rgba(42,28,20,0.75);border:1px solid rgba(243,183,75,0.45);border-radius:8px;font-family:inherit;font-size:0.9em;box-shadow:0 2px 12px rgba(0,0,0,0.28);overflow:hidden;\"><summary style=\"cursor:pointer;padding:10px 12px;font-weight:600;color:#F3B74B;letter-spacing:0.2px;outline:none;user-select:none;\">💭 Sola: Thought Engine (click to expand)</summary><div style=\"margin:0 8px 8px;padding:10px 12px;background:rgba(20,12,8,0.6);border-left:3px solid #F3B74B;border-radius:6px;color:#F0DCC4;line-height:1.55;white-space:pre-wrap;\">$1</div></details></div>",
     "trimStrings": [],
