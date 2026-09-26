@@ -39,6 +39,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
   color-scheme: dark;
 }
 
@@ -347,6 +348,7 @@ body {
 /* Section Common */
 .section {
   padding: 50px 0;
+  scroll-margin-top: 85px;
 }
 
 .section-header {
@@ -543,7 +545,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16px 0;
+  gap: 14px;
+  margin: 14px 0 18px;
+  word-break: break-word;
 }
 
 .copy-btn {
@@ -709,10 +713,36 @@ body {
   .hero-title {
     font-size: 2.4rem;
   }
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
   .nav-links {
-    display: none; /* simple mobile hide or collapse */
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links li {
+    flex-shrink: 0;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    white-space: nowrap;
   }
   .grid-2, .grid-3 {
     grid-template-columns: 1fr;
+  }
+  .code-box {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .code-box .copy-btn {
+    align-self: flex-end;
   }
 }
