@@ -14,6 +14,7 @@ Welcome to the official repository and GitHub Pages home for **Sola**!
 ## 📦 Current Release (V2)
 
 - **V2 Flame:** Complete author build with Embodied Reality, Showrunner Master HUD, balanced Trajectory Fork, and Story Review.
+- **V2 Flame (Lumi):** Official Lumiverse edition with all 89 narrative blocks pre-packaged (This version is for Lumiverse).
 - **V2 Ember:** Clean foundation build with streamlined POVs, lightweight footprint, and core narrative directives.
 - **V2 Regex Companion Pack:** Full 16-color canonical UI cards for telemetry, feeling engines, and character matrix audits.
 - **V2 Character Art:** Official high-resolution V2 character artwork.
