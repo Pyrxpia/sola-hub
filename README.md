@@ -2,7 +2,6 @@
 
 [![Full Release](https://img.shields.io/badge/Release-V2.0%20Full-EE6C4D?style=flat-square)](https://Pyrxpia.github.io/sola-hub/)
 [![Compatible Platforms](https://img.shields.io/badge/Platforms-SillyTavern%20%7C%20SillyBunny%20%7C%20Lumiverse-F4A261?style=flat-square)](https://Pyrxpia.github.io/sola-hub/)
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-9AA87A?style=flat-square)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 > **"You seed the turn, and Sola brings your seeds to fruition."**
 
