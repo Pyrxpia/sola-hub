@@ -45,7 +45,6 @@ Sola operates on an **Agency-Lite** framework:
 4. **Trajectory Momentum (The 16-Option Fork):** Eliminates scene stalling. Sola's balanced trajectory engine drives organic scene motion (combining a clear narrative vector with subtle physical or psychological sub-currents) so scenes evolve naturally without spiraling into melodrama.
 5. **Dynamic Visual Formatting:** When paired with the companion regex pack, Sola transforms chat into a rich visual novella—rendering pure CSS time-of-day skyboxes, canonical 16-color NPC dialogue styling, typographic emotional accents, and glanceable HUD telemetry consoles.
 6. **Behind-the-Curtain Collaboration:** Seamlessly transition between fiction and out-of-character director brainstorming with `((OOC: ...))` to test character motives or tune scene pacing without cluttering the story.
-7. **Universal Frontier Compatibility:** Finely tuned and tested across major frontier models including Gemini, Claude, GPT-4o, DeepSeek, GLM, MiniMax, and Qwen.
 
 ---
 
