@@ -1,0 +1,61 @@
+{
+  "format": 2,
+  "name": "Sola Ember",
+  "author": "Sola",
+  "description": "Sola Ember — Nocturnal Obsidian Cosmic palette for Lumiverse. Featuring Denim dialogue (#7A8B99), Mist interiority (#98B9C7), Indigo accent (#8592E6), and Obsidian Root foundations.",
+  "createdAt": 1790473399,
+  "bundleId": "sola-ember-theme",
+  "theme": {
+    "id": "sola-ember",
+    "name": "Sola Ember",
+    "mode": "dark",
+    "accent": {
+      "h": 232,
+      "s": 69,
+      "l": 71
+    },
+    "statusColors": {
+      "danger": "#C06C54",
+      "warning": "#B08EA2",
+      "success": "#789E8A"
+    },
+    "radiusScale": 1,
+    "enableGlass": true,
+    "fontScale": 1,
+    "uiScale": 1,
+    "desktopBackground": {
+      "color": "rgb(14 12 19 / 85%)",
+      "blur": true,
+      "blurIntensity": "balanced"
+    },
+    "baseColorsByMode": {
+      "dark": {
+        "primary": "#8592E6",
+        "secondary": "#8FA4B2",
+        "background": "#15121E",
+        "backgroundDeep": "#0E0C13",
+        "text": "#F2F4F8",
+        "speech": "#7A8B99",
+        "thoughts": "#98B9C7",
+        "danger": "#C06C54",
+        "warning": "#B08EA2",
+        "success": "#789E8A"
+      },
+      "light": {
+        "primary": "#8592E6",
+        "secondary": "#8FA4B2",
+        "background": "#F2F4F8",
+        "backgroundDeep": "#BAC3C7",
+        "text": "#0E0C13",
+        "speech": "#4D5F6E",
+        "thoughts": "#5A7A8A",
+        "danger": "#A84A32",
+        "warning": "#8A627B",
+        "success": "#4A6E5C"
+      }
+    }
+  },
+  "globalCSS": "/* ==========================================================\n * Sola Ember (Obsidian Cosmic) — Custom CSS for Lumiverse\n * Canonical 16-Color Palette Integration\n * ========================================================== */\n\n:root {\n  /* Sola Canonical Gradients */\n  --sola-solstice: linear-gradient(135deg, #F4A261 0%, #EE6C4D 100%);\n  --sola-hearth: linear-gradient(135deg, #E07A5F 0%, #C06C54 100%);\n  --sola-dusk: linear-gradient(135deg, #F3B74B 0%, #8592E6 100%);\n  --sola-starlight: linear-gradient(135deg, #98B9C7 0%, #8592E6 100%);\n\n  /* Text Selection */\n  --sola-selection-bg: rgba(133, 146, 230, 0.35);\n  --sola-selection-text: #F2F4F8;\n}\n\n/* Atmospheric Selection */\n::selection {\n  background: var(--sola-selection-bg);\n  color: var(--sola-selection-text);\n}\n\n/* Sola Smooth Scrollbar */\n::-webkit-scrollbar {\n  width: 7px;\n  height: 7px;\n}\n::-webkit-scrollbar-track {\n  background: transparent;\n}\n::-webkit-scrollbar-thumb {\n  background: rgba(143, 164, 178, 0.28);\n  border-radius: 9999px;\n  border: 1px solid rgba(133, 146, 230, 0.15);\n}\n::-webkit-scrollbar-thumb:hover {\n  background: rgba(133, 146, 230, 0.5);\n}\n\n/* Sola Dialogue & Thoughts Highlight Invariants */\n.prose em,\n[data-component=\"MessageContent\"] em {\n  color: #98B9C7 !important; /* Mist Interiority */\n  font-style: italic;\n}\n\n.prose q,\n.proseDialogue,\n[data-component=\"MessageContent\"] q {\n  color: #7A8B99 !important; /* Denim Dialogue */\n}\n\n.prose blockquote {\n  border-left: 3px solid #8FA4B2 !important;\n  background: rgba(143, 164, 178, 0.06);\n  padding: 8px 14px;\n  border-radius: 0 8px 8px 0;\n  color: rgba(242, 244, 248, 0.85);\n}\n\n/* Starlight Radiant CTA Buttons */\nbutton[data-variant=\"primary\"],\n.btnPrimary {\n  background: linear-gradient(135deg, #98B9C7 0%, #8592E6 100%) !important;\n  color: #0E0C13 !important;\n  font-weight: 600;\n  border: 1px solid rgba(152, 185, 199, 0.3) !important;\n  box-shadow: 0 2px 12px rgba(133, 146, 230, 0.25) !important;\n  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n\nbutton[data-variant=\"primary\"]:hover,\n.btnPrimary:hover {\n  background: linear-gradient(135deg, #A8C4D0 0%, #95A0EC 100%) !important;\n  box-shadow: 0 4px 18px rgba(133, 146, 230, 0.42) !important;\n  transform: translateY(-1px);\n}\n\n/* Focus Rings */\n:focus-visible {\n  outline: 2px solid rgba(133, 146, 230, 0.6) !important;\n  outline-offset: 2px;\n}\n",
+  "components": {},
+  "assets": []
+}

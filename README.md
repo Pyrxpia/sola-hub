@@ -3,7 +3,7 @@
 Welcome to the official repository and GitHub Pages home for **Sola**!
 
 - 🌐 **Official Website & Downloads:** [https://Pyrxpia.github.io/sola-hub/](https://Pyrxpia.github.io/sola-hub/)
-- 🧭 **Quick Links:** [🔥 Flame vs Ember](#-flame-vs--ember) • [📦 Downloads](#-current-release-v2) • [🎭 OOC Story-Boarding](#-ooc-story-boarding-protocol)
+- 🧭 **Quick Links:** [🔥 Flame vs Ember](#-flame-vs--ember) • [📦 Downloads](#-current-release-v2) • [🎨 Lumiverse Themes](#-lumiverse-themes-flame-ember--solstice) • [🎭 OOC Story-Boarding](#-ooc-story-boarding-protocol)
 
 ## 🔥 Flame vs. 🕯️ Ember
 
@@ -16,11 +16,27 @@ Welcome to the official repository and GitHub Pages home for **Sola**!
 - **V2 Flame:** Complete author build with Embodied Reality, Showrunner Master HUD, balanced Trajectory Fork, and Story Review.
 - **V2 Flame (Lumi):** Official Lumiverse edition with all 89 narrative blocks pre-packaged (This version is for Lumiverse).
 - **V2 Ember:** Clean foundation build with streamlined POVs, lightweight footprint, and core narrative directives.
+- **🎨 Lumiverse Companion Themes:** Sola Flame, Sola Ember, and Sola Solstice (Dual Mode) in both 1-click `.lumitheme` and `.json` formats.
 - **Sola De-Sloppinator:** Dedicated SillyBunny in-chat agent for autonomous anti-slop cleaning and lived-in prose cadence.
 - **V2 Regex Companion Pack:** Full 16-color canonical UI cards for telemetry, feeling engines, and character matrix audits.
 - **V2 Character Art:** Official high-resolution V2 character artwork.
 - **Sola Character Card:** Official SillyTavern character card (CCv3 PNG) pre-configured with Sola's persona, greeting, and system prompt.
 - **Where I'm At (Blog):** Creator lab updates and project reflections directly on the [site](https://Pyrxpia.github.io/sola-hub/#dev-blog).
+
+## 🎨 Lumiverse Themes (Flame, Ember & Solstice)
+
+Official companion themes for [Lumiverse](https://lumiverse.chat/) implementing Sola's canonical 16-color Day & Night palettes, custom typography highlights, and radiant Solstice CTA buttons:
+
+| Theme | Palette & Style | Direct Download (.lumitheme) | Raw ThemePack (.json) |
+|---|---|---|---|
+| **🔥 Sola Flame** | Day Palette • Warm Autumnal Hearth • Marigold dialogue (`#F4A261`), Amber interiority (`#F3B74B`), Coral accents (`#EE6C4D`) | [Download .lumitheme](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Flame.lumitheme) | [Download .json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Flame.json) |
+| **🌌 Sola Ember** | Night Palette • Obsidian Cosmic • Denim dialogue (`#7A8B99`), Mist interiority (`#98B9C7`), Indigo accents (`#8592E6`) | [Download .lumitheme](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Ember.lumitheme) | [Download .json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Ember.json) |
+| **⚖️ Sola Solstice** | Dynamic Dual Mode • Automatically displays Ember in Dark Mode and Flame in Light Mode | [Download .lumitheme](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Solstice.lumitheme) | [Download .json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Solstice.json) |
+
+### 📥 Installing Themes in Lumiverse
+1. In Lumiverse, navigate to **Settings → Appearance & Themes → Themes**.
+2. Click **Import Theme**.
+3. Select the 1-click `.lumitheme` archive (or `.json` ThemePack) you downloaded, or paste the raw GitHub JSON link directly into the importer!
 
 ## 🎭 OOC Story-Boarding Protocol
 

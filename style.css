@@ -560,6 +560,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 /* Code Box & OOC Guide */
@@ -774,5 +775,9 @@ body {
   }
   .code-box .copy-btn {
     align-self: flex-end;
+  }
+  .download-item {
+    flex-wrap: wrap;
+    gap: 12px;
   }
 }

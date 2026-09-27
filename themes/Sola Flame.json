@@ -1,0 +1,61 @@
+{
+  "format": 2,
+  "name": "Sola Flame",
+  "author": "Sola",
+  "description": "Sola Flame — Warm Autumnal Hearth palette for Lumiverse. Featuring Marigold dialogue (#F4A261), Amber interiority (#F3B74B), Coral accent (#EE6C4D), and Dark Hearth foundations.",
+  "createdAt": 1790473378,
+  "bundleId": "sola-flame-theme",
+  "theme": {
+    "id": "sola-flame",
+    "name": "Sola Flame",
+    "mode": "dark",
+    "accent": {
+      "h": 11,
+      "s": 82,
+      "l": 62
+    },
+    "statusColors": {
+      "danger": "#C06C54",
+      "warning": "#E9A036",
+      "success": "#9AA87A"
+    },
+    "radiusScale": 1,
+    "enableGlass": true,
+    "fontScale": 1,
+    "uiScale": 1,
+    "desktopBackground": {
+      "color": "rgb(18 13 11 / 85%)",
+      "blur": true,
+      "blurIntensity": "balanced"
+    },
+    "baseColorsByMode": {
+      "dark": {
+        "primary": "#EE6C4D",
+        "secondary": "#E07A5F",
+        "background": "#1A1310",
+        "backgroundDeep": "#120D0B",
+        "text": "#FDF6F0",
+        "speech": "#F4A261",
+        "thoughts": "#F3B74B",
+        "danger": "#C06C54",
+        "warning": "#E9A036",
+        "success": "#9AA87A"
+      },
+      "light": {
+        "primary": "#EE6C4D",
+        "secondary": "#E07A5F",
+        "background": "#FDF6F0",
+        "backgroundDeep": "#F0DCC4",
+        "text": "#120D0B",
+        "speech": "#C06C54",
+        "thoughts": "#E07A5F",
+        "danger": "#A84A32",
+        "warning": "#C47D1C",
+        "success": "#6B7F48"
+      }
+    }
+  },
+  "globalCSS": "/* ==========================================================\n * Sola Flame (Autumnal Hearth) — Custom CSS for Lumiverse\n * Canonical 16-Color Palette Integration\n * ========================================================== */\n\n:root {\n  /* Sola Canonical Gradients */\n  --sola-solstice: linear-gradient(135deg, #F4A261 0%, #EE6C4D 100%);\n  --sola-hearth: linear-gradient(135deg, #E07A5F 0%, #C06C54 100%);\n  --sola-dusk: linear-gradient(135deg, #F3B74B 0%, #8592E6 100%);\n\n  /* Text Selection */\n  --sola-selection-bg: rgba(238, 108, 77, 0.35);\n  --sola-selection-text: #FDF6F0;\n}\n\n/* Atmospheric Selection */\n::selection {\n  background: var(--sola-selection-bg);\n  color: var(--sola-selection-text);\n}\n\n/* Sola Smooth Scrollbar */\n::-webkit-scrollbar {\n  width: 7px;\n  height: 7px;\n}\n::-webkit-scrollbar-track {\n  background: transparent;\n}\n::-webkit-scrollbar-thumb {\n  background: rgba(224, 122, 95, 0.28);\n  border-radius: 9999px;\n  border: 1px solid rgba(238, 108, 77, 0.15);\n}\n::-webkit-scrollbar-thumb:hover {\n  background: rgba(238, 108, 77, 0.5);\n}\n\n/* Sola Dialogue & Thoughts Highlight Invariants */\n.prose em,\n[data-component=\"MessageContent\"] em {\n  color: #F3B74B !important; /* Amber Interiority */\n  font-style: italic;\n}\n\n.prose q,\n.proseDialogue,\n[data-component=\"MessageContent\"] q {\n  color: #F4A261 !important; /* Marigold Dialogue */\n}\n\n.prose blockquote {\n  border-left: 3px solid #E07A5F !important;\n  background: rgba(224, 122, 95, 0.06);\n  padding: 8px 14px;\n  border-radius: 0 8px 8px 0;\n  color: rgba(253, 246, 240, 0.85);\n}\n\n/* Solstice Radiant CTA Buttons */\nbutton[data-variant=\"primary\"],\n.btnPrimary {\n  background: linear-gradient(135deg, #F4A261 0%, #EE6C4D 100%) !important;\n  color: #120D0B !important;\n  font-weight: 600;\n  border: 1px solid rgba(244, 162, 97, 0.3) !important;\n  box-shadow: 0 2px 12px rgba(238, 108, 77, 0.25) !important;\n  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);\n}\n\nbutton[data-variant=\"primary\"]:hover,\n.btnPrimary:hover {\n  background: linear-gradient(135deg, #F5AC73 0%, #F07A5D 100%) !important;\n  box-shadow: 0 4px 18px rgba(238, 108, 77, 0.42) !important;\n  transform: translateY(-1px);\n}\n\n/* Focus Rings */\n:focus-visible {\n  outline: 2px solid rgba(238, 108, 77, 0.6) !important;\n  outline-offset: 2px;\n}\n",
+  "components": {},
+  "assets": []
+}
