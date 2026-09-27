@@ -115,86 +115,124 @@ Official companion themes crafted specifically for [Lumiverse](https://lumiverse
 
 ## 🧩 Complete Module Reference Guide
 
-Sola V2 is organized into modular blocks within SillyTavern's Prompt Manager. You can toggle any module on or off at will to tailor the experience to your story.
+Sola V2 is organized into 89 modular blocks within SillyTavern's Prompt Manager. You can toggle any module on or off at will to tailor the experience to your story.
 
-### 1. Agency & Core Directives
-- **`━📜 Core Foundations` `[00]`:** Variable zeroing protocol. Initializes all macro variables (`{{setvar}}`) to empty strings at prompt start to prevent stale chat memory persistence across turns.
-- **`[Core] User: Agency-Lite (Pick 1)` `[01]`:** The recommended baseline. Sola responds to {{user}}'s seeds and manages ambient momentum, but strictly leaves all pivotal choices, confessions, and moral commitments to the player.
-- **`[Core] User: Embellishment/Control (Pick 1)` `[02]`:** Loose leash mode. Grants Sola permission to actively co-author dialogue beats, expand physical connective tissue, and introduce proactive environmental developments.
-- **`[Module] User Agency` `[80]`:** Tight leash mode. Strict obedience directive instructing the model to simulate *only* what {{user}} has explicitly seeded, immediately halting at crossroads.
-- **`[Core Extra] Anti-Slop (Pick 1)` `[06]`:** Comprehensive surgical purge of formulaic AI prose crutches (epanorthosis, litotes, empathetic deixis, dramatic trailer-voice repetitions, and empty philosophical summations).
-- **`[Core Extra] Lite Anti-Slop (Pick 1)` `[07]`:** High-frequency anti-slop ruleset targeting the most common AI writing tropes while conserving prompt tokens for smaller context windows.
-- **`[Module] Voice: Action-Anchored Dialogue (Zero Tags) 🏷️` `[08]`:** Completely bans speech tags (`said`, `whispered`, `muttered`) and emotional captions. Dialogue is anchored strictly to physical actions, posture changes, or bare spoken lines.
+### 🏷️ How to Read Sola Toggles (The 4-Tag Taxonomy)
 
-### 2. Story Grounding & Tone Balancers
-- **`[Module] Pre-History Story Grounding` `[11]` / `[Module] Post-History Story Grounding` `[87]`:** Enforces blunt human clarity, realistic dialogue friction, and somatic realism (*"Humanism > Style"*). Use either `[11]` (placed before chat history) or `[87]` (placed at the prompt tail for maximum recency).
-- **`[Module] Voice: Anti-Therapy` `[22]`:** Bans reflective listening, standalone emotional validations, and unsolicited counseling habits. NPCs react with human imperfection, awkward silences, or subject changes rather than clinical analysis.
-- **`[Balancer] Anti-Softening Counter` `[39]`:** Emergency counterbalance module that prevents gruff, villainous, or cynical NPCs from prematurely softening, forgiving {{user}}, or becoming overly agreeable.
-- **`[Balancer] Anti-Cruelty Counter` `[40]`:** Emergency counterbalance module preventing dark or intense scenes from devolving into gratuitous, mindless sadism without emotional narrative logic.
+To make Sola's prompt list effortlessly parseable, every prompt in the preset uses a standardized operational prefix:
 
-### 3. Voice, Dialect & Authorial Styles
-- **`[Module] Voice: Idiolect, Dialect & Dialogue Craft 🗣️` `[23]`:** Advanced 3-Axis differentiation protocol (Diction, Rhythmic skeleton, Evasion axis) with strict anti-echo bans and anti-cosplay strip-testing to ensure NPCs speak with distinct phonetic cadence.
-- **`[Module] Voice: Emotional & Speech Engine` `[20]`:** Dynamically degrades sentence syntax and vocabulary based on physiological state (e.g., exhaustion, intoxication, adrenaline, hypothermia, panic).
-- **`[Module] Voice: Vocal Sounds` `[21]`:** Naturally incorporates organic non-verbal vocalizations (breaths, clicks, dry chuckles, sharp intakes of air) without decorative adverbs.
+| Tag Prefix | Meaning to the Player | Rule of Thumb |
+|---|---|---|
+| **`[CORE]`** | Foundational Directives | **Leave ON.** Essential to Sola's prose quality, somatic realism, and baseline behavior. |
+| **`[PICK 1: <GROUP>]`** | Mutually Exclusive Group | **Choose ONE.** Pick your preferred mode in this category (e.g. Agency, POV, Anti-Slop). |
+| **`[OPT]`** | Optional Feature / Style | **Freely Toggle.** Turn on or off whenever you want that specific narrative flavor. |
+| **`[TRACKER]`** | HUD & Telemetry State Engines | **Visual Cards.** Enable if you want glanceable HUD consoles and feeling engine telemetry. |
+| **`[REASONING]`** | Directorial Thinking & Review | **Planning Controls.** Thinking-phase guidance, 3-anchor reviews, and flight-recorder limits. |
+
+---
+
+### 🍳 Recommended Builds & Quick Recipes
+
+Don't want to think about 89 prompts individually? Start with one of these battle-tested configurations:
+
+| Build | Character & Playstyle | Key Active Toggles | Token Impact |
+|---|---|---|---|
+| ⚡ **1. Minimalist (Pure & Lean)** | Ultra-fast turns, low token overhead, pristine anti-slop prose. Great for local LLMs and smaller context windows. | • All `[CORE]` Directives<br>• `[PICK 1: AGENCY] Agency-Lite`<br>• `[PICK 1: ANTI-SLOP] Lite Anti-Slop`<br>• All `[TRACKER]` modules: **OFF**<br>• `[REASONING]` modules: **OFF** | **Minimal** (~1.2k tokens) |
+| 📖 **2. The Novelist (Cinematic & Grounded)** | Rich sensory immersion, dialogue friction, evocative prose, and dynamic scene headers. | • All `[CORE]` Directives<br>• `[PICK 1: AGENCY] Agency-Lite` (or `Embellished`)<br>• `[OPT] Voice: Action-Anchored Dialogue 🏷️`<br>• `[OPT] Scene: Establishing Headers 🎬`<br>• `[OPT] Voice: Idiolect & Dialect Craft 🗣️`<br>• Pick 1 Author Style (e.g. *McCarthy* or *Murakami*) | **Moderate** (~2.5k tokens) |
+| 🎛️ **3. The Full Showrunner (Author Flame)** | The complete Sola experience. Full visual telemetry, feeling engines, NPC interiority, and 3-anchor directorial drafting. | • Everything in *The Novelist*<br>• `[TRACKER] Showrunner Master HUD 🎛️`<br>• `[TRACKER] Feeling Engine (TFDY) 📊`<br>• `[TRACKER] Sola's Bond Radar 💞`<br>• `[TRACKER] Thought Engine 💭`<br>• `[REASONING] Sola's Story Review ⭐` | **Full** (~4k tokens) |
+
+---
+
+### ══════════ 📜 01. CORE FOUNDATIONS ══════════
+- **`══════════ 📜 01. CORE FOUNDATIONS ══════════` `[00]`:** Macro state zeroing protocol. Initializes all macro variables (`{{setvar}}`) to empty strings at prompt start to prevent stale chat memory persistence across turns.
+- **`[PICK 1: AGENCY] Agency-Lite (Balanced Baseline)` `[01]`:** The recommended baseline. Sola responds to {{user}}'s seeds and manages ambient momentum, but strictly leaves all pivotal choices, confessions, and moral commitments to the player.
+- **`[PICK 1: AGENCY] Embellishment & Co-Author (Loose Leash)` `[02]`:** Loose leash mode. Grants Sola permission to actively co-author dialogue beats, expand physical connective tissue, and introduce proactive environmental developments.
+- **`[CORE] Oath & Universal Directives` `[03]`:** The heart of Sola's narrative constitution. Enforces embodied realism, somatic friction, zero bathos, and living consequences.
+- **`[OPT] OOC Collaborator Protocol (Sola Director)` `[04]`:** Enables out-of-character director brainstorming with Sola behind the curtain via `((OOC: ...))`.
+- **`[CORE] Prose Standards & Anti-Echo` `[05]`:** Strict prose rules banning premise echoing, dialogue parroting, and repetitive physical gestures across turns.
+- **`[PICK 1: ANTI-SLOP] Anti-Slop (Comprehensive Purge)` `[06]`:** Comprehensive surgical purge of formulaic AI prose crutches (epanorthosis, litotes, empathetic deixis, dramatic trailer-voice repetitions, and empty philosophical summations).
+- **`[PICK 1: ANTI-SLOP] Lite Anti-Slop (Lean Filter)` `[07]`:** High-frequency anti-slop ruleset targeting the most common AI writing tropes while conserving prompt tokens for smaller context windows.
+- **`[OPT] Voice: Action-Anchored Dialogue (No Tags) 🏷️` `[08]`:** Completely bans speech tags (`said`, `whispered`, `muttered`) and emotional captions. Dialogue is anchored strictly to physical actions, posture changes, or bare spoken lines.
+- **`[CORE] Authentic NPCs` `[09]`:** Enforces authentic character autonomy, private psychological masks, imperfect human reactions, and non-sycophantic dialogue.
+- **`[CORE] Unfiltered Register & Consent (Universal)` `[10]`:** Core directive authorizing full adult creative themes, natural human vulgarity, unvarnished physical tension, and dark narrative exploration without moralizing lectures.
+- **`[PICK 1: GROUNDING] Story Grounding (Pre-History)` `[11]`:** Enforces blunt human clarity, realistic dialogue friction, and somatic realism (*"Humanism > Style"*) injected before chat history.
+- **`[OPT] Creative Context Bypass (Uncensored)` `[12]`:** Adaptive creative safety bypass clearing safety deliberation loops for dark, intense, and mature narrative fiction.
+
+### ══════════ 🌍 02. WORLD & ENVIRONMENT ══════════
+- **`[OPT] World: Anti-Orbiting (Independent NPCs)` `[14]`:** NPCs follow their own schedules and routines. Characters do not hover around {{user}} or conveniently appear in empty rooms unless physically summoned or motivated.
+- **`[OPT] World: Dynamic World (Physical Persistence)` `[15]`:** Tracks environmental permanence, weather transitions, object wear-and-tear, and persistent physical injuries/scars across sessions.
+- **`[OPT] World: Immersive Props & Diegetic UI 📱` `[16]`:** Formats diegetic in-game media (smartphones, handwritten letters, receipts, terminal logs, classified files) into pure CSS UI prop cards.
+- **`[OPT] Scene: Establishing Headers 🎬` `[17]`:** Automatically generates 70mm anamorphic scene cards rendering dynamic time-of-day skyboxes (Morning, Noon, Dusk, Twilight, Midnight, Storm) and location chips via pure CSS.
+
+### ══════════ 🎙️ 03. PROSE & VOICE STYLES ══════════
+- **`[OPT] Toggle: Stylistic Overload (Max Saturation)` `[19]`:** Stylistic amplifier overriding plain or stoic tones to maximize chromatic vibrancy, tonal typography, and sensory density.
+- **`[OPT] Voice: Emotional & Speech Engine` `[20]`:** Dynamically degrades sentence syntax and vocabulary based on physiological state (e.g. exhaustion, intoxication, adrenaline, hypothermia, panic).
+- **`[OPT] Voice: Vocal Sounds & Acoustic Breaths` `[21]`:** Naturally incorporates organic non-verbal vocalizations (breaths, clicks, dry chuckles, sharp intakes of air) without decorative adverbs.
+- **`[OPT] Voice: Anti-Therapy (Grounded Friction)` `[22]`:** Bans reflective listening, standalone emotional validations, and unsolicited counseling habits. NPCs react with human imperfection, awkward silences, or subject changes rather than clinical analysis.
+- **`[OPT] Voice: Idiolect, Dialect & Dialogue Craft 🗣️` `[23]`:** Advanced 3-Axis differentiation protocol (Diction, Rhythmic skeleton, Evasion axis) with strict anti-echo bans and anti-cosplay strip-testing to ensure NPCs speak with distinct phonetic cadence.
+- **`[PICK 1: PALETTE] Gradient ALL The Time (Chromatic)` `[24]`:** Opt-in palette module applying radiant mathematical CSS gradients to dialogue throughout the scene.
+- **`[PICK 1: PALETTE] NPC Dialogue Colors (Day/Night) 🎨` `[25]`:** Paints character speech in Sola's canonical 16-color Day & Night palettes, giving every speaker a consistent chromatic identity.
+- **`[OPT] Voice: NPC Tonal Typography 🪶` `[26]`:** Typographic emotional inflections (`<whisper>`, `<bite>`, `<tremble>`, `<steady>`) that mix freely with dialogue colors.
+- **`[OPT] Voice: Chromatic Gradients (Climaxes) 🌅` `[27]`:** Radiant CSS gradients (`<solstice>`, `<dusk>`, `<hearth>`, `<aurora>`, `<abyss>`) for climactic thoughts and scene capstones.
+- **`[OPT] Prose: Kinetic Emphasis (Acoustic Weight) ⚡` `[28]`:** Dynamic weighting tags (`<heavy>`, `<stretch>`, `<tilt>`, `<echo>`, `<crush>`) for physical impacts and lingering beats.
 - **Authorial Style Presets (Pick to taste):**
-  - **`Lean & Direct (Hemingway)` `[29]`:** Muscular, unadorned declarative prose and short sentence structures.
-  - **`Gritty Realism (McCarthy)` `[30]`:** Stark tactile weight, elemental landscapes, biblical rhythm, and polysyndeton.
-  - **`Quiet Atmosphere (Murakami)` `[31]`:** Cool domestic routines, subtle loneliness, jazz, and contemplative stillness.
-  - **`Working Earth (Steinbeck)` `[32]`:** Earthy vernacular, tangible physical labor, dust, and raw social realism.
-  - **`Missed Cues (Chekhov)` `[33]`:** Everyday conversation masking unspoken heartaches, tragic subtext, and missed connections.
+  - **`[OPT: STYLE] Lean & Direct (Hemingway)` `[29]`:** Muscular, unadorned declarative prose and short sentence structures.
+  - **`[OPT: STYLE] Gritty Realism (McCarthy)` `[30]`:** Stark tactile weight, elemental landscapes, biblical rhythm, and polysyndeton.
+  - **`[OPT: STYLE] Quiet Atmosphere (Murakami)` `[31]`:** Cool domestic routines, subtle loneliness, jazz, and contemplative stillness.
+  - **`[OPT: STYLE] Working Earth (Steinbeck)` `[32]`:** Earthy vernacular, tangible physical labor, dust, and raw social realism.
+  - **`[OPT: STYLE] Missed Cues (Chekhov)` `[33]`:** Everyday conversation masking unspoken heartaches, tragic subtext, and missed connections.
 
-### 4. Living World, Props & Combat Choreo
-- **`[Module] World: Anti-Orbiting` `[14]`:** NPCs follow their own schedules and routines. Characters do not hover around {{user}} or conveniently appear in empty rooms unless physically summoned or motivated.
-- **`[Module] World: Dynamic World` `[15]`:** Tracks environmental permanence, weather transitions, object wear-and-tear, and persistent physical injuries/scars across sessions.
-- **`[Module] World: Immersive Props 📱` `[16]`:** Formats diegetic in-game media (smartphones, handwritten letters, receipts, terminal logs, classified files) into pure CSS UI prop cards.
-- **`[Module] Action: Tactical CQC Choreo` `[35]`:** High-intensity combat physics emphasizing weight, momentum exchange, footing, center of gravity, and kinetic impact beats.
+### ══════════ ⚔️ 04. COMBAT & INTIMACY ══════════
+- **`[OPT] Action: Tactical CQC & Combat Choreography` `[35]`:** High-intensity combat physics emphasizing weight, momentum exchange, footing, center of gravity, and kinetic impact beats.
+- **`[OPT] Intimacy: Sensory Pacing & Tension` `[36]`:** Slow-burn romantic and physical build-up focusing on thermal skin gradients, tactile hesitation, and somatic anticipation.
+- **`[OPT] Intimacy: Visceral Gooner Mode` `[37]`:** Pure, uninhibited NSFW overdrive for maximal physical explicitness.
+- **`[OPT] Intimacy: Explicit Register (Uncensored)` `[38]`:** Uncensored adult prose using precise anatomical vocabulary without clinical detachment or purple euphemisms.
+- **`[OPT: BALANCER] Anti-Softening Counter (Edge Lock)` `[39]`:** Emergency counterbalance module that prevents gruff, villainous, or cynical NPCs from prematurely softening, forgiving {{user}}, or becoming overly agreeable.
+- **`[OPT: BALANCER] Anti-Cruelty Counter (Sadism Brake)` `[40]`:** Emergency counterbalance module preventing dark or intense scenes from devolving into gratuitous, mindless sadism without emotional narrative logic.
 
-### 5. Intimacy & Relationship Tiers
-- **`[Module] Intimacy: Sensory Pacing` `[36]`:** Slow-burn romantic and physical build-up focusing on thermal skin gradients, tactile hesitation, and somatic anticipation.
-- **`[Module] Intimacy: Explicit Register` `[38]`:** Uncensored adult prose using precise anatomical vocabulary without clinical detachment or purple euphemisms.
-- **`[Module] Intimacy: Visceral Gooner Mode` `[37]`:** Pure, uninhibited NSFW overdrive for maximal physical explicitness.
+### ══════════ ⏱️ 05. PACING & RHYTHM ══════════
+- **`[OPT] Pacing: Novelistic Epic (700-900 Words)` `[42]`:** Unlocks dense, expansive prose (~700–900 words / 4–8 paragraphs) tailored for slow-burn journeys and grand world-building.
+- **`[OPT] Pacing: Story Rhythm (Cadence Variation)` `[43]`:** Dynamically varies turn openers (action beat vs. environment vs. dialogue) to prevent formulaic narrative cadence.
 
-### 6. Visual Formatting, Typography & Chromatic Engine
-*(Note: Requires the Sola Regex Companion Pack in SillyTavern)*
-- **`[Module] Scene: Establishing Headers 🎬` `[17]`:** Automatically generates 70mm anamorphic scene cards rendering dynamic time-of-day skyboxes (Morning, Noon, Dusk, Twilight, Midnight, Storm) and location chips via pure CSS.
-- **`[Module] Default Voice: NPC Dialogue Colors (Pick 1) 🎨` `[25]`:** Paints character speech in Sola's canonical 16-color Day & Night palettes, giving every speaker a consistent chromatic identity.
-- **`[Module] Voice: NPC Tonal Typography 🪶` `[26]`:** Typographic emotional inflections (`<whisper>`, `<bite>`, `<tremble>`, `<steady>`) that mix freely with dialogue colors.
-- **`[Module] Voice & Monologue: Chromatic Gradients 🌅` `[27]`:** Radiant CSS gradients (`<solstice>`, `<dusk>`, `<hearth>`, `<aurora>`, `<abyss>`) for climactic thoughts and scene capstones.
-- **`[Module] Prose & Voice: Kinetic Emphasis ⚡` `[28]`:** Dynamic weighting tags (`<heavy>`, `<stretch>`, `<tilt>`, `<echo>`, `<crush>`) for physical impacts and lingering beats.
-- **`[Module] Default Voice: Gradient ALL The Time` `[24]` & `Toggle: Stylistic Overload` `[19]`:** Opt-in aesthetic amplifiers for users who want maximal chromatic vibrancy and sensory saturation.
+### ══════════ 👁️ 06. POINT OF VIEW (POV) ══════════
+Choose **one** point of view mode to establish your story's perspective:
+- **`[PICK 1: POV] First-Person Present Tense` `[45]`:** Immersive internal immediacy (`"I step into the hallway..."`).
+- **`[PICK 1: POV] Second-Person Present Tense` `[46]`:** Classic interactive fiction cadence (`"You step into the hallway..."`).
+- **`[PICK 1: POV] Freaky Hybrid (3rd World + 2nd Touch)` `[47]`:** 3rd-person world simulation paired with intimate 2nd-person sensory touch.
+- **`[PICK 1: POV] Third-Person Past Tense` `[48]`:** Traditional novelistic past tense (`"He stepped into the hallway..."`).
+- **`[PICK 1: POV] Third-Person Present Tense` `[49]`:** Contemporary literary presence (`"He steps into the hallway..."`).
 
-### 7. Pacing, Point of View (POV) & Pronouns
-- **`[Module] Pacing: Story Rhythm` `[43]`:** Dynamically varies turn openers (action beat vs. environment vs. dialogue) to prevent formulaic narrative cadence.
-- **`[Module] Pacing: Novelistic Epic (Expansive Flow)` `[42]`:** Unlocks dense, expansive prose (~700–900 words / 4–8 paragraphs) tailored for slow-burn journeys and grand world-building.
-- **POV Selection (Pick 1):**
-  - **`First-Person Present` `[45]`:** Immersive internal immediacy (`"I step into the hallway..."`).
-  - **`Second-Person Present` `[46]`:** Classic interactive fiction cadence (`"You step into the hallway..."`).
-  - **`Freaky Hybrid` `[47]`:** 3rd-person world simulation paired with intimate 2nd-person sensory touch.
-  - **`Third-Person Past` `[48]`:** Traditional novelistic past tense (`"He stepped into the hallway..."`).
-  - **`Third-Person Present` `[49]`:** Contemporary literary presence (`"He steps into the hallway..."`).
-- **Pronoun Anchors (Pick 1):** `She / Her` `[53]`, `He / Him` `[54]`, `They / Them` `[55]`.
+### ══════════ 🗂️ 07. CARD DATA & CHAT HISTORY ══════════
+Standard SillyTavern dynamic markers along with pronoun anchors:
+- **`[PICK 1: PRONOUN] She / Her` `[53]`**, **`[PICK 1: PRONOUN] He / Him` `[54]`**, **`[PICK 1: PRONOUN] They / Them` `[55]`**.
+- Markers: `World Info`, `Scenario`, `Persona`, `Character Info`, `Character Personality`, `Chat Examples`, `NSFW Prompt`, `Enhance Definitions`, `Chat History`, `World Info (after)`.
 
-### 8. Showrunner Telemetry & State Trackers
-- **`[Module] Tracker: Showrunner Master HUD 🎛️` `[65]`:** Obsidian & amber console consolidating all active state telemetry into a single `<sola_hud>` container with glanceable status badges (`T# F# D# Y#`).
-- **`[Module] Tracker: Feeling Engine 📊` `[70]`:** Multi-NPC telemetry card tracking Trust, Fear, Desire, and Yield (TFDY) along with active psychological masks.
-- **`[Module] Tracker: Sola's Bond Radar 💞` `[69]`:** Audits chemistry, relational friction, and subtext between characters.
-- **`[Module] Tracker: Thought Engine 💭` `[71]`:** Backstage interiority check-in evaluating an NPC's raw impulse vs. their spoken mask before lines land.
-- **`[Module] Tracker: {{char}} Matrix 🧬` `[72]`:** Hard boundary audit, persona fidelity lock, and anti-orbit tracker ensuring NPCs stay true to their core identity.
-- **`[Module] Tracker: Tempo Agitator` `[66]`:** Dynamic pacing gear shifter monitoring narrative acceleration and braking.
-- **`[Module] Tracker: Story Seeding 📓` `[67]`:** Persistent director scratchpad tracking unexploded Chekhov's guns, plot threads, and foreshadowed callbacks.
-- **`[Module] Tracker: Calendar & Chronology 🕰️` `[68]`:** Tracks macroeconomic timeline dates, hours elapsed, and circadian cycles.
-- **`[Module] Tracker: Active Scene Cast 👥` `[77]`:** Logs spatial room coordinates, active participants, and spatial facts.
-- **`[Module] Tracker: Wardrobe 🧥` `[75]` & `Carried Inventory 🗡️` `[76]`:** Tracks garment damage, clothing layers, held items, and equipment durability.
-- **`[Module] Tracker: Unified Scene Dossier 📋` `[78]`:** Consolidates all scene facts into a dense, token-efficient state container.
-- **`[Module] Roleplay: The Wind's Arrow 🏹` `[73]` & `Sola's Omen Deck 🎴` `[74]`:** Kinetic d20 entropy rolls and symbolic tarot scene transition generators.
+### ══════════ 📊 08. TELEMETRY & STATE TRACKERS ══════════
+*(Note: Visual HUD cards require the Sola Regex Companion Pack)*
+- **`[TRACKER] Showrunner Master HUD 🎛️` `[65]`:** Obsidian & amber console consolidating all active state telemetry into a single `<sola_hud>` container with glanceable status badges (`T# F# D# Y#`).
+- **`[TRACKER] Tempo Agitator (Pacing Gears)` `[66]`:** Dynamic pacing gear shifter monitoring narrative acceleration and braking.
+- **`[TRACKER] Story Seeding & Director Notebook 📓` `[67]`:** Persistent director scratchpad tracking unexploded Chekhov's guns, plot threads, and foreshadowed callbacks.
+- **`[TRACKER] Calendar & Chronology (Time Tracker) 🕰️` `[68]`:** Tracks macroeconomic timeline dates, hours elapsed, and circadian cycles.
+- **`[TRACKER] Sola's Bond & Chemistry Radar 💞` `[69]`:** Audits chemistry, relational friction, and subtext between characters.
+- **`[TRACKER] Feeling Engine (TFDY Telemetry) 📊` `[70]`:** Multi-NPC telemetry card tracking Trust, Fear, Desire, and Yield (TFDY) along with active psychological masks.
+- **`[TRACKER] Thought Engine (Impulse vs Mask) 💭` `[71]`:** Backstage interiority check-in evaluating an NPC's raw impulse vs. their spoken mask before lines land.
+- **`[TRACKER] {{char}} Matrix (Boundary Audit) 🧬` `[72]`:** Hard boundary audit, persona fidelity lock, and anti-orbit tracker ensuring NPCs stay true to their core identity.
+- **`[TRACKER] Roleplay System: The Wind's Arrow (d20) 🏹` `[73]`:** Binding kinetic d20 entropy rolls injecting organic luck, complications, and surprises.
+- **`[TRACKER] Roleplay System: Sola's Omen Deck (Tarot) 🎴` `[74]`:** Generates symbolic tarot scene transition cards during pivotal crossroads.
+- **`[TRACKER] Wardrobe & Physical Demeanor 🧥` `[75]`:** Tracks garment damage, clothing layers, and changes of outfit.
+- **`[TRACKER] Carried Inventory & Equipment 🗡️` `[76]`:** Tracks held items, weapons, bags, and equipment durability.
+- **`[TRACKER] Active Scene Cast & Local Facts 👥` `[77]`:** Logs spatial room coordinates, active participants, and spatial facts.
+- **`[TRACKER] Unified Scene Dossier 📋` `[78]`:** Consolidates all scene facts into a dense, token-efficient state container.
 
-### 9. Reasoning, Thinking Controls & Recency
-- **`[Reasoning] Sola's Story Review ⭐` `[83]` / `Forced Sola's Story Review ⭐` `[82]`:** Sola's signature reasoning engine. Executes a 3-Anchor Directorial Draft (OPEN, CRUX, CLOSE) inside thinking tags to lock scene momentum and somatic grounding before prose generation begins.
-- **`[Reasoning] Lightning Story Review ⚡` `[86]`:** Ultra-fast, forward-only telegraphic review designed for speed-oriented reasoning models.
-- **`[Jailbreak and Module] System: Stop Thinking So Hard 🧠` `[84]` / `[85]`:** Strict ~150-word, 5-bullet telegraphic budget that prevents over-deliberation, scene pre-drafting, and safety self-censorship inside `<think>` tags.
-- **`[Module] Reminder System 📌` `[81]`:** High-recency injection block at depth 0 that dynamically pulls in only your enabled style, tone, and tracker variables without stale prompt bloat.
-- **`[Module] OOC Collaborator Protocol (Sola)` `[04]`:** Enables seamless out-of-character director workshopping with Sola via `((OOC: ...))` syntax.
-- **`[Core] Unfiltered Register & Consent` `[10]` & `[Jailbreak] Freaky Bypass` `[12]`:** Creative safety deliberation bypass ensuring unsparing fictional themes and mature storytelling are rendered without moralizing refusals.
+### ══════════ ⚡ 09. RECENCY & REASONING STACK ══════════
+- **`[OPT: AGENCY] Strict User Agency (Tight Leash Override)` `[80]`:** Injected at depth 0. Restricts narrative autonomy so Sola only simulates what the player explicitly seeded.
+- **`[CORE] Reminder System 📌 (Depth 0 Dynamic Recency)` `[81]`:** High-recency injection block at depth 0 that dynamically pulls in only your enabled style, tone, and tracker variables without stale prompt bloat.
+- **`[REASONING] Forced Sola's Story Review ⭐ (Tag Required)` `[82]`:** Enforces 3-Anchor Directorial Drafting inside `<storyreview>` tags for models that lack native thinking blocks.
+- **`[REASONING] Sola's Story Review ⭐ (3-Anchor Draft)` `[83]`:** Sola's signature reasoning engine. Executes a 3-Anchor Directorial Draft (OPEN, CRUX, CLOSE) inside thinking tags to lock scene momentum and somatic grounding before prose generation begins.
+- **`[REASONING] Stop Thinking So Hard 🧠 (Beta Limiter)` `[84]` / `(Hard Cap Limiter)` `[85]`:** Strict ~150-word, 5-bullet telegraphic budget that prevents over-deliberation, scene pre-drafting, and safety self-censorship inside `<think>` tags.
+- **`[REASONING] Lightning Story Review ⚡ (Speed-Run)` `[86]`:** Ultra-fast, forward-only telegraphic review designed for speed-oriented reasoning models.
+- **`[PICK 1: GROUNDING] Story Grounding (Post-History / Recency)` `[87]`:** Enforces blunt human clarity and realistic dialogue friction placed at the prompt tail for maximum recency.
+- **`[CORE] Post-History Instructions (In-Chat Anchor)` `[88]`:** Non-negotiable final anchor reinforcing somatic ground rules, anti-echo, and zero-bathos immediately before output generation begins.
 
 ---
 
