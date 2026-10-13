@@ -143,7 +143,7 @@
             The exact way I use Sola myself. Pre-configured with optional narrative modules active out of the box.
           </p>
           <ul class="feature-list">
-            <li><span class="feature-icon">✦</span> <div><strong>All [Core] Foundations</strong> active</div></li>
+            <li><span class="feature-icon">✦</span> <div><strong>All Core Foundations</strong> active</div></li>
             <li><span class="feature-icon">✦</span> <div><strong>Story review for narrative continuity</strong> (the story reasoning is my <em>sauce</em>)</div></li>
             <li><span class="feature-icon">✦</span> <div><strong>Dynamic narrative trackers</strong> & state engines enabled</div></li>
             <li><span class="feature-icon">✦</span> <div><strong>Great with frontier models</strong> (Gemini and GLM are scrumptious with Flame)</div></li>
@@ -185,33 +185,40 @@
         </div>
       </div>
 
-      <!-- Toggle Taxonomy & Quick Recipes -->
+      <!-- Prompt Categories & Quick Recipes -->
       <div style="margin-top: 36px;">
-        <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 8px; text-align: center;">🏷️ How to Read Sola Toggles (The 4-Tag Taxonomy)</h3>
+        <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 8px; text-align: center;">How Sola Prompts Are Organized</h3>
         <p style="text-align: center; color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 22px;">
-          Sola V3 contains 103 SillyTavern prompts and 102 Flame Lumi blocks. Operational prefixes make the modular stack easy to navigate:
+          Sola V3 contains 103 SillyTavern prompts and 102 Flame Lumi blocks, organized into four plain-language categories:
         </p>
 
-        <div class="grid-3" style="margin-bottom: 28px;">
+        <div class="grid-2 prompt-category-grid" style="margin-bottom: 28px;">
           <div class="card" style="padding: 20px;">
-            <span class="edition-badge badge-flame" style="margin-bottom: 8px;">[CORE]</span>
+            <span class="edition-badge badge-flame" style="margin-bottom: 8px;">Core</span>
             <h4 style="color: var(--text-primary); margin-bottom: 6px;">Foundational Directives</h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
               <strong>Leave ON.</strong> Essential to Sola's baseline prose quality, somatic realism, and anti-echo rules.
             </p>
           </div>
           <div class="card" style="padding: 20px;">
-            <span class="edition-badge badge-ember" style="margin-bottom: 8px;">[PICK 1: GROUP]</span>
-            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Mutually Exclusive Choices</h4>
+            <span class="edition-badge badge-ember" style="margin-bottom: 8px;">Optional</span>
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Optional Modules</h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
-              <strong>Choose ONE.</strong> Select your preferred mode in that group (e.g. Agency, POV, Anti-Slop, Palette).
+              Toggle style, scene, and craft tools to fit the story and the model you're using.
             </p>
           </div>
           <div class="card" style="padding: 20px;">
-            <span class="edition-badge" style="background: rgba(154, 168, 122, 0.16); color: #9AA87A; border: 1px solid rgba(154, 168, 122, 0.35); margin-bottom: 8px;">[OPT] &amp; [TRACKER]</span>
-            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Optional Flavors &amp; HUD</h4>
+            <span class="edition-badge" style="background: rgba(154, 168, 122, 0.16); color: #9AA87A; border: 1px solid rgba(154, 168, 122, 0.35); margin-bottom: 8px;">Tracker</span>
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">State &amp; Continuity Trackers</h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
-              <strong>Freely Toggle.</strong> Turn on or off for specific author styles, combat choreography, or visual telemetry cards.
+              Engines and ledgers that carry emotional, narrative, and scene state.
+            </p>
+          </div>
+          <div class="card" style="padding: 20px;">
+            <span class="edition-badge" style="background: rgba(133, 146, 230, 0.16); color: #8592E6; border: 1px solid rgba(133, 146, 230, 0.35); margin-bottom: 8px;">Reasoning</span>
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Reasoning Tools</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+              Private planning helpers such as Story Review; choose them for models and workflows that support them.
             </p>
           </div>
         </div>
@@ -226,10 +233,10 @@
             <h4 style="color: #9AA87A; margin-bottom: 8px;">⚡ 1. Minimalist (Pure &amp; Lean)</h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 12px;">Ultra-fast turns, lowest token overhead (~1.2k tokens), and pristine prose. Ideal for local models.</p>
             <ul class="feature-list" style="margin-bottom: 0;">
-              <li><span class="feature-icon">✦</span> <div>All <code>[CORE]</code> foundations active</div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[PICK 1: AGENCY] Agency-Lite</code></div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[PICK 1: ANTI-SLOP] Lite Anti-Slop</code></div></li>
-              <li><span class="feature-icon">✦</span> <div>All <code>[TRACKER]</code> &amp; Reasoning off</div></li>
+              <li><span class="feature-icon">✦</span> <div>All Core foundations active</div></li>
+              <li><span class="feature-icon">✦</span> <div>Agency-Lite control mode</div></li>
+              <li><span class="feature-icon">✦</span> <div>Optional: Lite Anti-Slop</div></li>
+              <li><span class="feature-icon">✦</span> <div>Tracker and Reasoning modules off</div></li>
             </ul>
           </div>
 
@@ -237,10 +244,10 @@
             <h4 style="color: var(--accent-gold); margin-bottom: 8px;">📖 2. The Novelist (Cinematic)</h4>
             <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 12px;">Rich sensory immersion, dialogue friction, evocative prose, and dynamic 70mm scene headers.</p>
             <ul class="feature-list" style="margin-bottom: 0;">
-              <li><span class="feature-icon">✦</span> <div>All <code>[CORE]</code> foundations active</div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[OPT] Action-Anchored Dialogue 🏷️</code></div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[OPT] Scene: Establishing Headers 🎬</code></div></li>
-              <li><span class="feature-icon">✦</span> <div>Pick 1 Author Style (e.g. McCarthy)</div></li>
+              <li><span class="feature-icon">✦</span> <div>All Core foundations active</div></li>
+              <li><span class="feature-icon">✦</span> <div>Optional: Action-Anchored Dialogue 🏷️</div></li>
+              <li><span class="feature-icon">✦</span> <div>Optional: Scene Establishing Headers 🎬</div></li>
+              <li><span class="feature-icon">✦</span> <div>Choose an author style (e.g. McCarthy)</div></li>
             </ul>
           </div>
 
@@ -249,9 +256,9 @@
             <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 12px;">The complete Sola experience. Full visual telemetry, feeling engines, NPC interiority, and 3-anchor review.</p>
             <ul class="feature-list" style="margin-bottom: 0;">
               <li><span class="feature-icon">✦</span> <div>Everything in <em>The Novelist</em></div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[TRACKER] Master HUD 🎛️</code> active</div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[TRACKER] Feeling Engine (TFDY)</code></div></li>
-              <li><span class="feature-icon">✦</span> <div><code>[REASONING] Sola's Story Review ⭐</code></div></li>
+              <li><span class="feature-icon">✦</span> <div>Tracker: Master HUD 🎛️ active</div></li>
+              <li><span class="feature-icon">✦</span> <div>Tracker: Feeling Engine (TFDY)</div></li>
+              <li><span class="feature-icon">✦</span> <div>Reasoning: Sola's Story Review ⭐</div></li>
             </ul>
           </div>
         </div>
@@ -275,7 +282,7 @@
             </span>
             <span class="download-meta">SillyTavern • 805.9 KiB (825,212 bytes) • 103 prompts • Lumi • 802.0 KiB (821,225 bytes) • 102 blocks</span>
           </div>
-          <div class="download-actions">
+          <div class="download-actions" style="display: grid; grid-template-columns: max-content max-content; gap: 8px;">
             <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-primary btn-sm">SillyTavern</a>
             <button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Flame SillyTavern link copied!">Copy ST Link</button>
             <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary btn-sm">Lumi</a>
@@ -620,11 +627,11 @@
       <!-- Pinned Status Card -->
       <div class="card blog-pinned">
         <span class="blog-badge">⚡ Current Focus</span>
-        <span class="blog-date">September 26, 2026</span>
-        <h3 class="blog-title">V2 Full Release & Taking a Creative Break</h3>
+        <span class="blog-date">October 13, 2026</span>
+        <h3 class="blog-title">V3 Full Release & Taking a Real Break</h3>
         <div class="blog-content">
           <p>
-            Well with the release of V2 I am gonna go on a small break to enjoy my fruits and play with tons of other presets. So many great creators and so little time. Hope you sweet little beans enjoy~
+            Okay this is gonna be a real break now. I've been working on V3 since the release of V2. Gonna play games, roleplay and just <em>tinker</em> with Sola. Have fun, Babes.
           </p>
         </div>
       </div>
@@ -753,7 +760,7 @@
           <h4 style="color: var(--accent-flame); margin: 14px 0 6px;">🗣️ Voice, Idiolect & Bare Speech Modularization</h4>
           <ul>
             <li><strong>Rhythmic Axis Protocol:</strong> Upgraded the 3-Axis Idiolect Engine (Diction, Rhythmic, Evasion) to emphasize thought assembly, spoken friction, phonetic grain, and cadence differentiation.</li>
-            <li><strong>Action-Anchored Dialogue Module:</strong> Extracted speech tag and vocal texture label bans into a dedicated toggleable module (<code>[Module] Voice: Action-Anchored Dialogue (Zero Tags) 🏷️</code>) wired via <code>{{mod_notags}}</code>.</li>
+            <li><strong>Optional: Action-Anchored Dialogue:</strong> Extracted speech tag and vocal texture label bans into a dedicated toggleable module (<code>Action-Anchored Dialogue (Zero Tags) 🏷️</code>) wired via <code>{{mod_notags}}</code>.</li>
             <li><strong>Pre & Post-History Story Grounding:</strong> Twin modular toggles enforcing Anti-Bathos and human social friction (<em>"Humanism > Style"</em>) without conversational runoff.</li>
           </ul>
 
@@ -771,20 +778,20 @@
 
           <h4 style="color: var(--accent-gold); margin: 14px 0 6px;">🧩 Complete Roster of New V2 Modules & Toggles</h4>
           <ul>
-            <li><strong><code>[Core] User: Agency-Lite</code> vs <code>[Core] User: Embellishment/Control</code> (Pick 1):</strong> Twin agency architectures allowing players to choose between strict seed-only simulation (tight leash) or proactive co-authorship where Sola builds ambient momentum and organic scene ripples (loose leash).</li>
-            <li><strong><code>[Core Extra] Anti-Slop</code> & <code>Lite Anti-Slop</code> (Pick 1):</strong> High-precision surgical filters purging AI clichés, dramatic theatrical crutches, and formulaic sentence structures.</li>
-            <li><strong><code>[Module] Voice: Action-Anchored Dialogue (Zero Tags) 🏷️</code>:</strong> Banned conversational speech tags (<code>said</code>, <code>whispered</code>, <code>muttered</code>) and stage-direction captions, anchoring dialogue entirely to concrete physical action beats or bare spoken lines.</li>
-            <li><strong><code>[Module] Pre-History Story Grounding</code> & <code>[Module] Post-History Story Grounding</code> (Pick 1):</strong> Flexible dual-placement modules enforcing Anti-Bathos (zero ironic quips during tension/intimacy) and grounded conversational friction (<em>Humanism &gt; Style</em>).</li>
-            <li><strong><code>[Module] Scene: Establishing Headers 🎬</code>:</strong> Dynamic scene establishing cards rendering atmospheric time-of-day skyboxes (Morning, Noon, Dusk, Twilight, Midnight, Storm) and location chips via pure CSS.</li>
-            <li><strong><code>[Module] Voice: Idiolect, Dialect & Dialogue Craft 🗣️</code>:</strong> Upgraded 3-Axis differentiation protocol (Diction, Rhythmic Axis, Evasion) featuring the anti-cosplay strip-test, voice swap-test, and strict dialogue echo bans.</li>
-            <li><strong><code>[Module] Default Voice: NPC Dialogue Colors (Pick 1)🎨</code>:</strong> Persistent chromatic identity across 16 canonical Day and Night colors, with seamless inline tone (<code>&lt;color:tone&gt;</code>) and kinetic (<code>&lt;color:kinetic&gt;</code>) compound tagging.</li>
-            <li><strong><code>[Module] Voice: NPC Tonal Typography 🪶</code>:</strong> Typographic emotional inflections (<code>&lt;whisper&gt;</code>, <code>&lt;bite&gt;</code>, <code>&lt;tremble&gt;</code>, <code>&lt;steady&gt;</code>) that mix freely with dialogue colors and gradients.</li>
-            <li><strong><code>[Module] Voice & Monologue: Chromatic Gradients 🌅</code>:</strong> Radiant mathematical CSS gradients (<code>&lt;dusk&gt;</code>, <code>&lt;solstice&gt;</code>, <code>&lt;hearth&gt;</code>, <code>&lt;aurora&gt;</code>, <code>&lt;abyss&gt;</code>) for internal reflections and pivotal turn capstones.</li>
-            <li><strong><code>[Module] Prose & Voice: Kinetic Emphasis ⚡</code>:</strong> Acoustic impact and kinetic weighting tags (<code>&lt;heavy&gt;</code>, <code>&lt;stretch&gt;</code>, <code>&lt;tilt&gt;</code>, <code>&lt;echo&gt;</code>, <code>&lt;crush&gt;</code>) for physical shocks and lingering silences.</li>
-            <li><strong><code>[Module] Default Voice: Gradient ALL The Time (Pick 1)</code> & <code>Toggle: Stylistic Overload</code>:</strong> Opt-in stylistic amplifiers for players who want full chromatic vibrancy and maximal sensory saturation.</li>
-            <li><strong><code>[Module] Tracker: Thought Engine 💭</code>:</strong> Grounded backstage interiority check-in evaluating raw impulse vs. spoken mask before dialogue lands.</li>
-            <li><strong><code>[Module] Tracker: {{char}} Matrix 🧬</code>:</strong> Hard boundary audit, orientation fidelity lock, and anti-orbit tracker ensuring NPCs never unnaturally shadow or mirror {{user}}.</li>
-            <li><strong><code>[Jailbreak and Module] System: Stop Thinking So Hard 🧠 (beta test)</code>:</strong> Ultra-lean 150-word, 5-bullet telegraphic flight-recorder cutting trial drafting, deliberation, and moralizing inside <code>&lt;think&gt;</code> tags.</li>
+            <li><strong>Core: User Agency-Lite vs User Embellishment/Control (choose one):</strong> Twin agency architectures allowing players to choose between strict seed-only simulation (tight leash) or proactive co-authorship where Sola builds ambient momentum and organic scene ripples (loose leash).</li>
+            <li><strong>Optional: Anti-Slop and Lite Anti-Slop (choose one):</strong> High-precision surgical filters purging AI clichés, dramatic theatrical crutches, and formulaic sentence structures.</li>
+            <li><strong>Optional: Voice: Action-Anchored Dialogue (Zero Tags) 🏷️:</strong> Banned conversational speech tags (<code>said</code>, <code>whispered</code>, <code>muttered</code>) and stage-direction captions, anchoring dialogue entirely to concrete physical action beats or bare spoken lines.</li>
+            <li><strong>Core: Pre-History and Post-History Story Grounding (choose one):</strong> Flexible dual-placement modules enforcing Anti-Bathos (zero ironic quips during tension/intimacy) and grounded conversational friction (<em>Humanism &gt; Style</em>).</li>
+            <li><strong>Optional: Scene Establishing Headers 🎬:</strong> Dynamic scene establishing cards rendering atmospheric time-of-day skyboxes (Morning, Noon, Dusk, Twilight, Midnight, Storm) and location chips via pure CSS.</li>
+            <li><strong>Optional: Voice, Idiolect, Dialect &amp; Dialogue Craft 🗣️:</strong> Upgraded 3-Axis differentiation protocol (Diction, Rhythmic Axis, Evasion) featuring the anti-cosplay strip-test, voice swap-test, and strict dialogue echo bans.</li>
+            <li><strong>Optional: Default Voice: NPC Dialogue Colors (choose one) 🎨:</strong> Persistent chromatic identity across 16 canonical Day and Night colors, with seamless inline tone (<code>&lt;color:tone&gt;</code>) and kinetic (<code>&lt;color:kinetic&gt;</code>) compound tagging.</li>
+            <li><strong>Optional: Voice: NPC Tonal Typography 🪶:</strong> Typographic emotional inflections (<code>&lt;whisper&gt;</code>, <code>&lt;bite&gt;</code>, <code>&lt;tremble&gt;</code>, <code>&lt;steady&gt;</code>) that mix freely with dialogue colors and gradients.</li>
+            <li><strong>Optional: Voice &amp; Monologue: Chromatic Gradients 🌅:</strong> Radiant mathematical CSS gradients (<code>&lt;dusk&gt;</code>, <code>&lt;solstice&gt;</code>, <code>&lt;hearth&gt;</code>, <code>&lt;aurora&gt;</code>, <code>&lt;abyss&gt;</code>) for internal reflections and pivotal turn capstones.</li>
+            <li><strong>Optional: Prose &amp; Voice: Kinetic Emphasis ⚡:</strong> Acoustic impact and kinetic weighting tags (<code>&lt;heavy&gt;</code>, <code>&lt;stretch&gt;</code>, <code>&lt;tilt&gt;</code>, <code>&lt;echo&gt;</code>, <code>&lt;crush&gt;</code>) for physical shocks and lingering silences.</li>
+            <li><strong>Optional: Gradient ALL The Time (choose one) &amp; Stylistic Overload:</strong> Opt-in stylistic amplifiers for players who want full chromatic vibrancy and maximal sensory saturation.</li>
+            <li><strong>Tracker: Thought Engine 💭:</strong> Grounded backstage interiority check-in evaluating raw impulse vs. spoken mask before dialogue lands.</li>
+            <li><strong>Tracker: {{char}} Matrix 🧬:</strong> Hard boundary audit, orientation fidelity lock, and anti-orbit tracker ensuring NPCs never unnaturally shadow or mirror {{user}}.</li>
+            <li><strong>Reasoning: Stop Thinking So Hard 🧠 (beta test):</strong> Ultra-lean 150-word, 5-bullet telegraphic flight-recorder cutting trial drafting, deliberation, and moralizing inside <code>&lt;think&gt;</code> tags.</li>
           </ul>
 
           <h4 style="color: var(--accent-flame); margin: 14px 0 6px;">🧹 SillyBunny Agent: Sola De-Sloppinator</h4>
@@ -800,9 +807,9 @@
             <li><strong>Dual-Format Distribution:</strong> Distributed in both 1-click <code>.lumitheme</code> archive and portable <code>.json</code> ThemePack formats with custom dialogue and interiority CSS.</li>
           </ul>
 
-          <h4 style="color: var(--accent-flame); margin: 14px 0 6px;">🏷️ Human-Parseable Prompt Taxonomy &amp; Section Dividers</h4>
+          <h4 style="color: var(--accent-flame); margin: 14px 0 6px;">📂 Prompt Categories &amp; Section Dividers</h4>
           <ul>
-            <li><strong>Standardized 4-Tag Prefix Taxonomy:</strong> Re-indexed all 89 prompt titles with clean operational prefixes (<code>[CORE]</code>, <code>[PICK 1]</code>, <code>[OPT]</code>, <code>[TRACKER]</code>, <code>[REASONING]</code>) so players instantly know what to leave on, what is mutually exclusive, and what is freely toggleable.</li>
+            <li><strong>Plain-Language Prompt Categories:</strong> Grouped prompts as Core, Optional, Tracker, and Reasoning so players can tell foundational guidance, optional craft tools, state tracking, and private review helpers apart.</li>
             <li><strong>High-Contrast Numbered Dividers:</strong> Upgraded dividers to numbered double-rule section headers (<code>══════════ 01..09 ══════════</code>) making prompt list navigation effortless in SillyTavern.</li>
             <li><strong>Curated Build Recipes:</strong> Added 3 ready-to-use toggle recipes (Minimalist, The Novelist, The Full Showrunner) to the Hub and documentation.</li>
           </ul>
@@ -848,7 +855,7 @@
           <h4 style="color: var(--accent-flame); margin: 14px 0 6px;">⚡ Reasoning & Thinking Optimization</h4>
           <ul>
             <li><strong>Lightning Story Review ⚡:</strong> New lightweight thinking module designed for fast reasoning models, enforcing one-pass telegraphic planning without full-prose drafting or token burn.</li>
-            <li><strong>Eastern Model Story Grounding:</strong> Added <code>[Module] Flash Story Grounding</code> tailored specifically for GLM, MiniMax, and DeepSeek, alongside the <code>Stop Thinking So Hard 🧠</code> countermeasure.</li>
+            <li><strong>Eastern Model Story Grounding:</strong> Added Flash Story Grounding tailored specifically for GLM, MiniMax, and DeepSeek, alongside the <code>Stop Thinking So Hard 🧠</code> countermeasure.</li>
           </ul>
 
           <h4 style="color: var(--accent-gold); margin: 14px 0 6px;">⚙️ Sola V1.2 Regex Companion Pack</h4>
