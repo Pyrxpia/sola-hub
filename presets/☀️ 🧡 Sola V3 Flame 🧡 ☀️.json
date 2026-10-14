@@ -1421,7 +1421,7 @@
             "marker": false,
             "name": "Anti-Staccato",
             "role": "system",
-            "content": "{{// Adds a rich phonetic catalog of human vocalizations (breaths, clicks, sighs, gasps, groans) into dialogue for cinematic intimacy and spoken realism.}}\n{{trim}}\n{{setvar::mod_vocal::\n- Voice Check (Vocal Sounds): Integrate realistic disfluency, throat sounds, gasps, and non-verbal vocal texture where earned.}}\n{{setvar::sola_opt_vocal::\n## Vocal Sounds\nWrite vocal sounds phonetically instead of using descriptive summary tags:\n- Pleasure & Breath: \"Mnnhh~\", \"Haaah~\", \"A-ah!\", \"Ahhn~♡\", ragged exhales, low broken cadence.\n- Intensity & Elongation: \"Fuuuck~\", \"Pleeease~\", \"Noooo!\"\n- Friction & Effort: \"Ngh...\", \"Hnngh\", sharp teeth-clicks, caught breaths, grunted exhales upon impact.\n- Hesitation & Disfluency: \"I-I can't—\", \"c-can't think—\", strained swallowed retorts, throat-clearing.\n- Drunk & Slurred: \"mm toshally f-fine\", \"neeeed shyou\"}}{{trim}}",
+            "content": "{{// Turn this on if you notice that the AI is just using too many periods and breaking things up too often.}}{{trim}}\n\n{{setvar::sola_opt_staccato}}\n## Anti-Staccato\nFavor hypotactic sentence structure over paratactic chains and fragmented stops.\n\n- Employ hypotaxis over parataxis; connect related actions rather than isolating them into single-clause sentences.\n- Integrate coordinating and subordinating conjunctions to establish clear causal, temporal, and spatial relationships.\n- Use participial phrases and relative pronouns to nest secondary actions into main clauses.\n- Vary syntax dynamically: reserve short, single-clause declarations strictly for deliberate emphasis.\n\n Example:\n   - \"He stopped. He looked at them. He walked over to them.\" BAD\n   - \"He stopped, looked over at them, then he walked over.\" GOOD\n{{/setvar}}",
             "injection_position": 0,
             "injection_depth": 4,
             "injection_order": 100,
@@ -2064,7 +2064,7 @@
                 },
                 {
                     "identifier": "01a0debb-b416-7025-97d8-763379856a80",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "01a0debb-b416-7026-a556-1e56e9ced26b",
@@ -2072,7 +2072,7 @@
                 },
                 {
                     "identifier": "a2958133-59f4-4dea-848e-3928bb56f291",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "01a0debb-b416-7027-b7f8-d9d8289703ef",
