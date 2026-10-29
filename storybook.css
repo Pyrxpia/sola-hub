@@ -1,0 +1,111 @@
+
+:root{--ink:#1b1411;--hearth:#241914;--panel:#302019;--paper:#f7e8d3;--muted:#d4bfa8;--gold:#edbb72;--coral:#e98f70;--sage:#9eaa81}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ink);color:var(--paper);font-family:Nunito,system-ui,sans-serif;line-height:1.6}a{color:inherit}button{font:inherit} :focus-visible{outline:3px solid #f3c676;outline-offset:4px}.wrap{width:min(1180px,calc(100% - 56px));margin:auto}.nav{border-bottom:1px solid #ffffff1c;background:#1b1411;position:relative;z-index:1}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:30px}.brand{text-decoration:none;font:600 28px 'Cormorant Garamond',Georgia,serif;letter-spacing:.04em}.brand span{color:var(--gold)}.sb-nav-links{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:700;color:#e1cfbc}.sb-nav-links a{text-decoration:none}.sb-nav-links a:hover{color:var(--gold)}.sb-nav-links .nav-button{border:1px solid #edbb7270;border-radius:100px;padding:9px 18px;color:var(--paper)}.sb-hero{position:relative;overflow:hidden;min-height:700px;background:#22140f}.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 44%;opacity:.82;transform:scaleX(-1)}.sb-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#20140ff7 1%,#20140fe8 31%,#20140f76 61%,#20140f16 100%),linear-gradient(0deg,#1b1411 0%,transparent 23%)}.hero-inner{position:relative;z-index:1;min-height:700px;display:flex;align-items:center}.hero-copy{max-width:610px;padding:78px 0 110px}.chapter{color:var(--gold);font:italic 600 19px 'Cormorant Garamond',Georgia,serif;letter-spacing:.02em}.chapter:before{content:'✦';font-size:12px;margin-right:12px}.sb-hero h1{font:500 clamp(64px,8vw,106px)/.96 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em;margin:22px 0 26px}.sb-hero h1 em{color:#f0bf86;font-weight:500}.hero-copy p{font-size:17px;max-width:460px;color:#f4e5d3;margin:0 0 31px}.actions{display:flex;flex-wrap:wrap;gap:12px}.sb-btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #edbb72;border-radius:100px;padding:13px 22px;text-decoration:none;font-size:14px;font-weight:800}.sb-btn-primary{background:#edbb72;color:#25160e}.sb-btn-outline{background:#1c120faa;border-color:#f4dcc188;color:#f8e9d6}.hero-note{margin-top:50px;color:#e8d4bd;font:italic 500 20px 'Cormorant Garamond',Georgia,serif}.hero-note span{color:var(--gold);margin-right:8px}.intro{padding:48px 0 90px}.intro-line{display:flex;align-items:center;gap:20px;color:#e0b982}.intro-line:before,.intro-line:after{content:'';height:1px;background:linear-gradient(90deg,transparent,#9b735250);flex:1}.intro-line:after{transform:rotate(180deg)}.intro-text{max-width:680px;text-align:center;margin:42px auto 0}.intro-text h2,.minds-head h2{font:500 clamp(42px,5vw,65px)/1.04 'Cormorant Garamond',Georgia,serif;letter-spacing:-.025em;margin:0 0 19px}.intro-text p,.minds-head p{color:var(--muted);font-size:16px;margin:0}.minds{background:#271a15;border-top:1px solid #e4ba8830;border-bottom:1px solid #e4ba8830;padding:104px 0 100px}.minds-head{max-width:680px;margin-bottom:37px}.minds-head .chapter{display:block;margin-bottom:14px}.minds-head p{max-width:580px}.book{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);min-height:500px;background:#34231b;border:1px solid #e1b68a42;border-radius:12px;overflow:hidden;box-shadow:0 20px 55px #0004}.portrait{position:relative;min-height:500px;overflow:hidden;background:#4a2b20}.portrait img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center 25%}.portrait:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 60px #2312085c}.book-page{position:relative;display:flex;flex-direction:column;justify-content:center;padding:55px clamp(30px,6vw,76px);background:radial-gradient(circle at 90% 0%,#d29c5930,transparent 35%),#35241c}.book-page:before{content:'✷';position:absolute;top:35px;right:42px;color:#eec38b88;font-size:24px}.book-small{color:#e0b988;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.book-page h3{font:500 clamp(48px,5vw,74px)/1 'Cormorant Garamond',Georgia,serif;margin:12px 0 20px}.book-page blockquote{font:italic 500 clamp(22px,2.5vw,30px)/1.3 'Cormorant Garamond',Georgia,serif;margin:0 0 20px;color:#f8dcbf;max-width:510px}.book-page p{max-width:470px;color:#decab6;font-size:15px;margin:0}.selector{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px}.selector button{background:transparent;color:#dfcdb8;border:1px solid #d9b99b57;border-radius:99px;padding:8px 13px;font-size:13px;font-weight:700;cursor:pointer}.selector button[aria-pressed=true]{background:#e7b87f;color:#25170f;border-color:#e7b87f}.selector button:hover{border-color:#e7b87f}.footnote{margin:22px 0 0;color:#bfa58d;font-size:13px}.next{padding:95px 0 110px;text-align:center}.next h2{font:500 clamp(40px,5vw,60px)/1.06 'Cormorant Garamond',Georgia,serif;margin:14px 0}.next p{color:var(--muted);max-width:560px;margin:0 auto}.preview-notice{background:#f0d5a7;color:#332017;text-align:center;padding:9px 18px;font-size:13px;font-weight:800}
+@media(max-width:700px){.wrap{width:min(100% - 36px,1180px)}.nav-inner{height:64px}.sb-nav-links{gap:14px}.sb-nav-links a:not(.nav-button){display:none}.sb-hero,.hero-inner{min-height:690px}.hero-img{object-position:35% center;opacity:.65}.sb-hero:after{background:linear-gradient(90deg,#20140fe8,#20140f76),linear-gradient(0deg,#1b1411 0%,transparent 40%)}.hero-copy{padding:75px 0 110px}.sb-hero h1{font-size:clamp(58px,15vw,78px)}.hero-copy p{font-size:16px}.hero-note{margin-top:36px}.intro{padding:40px 0 70px}.minds{padding:70px 0}.book{grid-template-columns:1fr}.portrait{min-height:340px;max-height:400px}.portrait img{object-position:center 23%}.book-page{padding:36px 25px 40px}.book-page:before{top:25px;right:25px}.selector{margin-top:25px}.next{padding:70px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.sb-editions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.sb-edition{padding:32px;border:1px solid #e1b68a42;border-radius:12px;background:linear-gradient(145deg,#3a271d,#291b17)}.sb-edition h3{font:500 38px Cormorant Garamond,Georgia,serif;margin:8px 0}.sb-edition p{color:#decab6;margin:0 0 18px}.sb-downloads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:32px}.sb-download{padding:24px;border:1px solid #e1b68a42;border-radius:12px;background:#302019}.sb-download h3{font:600 27px Cormorant Garamond,Georgia,serif;margin:0 0 8px}.sb-download p{color:#decab6;font-size:14px;margin:0 0 18px}.sb-platforms{display:flex;gap:8px;flex-wrap:wrap}.sb-platforms a{display:inline-block;border:1px solid #edbb7270;border-radius:99px;padding:8px 13px;color:#f8e9d6;text-decoration:none;font-weight:800;font-size:13px}.sb-platforms a:hover{background:#edbb72;color:#25160e}.sb-archive-heading{margin:36px 0 14px;color:#edbb72;font:600 28px Cormorant Garamond,Georgia,serif}@media(max-width:700px){.sb-editions,.sb-downloads{grid-template-columns:1fr}.sb-edition{padding:25px}}
+
+/* Match the remaining guides to the storybook introduction. */
+.section-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:-.02em}.section .card,.changelog-details{border-color:#e1b68a42}.sb-guide{margin:42px 0 28px;padding:30px;border:1px solid #e1b68a42;border-radius:12px;background:#302019}.sb-guide h3{font:500 38px/1.1 'Cormorant Garamond',Georgia,serif;margin:12px 0 22px}.sb-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}.sb-guide h4{color:#edbb72;margin:0 0 8px}.sb-guide p,.sb-guide li{color:#decab6;font-size:15px}.sb-guide ol{padding-left:22px}.sb-guide li{margin:0 0 10px}.sb-start{scroll-margin-top:85px}.sb-older-guide{margin-top:28px}.sb-platforms .copy-btn{font-size:12px} @media(max-width:700px){.sb-guide-grid{grid-template-columns:1fr;gap:18px}.sb-guide{padding:24px}}
+
+/* Two moods, one story: the switch names the destination theme. */
+.theme-switch{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid #edbb7270;border-radius:100px;padding:9px 14px;color:#f7e8d3;background:#35241c;font-size:13px;font-weight:800;cursor:pointer}.theme-switch:hover{border-color:#edbb72;background:#493023}.theme-switch:focus-visible{outline:3px solid #f3c676;outline-offset:4px}
+html[data-theme="twilight"]{--ink:#0e0c13;--hearth:#15121e;--panel:#211c30;--paper:#f2f4f8;--muted:#c2cbd8;--gold:#bac4ff;--coral:#aebafa;--sage:#98b9c7;--bg-primary:#0e0c13;--bg-secondary:#15121e;--bg-card:rgba(32,28,46,.94);--bg-card-hover:rgba(45,40,65,.97);--bg-glass:rgba(21,18,30,.9);--accent-flame:#b2bdfb;--accent-ember:#a8c6d3;--accent-gold:#c3caff;--accent-copper:#b1a9dc;--accent-sage:#a2c9b8;--text-primary:#f2f4f8;--text-secondary:#d5dce8;--text-muted:#aab4c5;--border-warm:rgba(152,185,199,.3);--border-flame:rgba(133,146,230,.38);--border-gold:rgba(163,176,239,.36);--gradient-solstice:linear-gradient(135deg,#6574be,#5362a5)}
+html[data-theme="twilight"] body{background:#0e0c13;color:#f2f4f8}
+html[data-theme="twilight"] .nav{background:#15121e;border-color:#8592e637}
+html[data-theme="twilight"] .sb-nav-links{color:#d5dce8}
+html[data-theme="twilight"] .sb-nav-links .nav-button,html[data-theme="twilight"] .theme-switch{border-color:#aab6f26b;color:#f2f4f8}
+html[data-theme="twilight"] .theme-switch{background:#29243c}
+html[data-theme="twilight"] .theme-switch:hover{background:#3a3454;border-color:#bac4ff}
+html[data-theme="twilight"] :focus-visible{outline-color:#bac4ff}
+html[data-theme="twilight"] .sb-hero{background:#15121e}
+html[data-theme="twilight"] .sb-hero:after{background:linear-gradient(90deg,#100e1bf8 1%,#171527ec 31%,#1e223d85 65%,#0e0c1333),linear-gradient(0deg,#0e0c13,transparent 25%)}
+html[data-theme="twilight"] .hero-img{filter:saturate(.72) hue-rotate(12deg)}
+html[data-theme="twilight"] .sb-hero h1 em,html[data-theme="twilight"] .hero-note,html[data-theme="twilight"] .hero-copy p{color:#e4e8ff}
+html[data-theme="twilight"] .sb-btn{border-color:#bac4ff}
+html[data-theme="twilight"] .sb-btn-primary,html[data-theme="twilight"] .selector button[aria-pressed=true]{background:#bac4ff;border-color:#bac4ff;color:#171527}
+html[data-theme="twilight"] .sb-btn-outline{background:#15121ecc;border-color:#bac4ff88;color:#f2f4f8}
+html[data-theme="twilight"] .intro-line{color:#bac4ff}
+html[data-theme="twilight"] .intro-line:before,html[data-theme="twilight"] .intro-line:after{background:linear-gradient(90deg,transparent,#98b9c766)}
+html[data-theme="twilight"] .minds{background:#15121e;border-color:#98b9c733}
+html[data-theme="twilight"] .book{background:#211c30;border-color:#98b9c75c}
+html[data-theme="twilight"] .portrait{background:#252039}
+html[data-theme="twilight"] .book-page{background:radial-gradient(circle at 90% 0%,#8592e63b,transparent 38%),#211c30}
+html[data-theme="twilight"] .book-page:before,html[data-theme="twilight"] .book-small{color:#bac4ff}
+html[data-theme="twilight"] .book-page blockquote{color:#e2e5ff}
+html[data-theme="twilight"] .book-page p,html[data-theme="twilight"] .sb-edition p,html[data-theme="twilight"] .sb-download p,html[data-theme="twilight"] .sb-guide p,html[data-theme="twilight"] .sb-guide li{color:#d5dce8}
+html[data-theme="twilight"] .selector button{color:#e0e6f2;border-color:#aab6f278}
+html[data-theme="twilight"] .footnote{color:#b8c2d4}
+html[data-theme="twilight"] .sb-edition{background:linear-gradient(145deg,#29243c,#1a1727);border-color:#98b9c74a}
+html[data-theme="twilight"] .sb-download,html[data-theme="twilight"] .sb-guide{background:#211c30;border-color:#98b9c74a}
+html[data-theme="twilight"] .sb-guide h4,html[data-theme="twilight"] .sb-archive-heading{color:#bac4ff}
+html[data-theme="twilight"] .sb-platforms a{border-color:#aab6f278;color:#f2f4f8}
+html[data-theme="twilight"] .sb-platforms a:hover{background:#bac4ff;color:#171527}
+html[data-theme="twilight"] .section .card,html[data-theme="twilight"] .changelog-details{border-color:#98b9c74a}
+html[data-theme="twilight"] .blog-card{background:linear-gradient(135deg,rgba(133,146,230,.13),rgba(32,28,46,.95))}
+html[data-theme="twilight"] .code-box{background:#100e19}
+@media(max-width:700px){.nav-inner{gap:10px}.sb-nav-links{gap:8px}.theme-switch{padding:9px 11px;font-size:12px}html[data-theme="twilight"] .sb-hero:after{background:linear-gradient(90deg,#100e1bf0,#1e223d91),linear-gradient(0deg,#0e0c13,transparent 40%)}}
+
+/* Keep the complete artwork in frame on wide displays. The mirrored image's right edge fades into the hero background after it is flipped. */
+@media (min-width: 1400px) {
+  .sb-hero .hero-img {
+    inset: 0 0 auto auto;
+    width: auto;
+    max-width: 70%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+    -webkit-mask-image: linear-gradient(to right, #000 75%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 75%, transparent 100%);
+  }
+}
+
+/* Little storybook flourishes, tuned for both hearthlight and twilight. */
+:root{--whimsy-ink:#edbb72;--whimsy-line:#e1b68a66;--whimsy-wash:#f4a26114}
+html[data-theme="twilight"]{--whimsy-ink:#bac4ff;--whimsy-line:#98b9c766;--whimsy-wash:#8592e61c}
+.section-title::after{content:" ✧";font-size:.48em;vertical-align:middle;color:var(--whimsy-ink)}
+.book{position:relative}
+.book-page::after{content:"✦";position:absolute;top:0;right:29px;width:26px;height:43px;display:grid;place-items:center;padding-bottom:8px;color:#241914;background:var(--whimsy-ink);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);font-size:11px}
+.book-page::before{right:70px;top:34px;font-size:18px}
+html[data-theme="twilight"] .book-page::after{color:#171527}
+.sb-edition,.sb-download,.sb-guide{position:relative;overflow:hidden}
+.sb-edition::after,.sb-download::after{content:"✧";position:absolute;top:12px;right:17px;color:var(--whimsy-ink);opacity:.55;font:20px Georgia,serif;pointer-events:none}
+.sb-edition h3,.sb-download h3{padding-right:18px}
+.sb-guide{background-image:radial-gradient(circle at 100% 0%,var(--whimsy-wash),transparent 42%)}
+.sb-guide-grid article{border-left:1px solid var(--whimsy-line);padding-left:16px}
+.sb-guide-grid h4::before{content:"✦ ";color:var(--whimsy-ink);font-size:.8em}
+.footer-flourish{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--whimsy-ink);margin:18px auto 8px;font-size:14px}
+.footer-flourish::before,.footer-flourish::after{content:"";width:60px;height:1px;background:var(--whimsy-line)}
+.footer-flourish span{font-size:10px;opacity:.7}.footer-story{font:italic 500 20px/1.4 'Cormorant Garamond',Georgia,serif;color:var(--whimsy-ink);margin:0 0 10px}
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .selector button,.theme-switch,.sb-platforms a,.sb-btn{transition:transform .18s ease,background-color .18s ease,border-color .18s ease}
+  .selector button:hover,.theme-switch:hover,.sb-platforms a:hover,.sb-btn:hover{transform:translateY(-2px)}
+  .brand span{display:inline-block;transition:transform .3s ease}
+  .brand:hover span{transform:rotate(35deg)}
+}
+@media(max-width:700px){.book-page::after{right:22px}.book-page::before{right:58px}.sb-guide-grid article{padding-left:13px}}
+
+/* Small discoveries tucked between the pages. */
+.hero-sparks{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.hero-sparks i{position:absolute;width:3px;height:3px;border-radius:50%;background:#f4bd72;box-shadow:0 0 10px #f4a261;opacity:.55}
+.hero-sparks i:nth-child(1){left:8%;top:75%}.hero-sparks i:nth-child(2){left:19%;top:22%;width:2px;height:2px}.hero-sparks i:nth-child(3){left:38%;top:81%}.hero-sparks i:nth-child(4){left:54%;top:17%;width:2px;height:2px}.hero-sparks i:nth-child(5){left:74%;top:70%}.hero-sparks i:nth-child(6){left:90%;top:27%;width:2px;height:2px}
+html[data-theme="twilight"] .hero-sparks i{background:#d6e3ff;box-shadow:0 0 9px #a1b5ff;border-radius:0;transform:rotate(45deg)}
+.book-page[data-mind-detail="riot"]::before{content:"〰";transform:rotate(-18deg)}
+.book-page[data-mind-detail="gremlin"]::before{content:"✶";transform:rotate(18deg)}
+.book-page[data-mind-detail="velvet"]::before{content:"❧"}
+.book-page[data-mind-detail="mystic"]::before{content:"✧"}
+.book-page[data-mind-detail="scholar"]::before{content:"✎";transform:rotate(-20deg)}
+.sola-note{max-width:500px;margin-top:22px;color:var(--paper)}
+.sola-note summary{display:inline-flex;align-items:center;cursor:pointer;list-style:none;padding:10px 15px;border:1px solid var(--whimsy-line);border-radius:8px;background:var(--whimsy-wash);color:var(--whimsy-ink);font-weight:800;font-size:13px}
+.sola-note summary::-webkit-details-marker,.golden-surprise summary::-webkit-details-marker{display:none}
+.sola-note-page{margin-top:10px;padding:19px 22px;border:1px solid var(--whimsy-line);border-radius:4px 12px 12px 12px;background:var(--panel)}
+.sola-note-page p{font:italic 500 21px/1.35 'Cormorant Garamond',Georgia,serif;color:var(--paper);margin:0 0 12px}
+.sola-note-page button{border:0;background:none;padding:4px 0;color:var(--whimsy-ink);font-weight:800;font-size:12px;cursor:pointer}
+.golden-surprise{position:relative}.golden-surprise summary{list-style:none;cursor:pointer;display:grid;place-items:center;min-width:36px;min-height:36px;border-radius:50%;color:var(--whimsy-ink)}
+.golden-surprise summary:hover,.golden-surprise[open] summary{background:var(--whimsy-wash)}
+.golden-surprise p{position:absolute;z-index:3;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:min(260px,75vw);padding:15px 18px;border:1px solid var(--whimsy-line);border-radius:10px;background:var(--panel);box-shadow:0 12px 32px #0007;color:var(--paper);font:italic 500 18px/1.3 'Cormorant Garamond',Georgia,serif}
+.back-bookmark[hidden]{display:none}.back-bookmark{position:fixed;z-index:10;right:18px;bottom:18px;display:flex;align-items:center;gap:7px;padding:10px 14px 14px;background:var(--whimsy-ink);color:#241914;text-decoration:none;font-size:12px;font-weight:900;clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);box-shadow:0 8px 20px #0006}
+html[data-theme="twilight"] .back-bookmark{color:#171527}
+.back-bookmark:focus-visible{outline:3px solid var(--paper);outline-offset:4px;clip-path:none}
+@media (prefers-reduced-motion:no-preference){.hero-sparks i{animation:sola-drift 7s ease-in-out infinite alternate}.hero-sparks i:nth-child(2n){animation-delay:-3s;animation-duration:9s}.hero-sparks i:nth-child(3n){animation-delay:-5s;animation-duration:8s}@keyframes sola-drift{from{translate:0 0;opacity:.28}to{translate:4px -14px;opacity:.68}}}
+@media(max-width:700px){.hero-sparks i:nth-child(4),.hero-sparks i:nth-child(6){display:none}.back-bookmark{right:10px;bottom:10px}}

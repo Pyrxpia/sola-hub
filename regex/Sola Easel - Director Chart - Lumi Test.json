@@ -1,0 +1,878 @@
+{
+  "version": 1,
+  "type": "lumiverse_regex_scripts",
+  "folder": "Sola Easel - Director Chart TEST",
+  "scripts": [
+    {
+      "name": "Easel Chart: Accept V3 drawer (turn aware)",
+      "script_id": "sola_easel_chart_test_normalize_turn",
+      "find_regex": "<div\\b[^>]*>\\s*<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-card-easel\\b)[^>]*>[\\s\\S]*?<summary\\b[^>]*>(?:(?!<\\/summary>)[\\s\\S])*?\\bTurn[ \\t]+([^<\\r\\n]+)(?:(?!<\\/summary>)[\\s\\S])*?<\\/summary>[\\s\\S]*?<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-body\\b)[^>]*>((?:(?!<\\/details\\s*>)[\\s\\S])*?)<\\/div>\\s*<\\/div>\\s*<\\/details>\\s*<\\/div>",
+      "replace_string": "<sola_easel turn=\"$1\">\n$2\n</sola_easel>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 0,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Accept V3 drawer",
+      "script_id": "sola_easel_chart_test_normalize_drawer",
+      "find_regex": "<div\\b[^>]*>\\s*<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-card-easel\\b)[^>]*>[\\s\\S]*?<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-body\\b)[^>]*>((?:(?!<\\/details\\s*>)[\\s\\S])*?)<\\/div>\\s*<\\/div>\\s*<\\/details>\\s*<\\/div>",
+      "replace_string": "<sola_easel>\n$1\n</sola_easel>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 1,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Read V3 section headings",
+      "script_id": "sola_easel_chart_test_normalize_headings",
+      "find_regex": "<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-section-heading\\b)[^>]*>\\s*(?:❖\\s*)?((?:0[.:]\\s*Overall Core Check|I[.:]\\s*Staging (?:&|&amp;) Continuity|II[.:]\\s*Scene Currents (?:&|&amp;) Subtext|III[.:]\\s*The Living Currents|IV[.:]\\s*Branching Storyboard|V[.:]\\s*Sola['’]s Vault))[^<]*<\\/div>(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "\n[$1]\n",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 2,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Read V3 field labels",
+      "script_id": "sola_easel_chart_test_normalize_fields",
+      "find_regex": "<span\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-field-label\\b)[^>]*>([^<]*)<\\/span>(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "$1",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 3,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Read V3 check states",
+      "script_id": "sola_easel_chart_test_normalize_checks",
+      "find_regex": "<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-check\\b)[^>]*>\\s*<span\\b[^>]*>[^<]*<\\/span>\\s*<span\\b[^>]*>([^<]*?):<\\/span>\\s*<span\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-state\\b)[^>]*>(PASS|WARN|N/A)<\\/span>\\s*<span\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-check-note\\b)[^>]*>([\\s\\S]*?)<\\/span>\\s*<\\/div>(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "\n- [x] $1: [$2] $3\n",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 4,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Read V3 directorial dare",
+      "script_id": "sola_easel_chart_test_normalize_dare",
+      "find_regex": "<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-dare\\b)[^>]*>\\s*<span\\b[^>]*>[\\s\\S]*?<\\/span>\\s*<span\\b[^>]*>([\\s\\S]*?)<\\/span>\\s*<\\/div>(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "\nSola's Directorial Dare: $1\n",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 5,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Core checks (PASS)",
+      "script_id": "sola_easel_chart_test_00",
+      "find_regex": "^[ \\t]*(?:[-*•][ \\t]*)?\\[[ xX-]\\][ \\t]*\\*{0,2}([^\\n:<]+?)\\*{0,2}:[ \\t]*\\[?(PASS|PASSED)\\]?[ \\t]*(?:[—–:-][ \\t]*)?([^\\n]*)(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-check sola-ec-check-pass\"><b>$1</b><em>$2</em><span>$3</span></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 6,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Core checks (WARN)",
+      "script_id": "sola_easel_chart_test_01",
+      "find_regex": "^[ \\t]*(?:[-*•][ \\t]*)?\\[[ xX-]\\][ \\t]*\\*{0,2}([^\\n:<]+?)\\*{0,2}:[ \\t]*\\[?(WARN|FAIL|FAILED)\\]?[ \\t]*(?:[—–:-][ \\t]*)?([^\\n]*)(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-check sola-ec-check-warn\"><b>$1</b><em>$2</em><span>$3</span></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 7,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Core checks (N/A)",
+      "script_id": "sola_easel_chart_test_02",
+      "find_regex": "^[ \\t]*(?:[-*•][ \\t]*)?\\[[ xX-]\\][ \\t]*\\*{0,2}([^\\n:<]+?)\\*{0,2}:[ \\t]*\\[?(N/A|NA)\\]?[ \\t]*(?:[—–:-][ \\t]*)?([^\\n]*)(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-check sola-ec-check-na\"><b>$1</b><em>$2</em><span>$3</span></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 8,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Branch possibilities",
+      "script_id": "sola_easel_chart_test_03",
+      "find_regex": "^[ \\t]*\\*{0,2}((?:The )?(?:Direct Line|Fault Line|Blindside|Confluence)|Cost of Silence)\\*{0,2}:[ \\t]*([^\\n]*(?:\\n(?![ \\t]*(?:\\*{0,2}(?:(?:The )?(?:Direct Line|Fault Line|Blindside|Confluence)|Cost of Silence|Pacing Gear)\\*{0,2}:|\\[?[IVX]+[.:]|<\\s{0,8}\\/\\s{0,8}sola_easel))[^\\n]*)*)(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-branch\"><b>$1</b><div>$2</div></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 9,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Parchment commentary",
+      "script_id": "sola_easel_chart_test_04",
+      "find_regex": "^[ \\t]*\\*{0,2}(Sola['’]s Directorial Dare|Sola['’]s Note|Sola Note|Sola Comment)\\*{0,2}:[ \\t]*([^\\n]*(?:\\n(?![ \\t]*(?:[A-Za-z][A-Za-z '’]*:|<\\s{0,8}\\/\\s{0,8}sola_easel))[^\\n]*)*)(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<aside class=\"sola-ec-paper\"><b>$1</b><div class=\"sola-ec-note-text\">$2</div></aside>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 10,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Field labels",
+      "script_id": "sola_easel_chart_test_05",
+      "find_regex": "^[ \\t]*(?:[-*•][ \\t]+)?\\*{0,2}(N/A Invariants|Non-Applicable Invariants|N/A / Inactive|Spatial Coordinates|Coordinates|Spatial|Props in Motion|Props|Sensory Anchor|Sensory|Continuity Note|Contradiction Watch|Continuity|Scene Initiative|Leverage Seesaw|Initiative|The Climate|Thermal Register|Climate|Escalation|Behind the Teeth|The Body['’]s Truth|The Bodies Truth|Body['’]s Truth|Bodies Truth|Somatic Tell|The Blindspot|Blindspot|Active Pressures|Pressures|Active Clocks|Clocks|Seeds &(?:amp;)? Traps|Living World Drift|Living World|Knowledge &(?:amp;)? Open Loops|Retired This Turn|Retired|Regional Drift|Stray Butterfly|Off-Screen NPC Arc|Knowledge Ledger|Knowledge|Open Loops? / Unanswered|Open Loops?|Unanswered|Pacing Gear Target|Pacing Gear|Rating|Sola)(?:\\*{0,2}[ \\t]*:|:[ \\t]*\\*{0,2})[ \\t]*(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-field\">$1:</span> ",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 11,
+      "description": "Highlight V3 Easel field labels and aliases, including shortened labels and straight/curly apostrophes. Preserve the exact supplied label.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Six-section renderer (turn aware)",
+      "script_id": "sola_easel_chart_test_06",
+      "find_regex": "<\\s{0,8}sola_easel\\b(?=[^>]*\\bturn=[\"']([^\"'<>]+)[\"'])[^>]*>[ \\t\\r\\n]*(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?0[.:][ \\t]+Overall Core Check\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?I[.:][ \\t]+Staging (?:&|&amp;) Continuity\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?II[.:][ \\t]+Scene Currents (?:&|&amp;) Subtext\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?III[.:][ \\t]+The Living Currents\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?IV[.:][ \\t]+Branching Storyboard\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?V[.:][ \\t]+Sola['’]s Vault\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)<\\s{0,8}\\/\\s{0,8}sola_easel\\s{0,8}>",
+      "replace_string": "<style>    .sola-ec-chart { overflow: hidden; border: 1px solid #806c43; background: linear-gradient(rgba(212,176,103,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,176,103,.025) 1px, transparent 1px), #171916; background-size: 24px 24px; }\n    .sola-ec-heading { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 22px; border-bottom: 3px double #6b6045; background: radial-gradient(ellipse at center, rgba(243,183,75,.08), transparent 70%); }\n    .sola-ec-heading svg { display: block; width: 128px; height: 128px; flex: 0 0 128px; }\n    .sola-ec-heading h2 { margin: 5px 0 7px; color: #edcf98; font: 400 28px/1.2 Georgia, serif; }\n    .sola-ec-heading p { margin: 0; color: #b6aa95; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }\n    .sola-ec-chart h3 { margin: 0 0 10px; color: #dfbf85; font: 400 17px/1.3 Georgia, serif; }\n    .sola-ec-chart h3 span { margin-right: 7px; color: #a3916e; font: 12px/1.4 Georgia, serif; }\n    .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 18px 22px; border-bottom: 1px solid #514a37; }\n    .sola-ec-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid #514a37; }\n    .sola-ec-stage section { min-width: 0; padding: 20px 22px; }\n    .sola-ec-stage section + section { border-left: 1px solid #514a37; }\n    .sola-ec-chart p { color: #e1d6c1; font: 13px/1.6 Georgia, serif; }\n    .sola-ec-stage p, .sola-ec-currents p, .sola-ec-vault p { margin: 0; }\n    .sola-ec-currents { border-left: 3px solid #9aa87a; background: rgba(154,168,122,.035); }\n    .sola-ec-vault { border-bottom: 0; background: rgba(224,122,95,.06); }\n    .sola-ec-vault h3 { color: #e0a18a; }\n    .sola-ec-vault strong { color: #d2dfbb; font-weight: 600; }\n    @media (max-width: 600px) {\n      .sola-ec-heading { flex-direction: column; gap: 9px; padding: 18px 14px; text-align: center; }\n      .sola-ec-heading svg { width: 112px; height: 112px; flex-basis: 112px; }\n      .sola-ec-heading h2 { font-size: 24px; }\n      .sola-ec-stage { grid-template-columns: minmax(0, 1fr); }\n      .sola-ec-stage section + section { border-left: 0; border-top: 1px solid #514a37; }\n      .sola-ec-stage section, .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 16px 14px; }\n    }\n\n.sola-ec-card{--shadowWidth:0!important;--gold:#f3b74b;--amber:#f4a261;--surface:#1a1310;min-width:0;max-width:100%;margin:14px 0;border:1px solid #806c43;border-left:3px double #b99a5b;border-radius:12px 8px;background:#171410;color:#f0dcc4;overflow:hidden;font:14px/1.6 Georgia,serif;container-type:inline-size;container-name:sola-ec;}\n.sola-ec-card *{box-sizing:border-box;max-width:100%;}\n.sola-ec-card>summary{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 42px 14px 14px;position:relative;cursor:pointer;list-style:none;background:linear-gradient(100deg,#302619,#1a1510);}\n.sola-ec-card>summary::-webkit-details-marker{display:none}.sola-ec-card>summary::marker{content:''}\n.sola-ec-card>summary:focus-visible{outline:2px solid #f3b74b;outline-offset:-4px}\n.sola-ec-card .track-icon{width:32px;height:32px;flex:0 0 32px;fill:none;stroke:#e4bd72;stroke-width:1.1}.sola-ec-card .track-icon .line{fill:none;stroke:currentColor}\n.sola-ec-title{display:grid;gap:3px;flex:1 1 190px;min-width:0}\n.sola-ec-badge{padding:3px 7px;border:1px solid #a48a52;color:#e4bc70;font:600 9px/1.5 sans-serif;letter-spacing:.06em}\n.sola-ec-chevron{position:absolute;right:18px;top:26px;width:8px;height:8px;border-right:1px solid #e4bc70;border-bottom:1px solid #e4bc70;transform:rotate(45deg)}.sola-ec-card[open]>summary .sola-ec-chevron{transform:rotate(225deg)}\n.sola-ec-roll{padding:12px;display:grid;gap:12px;border-top:1px solid #66573c}.sola-ec-card[open]>.sola-ec-roll{animation:solaEcReveal .25s ease-out}\n.sola-ec-content{white-space:normal;overflow-wrap:anywhere;color:#e1d6c1;font:14px/1.65 Georgia,serif;min-width:0;}\n.sola-ec-content p{margin:.4em 0}.sola-ec-content ul,.sola-ec-content ol{margin:.4em 0;padding-left:22px}.sola-ec-content li{margin:.3em 0}.sola-ec-content li>p{margin:0}.sola-ec-content:empty{display:none}\n.sola-ec-kicker{color:#d4aa6c;font:600 10px/1.5 sans-serif;letter-spacing:.1em;text-transform:uppercase}\n.sola-ec-field{color:#e4bb78;font:600 12px/1.6 sans-serif}\n.sola-ec-check{display:block;margin:5px 0;padding:8px 10px;border:1px solid #69764f;border-left:3px solid #a5b985;background:#24291d;white-space:normal}.sola-ec-check b{font:600 12px/1.5 sans-serif;color:#d9e6bc}.sola-ec-check em{display:inline-block;margin-left:7px;font:700 10px/1.5 sans-serif;color:#b7cf8c}.sola-ec-check span{display:block;color:#e1d6c1;font:13px/1.6 Georgia,serif}\n.sola-ec-check-warn{border-color:#ad6547;background:#30201a}.sola-ec-check-warn b,.sola-ec-check-warn em{color:#f0ac8c}.sola-ec-check-na{border-color:#73808c;background:#1e2529}.sola-ec-check-na b,.sola-ec-check-na em{color:#c2cdd5}\n.sola-ec-branch{position:relative;margin:10px 0 10px 12px;padding:10px 12px;border:1px solid #7d6942;border-left:3px solid #a78b53;background:#26251b;white-space:normal;overflow-wrap:anywhere}.sola-ec-branch b{display:block;color:#e8ca92;font:600 12px/1.5 sans-serif}.sola-ec-branch::before{position:absolute;left:-15px;top:20px;width:12px;height:1px;background:#a78b53;content:''}\n.sola-ec-paper{margin:12px 0;padding:14px 16px;border:1px solid #aa8959;border-left-color:#8f6b3e;border-radius:4px 8px 6px 3px;background:radial-gradient(ellipse at 0% 100%,rgba(115,73,34,.15),transparent 65%),repeating-linear-gradient(97deg,rgba(78,49,24,.025) 0 1px,transparent 1px 6px),linear-gradient(112deg,#dec18e,#ead5ae);color:#1a1310;white-space:normal;}\n.sola-ec-paper b{display:block;margin-bottom:5px;color:#654321;font:600 12px/1.5 ui-sans-serif,system-ui,sans-serif}.sola-ec-paper .sola-ec-note-text{color:#1a1310;font:italic 550 14px/1.7 ui-sans-serif,system-ui,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:normal}.sola-ec-paper .sola-ec-note-text *{color:#1a1310}\n.sola-ec-chart .sola-ec-heading p{font:12px/1.5 sans-serif;color:#b6aa95}\n@container sola-ec (max-width:600px){.sola-ec-heading{flex-direction:column;gap:9px;padding:18px 14px;text-align:center}.sola-ec-stage{grid-template-columns:minmax(0,1fr)}.sola-ec-stage section+section{border-left:0;border-top:1px solid #514a37}.sola-ec-roll{padding:8px}.sola-ec-stage section,.sola-ec-checks,.sola-ec-currents,.sola-ec-storyboard,.sola-ec-vault{padding:14px 12px}}\n@keyframes solaEcReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.sola-ec-card[open]>.sola-ec-roll{animation:none}}\n\n/* V3 HUD contract: slot wrapper, track sizing, and a single visible title child. */\n.sola-ec-slot{width:100%;min-width:0;max-width:100%}\n.sola-ec-card{width:100%;flex:1 0 100%}\n.sola-ec-header{display:flex;align-items:center;gap:10px;flex:1 1 190px;min-width:0}\n.sola-ec-label-heading{font:400 21px/1.3 Georgia,serif;color:#f0dcc4;overflow-wrap:anywhere}\n.sola-ec-label-sub{font:11px/1.5 sans-serif;color:#b8aa92}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title svg{width:32px!important;height:32px!important;flex:0 0 32px!important}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title>.sola-ec-title{display:grid!important;gap:3px}\n.sola-ec-card .sola-rating-pass{color:#b7cf8c}.sola-ec-card .sola-rating-fail{color:#f0ac8c}.sola-ec-card .sola-rating-na{color:#c2cdd5}\n.sola-ec-card .sola-ec-metar,.sola-ec-card .sola-ec-escalation,.sola-ec-card .sola-ec-gear{display:inline-block;vertical-align:baseline;padding:2px 7px;border:1px solid currentColor;border-radius:3px 6px 4px 2px;font:600 11px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.035em;white-space:normal;text-shadow:none;max-width:100%;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-metar{background:rgba(180,156,119,.09);color:#e6c48e}\n.sola-ec-card .sola-ec-metar[data-state=\"DRM\"]{color:#a8b9c6;background:color-mix(in srgb,#a8b9c6 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"STR\"]{color:#d9bd7d;background:color-mix(in srgb,#d9bd7d 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"MNT\"]{color:#f4a261;background:color-mix(in srgb,#f4a261 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"THR\"]{color:#ee9b7a;background:color-mix(in srgb,#ee9b7a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"UNL\"]{color:#ff8a6a;background:color-mix(in srgb,#ff8a6a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"LAT\"]{color:#acbfc9;background:color-mix(in srgb,#acbfc9 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"HEAT\"]{color:#f3c65e;background:color-mix(in srgb,#f3c65e 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"SPRUNG\"]{color:#f08d72;background:color-mix(in srgb,#f08d72 11%,transparent)}\n.sola-ec-card .sola-ec-escalation{color:#e8b875;background:rgba(244,162,97,.1)}.sola-ec-card .sola-ec-escalation[data-level=\"E0\" i]{color:#a8b9c6}.sola-ec-card .sola-ec-escalation[data-level=\"E3\" i],.sola-ec-card .sola-ec-escalation[data-level=\"E4\" i]{color:#f09475}\n.sola-ec-card .sola-ec-gear{color:#c0bceb;background:rgba(165,173,240,.1)}\n.sola-ec-card .sola-ec-thread-id{display:inline-block;padding:1px 5px;margin-right:4px;border-bottom:1px solid #a28b5c;color:#f0d199;font:700 12px/1.6 ui-monospace,monospace;letter-spacing:.02em}\n.sola-ec-card .sola-ec-currents li:has(.sola-ec-thread-id),.sola-ec-card .sola-easel-thread{margin:8px 0;padding:9px 11px;border-left:2px solid #7c6943;background:rgba(214,175,112,.035);border-radius:2px 7px 5px 2px;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-ledger-entry{margin:9px 0;padding:10px 12px;border:1px solid #514b36;border-left:2px solid #897449;border-radius:2px 6px 5px 2px;background:rgba(214,175,112,.035)}.sola-ec-card .sola-ec-entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;min-width:0}.sola-ec-card .sola-ec-entry-label{color:#e8d9bf;font:13px/1.55 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note{margin-top:5px;color:#cfc3ae;font:13px/1.6 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note p{margin:0;font:inherit}.sola-ec-card .sola-ec-entry-head .sola-ec-thread-id{margin:0}</style><div class=\"sola-ec-slot\"><details class=\"sola-drawer sola-drawer-track sola-ec-card\"><summary><span class=\"sola-drawer-title sola-ec-header\"><svg class=\"track-icon\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle class=\"line\" cx=\"16\" cy=\"16\" r=\"14\" opacity=\".65\"/><path d=\"M16 3.5c1.8 7.3 4.3 10.7 12.5 12.5-8.2 1.8-10.7 5.2-12.5 12.5-1.8-7.3-4.3-10.7-12.5-12.5C11.7 14.2 14.2 10.8 16 3.5z\" fill=\"rgba(243,183,75,.2)\" stroke=\"var(--gold)\" stroke-width=\"1.05\"/><path d=\"m16 11.8 1.5 2.7 2.7 1.5-2.7 1.5-1.5 2.7-1.5-2.7-2.7-1.5 2.7-1.5z\" fill=\"var(--surface)\" stroke=\"var(--amber)\" stroke-width=\".8\"/></svg><span class=\"sola-ec-title\"><span class=\"sola-ec-label-heading\">Sola’s Easel</span><span class=\"sola-ec-label-sub\">The Director’s Chart · Turn $1</span></span></span><span class=\"sola-drawer-badge sola-ec-badge\">DIRECTOR SPOILERS</span><span class=\"sola-drawer-chevron sola-ec-chevron\" aria-hidden=\"true\"></span></summary><div class=\"sola-ec-roll\"><div class=\"sola-ec-chart\"><header class=\"sola-ec-heading\"><svg viewBox=\"0 0 160 160\" role=\"img\" aria-label=\"Engraved four-point star with interlaced diamond tracery\">\n                        <defs><linearGradient id=\"sola-ec-gilding\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#f3dba7\"/><stop offset=\".45\" stop-color=\"#c3934c\"/><stop offset=\"1\" stop-color=\"#e9b963\"/></linearGradient></defs>\n                        <g fill=\"none\" stroke=\"url(#sola-ec-gilding)\" stroke-linejoin=\"round\">\n                          <path d=\"m80 8 72 72-72 72L8 80z\" stroke-width=\"1.2\"/><path d=\"m80 19 61 61-61 61-61-61z\" stroke-width=\".6\" opacity=\".6\"/>\n                          <path d=\"M80 11c7 43 26 62 69 69-43 7-62 26-69 69-7-43-26-62-69-69 43-7 62-26 69-69z\" fill=\"#413821\" stroke-width=\"1.5\"/>\n                          <path d=\"m80 27 9 44 44 9-44 9-9 44-9-44-44-9 44-9z\" fill=\"#28291e\" stroke-width=\".9\"/>\n                          <path d=\"M80 32v96M32 80h96\" stroke-width=\".5\" opacity=\".5\"/>\n                          <path d=\"m80 61 19 19-19 19-19-19z\" fill=\"#b58a48\" stroke-width=\"1.1\"/><path d=\"m80 69 11 11-11 11-11-11z\" fill=\"#f1d7a1\" stroke-width=\".7\"/>\n                          <path d=\"M37 31h-8v8m94-8h8v8M37 129h-8v-8m94 8h8v-8M49 36l-13 13m75-13 13 13M49 124l-13-13m75 13 13-13\" stroke-width=\"1\"/>\n                          <path d=\"m80 2 3 5-3 5-3-5zm0 146 3 5-3 5-3-5zM2 80l5-3 5 3-5 3zm146 0 5-3 5 3-5 3z\" fill=\"#cba45e\" stroke-width=\".7\"/>\n                        </g>\n                      </svg><div><span class=\"sola-ec-kicker\">Sola’s Easel · Turn $1</span><h2>The Director’s Chart</h2><p>Private review · outside story canon</p></div></header><section class=\"sola-ec-checks\"><h3>0 · Overall Core Check</h3><div class=\"sola-ec-content\">\n$2\n</div></section><div class=\"sola-ec-stage\"><section class=\"sola-ec-staging\"><h3>I · Staging &amp; Continuity</h3><div class=\"sola-ec-content\">\n$3\n</div></section><section class=\"sola-ec-subtext\"><h3>II · Scene Currents &amp; Subtext</h3><div class=\"sola-ec-content\">\n$4\n</div></section></div><section class=\"sola-ec-currents\"><h3>III · The Living Currents</h3><div class=\"sola-ec-content\">\n$5\n</div></section><section class=\"sola-ec-storyboard\"><h3>IV · Branching Storyboard</h3><div class=\"sola-ec-content\">\n$6\n</div></section><section class=\"sola-ec-vault\"><h3>V · Sola’s Vault</h3><div class=\"sola-ec-content\">\n$7\n</div></section></div></div></details></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 12,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Six-section renderer",
+      "script_id": "sola_easel_chart_test_07",
+      "find_regex": "<\\s{0,8}sola_easel\\b[^>]*>[ \\t\\r\\n]*(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?0[.:][ \\t]+Overall Core Check\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?I[.:][ \\t]+Staging (?:&|&amp;) Continuity\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?II[.:][ \\t]+Scene Currents (?:&|&amp;) Subtext\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?III[.:][ \\t]+The Living Currents\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?IV[.:][ \\t]+Branching Storyboard\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)(?:^|\\r?\\n)[ \\t]*(?:#{1,6}[ \\t]+)?(?:\\*\\*)?\\[?V[.:][ \\t]+Sola['’]s Vault\\]?(?:\\*\\*)?(?:[ \\t]+\\([^\\n)]*\\))?[ \\t]*(?:\\r?\\n|$)((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)<\\s{0,8}\\/\\s{0,8}sola_easel\\s{0,8}>",
+      "replace_string": "<style>    .sola-ec-chart { overflow: hidden; border: 1px solid #806c43; background: linear-gradient(rgba(212,176,103,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,176,103,.025) 1px, transparent 1px), #171916; background-size: 24px 24px; }\n    .sola-ec-heading { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 22px; border-bottom: 3px double #6b6045; background: radial-gradient(ellipse at center, rgba(243,183,75,.08), transparent 70%); }\n    .sola-ec-heading svg { display: block; width: 128px; height: 128px; flex: 0 0 128px; }\n    .sola-ec-heading h2 { margin: 5px 0 7px; color: #edcf98; font: 400 28px/1.2 Georgia, serif; }\n    .sola-ec-heading p { margin: 0; color: #b6aa95; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }\n    .sola-ec-chart h3 { margin: 0 0 10px; color: #dfbf85; font: 400 17px/1.3 Georgia, serif; }\n    .sola-ec-chart h3 span { margin-right: 7px; color: #a3916e; font: 12px/1.4 Georgia, serif; }\n    .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 18px 22px; border-bottom: 1px solid #514a37; }\n    .sola-ec-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid #514a37; }\n    .sola-ec-stage section { min-width: 0; padding: 20px 22px; }\n    .sola-ec-stage section + section { border-left: 1px solid #514a37; }\n    .sola-ec-chart p { color: #e1d6c1; font: 13px/1.6 Georgia, serif; }\n    .sola-ec-stage p, .sola-ec-currents p, .sola-ec-vault p { margin: 0; }\n    .sola-ec-currents { border-left: 3px solid #9aa87a; background: rgba(154,168,122,.035); }\n    .sola-ec-vault { border-bottom: 0; background: rgba(224,122,95,.06); }\n    .sola-ec-vault h3 { color: #e0a18a; }\n    .sola-ec-vault strong { color: #d2dfbb; font-weight: 600; }\n    @media (max-width: 600px) {\n      .sola-ec-heading { flex-direction: column; gap: 9px; padding: 18px 14px; text-align: center; }\n      .sola-ec-heading svg { width: 112px; height: 112px; flex-basis: 112px; }\n      .sola-ec-heading h2 { font-size: 24px; }\n      .sola-ec-stage { grid-template-columns: minmax(0, 1fr); }\n      .sola-ec-stage section + section { border-left: 0; border-top: 1px solid #514a37; }\n      .sola-ec-stage section, .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 16px 14px; }\n    }\n\n.sola-ec-card{--shadowWidth:0!important;--gold:#f3b74b;--amber:#f4a261;--surface:#1a1310;min-width:0;max-width:100%;margin:14px 0;border:1px solid #806c43;border-left:3px double #b99a5b;border-radius:12px 8px;background:#171410;color:#f0dcc4;overflow:hidden;font:14px/1.6 Georgia,serif;container-type:inline-size;container-name:sola-ec;}\n.sola-ec-card *{box-sizing:border-box;max-width:100%;}\n.sola-ec-card>summary{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 42px 14px 14px;position:relative;cursor:pointer;list-style:none;background:linear-gradient(100deg,#302619,#1a1510);}\n.sola-ec-card>summary::-webkit-details-marker{display:none}.sola-ec-card>summary::marker{content:''}\n.sola-ec-card>summary:focus-visible{outline:2px solid #f3b74b;outline-offset:-4px}\n.sola-ec-card .track-icon{width:32px;height:32px;flex:0 0 32px;fill:none;stroke:#e4bd72;stroke-width:1.1}.sola-ec-card .track-icon .line{fill:none;stroke:currentColor}\n.sola-ec-title{display:grid;gap:3px;flex:1 1 190px;min-width:0}\n.sola-ec-badge{padding:3px 7px;border:1px solid #a48a52;color:#e4bc70;font:600 9px/1.5 sans-serif;letter-spacing:.06em}\n.sola-ec-chevron{position:absolute;right:18px;top:26px;width:8px;height:8px;border-right:1px solid #e4bc70;border-bottom:1px solid #e4bc70;transform:rotate(45deg)}.sola-ec-card[open]>summary .sola-ec-chevron{transform:rotate(225deg)}\n.sola-ec-roll{padding:12px;display:grid;gap:12px;border-top:1px solid #66573c}.sola-ec-card[open]>.sola-ec-roll{animation:solaEcReveal .25s ease-out}\n.sola-ec-content{white-space:normal;overflow-wrap:anywhere;color:#e1d6c1;font:14px/1.65 Georgia,serif;min-width:0;}\n.sola-ec-content p{margin:.4em 0}.sola-ec-content ul,.sola-ec-content ol{margin:.4em 0;padding-left:22px}.sola-ec-content li{margin:.3em 0}.sola-ec-content li>p{margin:0}.sola-ec-content:empty{display:none}\n.sola-ec-kicker{color:#d4aa6c;font:600 10px/1.5 sans-serif;letter-spacing:.1em;text-transform:uppercase}\n.sola-ec-field{color:#e4bb78;font:600 12px/1.6 sans-serif}\n.sola-ec-check{display:block;margin:5px 0;padding:8px 10px;border:1px solid #69764f;border-left:3px solid #a5b985;background:#24291d;white-space:normal}.sola-ec-check b{font:600 12px/1.5 sans-serif;color:#d9e6bc}.sola-ec-check em{display:inline-block;margin-left:7px;font:700 10px/1.5 sans-serif;color:#b7cf8c}.sola-ec-check span{display:block;color:#e1d6c1;font:13px/1.6 Georgia,serif}\n.sola-ec-check-warn{border-color:#ad6547;background:#30201a}.sola-ec-check-warn b,.sola-ec-check-warn em{color:#f0ac8c}.sola-ec-check-na{border-color:#73808c;background:#1e2529}.sola-ec-check-na b,.sola-ec-check-na em{color:#c2cdd5}\n.sola-ec-branch{position:relative;margin:10px 0 10px 12px;padding:10px 12px;border:1px solid #7d6942;border-left:3px solid #a78b53;background:#26251b;white-space:normal;overflow-wrap:anywhere}.sola-ec-branch b{display:block;color:#e8ca92;font:600 12px/1.5 sans-serif}.sola-ec-branch::before{position:absolute;left:-15px;top:20px;width:12px;height:1px;background:#a78b53;content:''}\n.sola-ec-paper{margin:12px 0;padding:14px 16px;border:1px solid #aa8959;border-left-color:#8f6b3e;border-radius:4px 8px 6px 3px;background:radial-gradient(ellipse at 0% 100%,rgba(115,73,34,.15),transparent 65%),repeating-linear-gradient(97deg,rgba(78,49,24,.025) 0 1px,transparent 1px 6px),linear-gradient(112deg,#dec18e,#ead5ae);color:#1a1310;white-space:normal;}\n.sola-ec-paper b{display:block;margin-bottom:5px;color:#654321;font:600 12px/1.5 ui-sans-serif,system-ui,sans-serif}.sola-ec-paper .sola-ec-note-text{color:#1a1310;font:italic 550 14px/1.7 ui-sans-serif,system-ui,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:normal}.sola-ec-paper .sola-ec-note-text *{color:#1a1310}\n.sola-ec-chart .sola-ec-heading p{font:12px/1.5 sans-serif;color:#b6aa95}\n@container sola-ec (max-width:600px){.sola-ec-heading{flex-direction:column;gap:9px;padding:18px 14px;text-align:center}.sola-ec-stage{grid-template-columns:minmax(0,1fr)}.sola-ec-stage section+section{border-left:0;border-top:1px solid #514a37}.sola-ec-roll{padding:8px}.sola-ec-stage section,.sola-ec-checks,.sola-ec-currents,.sola-ec-storyboard,.sola-ec-vault{padding:14px 12px}}\n@keyframes solaEcReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.sola-ec-card[open]>.sola-ec-roll{animation:none}}\n\n/* V3 HUD contract: slot wrapper, track sizing, and a single visible title child. */\n.sola-ec-slot{width:100%;min-width:0;max-width:100%}\n.sola-ec-card{width:100%;flex:1 0 100%}\n.sola-ec-header{display:flex;align-items:center;gap:10px;flex:1 1 190px;min-width:0}\n.sola-ec-label-heading{font:400 21px/1.3 Georgia,serif;color:#f0dcc4;overflow-wrap:anywhere}\n.sola-ec-label-sub{font:11px/1.5 sans-serif;color:#b8aa92}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title svg{width:32px!important;height:32px!important;flex:0 0 32px!important}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title>.sola-ec-title{display:grid!important;gap:3px}\n.sola-ec-card .sola-rating-pass{color:#b7cf8c}.sola-ec-card .sola-rating-fail{color:#f0ac8c}.sola-ec-card .sola-rating-na{color:#c2cdd5}\n.sola-ec-card .sola-ec-metar,.sola-ec-card .sola-ec-escalation,.sola-ec-card .sola-ec-gear{display:inline-block;vertical-align:baseline;padding:2px 7px;border:1px solid currentColor;border-radius:3px 6px 4px 2px;font:600 11px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.035em;white-space:normal;text-shadow:none;max-width:100%;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-metar{background:rgba(180,156,119,.09);color:#e6c48e}\n.sola-ec-card .sola-ec-metar[data-state=\"DRM\"]{color:#a8b9c6;background:color-mix(in srgb,#a8b9c6 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"STR\"]{color:#d9bd7d;background:color-mix(in srgb,#d9bd7d 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"MNT\"]{color:#f4a261;background:color-mix(in srgb,#f4a261 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"THR\"]{color:#ee9b7a;background:color-mix(in srgb,#ee9b7a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"UNL\"]{color:#ff8a6a;background:color-mix(in srgb,#ff8a6a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"LAT\"]{color:#acbfc9;background:color-mix(in srgb,#acbfc9 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"HEAT\"]{color:#f3c65e;background:color-mix(in srgb,#f3c65e 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"SPRUNG\"]{color:#f08d72;background:color-mix(in srgb,#f08d72 11%,transparent)}\n.sola-ec-card .sola-ec-escalation{color:#e8b875;background:rgba(244,162,97,.1)}.sola-ec-card .sola-ec-escalation[data-level=\"E0\" i]{color:#a8b9c6}.sola-ec-card .sola-ec-escalation[data-level=\"E3\" i],.sola-ec-card .sola-ec-escalation[data-level=\"E4\" i]{color:#f09475}\n.sola-ec-card .sola-ec-gear{color:#c0bceb;background:rgba(165,173,240,.1)}\n.sola-ec-card .sola-ec-thread-id{display:inline-block;padding:1px 5px;margin-right:4px;border-bottom:1px solid #a28b5c;color:#f0d199;font:700 12px/1.6 ui-monospace,monospace;letter-spacing:.02em}\n.sola-ec-card .sola-ec-currents li:has(.sola-ec-thread-id),.sola-ec-card .sola-easel-thread{margin:8px 0;padding:9px 11px;border-left:2px solid #7c6943;background:rgba(214,175,112,.035);border-radius:2px 7px 5px 2px;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-ledger-entry{margin:9px 0;padding:10px 12px;border:1px solid #514b36;border-left:2px solid #897449;border-radius:2px 6px 5px 2px;background:rgba(214,175,112,.035)}.sola-ec-card .sola-ec-entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;min-width:0}.sola-ec-card .sola-ec-entry-label{color:#e8d9bf;font:13px/1.55 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note{margin-top:5px;color:#cfc3ae;font:13px/1.6 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note p{margin:0;font:inherit}.sola-ec-card .sola-ec-entry-head .sola-ec-thread-id{margin:0}</style><div class=\"sola-ec-slot\"><details class=\"sola-drawer sola-drawer-track sola-ec-card\"><summary><span class=\"sola-drawer-title sola-ec-header\"><svg class=\"track-icon\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle class=\"line\" cx=\"16\" cy=\"16\" r=\"14\" opacity=\".65\"/><path d=\"M16 3.5c1.8 7.3 4.3 10.7 12.5 12.5-8.2 1.8-10.7 5.2-12.5 12.5-1.8-7.3-4.3-10.7-12.5-12.5C11.7 14.2 14.2 10.8 16 3.5z\" fill=\"rgba(243,183,75,.2)\" stroke=\"var(--gold)\" stroke-width=\"1.05\"/><path d=\"m16 11.8 1.5 2.7 2.7 1.5-2.7 1.5-1.5 2.7-1.5-2.7-2.7-1.5 2.7-1.5z\" fill=\"var(--surface)\" stroke=\"var(--amber)\" stroke-width=\".8\"/></svg><span class=\"sola-ec-title\"><span class=\"sola-ec-label-heading\">Sola’s Easel</span><span class=\"sola-ec-label-sub\">The Director’s Chart</span></span></span><span class=\"sola-drawer-badge sola-ec-badge\">DIRECTOR SPOILERS</span><span class=\"sola-drawer-chevron sola-ec-chevron\" aria-hidden=\"true\"></span></summary><div class=\"sola-ec-roll\"><div class=\"sola-ec-chart\"><header class=\"sola-ec-heading\"><svg viewBox=\"0 0 160 160\" role=\"img\" aria-label=\"Engraved four-point star with interlaced diamond tracery\">\n                        <defs><linearGradient id=\"sola-ec-gilding\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#f3dba7\"/><stop offset=\".45\" stop-color=\"#c3934c\"/><stop offset=\"1\" stop-color=\"#e9b963\"/></linearGradient></defs>\n                        <g fill=\"none\" stroke=\"url(#sola-ec-gilding)\" stroke-linejoin=\"round\">\n                          <path d=\"m80 8 72 72-72 72L8 80z\" stroke-width=\"1.2\"/><path d=\"m80 19 61 61-61 61-61-61z\" stroke-width=\".6\" opacity=\".6\"/>\n                          <path d=\"M80 11c7 43 26 62 69 69-43 7-62 26-69 69-7-43-26-62-69-69 43-7 62-26 69-69z\" fill=\"#413821\" stroke-width=\"1.5\"/>\n                          <path d=\"m80 27 9 44 44 9-44 9-9 44-9-44-44-9 44-9z\" fill=\"#28291e\" stroke-width=\".9\"/>\n                          <path d=\"M80 32v96M32 80h96\" stroke-width=\".5\" opacity=\".5\"/>\n                          <path d=\"m80 61 19 19-19 19-19-19z\" fill=\"#b58a48\" stroke-width=\"1.1\"/><path d=\"m80 69 11 11-11 11-11-11z\" fill=\"#f1d7a1\" stroke-width=\".7\"/>\n                          <path d=\"M37 31h-8v8m94-8h8v8M37 129h-8v-8m94 8h8v-8M49 36l-13 13m75-13 13 13M49 124l-13-13m75 13 13-13\" stroke-width=\"1\"/>\n                          <path d=\"m80 2 3 5-3 5-3-5zm0 146 3 5-3 5-3-5zM2 80l5-3 5 3-5 3zm146 0 5-3 5 3-5 3z\" fill=\"#cba45e\" stroke-width=\".7\"/>\n                        </g>\n                      </svg><div><span class=\"sola-ec-kicker\">Sola’s Easel</span><h2>The Director’s Chart</h2><p>Private review · outside story canon</p></div></header><section class=\"sola-ec-checks\"><h3>0 · Overall Core Check</h3><div class=\"sola-ec-content\">\n$1\n</div></section><div class=\"sola-ec-stage\"><section class=\"sola-ec-staging\"><h3>I · Staging &amp; Continuity</h3><div class=\"sola-ec-content\">\n$2\n</div></section><section class=\"sola-ec-subtext\"><h3>II · Scene Currents &amp; Subtext</h3><div class=\"sola-ec-content\">\n$3\n</div></section></div><section class=\"sola-ec-currents\"><h3>III · The Living Currents</h3><div class=\"sola-ec-content\">\n$4\n</div></section><section class=\"sola-ec-storyboard\"><h3>IV · Branching Storyboard</h3><div class=\"sola-ec-content\">\n$5\n</div></section><section class=\"sola-ec-vault\"><h3>V · Sola’s Vault</h3><div class=\"sola-ec-content\">\n$6\n</div></section></div></div></details></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 13,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Preserve nonstandard layout (turn aware)",
+      "script_id": "sola_easel_chart_test_08",
+      "find_regex": "<\\s{0,8}sola_easel\\b(?=[^>]*\\bturn=[\"']([^\"'<>]+)[\"'])[^>]*>((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)<\\s{0,8}\\/\\s{0,8}sola_easel\\s{0,8}>",
+      "replace_string": "<style>    .sola-ec-chart { overflow: hidden; border: 1px solid #806c43; background: linear-gradient(rgba(212,176,103,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,176,103,.025) 1px, transparent 1px), #171916; background-size: 24px 24px; }\n    .sola-ec-heading { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 22px; border-bottom: 3px double #6b6045; background: radial-gradient(ellipse at center, rgba(243,183,75,.08), transparent 70%); }\n    .sola-ec-heading svg { display: block; width: 128px; height: 128px; flex: 0 0 128px; }\n    .sola-ec-heading h2 { margin: 5px 0 7px; color: #edcf98; font: 400 28px/1.2 Georgia, serif; }\n    .sola-ec-heading p { margin: 0; color: #b6aa95; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }\n    .sola-ec-chart h3 { margin: 0 0 10px; color: #dfbf85; font: 400 17px/1.3 Georgia, serif; }\n    .sola-ec-chart h3 span { margin-right: 7px; color: #a3916e; font: 12px/1.4 Georgia, serif; }\n    .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 18px 22px; border-bottom: 1px solid #514a37; }\n    .sola-ec-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid #514a37; }\n    .sola-ec-stage section { min-width: 0; padding: 20px 22px; }\n    .sola-ec-stage section + section { border-left: 1px solid #514a37; }\n    .sola-ec-chart p { color: #e1d6c1; font: 13px/1.6 Georgia, serif; }\n    .sola-ec-stage p, .sola-ec-currents p, .sola-ec-vault p { margin: 0; }\n    .sola-ec-currents { border-left: 3px solid #9aa87a; background: rgba(154,168,122,.035); }\n    .sola-ec-vault { border-bottom: 0; background: rgba(224,122,95,.06); }\n    .sola-ec-vault h3 { color: #e0a18a; }\n    .sola-ec-vault strong { color: #d2dfbb; font-weight: 600; }\n    @media (max-width: 600px) {\n      .sola-ec-heading { flex-direction: column; gap: 9px; padding: 18px 14px; text-align: center; }\n      .sola-ec-heading svg { width: 112px; height: 112px; flex-basis: 112px; }\n      .sola-ec-heading h2 { font-size: 24px; }\n      .sola-ec-stage { grid-template-columns: minmax(0, 1fr); }\n      .sola-ec-stage section + section { border-left: 0; border-top: 1px solid #514a37; }\n      .sola-ec-stage section, .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 16px 14px; }\n    }\n\n.sola-ec-card{--shadowWidth:0!important;--gold:#f3b74b;--amber:#f4a261;--surface:#1a1310;min-width:0;max-width:100%;margin:14px 0;border:1px solid #806c43;border-left:3px double #b99a5b;border-radius:12px 8px;background:#171410;color:#f0dcc4;overflow:hidden;font:14px/1.6 Georgia,serif;container-type:inline-size;container-name:sola-ec;}\n.sola-ec-card *{box-sizing:border-box;max-width:100%;}\n.sola-ec-card>summary{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 42px 14px 14px;position:relative;cursor:pointer;list-style:none;background:linear-gradient(100deg,#302619,#1a1510);}\n.sola-ec-card>summary::-webkit-details-marker{display:none}.sola-ec-card>summary::marker{content:''}\n.sola-ec-card>summary:focus-visible{outline:2px solid #f3b74b;outline-offset:-4px}\n.sola-ec-card .track-icon{width:32px;height:32px;flex:0 0 32px;fill:none;stroke:#e4bd72;stroke-width:1.1}.sola-ec-card .track-icon .line{fill:none;stroke:currentColor}\n.sola-ec-title{display:grid;gap:3px;flex:1 1 190px;min-width:0}\n.sola-ec-badge{padding:3px 7px;border:1px solid #a48a52;color:#e4bc70;font:600 9px/1.5 sans-serif;letter-spacing:.06em}\n.sola-ec-chevron{position:absolute;right:18px;top:26px;width:8px;height:8px;border-right:1px solid #e4bc70;border-bottom:1px solid #e4bc70;transform:rotate(45deg)}.sola-ec-card[open]>summary .sola-ec-chevron{transform:rotate(225deg)}\n.sola-ec-roll{padding:12px;display:grid;gap:12px;border-top:1px solid #66573c}.sola-ec-card[open]>.sola-ec-roll{animation:solaEcReveal .25s ease-out}\n.sola-ec-content{white-space:normal;overflow-wrap:anywhere;color:#e1d6c1;font:14px/1.65 Georgia,serif;min-width:0;}\n.sola-ec-content p{margin:.4em 0}.sola-ec-content ul,.sola-ec-content ol{margin:.4em 0;padding-left:22px}.sola-ec-content li{margin:.3em 0}.sola-ec-content li>p{margin:0}.sola-ec-content:empty{display:none}\n.sola-ec-kicker{color:#d4aa6c;font:600 10px/1.5 sans-serif;letter-spacing:.1em;text-transform:uppercase}\n.sola-ec-field{color:#e4bb78;font:600 12px/1.6 sans-serif}\n.sola-ec-check{display:block;margin:5px 0;padding:8px 10px;border:1px solid #69764f;border-left:3px solid #a5b985;background:#24291d;white-space:normal}.sola-ec-check b{font:600 12px/1.5 sans-serif;color:#d9e6bc}.sola-ec-check em{display:inline-block;margin-left:7px;font:700 10px/1.5 sans-serif;color:#b7cf8c}.sola-ec-check span{display:block;color:#e1d6c1;font:13px/1.6 Georgia,serif}\n.sola-ec-check-warn{border-color:#ad6547;background:#30201a}.sola-ec-check-warn b,.sola-ec-check-warn em{color:#f0ac8c}.sola-ec-check-na{border-color:#73808c;background:#1e2529}.sola-ec-check-na b,.sola-ec-check-na em{color:#c2cdd5}\n.sola-ec-branch{position:relative;margin:10px 0 10px 12px;padding:10px 12px;border:1px solid #7d6942;border-left:3px solid #a78b53;background:#26251b;white-space:normal;overflow-wrap:anywhere}.sola-ec-branch b{display:block;color:#e8ca92;font:600 12px/1.5 sans-serif}.sola-ec-branch::before{position:absolute;left:-15px;top:20px;width:12px;height:1px;background:#a78b53;content:''}\n.sola-ec-paper{margin:12px 0;padding:14px 16px;border:1px solid #aa8959;border-left-color:#8f6b3e;border-radius:4px 8px 6px 3px;background:radial-gradient(ellipse at 0% 100%,rgba(115,73,34,.15),transparent 65%),repeating-linear-gradient(97deg,rgba(78,49,24,.025) 0 1px,transparent 1px 6px),linear-gradient(112deg,#dec18e,#ead5ae);color:#1a1310;white-space:normal;}\n.sola-ec-paper b{display:block;margin-bottom:5px;color:#654321;font:600 12px/1.5 ui-sans-serif,system-ui,sans-serif}.sola-ec-paper .sola-ec-note-text{color:#1a1310;font:italic 550 14px/1.7 ui-sans-serif,system-ui,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:normal}.sola-ec-paper .sola-ec-note-text *{color:#1a1310}\n.sola-ec-chart .sola-ec-heading p{font:12px/1.5 sans-serif;color:#b6aa95}\n@container sola-ec (max-width:600px){.sola-ec-heading{flex-direction:column;gap:9px;padding:18px 14px;text-align:center}.sola-ec-stage{grid-template-columns:minmax(0,1fr)}.sola-ec-stage section+section{border-left:0;border-top:1px solid #514a37}.sola-ec-roll{padding:8px}.sola-ec-stage section,.sola-ec-checks,.sola-ec-currents,.sola-ec-storyboard,.sola-ec-vault{padding:14px 12px}}\n@keyframes solaEcReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.sola-ec-card[open]>.sola-ec-roll{animation:none}}\n\n/* V3 HUD contract: slot wrapper, track sizing, and a single visible title child. */\n.sola-ec-slot{width:100%;min-width:0;max-width:100%}\n.sola-ec-card{width:100%;flex:1 0 100%}\n.sola-ec-header{display:flex;align-items:center;gap:10px;flex:1 1 190px;min-width:0}\n.sola-ec-label-heading{font:400 21px/1.3 Georgia,serif;color:#f0dcc4;overflow-wrap:anywhere}\n.sola-ec-label-sub{font:11px/1.5 sans-serif;color:#b8aa92}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title svg{width:32px!important;height:32px!important;flex:0 0 32px!important}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title>.sola-ec-title{display:grid!important;gap:3px}\n.sola-ec-card .sola-rating-pass{color:#b7cf8c}.sola-ec-card .sola-rating-fail{color:#f0ac8c}.sola-ec-card .sola-rating-na{color:#c2cdd5}\n.sola-ec-card .sola-ec-metar,.sola-ec-card .sola-ec-escalation,.sola-ec-card .sola-ec-gear{display:inline-block;vertical-align:baseline;padding:2px 7px;border:1px solid currentColor;border-radius:3px 6px 4px 2px;font:600 11px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.035em;white-space:normal;text-shadow:none;max-width:100%;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-metar{background:rgba(180,156,119,.09);color:#e6c48e}\n.sola-ec-card .sola-ec-metar[data-state=\"DRM\"]{color:#a8b9c6;background:color-mix(in srgb,#a8b9c6 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"STR\"]{color:#d9bd7d;background:color-mix(in srgb,#d9bd7d 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"MNT\"]{color:#f4a261;background:color-mix(in srgb,#f4a261 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"THR\"]{color:#ee9b7a;background:color-mix(in srgb,#ee9b7a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"UNL\"]{color:#ff8a6a;background:color-mix(in srgb,#ff8a6a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"LAT\"]{color:#acbfc9;background:color-mix(in srgb,#acbfc9 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"HEAT\"]{color:#f3c65e;background:color-mix(in srgb,#f3c65e 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"SPRUNG\"]{color:#f08d72;background:color-mix(in srgb,#f08d72 11%,transparent)}\n.sola-ec-card .sola-ec-escalation{color:#e8b875;background:rgba(244,162,97,.1)}.sola-ec-card .sola-ec-escalation[data-level=\"E0\" i]{color:#a8b9c6}.sola-ec-card .sola-ec-escalation[data-level=\"E3\" i],.sola-ec-card .sola-ec-escalation[data-level=\"E4\" i]{color:#f09475}\n.sola-ec-card .sola-ec-gear{color:#c0bceb;background:rgba(165,173,240,.1)}\n.sola-ec-card .sola-ec-thread-id{display:inline-block;padding:1px 5px;margin-right:4px;border-bottom:1px solid #a28b5c;color:#f0d199;font:700 12px/1.6 ui-monospace,monospace;letter-spacing:.02em}\n.sola-ec-card .sola-ec-currents li:has(.sola-ec-thread-id),.sola-ec-card .sola-easel-thread{margin:8px 0;padding:9px 11px;border-left:2px solid #7c6943;background:rgba(214,175,112,.035);border-radius:2px 7px 5px 2px;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-ledger-entry{margin:9px 0;padding:10px 12px;border:1px solid #514b36;border-left:2px solid #897449;border-radius:2px 6px 5px 2px;background:rgba(214,175,112,.035)}.sola-ec-card .sola-ec-entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;min-width:0}.sola-ec-card .sola-ec-entry-label{color:#e8d9bf;font:13px/1.55 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note{margin-top:5px;color:#cfc3ae;font:13px/1.6 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note p{margin:0;font:inherit}.sola-ec-card .sola-ec-entry-head .sola-ec-thread-id{margin:0}</style><div class=\"sola-ec-slot\"><details class=\"sola-drawer sola-drawer-track sola-ec-card\"><summary><span class=\"sola-drawer-title sola-ec-header\"><svg class=\"track-icon\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle class=\"line\" cx=\"16\" cy=\"16\" r=\"14\" opacity=\".65\"/><path d=\"M16 3.5c1.8 7.3 4.3 10.7 12.5 12.5-8.2 1.8-10.7 5.2-12.5 12.5-1.8-7.3-4.3-10.7-12.5-12.5C11.7 14.2 14.2 10.8 16 3.5z\" fill=\"rgba(243,183,75,.2)\" stroke=\"var(--gold)\" stroke-width=\"1.05\"/><path d=\"m16 11.8 1.5 2.7 2.7 1.5-2.7 1.5-1.5 2.7-1.5-2.7-2.7-1.5 2.7-1.5z\" fill=\"var(--surface)\" stroke=\"var(--amber)\" stroke-width=\".8\"/></svg><span class=\"sola-ec-title\"><span class=\"sola-ec-label-heading\">Sola’s Easel</span><span class=\"sola-ec-label-sub\">The Director’s Chart · Turn $1</span></span></span><span class=\"sola-drawer-badge sola-ec-badge\">DIRECTOR SPOILERS</span><span class=\"sola-drawer-chevron sola-ec-chevron\" aria-hidden=\"true\"></span></summary><div class=\"sola-ec-roll\"><div class=\"sola-ec-chart\"><header class=\"sola-ec-heading\"><svg viewBox=\"0 0 160 160\" role=\"img\" aria-label=\"Engraved four-point star with interlaced diamond tracery\">\n                        <defs><linearGradient id=\"sola-ec-gilding\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#f3dba7\"/><stop offset=\".45\" stop-color=\"#c3934c\"/><stop offset=\"1\" stop-color=\"#e9b963\"/></linearGradient></defs>\n                        <g fill=\"none\" stroke=\"url(#sola-ec-gilding)\" stroke-linejoin=\"round\">\n                          <path d=\"m80 8 72 72-72 72L8 80z\" stroke-width=\"1.2\"/><path d=\"m80 19 61 61-61 61-61-61z\" stroke-width=\".6\" opacity=\".6\"/>\n                          <path d=\"M80 11c7 43 26 62 69 69-43 7-62 26-69 69-7-43-26-62-69-69 43-7 62-26 69-69z\" fill=\"#413821\" stroke-width=\"1.5\"/>\n                          <path d=\"m80 27 9 44 44 9-44 9-9 44-9-44-44-9 44-9z\" fill=\"#28291e\" stroke-width=\".9\"/>\n                          <path d=\"M80 32v96M32 80h96\" stroke-width=\".5\" opacity=\".5\"/>\n                          <path d=\"m80 61 19 19-19 19-19-19z\" fill=\"#b58a48\" stroke-width=\"1.1\"/><path d=\"m80 69 11 11-11 11-11-11z\" fill=\"#f1d7a1\" stroke-width=\".7\"/>\n                          <path d=\"M37 31h-8v8m94-8h8v8M37 129h-8v-8m94 8h8v-8M49 36l-13 13m75-13 13 13M49 124l-13-13m75 13 13-13\" stroke-width=\"1\"/>\n                          <path d=\"m80 2 3 5-3 5-3-5zm0 146 3 5-3 5-3-5zM2 80l5-3 5 3-5 3zm146 0 5-3 5 3-5 3z\" fill=\"#cba45e\" stroke-width=\".7\"/>\n                        </g>\n                      </svg><div><span class=\"sola-ec-kicker\">Sola’s Easel · Turn $1</span><h2>The Director’s Chart</h2><p>Private review · outside story canon</p></div></header><div class=\"sola-ec-content\" style=\"padding:18px\">\n$2\n</div></div></div></details></div>",
+      "actions": [],
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 14,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Preserve nonstandard layout",
+      "script_id": "sola_easel_chart_test_09",
+      "find_regex": "<\\s{0,8}sola_easel\\b[^>]*>((?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*?)<\\s{0,8}\\/\\s{0,8}sola_easel\\s{0,8}>",
+      "replace_string": "<style>    .sola-ec-chart { overflow: hidden; border: 1px solid #806c43; background: linear-gradient(rgba(212,176,103,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,176,103,.025) 1px, transparent 1px), #171916; background-size: 24px 24px; }\n    .sola-ec-heading { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 22px; border-bottom: 3px double #6b6045; background: radial-gradient(ellipse at center, rgba(243,183,75,.08), transparent 70%); }\n    .sola-ec-heading svg { display: block; width: 128px; height: 128px; flex: 0 0 128px; }\n    .sola-ec-heading h2 { margin: 5px 0 7px; color: #edcf98; font: 400 28px/1.2 Georgia, serif; }\n    .sola-ec-heading p { margin: 0; color: #b6aa95; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }\n    .sola-ec-chart h3 { margin: 0 0 10px; color: #dfbf85; font: 400 17px/1.3 Georgia, serif; }\n    .sola-ec-chart h3 span { margin-right: 7px; color: #a3916e; font: 12px/1.4 Georgia, serif; }\n    .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 18px 22px; border-bottom: 1px solid #514a37; }\n    .sola-ec-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid #514a37; }\n    .sola-ec-stage section { min-width: 0; padding: 20px 22px; }\n    .sola-ec-stage section + section { border-left: 1px solid #514a37; }\n    .sola-ec-chart p { color: #e1d6c1; font: 13px/1.6 Georgia, serif; }\n    .sola-ec-stage p, .sola-ec-currents p, .sola-ec-vault p { margin: 0; }\n    .sola-ec-currents { border-left: 3px solid #9aa87a; background: rgba(154,168,122,.035); }\n    .sola-ec-vault { border-bottom: 0; background: rgba(224,122,95,.06); }\n    .sola-ec-vault h3 { color: #e0a18a; }\n    .sola-ec-vault strong { color: #d2dfbb; font-weight: 600; }\n    @media (max-width: 600px) {\n      .sola-ec-heading { flex-direction: column; gap: 9px; padding: 18px 14px; text-align: center; }\n      .sola-ec-heading svg { width: 112px; height: 112px; flex-basis: 112px; }\n      .sola-ec-heading h2 { font-size: 24px; }\n      .sola-ec-stage { grid-template-columns: minmax(0, 1fr); }\n      .sola-ec-stage section + section { border-left: 0; border-top: 1px solid #514a37; }\n      .sola-ec-stage section, .sola-ec-checks, .sola-ec-currents, .sola-ec-storyboard, .sola-ec-vault { padding: 16px 14px; }\n    }\n\n.sola-ec-card{--shadowWidth:0!important;--gold:#f3b74b;--amber:#f4a261;--surface:#1a1310;min-width:0;max-width:100%;margin:14px 0;border:1px solid #806c43;border-left:3px double #b99a5b;border-radius:12px 8px;background:#171410;color:#f0dcc4;overflow:hidden;font:14px/1.6 Georgia,serif;container-type:inline-size;container-name:sola-ec;}\n.sola-ec-card *{box-sizing:border-box;max-width:100%;}\n.sola-ec-card>summary{display:flex;align-items:center;flex-wrap:wrap;gap:10px;padding:14px 42px 14px 14px;position:relative;cursor:pointer;list-style:none;background:linear-gradient(100deg,#302619,#1a1510);}\n.sola-ec-card>summary::-webkit-details-marker{display:none}.sola-ec-card>summary::marker{content:''}\n.sola-ec-card>summary:focus-visible{outline:2px solid #f3b74b;outline-offset:-4px}\n.sola-ec-card .track-icon{width:32px;height:32px;flex:0 0 32px;fill:none;stroke:#e4bd72;stroke-width:1.1}.sola-ec-card .track-icon .line{fill:none;stroke:currentColor}\n.sola-ec-title{display:grid;gap:3px;flex:1 1 190px;min-width:0}\n.sola-ec-badge{padding:3px 7px;border:1px solid #a48a52;color:#e4bc70;font:600 9px/1.5 sans-serif;letter-spacing:.06em}\n.sola-ec-chevron{position:absolute;right:18px;top:26px;width:8px;height:8px;border-right:1px solid #e4bc70;border-bottom:1px solid #e4bc70;transform:rotate(45deg)}.sola-ec-card[open]>summary .sola-ec-chevron{transform:rotate(225deg)}\n.sola-ec-roll{padding:12px;display:grid;gap:12px;border-top:1px solid #66573c}.sola-ec-card[open]>.sola-ec-roll{animation:solaEcReveal .25s ease-out}\n.sola-ec-content{white-space:normal;overflow-wrap:anywhere;color:#e1d6c1;font:14px/1.65 Georgia,serif;min-width:0;}\n.sola-ec-content p{margin:.4em 0}.sola-ec-content ul,.sola-ec-content ol{margin:.4em 0;padding-left:22px}.sola-ec-content li{margin:.3em 0}.sola-ec-content li>p{margin:0}.sola-ec-content:empty{display:none}\n.sola-ec-kicker{color:#d4aa6c;font:600 10px/1.5 sans-serif;letter-spacing:.1em;text-transform:uppercase}\n.sola-ec-field{color:#e4bb78;font:600 12px/1.6 sans-serif}\n.sola-ec-check{display:block;margin:5px 0;padding:8px 10px;border:1px solid #69764f;border-left:3px solid #a5b985;background:#24291d;white-space:normal}.sola-ec-check b{font:600 12px/1.5 sans-serif;color:#d9e6bc}.sola-ec-check em{display:inline-block;margin-left:7px;font:700 10px/1.5 sans-serif;color:#b7cf8c}.sola-ec-check span{display:block;color:#e1d6c1;font:13px/1.6 Georgia,serif}\n.sola-ec-check-warn{border-color:#ad6547;background:#30201a}.sola-ec-check-warn b,.sola-ec-check-warn em{color:#f0ac8c}.sola-ec-check-na{border-color:#73808c;background:#1e2529}.sola-ec-check-na b,.sola-ec-check-na em{color:#c2cdd5}\n.sola-ec-branch{position:relative;margin:10px 0 10px 12px;padding:10px 12px;border:1px solid #7d6942;border-left:3px solid #a78b53;background:#26251b;white-space:normal;overflow-wrap:anywhere}.sola-ec-branch b{display:block;color:#e8ca92;font:600 12px/1.5 sans-serif}.sola-ec-branch::before{position:absolute;left:-15px;top:20px;width:12px;height:1px;background:#a78b53;content:''}\n.sola-ec-paper{margin:12px 0;padding:14px 16px;border:1px solid #aa8959;border-left-color:#8f6b3e;border-radius:4px 8px 6px 3px;background:radial-gradient(ellipse at 0% 100%,rgba(115,73,34,.15),transparent 65%),repeating-linear-gradient(97deg,rgba(78,49,24,.025) 0 1px,transparent 1px 6px),linear-gradient(112deg,#dec18e,#ead5ae);color:#1a1310;white-space:normal;}\n.sola-ec-paper b{display:block;margin-bottom:5px;color:#654321;font:600 12px/1.5 ui-sans-serif,system-ui,sans-serif}.sola-ec-paper .sola-ec-note-text{color:#1a1310;font:italic 550 14px/1.7 ui-sans-serif,system-ui,sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.65);white-space:normal}.sola-ec-paper .sola-ec-note-text *{color:#1a1310}\n.sola-ec-chart .sola-ec-heading p{font:12px/1.5 sans-serif;color:#b6aa95}\n@container sola-ec (max-width:600px){.sola-ec-heading{flex-direction:column;gap:9px;padding:18px 14px;text-align:center}.sola-ec-stage{grid-template-columns:minmax(0,1fr)}.sola-ec-stage section+section{border-left:0;border-top:1px solid #514a37}.sola-ec-roll{padding:8px}.sola-ec-stage section,.sola-ec-checks,.sola-ec-currents,.sola-ec-storyboard,.sola-ec-vault{padding:14px 12px}}\n@keyframes solaEcReveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.sola-ec-card[open]>.sola-ec-roll{animation:none}}\n\n/* V3 HUD contract: slot wrapper, track sizing, and a single visible title child. */\n.sola-ec-slot{width:100%;min-width:0;max-width:100%}\n.sola-ec-card{width:100%;flex:1 0 100%}\n.sola-ec-header{display:flex;align-items:center;gap:10px;flex:1 1 190px;min-width:0}\n.sola-ec-label-heading{font:400 21px/1.3 Georgia,serif;color:#f0dcc4;overflow-wrap:anywhere}\n.sola-ec-label-sub{font:11px/1.5 sans-serif;color:#b8aa92}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title svg{width:32px!important;height:32px!important;flex:0 0 32px!important}\ndetails.sola-card-hud>.sola-hud-body>div>details.sola-ec-card>summary>.sola-drawer-title>.sola-ec-title{display:grid!important;gap:3px}\n.sola-ec-card .sola-rating-pass{color:#b7cf8c}.sola-ec-card .sola-rating-fail{color:#f0ac8c}.sola-ec-card .sola-rating-na{color:#c2cdd5}\n.sola-ec-card .sola-ec-metar,.sola-ec-card .sola-ec-escalation,.sola-ec-card .sola-ec-gear{display:inline-block;vertical-align:baseline;padding:2px 7px;border:1px solid currentColor;border-radius:3px 6px 4px 2px;font:600 11px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.035em;white-space:normal;text-shadow:none;max-width:100%;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-metar{background:rgba(180,156,119,.09);color:#e6c48e}\n.sola-ec-card .sola-ec-metar[data-state=\"DRM\"]{color:#a8b9c6;background:color-mix(in srgb,#a8b9c6 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"STR\"]{color:#d9bd7d;background:color-mix(in srgb,#d9bd7d 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"MNT\"]{color:#f4a261;background:color-mix(in srgb,#f4a261 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"THR\"]{color:#ee9b7a;background:color-mix(in srgb,#ee9b7a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"UNL\"]{color:#ff8a6a;background:color-mix(in srgb,#ff8a6a 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"LAT\"]{color:#acbfc9;background:color-mix(in srgb,#acbfc9 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"HEAT\"]{color:#f3c65e;background:color-mix(in srgb,#f3c65e 11%,transparent)}\n.sola-ec-card .sola-ec-metar[data-state=\"SPRUNG\"]{color:#f08d72;background:color-mix(in srgb,#f08d72 11%,transparent)}\n.sola-ec-card .sola-ec-escalation{color:#e8b875;background:rgba(244,162,97,.1)}.sola-ec-card .sola-ec-escalation[data-level=\"E0\" i]{color:#a8b9c6}.sola-ec-card .sola-ec-escalation[data-level=\"E3\" i],.sola-ec-card .sola-ec-escalation[data-level=\"E4\" i]{color:#f09475}\n.sola-ec-card .sola-ec-gear{color:#c0bceb;background:rgba(165,173,240,.1)}\n.sola-ec-card .sola-ec-thread-id{display:inline-block;padding:1px 5px;margin-right:4px;border-bottom:1px solid #a28b5c;color:#f0d199;font:700 12px/1.6 ui-monospace,monospace;letter-spacing:.02em}\n.sola-ec-card .sola-ec-currents li:has(.sola-ec-thread-id),.sola-ec-card .sola-easel-thread{margin:8px 0;padding:9px 11px;border-left:2px solid #7c6943;background:rgba(214,175,112,.035);border-radius:2px 7px 5px 2px;overflow-wrap:anywhere}\n.sola-ec-card .sola-ec-ledger-entry{margin:9px 0;padding:10px 12px;border:1px solid #514b36;border-left:2px solid #897449;border-radius:2px 6px 5px 2px;background:rgba(214,175,112,.035)}.sola-ec-card .sola-ec-entry-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;min-width:0}.sola-ec-card .sola-ec-entry-label{color:#e8d9bf;font:13px/1.55 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note{margin-top:5px;color:#cfc3ae;font:13px/1.6 Georgia,serif;overflow-wrap:anywhere}.sola-ec-card .sola-ec-entry-note p{margin:0;font:inherit}.sola-ec-card .sola-ec-entry-head .sola-ec-thread-id{margin:0}</style><div class=\"sola-ec-slot\"><details class=\"sola-drawer sola-drawer-track sola-ec-card\"><summary><span class=\"sola-drawer-title sola-ec-header\"><svg class=\"track-icon\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle class=\"line\" cx=\"16\" cy=\"16\" r=\"14\" opacity=\".65\"/><path d=\"M16 3.5c1.8 7.3 4.3 10.7 12.5 12.5-8.2 1.8-10.7 5.2-12.5 12.5-1.8-7.3-4.3-10.7-12.5-12.5C11.7 14.2 14.2 10.8 16 3.5z\" fill=\"rgba(243,183,75,.2)\" stroke=\"var(--gold)\" stroke-width=\"1.05\"/><path d=\"m16 11.8 1.5 2.7 2.7 1.5-2.7 1.5-1.5 2.7-1.5-2.7-2.7-1.5 2.7-1.5z\" fill=\"var(--surface)\" stroke=\"var(--amber)\" stroke-width=\".8\"/></svg><span class=\"sola-ec-title\"><span class=\"sola-ec-label-heading\">Sola’s Easel</span><span class=\"sola-ec-label-sub\">The Director’s Chart</span></span></span><span class=\"sola-drawer-badge sola-ec-badge\">DIRECTOR SPOILERS</span><span class=\"sola-drawer-chevron sola-ec-chevron\" aria-hidden=\"true\"></span></summary><div class=\"sola-ec-roll\"><div class=\"sola-ec-chart\"><header class=\"sola-ec-heading\"><svg viewBox=\"0 0 160 160\" role=\"img\" aria-label=\"Engraved four-point star with interlaced diamond tracery\">\n                        <defs><linearGradient id=\"sola-ec-gilding\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\"><stop stop-color=\"#f3dba7\"/><stop offset=\".45\" stop-color=\"#c3934c\"/><stop offset=\"1\" stop-color=\"#e9b963\"/></linearGradient></defs>\n                        <g fill=\"none\" stroke=\"url(#sola-ec-gilding)\" stroke-linejoin=\"round\">\n                          <path d=\"m80 8 72 72-72 72L8 80z\" stroke-width=\"1.2\"/><path d=\"m80 19 61 61-61 61-61-61z\" stroke-width=\".6\" opacity=\".6\"/>\n                          <path d=\"M80 11c7 43 26 62 69 69-43 7-62 26-69 69-7-43-26-62-69-69 43-7 62-26 69-69z\" fill=\"#413821\" stroke-width=\"1.5\"/>\n                          <path d=\"m80 27 9 44 44 9-44 9-9 44-9-44-44-9 44-9z\" fill=\"#28291e\" stroke-width=\".9\"/>\n                          <path d=\"M80 32v96M32 80h96\" stroke-width=\".5\" opacity=\".5\"/>\n                          <path d=\"m80 61 19 19-19 19-19-19z\" fill=\"#b58a48\" stroke-width=\"1.1\"/><path d=\"m80 69 11 11-11 11-11-11z\" fill=\"#f1d7a1\" stroke-width=\".7\"/>\n                          <path d=\"M37 31h-8v8m94-8h8v8M37 129h-8v-8m94 8h8v-8M49 36l-13 13m75-13 13 13M49 124l-13-13m75 13 13-13\" stroke-width=\"1\"/>\n                          <path d=\"m80 2 3 5-3 5-3-5zm0 146 3 5-3 5-3-5zM2 80l5-3 5 3-5 3zm146 0 5-3 5 3-5 3z\" fill=\"#cba45e\" stroke-width=\".7\"/>\n                        </g>\n                      </svg><div><span class=\"sola-ec-kicker\">Sola’s Easel</span><h2>The Director’s Chart</h2><p>Private review · outside story canon</p></div></header><div class=\"sola-ec-content\" style=\"padding:18px\">\n$1\n</div></div></div></details></div>",
+      "actions": [],
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 15,
+      "description": "HUD-compatible revision 3. Display-only Easel chart accepting raw V3 tags or V3-rendered drawers. Existing V3 pack may remain enabled. Stable script IDs update the prior test import.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: V3 pressure and seed rows",
+      "script_id": "sola_easel_chart_test_entry_v3",
+      "find_regex": "(?<!<[^>]*)<div\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-thread\\b)[^>]*>\\s*<span\\b[^>]*>([CS][1-9]\\d*)<\\/span>\\s*<span\\b[^>]*>([^<]*?)<\\/span>\\s*([\\s\\S]*?)<span\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-thread-note\\b)[^>]*>([\\s\\S]*?)<\\/span>\\s*<\\/div>(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-ledger-entry\"><div class=\"sola-ec-entry-head\"><span class=\"sola-ec-thread-id\">$1</span><span class=\"sola-ec-entry-label\">$2</span>$3</div><div class=\"sola-ec-entry-note\">$4</div></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 16,
+      "description": "Format complete pressure and seed rows without splitting Markdown list items. Retain full labels, live state, and catalyst/payoff text.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Ledger rows with V3 state chips",
+      "script_id": "sola_easel_chart_test_entry_html",
+      "find_regex": "(?<!<[^>]*)^[ \\t]*(?:[-*•][ \\t]+)?([CS][1-9]\\d*)[ \\t]+(\\[[^\\]\\r\\n<]+\\]|[\"“][^\"”\\r\\n<]+[\"”]|[^:\\r\\n<]+?):?[ \\t]*(<span\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-easel-state\\b)[^>]*>[^<]*<\\/span>)[ \\t]*([^\\r\\n]*)(?=\\r?$)(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-ledger-entry\"><div class=\"sola-ec-entry-head\"><span class=\"sola-ec-thread-id\">$1</span><span class=\"sola-ec-entry-label\">$2</span>$3</div><div class=\"sola-ec-entry-note\">$4</div></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 17,
+      "description": "Keep multi-digit raw ledger rows intact when V3 has already decorated only their METAR code.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Pressure and seed ledger rows",
+      "script_id": "sola_easel_chart_test_entry_raw",
+      "find_regex": "(?<!<[^>]*)^[ \\t]*(?:[-*•][ \\t]+)?([CS][1-9]\\d*)[ \\t]+(\\[[^\\]\\r\\n<]+\\]|[\"“][^\"”\\r\\n<]+[\"”]|[^:\\r\\n<]+?):?[ \\t]*(?:\\[(DRM|STR|MNT|THR|UNL|LAT|HEAT|SPRUNG(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|(DRM|STR|MNT|THR|UNL|LAT|HEAT|SPRUNG))[ \\t]*([^\\r\\n]*)(?=\\r?$)(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<div class=\"sola-ec-ledger-entry\"><div class=\"sola-ec-entry-head\"><span class=\"sola-ec-thread-id\">$1</span><span class=\"sola-ec-entry-label\">$2</span>[$3$4]</div><div class=\"sola-ec-entry-note\">$5</div></div>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 18,
+      "description": "Format complete pressure and seed rows without splitting Markdown list items. Retain full labels, live state, and catalyst/payoff text.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Pressure and seed IDs",
+      "script_id": "sola_easel_chart_test_metar_ids",
+      "find_regex": "(?<!<[^>]*)<span\\b(?![^>]*\\bsola-ec-thread-id\\b)[^>]*>[ \\t]*([CS][1-9]\\d*)[ \\t]*<\\/span>(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-thread-id\">$1</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 19,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR DRM (Dormant)",
+      "script_id": "sola_easel_chart_test_metar_drm",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(DRM(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(DRM(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(DRM(?:[ \\t]*[·—–-][ \\t]*Dormant)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"DRM\" title=\"DRM · Dormant\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 20,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR STR (Stirring)",
+      "script_id": "sola_easel_chart_test_metar_str",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(STR(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(STR(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(STR(?:[ \\t]*[·—–-][ \\t]*Stirring)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"STR\" title=\"STR · Stirring\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 21,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR MNT (Mounting)",
+      "script_id": "sola_easel_chart_test_metar_mnt",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(MNT(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(MNT(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(MNT(?:[ \\t]*[·—–-][ \\t]*Mounting)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"MNT\" title=\"MNT · Mounting\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 22,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR THR (At Threshold)",
+      "script_id": "sola_easel_chart_test_metar_thr",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(THR(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(THR(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(THR(?:[ \\t]*[·—–-][ \\t]*At Threshold)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"THR\" title=\"THR · At Threshold\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 23,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR UNL (Unleashed)",
+      "script_id": "sola_easel_chart_test_metar_unl",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(UNL(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(UNL(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(UNL(?:[ \\t]*[·—–-][ \\t]*Unleashed)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"UNL\" title=\"UNL · Unleashed\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 24,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR LAT (Latent)",
+      "script_id": "sola_easel_chart_test_metar_lat",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(LAT(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(LAT(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(LAT(?:[ \\t]*[·—–-][ \\t]*Latent)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"LAT\" title=\"LAT · Latent\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 25,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR HEAT (Drawing Heat)",
+      "script_id": "sola_easel_chart_test_metar_heat",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(HEAT(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(HEAT(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(HEAT(?:[ \\t]*[·—–-][ \\t]*Drawing Heat)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"HEAT\" title=\"HEAT · Drawing Heat\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 26,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: METAR SPRUNG (Sprung)",
+      "script_id": "sola_easel_chart_test_metar_sprung",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(SPRUNG(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(SPRUNG(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(SPRUNG(?:[ \\t]*[·—–-][ \\t]*Sprung)?)\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|\\r?\\n|$))(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-metar\" data-state=\"SPRUNG\" title=\"SPRUNG · Sprung\">$1$2$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 27,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Escalation E0–E4",
+      "script_id": "sola_easel_chart_test_metar_escalation",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-escalation\\b)[^>]*>[ \\t]*((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)[ \\t]*<\\/span>|\\[?\\b((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)\\b\\]?(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-escalation\" data-level=\"$2$4\">$1$3</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 28,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    },
+    {
+      "name": "Easel Chart: Pacing gears and ranges",
+      "script_id": "sola_easel_chart_test_metar_gear",
+      "find_regex": "(?<!<[^>]*)(?:<span\\b(?![^>]*\\bsola-ec-gear\\b)[^>]*>[ \\t]*(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)[ \\t]*<\\/span>|\\b(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)\\b(?![^<]*<\\/span>))(?<=<details\\b(?=[^>]*\\bclass=\"[^\"]*\\bsola-ec-card\\b)[^>]*>(?:(?!<\\/details\\s*>)[\\s\\S])*?)",
+      "replace_string": "<span class=\"sola-ec-gear\">$1$2</span>",
+      "actions": [],
+      "flags": "gim",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 29,
+      "description": "Render V3 METAR states and multi-digit ledger IDs only within the redesigned Easel. Preserve state, labels, and notes.",
+      "folder": "Sola Easel - Director Chart TEST",
+      "owner_extension_identifier": null,
+      "metadata": {
+        "easel_chart_revision": 4
+      }
+    }
+  ],
+  "exported_at": 1792280647
+}

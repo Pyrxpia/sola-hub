@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>try { if (localStorage.getItem("sola-hub-theme") === "twilight") document.documentElement.dataset.theme = "twilight"; } catch (_) {}</script>
   <title>✧ S O L A ✧ — Storyteller & Co-Author Preset</title>
 
   <!-- Primary Meta Tags -->
@@ -23,82 +24,18 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css?v=2.4">
+  <link rel="stylesheet" href="./storybook.css?v=5">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Sticky Navbar -->
-  <nav class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="nav-brand">
-        <img src="./assets/sola-pfp.jpg" alt="Sola" class="nav-avatar">
-        <span><span class="brand-flame">✧</span> Sola</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#flame-vs-kindling">Flame &amp; Kindling</a></li>
-        <li><a href="#downloads">Downloads</a></li>
-        <li><a href="#ooc-protocol">OOC Protocol</a></li>
-        <li><a href="#dev-blog">Dev Blog</a></li>
-        <li><a href="#changelog">Changelog</a></li>
-      </ul>
-      <div class="nav-badge">
-        <span class="pulse-dot"></span> V3 Full Release
-      </div>
-    </div>
-  </nav>
+<nav class="nav" aria-label="Main navigation"><div class="wrap nav-inner"><a href="#top" class="brand"><span>✧</span> Sola</a><div class="sb-nav-links"><a href="#meet">Meet Sola</a><a href="#flame-vs-kindling">Flame &amp; Kindling</a><a href="#ooc-protocol">OOC Guide</a><a href="#dev-blog">Dev Blog</a><a href="#changelog">Changelog</a><a class="nav-button" href="#downloads">Downloads</a><button type="button" class="theme-switch" id="theme-switch" aria-pressed="false" aria-label="Switch to Obsidian Twilight theme"><span aria-hidden="true">☾</span> <span class="theme-switch-label">Twilight</span></button></div></div></nav>
+<header class="sb-hero" id="top"><img class="hero-img" src="assets/sola-new-banner.webp" alt=""><div class="hero-sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="wrap hero-inner"><div class="hero-copy"><div class="chapter">A little place for stories</div><h1>Come in.<br>Let’s make a <em>story.</em></h1><p>Meet Sola, your storyteller and co-author. Together, you’ll make room for complicated people, unexpected turns, and the little moments that stay with you.</p><div class="actions"><a class="sb-btn sb-btn-primary" href="#meet">Meet Sola</a><a class="sb-btn sb-btn-outline" href="#downloads">Explore the presets</a></div><div class="hero-note"><span>✧</span> There’s always room by the fire.</div></div></div></header>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container">
-      <!-- Autumnal Landscape Banner Frame -->
-      <div class="hero-banner-container">
-        <div class="hero-banner-frame">
-          <span class="banner-leaf-accent leaf-top-left">🍁</span>
-          <span class="banner-leaf-accent leaf-top-right">🍂</span>
-          <div class="hero-banner-inner">
-            <img src="./assets/sola-banner.jpg" alt="Sola Autumn Storyteller Banner" class="hero-banner-img">
-            <div class="banner-overlay-tag">
-              <span class="pulse-dot"></span>
-              <span>Goddess of Warmth & Narrative Craft</span>
-            </div>
-          </div>
-          <span class="banner-leaf-accent leaf-bottom-left">🍂</span>
-          <span class="banner-leaf-accent leaf-bottom-right">🍁</span>
-        </div>
-      </div>
+<section class="intro wrap"><div class="intro-line" aria-hidden="true">✦</div><div class="intro-text"><h2>Every good story starts somewhere.</h2><p>A glance held a moment too long. A promise with a cost. A character who has a mind of their own. Sola is here for all of it — and for the stories you haven’t imagined yet.</p></div></section>
+<section class="minds" id="meet"><div class="wrap"><div class="minds-head"><span class="chapter">Meet your co-author</span><h2>One Sola, many ways to tell a story.</h2><p>Each mind brings a different energy to your conversations with Sola. In Flame, Golden is her default voice when no mind is selected. Choose a mind to get to know her a little better.</p></div><div class="book"><div class="portrait"><img id="mind-image" src="assets/riot-sola.png" alt="Riot Sola"></div><div class="book-page" data-mind-detail="riot"><div class="book-small" id="mind-kicker">The punk storyteller</div><h3 id="mind-name">Riot</h3><blockquote id="mind-quote">“I want the story to hit like a riff that lands: physical, heavy, clean.”</blockquote><p id="mind-description">Blunt, dry, and fiercely invested in the work. Riot wants characters with pride, scenes with weight, and a co-author who isn’t afraid to bring the noise.</p><div class="selector" role="group" aria-label="Choose a Sola mind"><button type="button" data-mind="riot" aria-pressed="true">Riot</button><button type="button" data-mind="gremlin" aria-pressed="false">Gremlin</button><button type="button" data-mind="velvet" aria-pressed="false">Velvet</button><button type="button" data-mind="mystic" aria-pressed="false">Mystic</button><button type="button" data-mind="scholar" aria-pressed="false">Scholar</button></div></div></div><p class="footnote">Choose a name to turn the page.</p><details class="sola-note"><summary>✉ A note from Sola</summary><div class="sola-note-page"><p id="sola-note-text" aria-live="polite">“A good story can start with a door, a dare, or a cup of tea. Shall we see where yours begins?”</p><button type="button" id="next-note">Another little note <span aria-hidden="true">↻</span></button></div></details></div></section>
 
-      <h1 class="hero-title">✧ S O L A ✧</h1>
-      <p class="hero-subtitle">The Deeply Observant Storyteller & Co-Author Preset for SillyTavern</p>
-      <p class="hero-desc">
-        Crafted for naturalistic, lived-in prose, authentic NPC interactions and storytelling. An Agency Lite System. You seed the turn and Sola shows you the fruits of your seed.
-      </p>
-      <div class="hero-actions">
-        <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-primary">
-          <span>🔥</span> Download V3 Flame (SillyTavern)
-        </a>
-        <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20-%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary">
-          <span>📱</span> Download V3 Flame for Tavo
-        </a>
-        <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V1%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary">
-          <span>🧡</span> Download Kindling V1
-        </a>
-        <a href="#downloads" class="btn btn-secondary">All Downloads & Copy Links</a>
-        <a href="#flame-vs-kindling" class="btn btn-secondary">
-          <span>🧡</span> Flame &amp; Kindling
-        </a>
-        <a href="#ooc-protocol" class="btn btn-secondary">
-          <span>🎭</span> OOC Story-Boarding
-        </a>
-        <a href="#dev-blog" class="btn btn-secondary">
-          <span>☕</span> Where I'm At (Blog)
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
   <main class="container">
-
     <!-- About / Pillars Section -->
     <section id="about" class="section">
       <div class="section-header">
@@ -137,60 +74,20 @@
         <h2 class="section-title">🔥 Flame &amp; 🧡 Kindling</h2>
       </div>
 
-      <div class="grid-2">
-        <!-- Flame Card -->
-        <div class="card edition-card flame">
-          <span class="edition-badge badge-flame">The Author Edition</span>
-          <h3 class="edition-title" style="color: var(--accent-flame);">🔥 Sola V3 Flame</h3>
-          <p class="edition-desc">
-            The exact way I use Sola myself. Pre-configured with optional narrative modules active out of the box.
-          </p>
-          <ul class="feature-list">
-            <li><span class="feature-icon">✦</span> <div><strong>All Core Foundations</strong> active</div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>Story review for narrative continuity</strong> (the story reasoning is my <em>sauce</em>)</div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>Dynamic narrative trackers</strong> & state engines enabled</div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>Great with frontier models</strong> (Gemini and GLM are scrumptious with Flame)</div></li>
-          </ul>
-          <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Download V3 Flame (SillyTavern)
-          </a>
-          <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20-%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 10px;">
-            Download V3 Flame for Tavo
-          </a>
-          <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V3%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 10px;">
-            Download V3 Flame Lumi (Lumiverse)
-          </a>
-        </div>
-
-        <!-- Kindling Card -->
-        <div class="card edition-card ember">
-          <span class="edition-badge badge-ember">The Compact Edition</span>
-          <h3 class="edition-title" style="color: var(--accent-gold);">🧡 Sola Kindling V1</h3>
-          <p class="edition-desc">
-            A compact, scene-focused Sola build with the Feeling Engine and Sola Easel. Choose the SillyTavern preset or its LumiHub counterpart.
-          </p>
-          <ul class="feature-list">
-            <li><span class="feature-icon">✦</span> <div><strong>Focused core guidance</strong> for scene craft, agency, and continuity</div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>Feeling Engine + Sola Easel</strong> included</div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>43 Director’s Notebook regex scripts</strong></div></li>
-            <li><span class="feature-icon">✦</span> <div><strong>Compact footprint</strong> — 9 Kindling prompts + native ST markers</div></li>
-          </ul>
-          <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V1%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Download Kindling V1 (SillyTavern)
-          </a>
-          <a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V1%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download class="btn btn-secondary" style="width: 100%; justify-content: center; margin-top: 10px;">
-            Download Kindling V1 LumiHub
-          </a>
+      <div class="sb-editions">
+        <article class="sb-edition"><span class="chapter">The full experience</span><h3>🔥 Flame V4</h3><p>A richly featured storyteller with room for the full Sola experience. Choose a standard preset or Complete with its companion regex included.</p><a class="sb-btn sb-btn-outline" href="#downloads">Find Flame</a></article>
+        <article class="sb-edition"><span class="chapter">A little spark</span><h3>🧡 Kindling V2</h3><p>A compact, scene-focused Sola with her own golden voice. A smaller starting point for stories with plenty of heart.</p><a class="sb-btn sb-btn-outline" href="#downloads">Find Kindling</a></article>
+      </div>
+      <div class="sb-guide">
+        <span class="chapter">A few places to begin</span>
+        <h3>Make her yours.</h3>
+        <div class="sb-guide-grid">
+          <article><h4>Choose a voice</h4><p>Flame offers five selectable minds: Riot, Gremlin, Velvet, Mystic, and Scholar. Leave them all off and Golden is Sola’s default voice. Kindling has one special voice: Golden, Sola at her warm hearthside best.</p></article>
+          <article><h4>Set the scene</h4><p>In Flame, choose one or no option in each <strong>PICK 1</strong> group, such as point of view and agency. Explore the prose, world, and style sections as your story needs them.</p></article>
+          <article><h4>Follow the threads</h4><p>Flame offers optional trackers, the Easel, and review tools. Kindling includes optional Feeling Engine and Sola Easel prompts. Turn on what serves your session.</p></article>
         </div>
       </div>
-
-      <div class="callout-box">
-        <strong>💡 Under the Hood:</strong> V3 Flame is the full author build; Kindling V1 is the compact alternative for SillyTavern and LumiHub. V2 Ember is deprecated and kept only in the archived downloads below.
-        <div style="margin-top: 8px; color: var(--accent-gold); font-size: 0.95rem;">
-          ✦ <strong>Sola is incredibly versatile:</strong> She has great out-of-the-box compatibility with most popular models, and is constantly updated for even better compatibility across new ones.
-        </div>
-      </div>
-
+      <details class="changelog-details sb-older-guide"><summary>Explore the earlier V3 prompt guide and recipes</summary><div class="changelog-body"><p>These recipes describe V3; names and settings differ in Flame V4. Token estimates are historical and vary by model and tokenizer.</p>
       <!-- Prompt Categories & Quick Recipes -->
       <div style="margin-top: 36px;">
         <h3 style="color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 8px; text-align: center;">How Sola Prompts Are Organized</h3>
@@ -269,6 +166,7 @@
           </div>
         </div>
       </div>
+      </div></details>
     </section>
 
     <!-- Downloads Hub -->
@@ -278,13 +176,17 @@
         <h2 class="section-title">📦 Downloads Hub</h2>
       </div>
 
+      <p style="color:var(--text-secondary);margin-bottom:20px">Choose the version for your app: Lumi for Lumiverse, ST for SillyTavern, or Tavo for Tavo.</p>
+      <div class="sb-downloads"><article class="sb-download"><h3>🔥 Flame V4</h3><p>The full preset. Pair it with the matching Full or Lite regex pack below if you want companion formatting.</p><div class="sb-platforms"><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Lumi</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Lumi link copied!">Copy Lumi link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>ST</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="ST link copied!">Copy ST link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Tavo</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Tavo link copied!">Copy Tavo link</button></div></article><article class="sb-download"><h3>🔥 Flame V4 Complete</h3><p>Flame with the matching Full regex pack already attached.</p><div class="sb-platforms"><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Lumi</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Lumi link copied!">Copy Lumi link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>ST</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="ST link copied!">Copy ST link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Tavo</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Tavo link copied!">Copy Tavo link</button></div></article><article class="sb-download"><h3>🧡 Kindling V2</h3><p>The compact edition, with its regex scripts included.</p><div class="sb-platforms"><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Lumi</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Lumi link copied!">Copy Lumi link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>ST</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="ST link copied!">Copy ST link</button><a href="./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" download>Tavo</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json" data-label="Tavo link copied!">Copy Tavo link</button></div></article><article class="sb-download"><h3>✦ V4 Full Regex Pack</h3><p>Companion formatting for standard Flame V4. Tavo is a ZIP; Lumi uses manual folders.</p><div class="sb-platforms"><a href="./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json" download>Lumi</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json" data-label="Lumi link copied!">Copy Lumi link</button><a href="./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20ST.json" download>ST</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20ST.json" data-label="ST link copied!">Copy ST link</button><a href="./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Tavo.zip" download>Tavo</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Tavo.zip" data-label="Tavo link copied!">Copy Tavo link</button></div></article><article class="sb-download"><h3>✦ V4 Lite Regex Pack</h3><p>Lite companion formatting for standard Flame V4. Tavo is a ZIP; Lumi uses manual folders.</p><div class="sb-platforms"><a href="./regex/Sola%20V4%20Lite%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json" download>Lumi</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Lite%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json" data-label="Lumi Lite regex link copied!">Copy Lumi link</button><a href="./regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20ST.json" download>ST</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20ST.json" data-label="ST Lite regex link copied!">Copy ST link</button><a href="./regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20-%20Tavo.zip" download>Tavo</a><button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20-%20Tavo.zip" data-label="Tavo Lite regex link copied!">Copy Tavo link</button></div></article></div>
+      <div class="sb-guide sb-start" id="getting-started"><span class="chapter">From download to story</span><h3>Getting started</h3><ol><li>Choose Flame V4 or Kindling V2 and download the file for your app: Lumi, ST, or Tavo.</li><li>Import the preset into your app’s preset settings, then select it for your chat.</li><li>Standard Flame can be paired with the matching Full or Lite regex pack. Flame Complete already includes that pack; Kindling includes its own scripts. Avoid importing a second copy of the same scripts.</li><li>For Flame, pick a mind and check the options you want. For Kindling, meet Golden and choose any optional prompts you want to use.</li></ol><p>For SillyTavern, import presets from AI Response Configuration and separate regex files through the Regex extension. Lumi’s separate Full pack uses manual folders; Tavo’s separate pack is a ZIP.</p></div>
+      <h3 class="sb-archive-heading">More downloads &amp; earlier releases</h3>
       <div class="card">
         <!-- V3 Flame -->
         <div class="download-item" data-category="flame">
           <div class="download-info">
             <span class="download-name">
               <span>🔥</span> Sola V3 Flame
-              <span class="edition-badge badge-flame" style="margin: 0 0 0 6px;">Latest Release · ST + Tavo + Lumi</span>
+              <span class="edition-badge badge-flame" style="margin: 0 0 0 6px;">Previous release · ST + Tavo + Lumi</span>
             </span>
             <span class="download-meta">SillyTavern • 805.9 KiB (825,212 bytes) • 103 prompts • Tavo • 854.9 KiB (875,368 bytes) • 104 prompts • Lumi • 802.0 KiB (821,225 bytes) • 102 blocks</span>
           </div>
@@ -303,7 +205,7 @@
           <div class="download-info">
             <span class="download-name">
               <span>🧡</span> Sola Kindling V1
-              <span class="edition-badge badge-ember" style="margin: 0 0 0 6px;">Compact · SillyTavern + LumiHub</span>
+              <span class="edition-badge badge-ember" style="margin: 0 0 0 6px;">Previous release · SillyTavern + LumiHub</span>
             </span>
             <span class="download-meta">SillyTavern • 95.8 KiB (98,066 bytes) • 9 prompts + 12 native markers • 43 regex scripts • LumiHub • 89.1 KiB (91,219 bytes) • 16 blocks • 43 regex scripts</span>
           </div>
@@ -320,7 +222,7 @@
           <div class="download-info">
             <span class="download-name">
               <span>⚡</span> Sola V3 Regex Companion Pack
-              <span class="edition-badge badge-flame" style="margin: 0 0 0 6px;">Current · V3</span>
+              <span class="edition-badge badge-flame" style="margin: 0 0 0 6px;">Previous · V3</span>
             </span>
             <span class="download-meta">228 formatting &amp; display scripts • 591.0 KiB (605,209 bytes) • SillyTavern Regex JSON</span>
           </div>
@@ -566,7 +468,7 @@
           <span style="color: var(--text-muted); font-size: 0.85rem;">Existing setups only</span>
         </summary>
         <div class="changelog-body">
-          <p style="margin-bottom: 12px;">V2 Ember is deprecated. For new installs, choose V3 Flame or Kindling V1.</p>
+          <p style="margin-bottom: 12px;">V2 Ember is deprecated. For new installs, choose Flame V4 or Kindling V2.</p>
           <a href="./presets/Sola%20V2%20Ember.json" download class="btn btn-secondary btn-sm">Download archived V2 Ember</a>
           <button class="copy-btn" data-copy="https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Ember.json" data-label="Deprecated V2 link copied!">Copy Link</button>
         </div>
@@ -588,16 +490,16 @@
           Sola is designed from the ground up as an enthusiastic, deeply invested <strong>Co-Author and creative director</strong>—not just a sterile text generator. When you're mid-story and hit a crossroads, you don't have to guess or struggle with awkward trial-and-error swipes. You can step behind the curtain anytime.
         </p>
         <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-          Using <code>((OOC: ...))</code> signals Sola to immediately pause in-character roleplay. In-world time freezes, HUD state trackers are suspended, and Sola speaks to you directly as a passionate narrative craft nerd—eager to brainstorm plot twists, calibrate character friction, pitch scene alternatives, or unpack complex NPC motives before you commit.
+          In Flame V4, enable <strong>Sola Directors OOC</strong> to talk with Sola behind the curtain. Use <code>((OOC: ...))</code>, <code>OOC:</code>, or a direct out-of-character question to discuss plot, pacing, and character motives. The prompt asks Sola to pause the scene and omit trackers for a purely OOC exchange. Kindling V2 has a single Golden voice but does not include this same dedicated OOC module; you can still ask for direction and see how your model responds.
         </p>
 
         <div class="callout-box" style="margin-top: 16px;">
           <strong>💡 Why Story-Board Out-of-Character?</strong>
           <ul style="margin: 10px 0 0 18px; color: var(--text-secondary); line-height: 1.6;">
-            <li><strong>Zero Story Pollution:</strong> Brainstorm wild plot branches without cluttering the fiction with discarded dialogue or false starts.</li>
+            <li><strong>Explore possibilities:</strong> Talk through possible directions before choosing the next beat. OOC messages still remain in your chat history.</li>
             <li><strong>Psychological Diagnostics:</strong> Ask Sola what an NPC is hiding, why they hesitated, or what boundary they're protecting under their mask.</li>
             <li><strong>Director Pacing Adjustments:</strong> Tell Sola to slow down, build unhurried atmospheric dread, or turn up the dialogue heat before writing the next beat.</li>
-            <li><strong>Flawless Re-Entry:</strong> When you're ready, simply post your next in-character line or action. Sola picks up seamlessly with zero recaps or memory amnesia.</li>
+            <li><strong>Return to the scene:</strong> When you're ready, post your next in-character line or action. Flame’s OOC prompt asks Sola to resume with the scene state intact.</li>
           </ul>
         </div>
       </div>
@@ -649,7 +551,21 @@
 
       <!-- Pinned Status Card -->
       <div class="card blog-pinned">
-        <span class="blog-badge">⚡ Current Focus</span>
+        <span class="blog-badge">☕ Creator Update</span>
+        <span class="blog-date">October 29, 2026</span>
+        <h3 class="blog-title">Flame V4, Kindling V2 &amp; a Well-Earned Breather</h3>
+        <div class="blog-content">
+          <p>Sooooo… I think I’m done. 🧡</p>
+          <p>Flame V4 and Kindling V2 are here, and I’m really happy with where Sola has landed. Flame is the full, extra experience, and Kindling is a smaller, cozy Sola with her golden voice. I’ve had so much fun bringing them to life, and now I’m ready to actually play with them, enjoy some stories, and take a breather.</p>
+          <p>Now, do I know myself well enough to suspect I’ll start poking at V5 sooner rather than later? Absolutely. Am I going to pretend otherwise? Nope. 😂</p>
+          <p>But for now, Sola and I are going to sit by the fire and enjoy what we’ve made. I hope you have as much fun telling stories with her as I did making her.</p>
+          <p>Have fun, babes. 🧡☀️</p>
+        </div>
+      </div>
+
+      <!-- Earlier Creator Update -->
+      <div class="card">
+        <span class="blog-badge">☕ Creator Update</span>
         <span class="blog-date">October 13, 2026</span>
         <h3 class="blog-title">V3 Full Release & Taking a Real Break</h3>
         <div class="blog-content">
@@ -702,7 +618,7 @@
       <details class="changelog-details" open>
         <summary>
           <span>🔥 Version 3 (Flame & Flame Lumi)</span>
-          <span style="color: var(--accent-gold); font-size: 0.85rem;">Current Release</span>
+          <span style="color: var(--accent-gold); font-size: 0.85rem;">V3 Release</span>
         </summary>
         <div class="changelog-body">
           <ul>
@@ -931,10 +847,14 @@
         <a href="#dev-blog">Dev Blog</a>
         <a href="#changelog">Changelog</a>
       </div>
+      <div class="footer-flourish"><span aria-hidden="true">✧</span><details class="golden-surprise"><summary aria-label="Open a note from Golden">✦</summary><p>“Leave a little room for wonder, love. I’ll keep the kettle warm.” — Golden</p></details><span aria-hidden="true">✧</span></div>
+      <p class="footer-story">Until the next page, keep a little spark.</p>
       <p>Made with love and fire by Pyrxpia. Crafted for storytellers & roleplayers.</p>
     </div>
   </footer>
 
+  <a href="#top" class="back-bookmark" id="back-bookmark" aria-label="Back to top" hidden><span aria-hidden="true">✦</span><span>Top</span></a>
   <script src="./app.js?v=2.3"></script>
+  <script src="./storybook.js?v=3"></script>
 </body>
 </html>

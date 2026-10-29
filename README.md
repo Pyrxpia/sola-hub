@@ -1,6 +1,6 @@
 # ✧ S O L A ✧ — Storyteller & Co-Author Preset
 
-[![Full Release](https://img.shields.io/badge/Release-V2.0%20Full-EE6C4D?style=flat-square)](https://Pyrxpia.github.io/sola-hub/)
+[![Full Release](https://img.shields.io/badge/Release-Flame%20V4%20%7C%20Kindling%20V2-EE6C4D?style=flat-square)](https://Pyrxpia.github.io/sola-hub/)
 [![Compatible Platforms](https://img.shields.io/badge/Platforms-SillyTavern%20%7C%20SillyBunny%20%7C%20Lumiverse-F4A261?style=flat-square)](https://Pyrxpia.github.io/sola-hub/)
 
 > **"You seed the turn, and Sola brings your seeds to fruition."**
@@ -12,7 +12,7 @@ Welcome to the official repository and documentation hub for **Sola** — a deep
   - [✦ What is Sola?](#-what-is-sola)
   - [🎯 What Sola Aims to Do](#-what-sola-aims-to-do)
   - [🚫 What Sola Aims NOT to Do](#-what-sola-aims-not-to-do)
-  - [🔥 Flame vs. 🕯️ Ember](#-flame-vs--ember)
+  - [🔥 Flame & 🧡 Kindling](#-flame--kindling)
   - [📦 Downloads Hub](#-downloads-hub)
   - [🎨 Lumiverse Themes](#-lumiverse-themes-flame-ember--solstice)
   - [🧩 Complete Module Reference Guide](#-complete-module-reference-guide)
@@ -62,34 +62,40 @@ To preserve narrative tension, immersion, and user agency, Sola enforces strict 
 
 ---
 
-## 🔥 Flame vs. 🕯️ Ember
+## 🔥 Flame & 🧡 Kindling
 
-Sola is distributed in two complementary editions to fit how you prefer to play:
+**Flame V4** is the full, modular Sola experience. Choose one of five minds — Riot, Gremlin, Velvet, Mystic, or Scholar — or leave them all off for Golden, Sola’s default voice. Then adjust point of view, agency, prose, trackers, and review tools for your story. Flame Complete includes the matching Full regex pack; standard Flame can use the separate pack.
 
-| Feature / Edition | 🔥 Sola Flame (Author Edition) | 🕯️ Sola Ember (Core Foundation) |
-|---|---|---|
-| **Philosophy** | The exact way the author plays Sola. Feature-complete out of the box. | Pristine baseline canvas. Minimum prompt overhead; enable what you want. |
-| **Foundational Directives** | All `[Core]` foundation directives active. | All `[Core]` foundation directives active. |
-| **Story Review Reasoning** | Enabled by default (3-Anchor Directorial draft for continuity). | Disabled by default (clean, unprompted LLM reasoning). |
-| **Telemetry & HUD Trackers** | Showrunner Master HUD, Feeling Engine, Bond Radar enabled. | All trackers disabled (ready to toggle on demand). |
-| **Dialogue Colors & Styles** | Canonical 16-color NPC dialogue palette active. | Clean unstyled text output by default. |
-| **Best For** | Immersive story arcs, frontier reasoning models (Gemini, GLM, Claude). | Lightweight sessions, custom module stack experimentation, local models. |
+**Kindling V2** is the compact edition, with one special Sola voice: Golden. It includes optional Feeling Engine and Sola Easel prompts and its own regex scripts.
 
-> [!NOTE]
-> **Byte-Identical Architecture:** Under the hood, Flame and Ember are *byte-identical* preset files! The only difference is which module toggles are turned on by default in the JSON. You can easily switch, toggle, and mix modules between them anytime in SillyTavern.
+Earlier editions, including V3 Flame and V2 Ember, remain in the downloads and release history.
 
 ---
 
 ## 📦 Downloads Hub
 
+### Flame V4 & Kindling V2
+
+Choose the file for your app. Complete bundles the matching Full regex pack; the standard Flame preset can be paired with a separate pack. Kindling V2 includes its regex scripts.
+
+| Edition | Details | Downloads |
+|---|---|---|
+| 🔥 Flame V4 | The full preset. Pair it with the matching Full regex pack below if you want the companion formatting. | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
+| 🔥 Flame V4 Complete | Flame with the matching Full regex pack already attached. | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V4%20Flame%20Complete%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
+| 🧡 Kindling V2 | The compact edition, with its regex scripts included. | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V2%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
+| ✦ V4 Full Regex Pack | Companion formatting for standard Flame V4. Tavo is a ZIP; Lumi uses manual folders. | [Lumi](./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json) · [ST](./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20ST.json) · [Tavo](./regex/Sola%20V4%20Full%20-%20Regex%20Pack%20-%20Tavo.zip) |
+| ✦ V4 Lite Regex Pack | Lite companion formatting for standard Flame V4. Tavo is a ZIP; Lumi uses manual folders. | [Lumi](./regex/Sola%20V4%20Lite%20-%20Regex%20Pack%20-%20Lumi%20%28Manual%20Folders%29.json) · [ST](./regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20ST.json) · [Tavo](./regex/Sola%20V4%20Sola%20Lite%20-%20Regex%20Pack%20-%20Tavo.zip) |
+
+### Earlier releases and other downloads
+
 All downloads are permanently hosted directly within this repository:
 
 | Asset | Format | Size | Description | Download | Raw Link |
 |---|---|---|---|---|---|
-| **🔥 Sola V2 Flame** | JSON | ~335 KB | Author Edition • Full modular stack active | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Flame.json) | `presets/Sola V2 Flame.json` |
-| **🔥 Sola V2 Flame (Lumi)** | JSON | ~361 KB | Lumiverse Edition • Pre-packaged narrative blocks | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Flame%20Lumi.json) | `presets/Sola V2 Flame Lumi.json` |
-| **🕯️ Sola V2 Ember** | JSON | ~335 KB | Core Baseline • Clean modular foundation | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Ember.json) | `presets/Sola V2 Ember.json` |
-| **⚡ V2 Regex Companion Pack** | JSON | ~182 KB | SillyTavern Regex Extension • 16-color UI cards & HUD | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V2%20Regex%20Pack.json) | `regex/Sola V2 Regex Pack.json` |
+| **🔥 Sola V3 Flame** | JSON | 856.0 KiB (876,525 bytes) | Previous Author Edition • 103 SillyTavern prompts | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V3%20Flame.json) | `presets/Sola V3 Flame.json` |
+| **🔥 Sola V3 Flame Lumi** | JSON | 910.2 KiB (932,086 bytes) | Previous Lumiverse Edition • 101 narrative blocks | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V3%20Flame%20Lumi.json) | `presets/Sola V3 Flame Lumi.json` |
+| **🕯️ Sola V2 Ember** | JSON | ~335 KB | Previous Release • Legacy core baseline | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Ember.json) | `presets/Sola V2 Ember.json` |
+| **⚡ Sola V3 Regex Pack** | JSON | 603.2 KiB (617,697 bytes) | Previous Companion Pack • 16-color UI cards & HUD | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V3%20Regex%20Pack.json) | `regex/Sola V3 Regex Pack.json` |
 | **🧹 Sola De-Sloppinator** | JSON | ~42 KB | SillyBunny In-Chat Agent • Anti-slop cadence polish | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20De-Sloppinator.json) | `presets/Sola De-Sloppinator.json` |
 | **📇 Sola Character Card** | PNG (V3) | ~1.9 MB | Official Character Card • Persona, greeting & prompt | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/assets/sola-character-card.png) | `assets/sola-character-card.png` |
 | **🎨 V2 Sola Character Art** | JPG | ~2.6 MB | Official High-Resolution Artwork | [Download](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/assets/V2%20Sola%20Final.jpg) | `assets/V2 Sola Final.jpg` |
@@ -115,7 +121,16 @@ Official companion themes crafted specifically for [Lumiverse](https://lumiverse
 
 ## 🧩 Complete Module Reference Guide
 
-Sola V2 is organized into 89 modular blocks within SillyTavern's Prompt Manager. You can toggle any module on or off at will to tailor the experience to your story.
+Flame V4 organizes its prompts into sections for Sola’s mind, point of view, core guidance, prose, world and action, voice, styles, visual formatting, intimacy, length and rhythm, trackers, the Easel, assembly, and review. Choose a mind or leave all five off for the default Golden voice; choose one or no option in each of the other **PICK 1** groups and turn optional tools on as needed. Kindling V2 uses a smaller set of prompts with Golden as its single voice.
+
+<details>
+<summary>Earlier V3 module reference and recipes</summary>
+
+The following is historical V3 documentation. Prompt names, counts, defaults, and token estimates do not describe Flame V4 or Kindling V2; token counts also vary by tokenizer.
+
+### Earlier V3 module reference
+
+Sola V3 contains 106 prompts in SillyTavern's Prompt Manager and 104 blocks in Flame Lumi. You can toggle modules on or off at will to tailor the experience to your story.
 
 ### 🏷️ How to Read Sola Toggles (The 4-Tag Taxonomy)
 
@@ -133,7 +148,7 @@ To make Sola's prompt list effortlessly parseable, every prompt in the preset us
 
 ### 🍳 Recommended Builds & Quick Recipes
 
-Don't want to think about 89 prompts individually? Start with one of these battle-tested configurations:
+Don't want to think about 106 SillyTavern prompts individually? Start with one of these battle-tested configurations:
 
 | Build | Character & Playstyle | Key Active Toggles | Token Impact |
 |---|---|---|---|
@@ -236,39 +251,86 @@ Standard SillyTavern dynamic markers along with pronoun anchors:
 
 ---
 
+
+</details>
+
+---
+
 ## 🎭 OOC Story-Boarding Protocol
 
 > **✧ Step Behind the Curtain With Your Co-Author**
 
-When you reach a crossroads in your story, you don't have to rely on awkward trial-and-error swipes or guess where the narrative might go. Using `((OOC: ...))` allows you to pause the fiction and step behind the curtain directly with Sola.
-
-In-world time freezes, HUD telemetry is suspended, and Sola speaks to you as an enthusiastic narrative craft partner eager to brainstorm twists, calibrate pacing, or unpack NPC motives:
+In Flame V4, enable **Sola Directors OOC** to talk with Sola behind the curtain. Use `((OOC: ...))`, `OOC:`, or a direct out-of-character question to discuss the story. The prompt asks Sola to pause the scene and omit trackers for a purely OOC exchange. Kindling V2 does not include this dedicated module, though you can still ask Golden for direction:
 
 ```text
 ((OOC: Sola, let's pause here. What are 2-3 compelling ways this confrontation could develop based on what Kami is hiding?))
 ```
 
 ### 💡 Why Story-Board Out-of-Character?
-- **Zero Story Clutter:** Brainstorm wild plot forks without leaving abandoned false starts in your chat history.
+- **Explore possibilities:** Discuss directions before choosing a beat. OOC messages remain in your chat history.
 - **Psychological Diagnostics:** Ask Sola what an NPC is thinking, why they hesitated, or what fear they are protecting.
 - **Pacing Adjustments:** Instruct Sola to slow down, build unhurried atmospheric dread, or increase dialogue friction.
-- **Seamless Re-Entry:** When you're ready, post your next in-character action. Sola picks up instantly with zero recaps.
+- **Return to the scene:** Post your next in-character action; Flame’s prompt asks Sola to resume with the scene state intact.
 
 ---
 
 ## 🚀 Quick-Start & Installation
 
-### For SillyTavern
-1. **Download the Preset:** Grab [Sola V2 Flame.json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Flame.json) (or [Ember](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Ember.json)).
-2. **Import Preset:** In SillyTavern, open the **AI Response Configuration (sliders)** panel, click **Import**, and select the preset file.
-3. **Download Companion Regex:** Grab [Sola V2 Regex Pack.json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/regex/Sola%20V2%20Regex%20Pack.json).
-4. **Import Regex Pack:** In SillyTavern, open **Extensions (puzzle piece) → Regex Extension**, click **Import**, and select the regex pack.
-5. **(Optional) Add Sola De-Sloppinator:** Import [Sola De-Sloppinator.json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20De-Sloppinator.json) into your SillyBunny / SillyTavern In-Chat Agents tab.
+1. Choose Flame V4 or Kindling V2 in the [Downloads Hub](#-downloads-hub), and download the Lumi, ST, or Tavo file for your app.
+2. Import the preset in your app’s preset settings and select it for your chat. In SillyTavern, use **AI Response Configuration → Import**.
+3. If you chose standard Flame and want its visual formatting, import the matching **Full or Lite Regex Pack**. Flame Complete already has that pack attached; Kindling includes its own scripts. Avoid importing duplicate scripts. In SillyTavern, use **Extensions → Regex Extension → Import**. The separate Lumi pack uses manual folders and the Tavo pack is a ZIP.
+4. For Flame, choose one mind and adjust the options you want. For Kindling, meet Golden and enable any optional prompts you want.
+5. Optionally, import a [Lumiverse theme](#-lumiverse-themes-flame-ember--solstice) from **Settings → Appearance & Themes → Themes → Import Theme**.
 
-### For Lumiverse
-1. **Download Lumiverse Preset:** Grab [Sola V2 Flame Lumi.json](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/presets/Sola%20V2%20Flame%20Lumi.json).
-2. **Import Preset:** In Lumiverse, navigate to your preset settings and import the JSON.
-3. **Install Themes:** Download your preferred theme archive ([Sola Flame](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Flame.lumitheme), [Sola Ember](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Ember.lumitheme), or [Sola Solstice](https://raw.githubusercontent.com/Pyrxpia/sola-hub/main/themes/Sola%20Solstice.lumitheme)) and import it via **Settings → Appearance & Themes → Themes → Import Theme**.
+## 📜 Changelog
+
+### V3 — Earlier Release
+- Promoted the current V2.5 work to V3 Flame, V3 Flame Lumi, and the V3 Regex Pack: 106 SillyTavern prompts and 104 Lumi blocks.
+- Restored Thought Engine interview ordering and clarified the Feeling Engine subtitle.
+- Polished responsive Heart faculties and .80s drawer reveals.
+- Scoped script 09.00 to animated prose paragraphs so its wrapper no longer encloses HUD cards; restored standalone tremble keyframes.
+- Mobile Subtext, Tell, Lore, and Translate float beneath the tapped phrase without moving the prose; desktop tooltips, SVG icons, and internal scrolling are preserved. Translate keeps its letter spacing on hover/focus to prevent text reflow.
+- Transferred the latest Character Matrix wording from Lumi to Flame while retaining the repaired kinetic wrapper and mobile micro overlays.
+- Synced Flame's HTML Tools to Lumi's 21-flavor toolkit without full reference examples. Anti-Therapy Speech and Lightning Story Review are off by default; removed the Spatial Ledger and Scene State renderers and renamed the Director Notebook rule in Flame and its 214-script companion pack.
+- Redesigned the Character Matrix as an illustrated spine dossier: nine field icons, textured panels, contrasting mask/motive surfaces, and a parchment audit. Paired desktop panels stack on narrow cards; the .80s disclosure reveal respects reduced motion. Tracker instructions and data fields are unchanged.
+- Fixed Matrix field parsing when generated fields share a line with a middle-dot separator, including Mask · Internal. Newline and inline layouts retain the same illustrated panels and original field values.
+- Corrected Flame's prompt-manager metadata: all prompt entries now use `system_prompt: false`. Message roles, prompt text, enablement, injection settings, and regexes are unchanged.
+- Removed duplicated animation tails and stray closing braces from Flame, Lumi, and companion regex-pack card CSS so later layout, responsive, and reduced-motion rules survive CSS processing. Preserved .80s timing, native formats, and existing rule order; refreshed Lumi cache revisions.
+- Verified identical Sola module order, roles, injection positions, and depths across Lumi and both Flame order profiles. SillyTavern's separate card-prompt hooks remain intact.
+- Removed the blank `reverse_proxy` and `proxy_password` fields from current Flame exports. Current Lumi exports already contain neither field; live connection settings are not part of this export cleanup.
+- Fixed Wardrobe and Inventory cutoffs caused by bare chat-speaker headings. New per-character rows use `Name · Wardrobe:` or `Name · Inventory:`; historical bare rows remain display-compatible. Speaker-name protection, tracker graphics, and module order are preserved.
+- Corrected Lumi micro-tag paragraph boundaries to compensate for Shadow DOM island spacing (`:host>.sola-inline-prose` margin -12px), eliminating gap inflation around micro elements.
+- Added `{{trim}}` across all zeroing module statements and untrimmed prompt macro definitions to prevent whitespace emission during initialization.
+- Re-indexed Lumiverse regex `sort_order` to a strictly monotonic sequence (0..214) and synchronized Public Lumi with the 215-rule author master, bringing the 21-flavor HTML Tools and V3 defaults across all release targets.
+- Aligned Agency modules (`Agency-Lite` and `Embellished User`) to `role: assistant` with first-person commitments per §7.
+- Added the disabled User Persona marker block (`personaDescription` / `persona_description`) in both Flame and Flame Lumi right after the User Persona content block.
+- Scoped `--shadowWidth: 0 !important;` across all tracker cards and containers to eliminate SillyTavern/SillyBunny global theme shadow bleed that blurred tracker text, while preserving intentional authored glows.
+- Wrapped director quotes for context-specific styling: warm ivory outside the Easel; dark `#1A1310`, weight 550, and a directional `0 1px 2px rgba(0,0,0,0.65)` text shadow on parchment. Wardrobe and Inventory slips use the same dark note treatment.
+- Reordered Arrow Dossier ahead of generic director notes and chips, preventing loss of trajectory outcomes and Sola commentary.
+- Bounded line-based regex captures to prevent swallowing closing `</arrow>` and `</bond>` tags in compact markup.
+- Corrected `:focus-within` selectors for micro popovers (Subtext, Tell, Lore, Translate); disclosures inside cards stay in flow so long content remains reachable without clipping.
+- Corrected dotted time matching (a.m. / p.m.) and scene-header attribute-order handling while retaining explicit sky and weather precedence.
+- Provisioned shared kinetic keyframes independently of prose wrappers, gave kinetic Tremble precedence over the static tonal alias, and disabled continuous kinetic motion under `prefers-reduced-motion`.
+- Scoped tracker field/status formatting to its owning containers; ordinary prose and unselected status alternatives remain unchanged. Light-surface descendants suppress inherited host shadows without disabling authored spoiler glows.
+- Unified tracker drawer spacing and a 12px text floor; darkened small parchment labels to copper ink while retaining each module's imagery, accents, and internal layout.
+- Fixed multiline micro payloads: Subtext, Tell, Lore, and Translate attributes may contain blank lines without truncating the disclosure; each micro pair is parsed atomically, so quoted attributes survive paragraph processing.
+- Adjacent micro elements inside one narrative paragraph now share a single prose island instead of splitting into per-card blocks, and paragraphs that belong to OOC or card containers stay untouched.
+- Micro matchers accept unspaced equals signs, reordered attributes, both quote styles, and enforce matching open and close tags; Retract and Swallow stay readable while a child link holds focus.
+- Restored Lumi's authored mobile overlays for the four micro popovers and Translate's stable hover letter spacing, matching Flame.
+- Lumi kinetic prose wraps only the animated paragraph, and micro cards carry their own keyframe styles, so mixed kinetic paragraphs keep motion inside shadow islands.
+- Chatterbox applies the selected persona palette (Classic, Gremlin, Velvet, Riot) inline on the container from the first painted frame; streaming cards no longer flash Classic orange, and the open-state glow, avatar backdrop, and focus outline follow the persona.
+- Repaired section 09 fractional tilt tags and gradient Tremble precedence. Kinetic paragraphs preserve Markdown; SillyTavern receives one message stylesheet, while Lumi uses paragraph-local frames and a conditional island fallback rather than adding animation CSS to every note stylesheet.
+- Unified all tracker notes as taped parchment with dark `#1A1310` Georgia italic text, weight 550, and `#8F3F2E` labels. Removed competing note overrides and host-theme shadow bleed while retaining the authored directional parchment shadow; scoped host-shadow resets also protect standalone regex text without removing intentional kinetic glows.
+- Fenced section 09 tag scans against malformed streaming markup. Flame and its companion retain 219 scripts; Lumi retains 220 scripts with sequential `sort_order` 0–219. Both retain 21 prompt savers. The reported Lumiverse application crash still requires its trigger or error to diagnose.
+- Bounded seven tracker/note matchers to 4,000-code-unit fields, 20,000-code-unit dossier bodies/searches, and 200-code-unit opening attributes. Calendar, Arrow, and Story Dossier scans stop at the next same-tag opening or closing, preventing repeated malformed blocks from rescanning the entire remainder. Oversized fields skip specialized formatting without truncating source text.
+- Restored the illustrated Character Matrix dossier in the latest author exports: plain or bold labels, multiline values, compact middle-dot layouts, and omitted auxiliary fields retain the authored panels and nine icons. Unexpected or repeated-character layouts remain readable through the fallback card.
+- Protected standalone tracker line breaks before prose normalization, scoped field parsers to their own tracker families, and restored local disclosure styling without requiring the HUD. Cast Location and Sola rows no longer consume Matrix, Notebook, Arrow, or narrative content.
+- Synced the latest 103-prompt Flame and 101-block Lumi masters without changing prompt content. Flame retains 228 regex scripts, Lumi 229 with sequential `sort_order` 0–228 and cache revision 66, and the companion pack 226; all retain 21 prompt savers.
+- Repaired SillyTavern CSS errors at 1:2140, 1:2293, 1:61, 1:2086, 1:2122, and 1:4269: Markdown was turning embedded stylesheet comments into emphasis markup. Audited all 62 stylesheet templates per export, removed 67 comment nodes from 23 rules, and folded the affected sheets' line breaks to prevent paragraph corruption. CSS selectors, declarations, keyframes, artwork, prompt content, and saver behavior are unchanged; Lumi cache revision is now 67.
+- Hardened 58 find patterns per V3 export after isolated load, streaming, malformed-input, and native-renderer profiling. The Matrix ST literal shrank from 38,558 to 10,189 characters; incomplete whitespace fields now reject before expensive parsing. Named Heart/Thought cards and savers, tracker scope checks, Inner Current, and inter-tag whitespace cleanup also avoid measured slow paths. Artwork, replacement templates, prompt content, script ordering, and all 21 savers' depth settings are unchanged; Lumi cache revision is 68.
+- Repaired Lumi's five Cast matchers and whitespace rule to use bare `find_regex` plus explicit flags. Removed seven obsolete `scriptName` aliases that routed native rows through ST import conversion, discarding multiline flags and changing display targets to response targets. Checked the supplied Cast replacement and six-pattern research MDs; retained the current artwork rather than adding stylesheet weight.
+- Added `scripts/check-regex-regressions.mjs`: run with Node or Bun to catch Matrix streaming hangs, field-size boundaries, named NPC closer/separation errors, Cast scope leaks, and whitespace backtracking. Synthetic large-input scope scans and repeated per-island styles remain performance risks; these fixes do not establish the cause of every reported application crash.
+- V2 Ember remains available as the previous-release legacy baseline.
 
 ---
 

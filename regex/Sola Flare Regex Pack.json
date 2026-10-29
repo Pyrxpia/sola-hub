@@ -1,0 +1,1254 @@
+{
+  "version": 1,
+  "type": "lumiverse_regex_scripts",
+  "scripts": [
+    {
+      "name": "Sola Flare: Header — Atmosphere",
+      "find_regex": "<mobile_header\\b(?=(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*?\\s+location\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'))(?=(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*?\\s+time\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'))(?=(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*?\\s+atmosphere\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'))(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*>(?:[ \\t\\r\\n]*<\\/mobile_header\\s*>)?",
+      "replace_string": "<header class=\"sola-flare-header\" style=\"border-left:3px solid #F4A261;border-radius:3px 12px 12px 3px;padding:14px 17px;background:linear-gradient(110deg,#F4A26114,#E07A5F05);border-top:1px solid #E07A5F24;border-right:1px solid #E07A5F24;border-bottom:1px solid #E07A5F24;\"><div style=\"display:flex;flex-wrap:wrap;gap:5px 16px;align-items:baseline;justify-content:space-between;\"><strong style=\"color:#F4A261;font-size:12px;letter-spacing:.09em;\">$1$2</strong><span style=\"font-size:12px;color:#F0DCC4;\">$3$4</span></div><div style=\"margin-top:4px;font:italic 14px/1.5 Georgia,serif;color:#BAC3C7;\">$5$6</div></header>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 0,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "fd87dba3-21f8-48af-bf9c-17a6d7ffedc7"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Header — Compact",
+      "find_regex": "<mobile_header\\b(?=(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*?\\s+location\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'))(?=(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*?\\s+time\\s*=\\s*(?:\"([^\"]+)\"|'([^']+)'))(?:[^\"'<>]|\"[^\"]*\"|'[^']*')*>(?:[ \\t\\r\\n]*<\\/mobile_header\\s*>)?",
+      "replace_string": "<header class=\"sola-flare-header\" style=\"border-left:3px solid #F4A261;border-radius:3px 12px 12px 3px;padding:14px 17px;background:linear-gradient(110deg,#F4A26114,#E07A5F05);border-top:1px solid #E07A5F24;border-right:1px solid #E07A5F24;border-bottom:1px solid #E07A5F24;\"><div style=\"display:flex;flex-wrap:wrap;gap:5px 16px;align-items:baseline;justify-content:space-between;\"><strong style=\"color:#F4A261;font-size:12px;letter-spacing:.09em;\">$1$2</strong><span style=\"font-size:12px;color:#F0DCC4;\">$3$4</span></div></header>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 1,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "e1320513-de22-4ae6-be88-2c07a3ac16d3"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Character Rows",
+      "find_regex": "(^|[\\r\\n]|<fengine\\b[^>]*>)[ \\t]*(?:([^\\s<>:\\r\\n][^<>:\\r\\n]*?)[ \\t]*:[ \\t]*(?:\\r?\\n[ \\t]*)*)?IW[ \\t]*=[ \\t]*([0-4])([↑↓]?)[ \\t]*\\|[ \\t]*T[ \\t]*=[ \\t]*([0-4])([↑↓]?)[ \\t]*\\|[ \\t]*F[ \\t]*=[ \\t]*([0-4])([↑↓]?)[ \\t]*\\|[ \\t]*D[ \\t]*=[ \\t]*([0-4])([↑↓]?)[ \\t]*\\|[ \\t]*Y[ \\t]*=[ \\t]*([0-4])([↑↓]?)(?=[ \\t]*(?:\\r?\\n|<\\/fengine\\s*>|$))(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "$1<section class=\"sola-flare-character\" style=\"padding:16px;white-space:normal;\"><div style=\"display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;margin-bottom:13px;\"><strong style=\"font:18px Georgia,serif;color:#FDF6F0;\">$2</strong><span class=\"sola-flare-iw\">IW=$3$4</span></div><div class=\"sola-flare-weather-row\" style=\"display:flex;flex-wrap:wrap;gap:12px 20px;\"><span class=\"sola-flare-value\">T=$5$6</span><span class=\"sola-flare-value\">F=$7$8</span><span class=\"sola-flare-value\">D=$9$10</span><span class=\"sola-flare-value\">Y=$11$12</span></div></section>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 2,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "8e8db57b-4394-42e5-bb6a-da8f2aa95d37"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — IW 0 Frostbound",
+      "find_regex": "<span class=\"sola-flare-iw\">IW=0([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<span class=\"sola-flare-iw\" style=\"font-size:10px;letter-spacing:.04em;color:#8FA4B2;border:1px solid #8FA4B240;border-radius:20px;padding:3px 9px;background:#8FA4B20C;\">IW 0$1 · Frostbound</span>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 3,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "bfb67b54-c407-40bd-ac28-5ed5251e832a"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — IW 1 Cool",
+      "find_regex": "<span class=\"sola-flare-iw\">IW=1([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<span class=\"sola-flare-iw\" style=\"font-size:10px;letter-spacing:.04em;color:#98B9C7;border:1px solid #98B9C740;border-radius:20px;padding:3px 9px;background:#98B9C70C;\">IW 1$1 · Cool</span>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 4,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "b8901a9f-4552-4f31-85bd-95275060485c"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — IW 2 Temperate",
+      "find_regex": "<span class=\"sola-flare-iw\">IW=2([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<span class=\"sola-flare-iw\" style=\"font-size:10px;letter-spacing:.04em;color:#BAC3C7;border:1px solid #BAC3C740;border-radius:20px;padding:3px 9px;background:#BAC3C70C;\">IW 2$1 · Temperate</span>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 5,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "dd4e9077-f89d-405e-ad5f-d548ef4e55b2"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — IW 3 Warm Front",
+      "find_regex": "<span class=\"sola-flare-iw\">IW=3([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<span class=\"sola-flare-iw\" style=\"font-size:10px;letter-spacing:.04em;color:#F4A261;border:1px solid #F4A26140;border-radius:20px;padding:3px 9px;background:#F4A2610C;\">IW 3$1 · Warm Front</span>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 6,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "e250301e-9bb6-4900-af6a-f29ed788cf35"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — IW 4 Fervent",
+      "find_regex": "<span class=\"sola-flare-iw\">IW=4([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<span class=\"sola-flare-iw\" style=\"font-size:10px;letter-spacing:.04em;color:#EE6C4D;border:1px solid #EE6C4D40;border-radius:20px;padding:3px 9px;background:#EE6C4D0C;\">IW 4$1 · Fervent</span>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 7,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "cd6f9177-9360-4c0c-8a87-86a29ede004a"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Tenderness",
+      "find_regex": "<span class=\"sola-flare-value\">T=([0-4])([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<div class=\"sola-flare-metric\" style=\"font-size:12px;flex:1 1 130px;color:#9AA87A;\">Tenderness <span style=\"float:right;color:#F0DCC4;\">$1 <span style=\"color:#9AA87A;\">$2</span></span><div class=\"sola-flare-track\" data-score=\"$1\" aria-hidden=\"true\" style=\"display:flex;gap:4px;margin-top:6px;\"><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i></div></div>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 8,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "a5e14c7d-ea56-4aca-9db5-1e338409073a"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Fury",
+      "find_regex": "<span class=\"sola-flare-value\">F=([0-4])([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<div class=\"sola-flare-metric\" style=\"font-size:12px;flex:1 1 130px;color:#EE6C4D;\">Fury <span style=\"float:right;color:#F0DCC4;\">$1 <span style=\"color:#EE6C4D;\">$2</span></span><div class=\"sola-flare-track\" data-score=\"$1\" aria-hidden=\"true\" style=\"display:flex;gap:4px;margin-top:6px;\"><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i></div></div>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 9,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "060e99af-47c8-45ae-b86f-0652c60df47c"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Dread",
+      "find_regex": "<span class=\"sola-flare-value\">D=([0-4])([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<div class=\"sola-flare-metric\" style=\"font-size:12px;flex:1 1 130px;color:#8592E6;\">Dread <span style=\"float:right;color:#F0DCC4;\">$1 <span style=\"color:#8592E6;\">$2</span></span><div class=\"sola-flare-track\" data-score=\"$1\" aria-hidden=\"true\" style=\"display:flex;gap:4px;margin-top:6px;\"><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i></div></div>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 10,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "01f67662-caee-41ea-a9aa-2d899c69a744"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Yearning",
+      "find_regex": "<span class=\"sola-flare-value\">Y=([0-4])([↑↓]?)<\\/span>(?=(?:(?!<\\/?fengine\\b)[\\s\\S])*<\\/fengine\\s*>)",
+      "replace_string": "<div class=\"sola-flare-metric\" style=\"font-size:12px;flex:1 1 130px;color:#F3B74B;\">Yearning <span style=\"float:right;color:#F0DCC4;\">$1 <span style=\"color:#F3B74B;\">$2</span></span><div class=\"sola-flare-track\" data-score=\"$1\" aria-hidden=\"true\" style=\"display:flex;gap:4px;margin-top:6px;\"><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i><i style=\"height:4px;flex:1;border-radius:2px;\"></i></div></div>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 11,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "52b6bf72-bd72-43c8-aadf-c5704ada92be"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Feeling — Drawer",
+      "find_regex": "<fengine\\b[^>]*>([\\s\\S]*?)<\\/fengine\\s*>",
+      "replace_string": "<div class=\"sola-flare-root sola-flare-feeling\" style=\"font-family:system-ui,sans-serif;line-height:1.6;color:#F0DCC4;\"><style>.sola-flare-drawer{interpolate-size:allow-keywords}.sola-flare-drawer::details-content{block-size:0;overflow:hidden;opacity:0;transform:translateY(-5px);transition:block-size .80s cubic-bezier(0.16,1,0.3,1),opacity .80s cubic-bezier(0.16,1,0.3,1),transform .80s cubic-bezier(0.16,1,0.3,1),content-visibility .80s allow-discrete}.sola-flare-drawer[open]::details-content{block-size:auto;opacity:1;transform:translateY(0)}.sola-flare-drawer>summary::marker{color:#F4A261}.sola-flare-drawer>summary:focus-visible{outline:2px solid #F4A261;outline-offset:-3px}.sola-flare-drawer[open]>summary{border-bottom:1px solid #E07A5F30}@media(prefers-reduced-motion:reduce){.sola-flare-drawer::details-content{transition:none}}</style><style>.sola-flare-feeling .sola-flare-track>i{background:currentColor;opacity:.145;}.sola-flare-feeling .sola-flare-track[data-score=\"1\"]>i:nth-child(-n+1){opacity:1;}.sola-flare-feeling .sola-flare-track[data-score=\"2\"]>i:nth-child(-n+2){opacity:1;}.sola-flare-feeling .sola-flare-track[data-score=\"3\"]>i:nth-child(-n+3){opacity:1;}.sola-flare-feeling .sola-flare-track[data-score=\"4\"]>i:nth-child(-n+4){opacity:1;}.sola-flare-feeling .sola-flare-character+.sola-flare-character{border-top:1px solid #E07A5F20;}</style><details class=\"sola-flare-drawer\" aria-label=\"Feeling Engine\" style=\"border:1px solid #E07A5F38;border-radius:12px;overflow:hidden;background:#120D0B80;\"><summary style=\"cursor:pointer;padding:15px 17px;color:#F4A261;\"><strong style=\"font:19px Georgia,serif;color:#F0DCC4;\">Feeling Engine</strong> <span style=\"font-size:10px;letter-spacing:.07em;color:#A3948A;margin-left:12px;display:inline-block;\">CHARACTER WEATHER</span></summary><div class=\"sola-flare-feeling-body\" style=\"font-size:13px;white-space:pre-wrap;\"><div style=\"padding:10px 16px 0;font-size:10px;color:#A3948A;white-space:normal;\">IW · outward bearing / TFDY · inner state</div>$1</div></details></div>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 12,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "84e8f170-1b93-4c1b-bba2-eb473eb6e0fa"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Audit PASS",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*]?[ \\t]*\\[[ xX-]\\][ \\t]*([^:\\n<>]+):[ \\t]*\\[?PASS\\]?[ \\t]*(?:[\\u2014\\u2013-][ \\t]*)?([^\\r\\n]*)",
+      "replace_string": "<div style=\"margin:8px 0;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;\"><strong style=\"color:#F0DCC4;font-size:12px;flex:1;\">$1</strong><span style=\"color:#9AA87A;font-size:10px;\">✓ PASS</span><div style=\"flex-basis:100%;font-size:11px;color:#BAC3C7;\">$2</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 13,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "9db7e617-e356-4ca5-a5fa-a40b93d6d251"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Audit WARN",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*]?[ \\t]*\\[[ xX-]\\][ \\t]*([^:\\n<>]+):[ \\t]*\\[?WARN\\]?[ \\t]*(?:[\\u2014\\u2013-][ \\t]*)?([^\\r\\n]*)",
+      "replace_string": "<div style=\"margin:8px 0;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;\"><strong style=\"color:#F0DCC4;font-size:12px;flex:1;\">$1</strong><span style=\"color:#F3B74B;font-size:10px;\">! WARN</span><div style=\"flex-basis:100%;font-size:11px;color:#BAC3C7;\">$2</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 14,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "8c0bf1b0-d6f3-4037-bfe6-bc40e1a9927f"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Audit N/A",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*]?[ \\t]*\\[[ xX-]\\][ \\t]*([^:\\n<>]+):[ \\t]*\\[?N/A\\]?[ \\t]*(?:[\\u2014\\u2013-][ \\t]*)?([^\\r\\n]*)",
+      "replace_string": "<div style=\"margin:8px 0;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;\"><strong style=\"color:#F0DCC4;font-size:12px;flex:1;\">$1</strong><span style=\"color:#8FA4B2;font-size:10px;\">⊝ N/A</span><div style=\"flex-basis:100%;font-size:11px;color:#BAC3C7;\">$2</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 15,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "8477520a-2955-41d3-b22a-e75ef868ae36"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread DRM",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?DRM\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #8FA4B2;padding:9px 12px;background:#8FA4B208;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#8FA4B2;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#8FA4B2;\">[DRM]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 16,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "d07fa05b-9150-4052-b050-b6d79f166918"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread STR",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?STR\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #F3B74B;padding:9px 12px;background:#F3B74B08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#F3B74B;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#F3B74B;\">[STR]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 17,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "37763e63-59e6-4d30-86bd-5e85fcd057e1"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread MNT",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?MNT\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #F3B74B;padding:9px 12px;background:#F3B74B08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#F3B74B;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#F3B74B;\">[MNT]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 18,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "4946296e-4331-4593-a18b-87d3c2d7d170"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread THR",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?THR\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #EE6C4D;padding:9px 12px;background:#EE6C4D08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#EE6C4D;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#EE6C4D;\">[THR]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 19,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "47a25969-fb99-4b2a-bb2c-f6c6eb6f5757"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread UNL",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?UNL\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #EE6C4D;padding:9px 12px;background:#EE6C4D08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#EE6C4D;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#EE6C4D;\">[UNL]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 20,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "9fba6fe8-1d82-4985-98ca-8d4e38e7de28"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread LAT",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?LAT\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #8592E6;padding:9px 12px;background:#8592E608;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#8592E6;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#8592E6;\">[LAT]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 21,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "f75dd8fa-491b-463b-8612-673c11d2cc09"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread HEAT",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?HEAT\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #F3B74B;padding:9px 12px;background:#F3B74B08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#F3B74B;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#F3B74B;\">[HEAT]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 22,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "bc02cc84-b513-42bd-a3b8-cc02597edd63"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Thread SPRUNG",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*[-*][ \\t]+([CS][1-9]\\d*)[ \\t]+([^\\r\\n<>]+?):[ \\t]*\\[?SPRUNG\\]?(?=[ \\t|\\u2192\\u2014\\u2013-]|$)[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"border-left:2px solid #9AA87A;padding:9px 12px;background:#9AA87A08;margin:10px 0;\"><div style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;\"><b style=\"font-size:11px;color:#9AA87A;\">$1</b><strong style=\"color:#F0DCC4;\">$2</strong><span style=\"font-size:10px;color:#9AA87A;\">[SPRUNG]</span></div><div style=\"margin-top:5px;color:#BAC3C7;font-size:12px;\">$3</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 23,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "1469463a-ebce-4e17-abba-5c57c330411e"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Dare rating Pass",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*Rating:[ \\t]*\\[?Pass\\]?(?=[ \\t.\\u2014\\u2013:|-]|$)([^\\r\\n]*)",
+      "replace_string": "<div style=\"font-size:11px;color:#9AA87A;margin:10px 0;\">✓ Pass$1</div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 24,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "da31164a-de2b-42d2-bd8d-0ab08015fc28"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Dare rating Fail",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*Rating:[ \\t]*\\[?Fail\\]?(?=[ \\t.\\u2014\\u2013:|-]|$)([^\\r\\n]*)",
+      "replace_string": "<div style=\"font-size:11px;color:#EE6C4D;margin:10px 0;\">✗ Fail$1</div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 25,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "7ffb73cd-3d28-48ca-beed-7b3a49b72647"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Dare rating N/A",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*Rating:[ \\t]*\\[?N/A\\]?(?=[ \\t.\\u2014\\u2013:|-]|$)([^\\r\\n]*)",
+      "replace_string": "<div style=\"font-size:11px;color:#8FA4B2;margin:10px 0;\">⊝ N/A$1</div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 26,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "504afee2-f878-49ce-a34e-3852a9bcc146"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Field labels",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*(?:[-*][ \\t]+)?(Spatial Coordinates|Props in Motion|Sensory Anchor|Continuity Note|Scene Initiative|The Climate|Escalation|Behind the Teeth|The Body['\\u2019]s Truth|The Blindspot|Regional Drift|Off-Screen NPC Arc|Knowledge Ledger|Open Loop(?: \\/ Unanswered)?|The Direct Line|The Fault Line|The Blindside|Cost of Silence|Pacing Gear|The Confluence|N\\/A Invariants|Sola['\\u2019]s Directorial Dare):[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"margin:9px 0;\"><strong style=\"color:#BAC3C7;font-size:11px;\">$1</strong><div style=\"color:#F0DCC4;\">$2</div></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 27,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "b8b49173-2457-48de-aaaa-853de0338076"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Vault voice",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*Sola:[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"font:italic 15px/1.7 Georgia,serif;color:#F0DCC4;margin:0 0 12px;\">$1</div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 28,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "01ee12ce-b3dd-4823-8daa-a883e53ea669"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Ledger headings",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*(Active Pressures|Seeds & Traps|Living World Drift|Knowledge & Open Loops|Retired This Turn):[ \\t]*([^\\r\\n]*)",
+      "replace_string": "<div style=\"margin:14px 0 6px;font-size:11px;color:#F4A261;letter-spacing:.04em;\"><strong>$1</strong> <span style=\"color:#A3948A;\">$2</span></div>",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 29,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "a38664da-65a9-4fd1-a28f-93f5593ccfd0"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section 0",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[0\\.[ \\t]*Overall Core Check\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"border-top:1px solid #E07A5F30;padding-top:19px;margin-bottom:25px;\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">0</span>Overall Core Check</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 30,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "8a6977ca-187f-4883-9cb8-e6a3231e7fff"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section I",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[I\\.[ \\t]*Staging (?:&|&amp;) Continuity\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"border-top:1px solid #E07A5F30;padding-top:19px;margin-bottom:25px;\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">I</span>Staging & Continuity</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 31,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "759ff1cd-f1eb-4d80-b443-55703df24a5f"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section II",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[II\\.[ \\t]*Scene Currents (?:&|&amp;) Subtext\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"border-top:1px solid #E07A5F30;padding-top:19px;margin-bottom:25px;\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">II</span>Scene Currents & Subtext</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 32,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "54ed7b6a-69ad-4d06-9e01-7db4d738798c"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section III",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[III\\.[ \\t]*The Living Currents\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"border-top:1px solid #E07A5F30;padding-top:19px;margin-bottom:25px;\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">III</span>The Living Currents</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 33,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "77ecde67-328e-4300-8929-2ddd0f8c6e25"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section IV",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[IV\\.[ \\t]*Branching Storyboard\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"border-top:1px solid #E07A5F30;padding-top:19px;margin-bottom:25px;\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">IV</span>Branching Storyboard</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 34,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "338453d2-249c-43af-9c80-21cdaec426cb"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Section V",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*\\[V\\.[ \\t]*Sola['’]s Vault\\][^\\r\\n]*\\r?\\n([\\s\\S]*?)(?=^[ \\t]*\\[(?:0|I|II|III|IV|V)\\.[ \\t]|<\\/sola_easel>)",
+      "replace_string": "<section style=\"padding:16px;border:1px solid #F4A26130;border-radius:9px;background:linear-gradient(120deg,#F4A2610B,#E07A5F05);\"><h2 style=\"font:18px Georgia,serif;color:#F4A261;margin:0 0 13px;\"><span style=\"font:10px system-ui,sans-serif;color:#E07A5F;margin-right:10px;\">V</span>Sola's Vault</h2><div style=\"overflow-wrap:anywhere;\">$1</div></section>\n",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 35,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "39362b35-3a8a-449d-b62e-02b3604a6f24"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Easel: Notebook drawer",
+      "find_regex": "<sola_easel\\b[^>]*>([\\s\\S]*?)<\\/sola_easel>",
+      "replace_string": "<details class=\"sola-flare-drawer\" style=\"margin:14px 0;border:1px solid #E07A5F40;border-radius:12px;background:linear-gradient(130deg,#E07A5F0A,#120D0B50);overflow:hidden;color:#F0DCC4;font:13px/1.6 system-ui,sans-serif;\"><style>.sola-flare-drawer{interpolate-size:allow-keywords}.sola-flare-drawer::details-content{block-size:0;overflow:hidden;opacity:0;transform:translateY(-5px);transition:block-size .80s cubic-bezier(0.16,1,0.3,1),opacity .80s cubic-bezier(0.16,1,0.3,1),transform .80s cubic-bezier(0.16,1,0.3,1),content-visibility .80s allow-discrete}.sola-flare-drawer[open]::details-content{block-size:auto;opacity:1;transform:translateY(0)}.sola-flare-drawer>summary::marker{color:#F4A261}.sola-flare-drawer>summary:focus-visible{outline:2px solid #F4A261;outline-offset:-3px}.sola-flare-drawer[open]>summary{border-bottom:1px solid #E07A5F30}@media(prefers-reduced-motion:reduce){.sola-flare-drawer::details-content{transition:none}}</style><summary style=\"cursor:pointer;padding:15px 17px;color:#F4A261;\"><strong style=\"font:19px Georgia,serif;color:#F0DCC4;\">Sola’s Easel</strong> <span style=\"font-size:10px;letter-spacing:.07em;color:#A3948A;margin-left:12px;display:inline-block;\">BACKSTAGE NOTES</span></summary><div style=\"padding:22px 20px;overflow-wrap:anywhere;\">$1</div></details>",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 36,
+      "description": "Display only; director’s-notebook HTML. Raw message content stays unchanged.",
+      "metadata": {
+        "imported_script_id": "1f888a1b-cedb-4875-b30a-cd1493c7ddbc"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Streaming — Hide unfinished fengine",
+      "find_regex": "(?:<fengine\\b(?:(?!<\\/fengine\\s*>)[\\s\\S])*|<(?:|f|fe|fen|feng|fengi|fengin))$",
+      "replace_string": "",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 37,
+      "description": "Display only: hides an unfinished tracker while streaming. Completed cards are rendered by the earlier rules; raw chat and prompt content are untouched.",
+      "metadata": {
+        "imported_script_id": "6bca10f8-a0da-4fa7-881f-2c2819782c69"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Streaming — Hide unfinished sola_easel",
+      "find_regex": "(?:<sola_easel\\b(?:(?!<\\/sola_easel\\s*>)[\\s\\S])*|<(?:|s|so|sol|sola|sola_|sola_e|sola_ea|sola_eas|sola_ease))$",
+      "replace_string": "",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "display"
+      ],
+      "min_depth": null,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 38,
+      "description": "Display only: hides an unfinished tracker while streaming. Completed cards are rendered by the earlier rules; raw chat and prompt content are untouched.",
+      "metadata": {
+        "imported_script_id": "545eeea6-f605-4de3-8d36-ca0b0360e794"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Saver: Feeling Engine",
+      "find_regex": "<fengine\\b[^>]*>[\\s\\S]*?<\\/fengine>",
+      "replace_string": "",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "prompt"
+      ],
+      "min_depth": 4,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 39,
+      "description": "Outgoing prompt only; keeps recent raw telemetry.",
+      "metadata": {
+        "imported_script_id": "985640b1-e641-46de-9abb-d0af585bd741"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Saver: Easel",
+      "find_regex": "<sola_easel\\b[^>]*>[\\s\\S]*?<\\/sola_easel>",
+      "replace_string": "",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "prompt"
+      ],
+      "min_depth": 4,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 40,
+      "description": "Outgoing prompt only; keeps recent raw telemetry.",
+      "metadata": {
+        "imported_script_id": "0d53efc6-83fe-4194-bf40-97eb77e870bc"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Saver: Mobile Header",
+      "find_regex": "<mobile_header\\b[^>]*\\/?>",
+      "replace_string": "",
+      "flags": "gi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "prompt"
+      ],
+      "min_depth": 3,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 41,
+      "description": "Outgoing prompt only; keeps recent raw telemetry.",
+      "metadata": {
+        "imported_script_id": "5fe8ead2-2355-429c-990a-dc734e037500"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    },
+    {
+      "name": "Sola Flare: Saver: Easel Ghost-Scrubber",
+      "find_regex": "^(?=[^<]*(?:<(?!\\/?sola_easel\\b)[^<]*)*<\\/sola_easel>)[ \\t]*(?:[-*][ \\t]+)?(?!Rating[ \\t]*:)[A-Za-z][A-Za-z \\/'’&-]{0,79}:[ \\t]*(?:None|—|--|-|N\\/A|Unchanged|\\[(?:None|—|--|-|N\\/A|Unchanged)\\])\\.?[ \\t]*(?:\\r?\\n|$)",
+      "replace_string": "",
+      "flags": "gmi",
+      "placement": [
+        "ai_output"
+      ],
+      "scope": "global",
+      "scope_id": null,
+      "target": [
+        "prompt"
+      ],
+      "min_depth": 1,
+      "max_depth": null,
+      "trim_strings": [],
+      "run_on_edit": true,
+      "substitute_macros": "none",
+      "disabled": false,
+      "sort_order": 42,
+      "description": "Outgoing prompt only; removes placeholder-only Easel fields from depth 1. Preserves dare ratings, audit verdicts, and text outside the ledger.",
+      "metadata": {
+        "imported_script_id": "7d58ac21-0fad-4049-ab01-46fffba1680f"
+      },
+      "folder": "Sola Flare · Director’s Notebook",
+      "script_id": "",
+      "actions": [],
+      "owner_extension_identifier": null
+    }
+  ],
+  "exported_at": 1791513380237
+}

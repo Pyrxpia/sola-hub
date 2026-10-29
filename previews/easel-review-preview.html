@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Easel — Director Ledger Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #14110f;
+      --surface: #1a1310;
+      --panel: #211a16;
+      --panel-raised: #282019;
+      --border: rgba(163, 148, 138, .28);
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --paper: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --copper: #e07a5f;
+      --coral: #ee6c4d;
+      --sage: #9aa87a;
+      --lavender: #8592e6;
+      --bluegray: #8fa4b2;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 52% -12%, rgba(244, 162, 97, .11), transparent 42%), linear-gradient(180deg, #19130f, #100d0b 72%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    button, summary { font: inherit; }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: #a3948a; }
+    .rail-mark { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid rgba(244, 162, 97, .45); border-radius: 8px; color: var(--amber); font: 12px/1 Georgia, serif; }
+    .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid transparent; border-radius: 8px; color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border-color: rgba(244, 162, 97, .25); background: rgba(244, 162, 97, .1); color: var(--amber); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: var(--sage); }
+    .page { width: min(100%, 1060px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(25px, 4vw, 34px)/1.16 Georgia, "Times New Roman", serif; }
+    .page-intro { max-width: 64ch; margin: 0; color: #b3a592; font: 12px/1.55 ui-sans-serif, system-ui, sans-serif; }
+    .chat-card { margin-top: 25px; padding: 18px 20px 20px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .chat-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; color: #a3948a; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .chat-meta strong { color: #e7d2b7; font-weight: 650; }
+    .chat-message { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .chat-message em { color: #d7c5ac; }
+    .preview-hint { margin: 15px 0 8px; color: #8f8478; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; }
+
+    .easel-card { --shadowWidth: 0 !important; margin-top: 10px; overflow: hidden; border: 1px solid rgba(163, 148, 138, .34); border-left: 3px double rgba(224, 122, 95, .68); border-radius: 5px 12px 9px 5px; background: radial-gradient(ellipse at 6% 0, rgba(244, 162, 97, .09), transparent 58%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 4px 14px rgba(18, 13, 11, .3), inset 0 1px 0 rgba(240, 220, 196, .05); transition: border-color .35s ease, box-shadow .35s ease; }
+    .easel-card[open] { border-color: rgba(244, 162, 97, .58); box-shadow: 0 8px 25px rgba(20, 12, 8, .55), 0 0 18px rgba(244, 162, 97, .12); }
+    .easel-card > summary { position: relative; display: flex; align-items: center; gap: 11px; min-width: 0; padding: 14px 48px 17px 16px; background: linear-gradient(100deg, rgba(244, 162, 97, .11), rgba(133, 146, 230, .035) 72%, transparent); color: var(--amber); cursor: pointer; list-style: none; user-select: none; }
+    .easel-card > summary::-webkit-details-marker { display: none; }
+    .easel-card > summary::marker { content: ""; }
+    .easel-card > summary:focus-visible { outline: 2px solid var(--amber); outline-offset: -4px; }
+    .easel-mark { flex: 0 0 32px; width: 32px; height: 32px; color: var(--amber); }
+    .easel-title { display: grid; min-width: 0; gap: 2px; flex: 1 1 14rem; }
+    .easel-title strong { color: #f0dcc4; font: 400 21px/1.2 Georgia, "Times New Roman", serif; }
+    .easel-title small { color: var(--muted); font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; }
+    .easel-badge { flex: 0 1 auto; max-width: 100%; padding: 4px 9px; border: 1px solid rgba(238, 108, 77, .36); border-radius: 3px 8px 5px 3px; background: rgba(238, 108, 77, .1); color: #f08b70; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; overflow-wrap: anywhere; }
+    .easel-chevron { position: absolute; top: 20px; right: 17px; width: 8px; height: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+    .easel-card[open] .easel-chevron { transform: rotate(225deg); }
+    .easel-ribbon { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 7px 12px; padding: 9px 14px; border-top: 1px dashed rgba(163, 148, 138, .26); border-bottom: 1px dashed rgba(163, 148, 138, .26); background: rgba(18, 13, 11, .42); color: #a3948a; font: 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .ribbon-turn { color: var(--gold); font-weight: 700; }
+    .ribbon-note { color: #8f8478; letter-spacing: .06em; }
+    .easel-body { display: grid; gap: 13px; min-width: 0; padding: 15px 17px 20px; }
+    .easel-sample { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(133, 146, 230, .3); border-radius: 999px; color: #aeb8ff; font: 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .ledger-section { min-width: 0; padding: 13px 14px; border: 1px solid rgba(244, 162, 97, .2); border-radius: 9px 6px 11px 7px; background: linear-gradient(120deg, rgba(244, 162, 97, .035), rgba(18, 18, 17, .42)); }
+    .ledger-section.core { border-color: rgba(133, 146, 230, .28); background: linear-gradient(120deg, rgba(133, 146, 230, .06), rgba(18, 18, 17, .45)); }
+    .ledger-section.scene { border-color: rgba(224, 122, 95, .24); }
+    .ledger-section.living { border-color: rgba(154, 168, 122, .28); }
+    .ledger-section.storyboard { border-color: rgba(243, 183, 75, .26); }
+    .section-heading { display: flex; align-items: center; gap: 10px; min-width: 0; margin: 0 0 11px; padding-bottom: 9px; border-bottom: 1px dashed rgba(163, 148, 138, .3); }
+    .section-mark { display: grid; place-items: center; flex: 0 0 26px; width: 26px; height: 26px; border: 1px solid rgba(244, 162, 97, .4); border-radius: 50% 44% 50% 42%; color: var(--gold); font: 11px/1 Georgia, "Times New Roman", serif; }
+    .core .section-mark { border-color: rgba(133, 146, 230, .48); color: #aeb8ff; }
+    .section-title { min-width: 0; }
+    .section-title h2 { margin: 0; color: #f0dcc4; font: 400 17px/1.2 Georgia, "Times New Roman", serif; }
+    .section-title p { margin: 2px 0 0; color: #968b7d; font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 8px; }
+    .check-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 9px; min-width: 0; padding: 8px 9px; border: 1px solid rgba(163, 148, 138, .16); border-radius: 5px 8px 6px 4px; background: rgba(18, 18, 17, .48); }
+    .check-copy { display: grid; gap: 2px; min-width: 0; }
+    .check-copy strong { color: #e9dbc8; font: 600 11px/1.35 ui-sans-serif, system-ui, sans-serif; }
+    .check-copy small { color: #a99b89; font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .status { flex: 0 0 auto; padding: 3px 7px; border: 1px solid; border-radius: 3px 7px 4px 3px; font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; }
+    .status.pass { border-color: rgba(154, 168, 122, .35); background: rgba(154, 168, 122, .1); color: var(--sage); }
+    .status.warn { border-color: rgba(238, 108, 77, .35); background: rgba(238, 108, 77, .1); color: var(--coral); }
+    .status.na { border-color: rgba(143, 164, 178, .35); background: rgba(143, 164, 178, .1); color: var(--bluegray); }
+    .section-footnote { margin: 9px 0 0; color: #9b8e7e; font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .section-footnote strong { color: #b9ad9d; font-weight: 650; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .field-card { min-width: 0; padding: 9px 10px; border: 1px solid rgba(163, 148, 138, .17); border-left: 2px solid var(--amber); border-radius: 3px 7px 5px 3px; background: rgba(18, 18, 17, .47); }
+    .field-label { display: block; margin-bottom: 4px; color: var(--amber); font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .field-value { color: #e8d6be; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .energy-top { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(140px, .65fr); gap: 8px; margin-bottom: 8px; }
+    .climate-card, .escalation-card { min-width: 0; padding: 10px 11px; border: 1px solid rgba(224, 122, 95, .25); border-radius: 7px 4px 8px 5px; background: rgba(224, 122, 95, .055); }
+    .climate-name { display: block; color: #f0b69d; font: 400 16px/1.25 Georgia, "Times New Roman", serif; }
+    .climate-note { display: block; margin-top: 3px; color: #c7b7a5; font: 11px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .escalation-card { display: flex; align-items: center; gap: 9px; border-color: rgba(243, 183, 75, .26); background: rgba(243, 183, 75, .05); }
+    .escalation-code { display: grid; place-items: center; flex: 0 0 31px; width: 31px; height: 31px; border: 1px solid rgba(243, 183, 75, .48); border-radius: 50%; color: var(--gold); font: 11px/1 Georgia, serif; }
+    .escalation-copy { display: grid; gap: 2px; min-width: 0; }
+    .escalation-copy small { color: #a3948a; font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .escalation-copy strong { color: #f0d3a1; font: 12px/1.3 Georgia, serif; }
+    .scene-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .scene-fact { min-width: 0; padding: 9px 10px; border-left: 2px solid rgba(224, 122, 95, .55); background: linear-gradient(100deg, rgba(224, 122, 95, .055), transparent); }
+    .scene-fact p { margin: 0; color: #e5d6c4; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .scene-fact.blindspot p { color: #9c9185; font-style: italic; }
+    .thread-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .thread-card { min-width: 0; padding: 10px 11px; border: 1px solid rgba(154, 168, 122, .22); border-left: 2px solid var(--sage); border-radius: 4px 8px 6px 4px; background: rgba(154, 168, 122, .045); }
+    .thread-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 5px; }
+    .thread-id { color: #f0dcc4; font: 700 10px/1.3 ui-sans-serif, system-ui, sans-serif; }
+    .thread-name { color: #e2d4bf; font: italic 11px/1.3 Georgia, serif; }
+    .thread-state { padding: 2px 6px; border: 1px solid rgba(243, 183, 75, .3); border-radius: 3px 6px 4px 2px; color: var(--gold); background: rgba(243, 183, 75, .09); font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; }
+    .thread-copy { margin: 0; color: #c9bca9; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .thread-copy strong { color: #e9d6b8; font-weight: 650; }
+    .code-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 9px; color: #968b7d; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .code-legend strong { color: #bec8a3; font-weight: 650; }
+    .world-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 8px; margin-top: 9px; }
+    .world-item { min-width: 0; padding: 8px 9px; border-top: 1px solid rgba(154, 168, 122, .18); }
+    .world-item p { margin: 0; color: #cbbda9; font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .world-item .field-label { margin-bottom: 3px; color: #aebb8d; }
+    .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .story-card { min-width: 0; padding: 9px 10px; border: 1px solid rgba(243, 183, 75, .18); border-radius: 6px 4px 8px 5px; background: rgba(243, 183, 75, .035); }
+    .story-card.direct { grid-column: 1 / -1; }
+    .story-card p { margin: 0; color: #d7c9b6; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .story-card .field-label { color: var(--gold); }
+    .pacing-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 11px; margin-top: 9px; padding: 9px 10px; border: 1px solid rgba(243, 183, 75, .24); border-radius: 5px 8px 6px 4px; background: linear-gradient(100deg, rgba(243, 183, 75, .08), transparent); }
+    .pacing-gear { color: #f2d29a; font: 600 12px/1.35 Georgia, serif; }
+    .pacing-caption { color: #a3948a; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .vault { border-color: rgba(224, 122, 95, .32); background: linear-gradient(120deg, rgba(224, 122, 95, .07), rgba(18, 18, 17, .48)); }
+    .vault-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 10px; }
+    .vault-rating { display: grid; align-content: start; gap: 7px; min-width: 0; padding: 11px 12px; border: 1px solid rgba(154, 168, 122, .24); border-radius: 6px 4px 8px 5px; background: rgba(154, 168, 122, .055); }
+    .rating-pill { justify-self: start; padding: 4px 8px; border: 1px solid rgba(154, 168, 122, .36); border-radius: 3px 7px 4px 3px; color: var(--sage); background: rgba(154, 168, 122, .11); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; }
+    .vault-rating p { margin: 0; color: #c9bca9; font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .sola-note { padding: 11px 12px; border: 1px solid rgba(244, 162, 97, .2); border-radius: 4px 8px 6px 3px; background: rgba(18, 18, 17, .45); }
+    .sola-note p { margin: 0; color: #e5d6c4; font: italic 11px/1.55 Georgia, serif; }
+    .dare { position: relative; display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 9px; margin-top: 9px; padding: 11px 13px; border: 1px solid rgba(244, 162, 97, .34); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgba(26, 19, 16, .03) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .dare-seal { display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid rgba(143, 63, 46, .5); border-radius: 50%; color: #8f3f2e; font: 12px/1 Georgia, serif; }
+    .dare-copy { min-width: 0; }
+    .dare-label { display: block; margin-bottom: 3px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .dare-text { color: #1a1310; font: italic 550 12px/1.55 Georgia, "Times New Roman", serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .65); overflow-wrap: anywhere; }
+    .dare-caption { margin: 12px 0 0; color: #8f8478; font: 9px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    .easel-card[open] .easel-roll { animation: reveal .45s cubic-bezier(.16, 1, .3, 1); }
+    @media (max-width: 700px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 48px; }
+      .chat-card { padding: 14px 12px 15px; }
+      .checks, .field-grid, .energy-top, .scene-facts, .thread-grid, .world-grid, .story-grid, .vault-grid { grid-template-columns: minmax(0, 1fr); }
+      .story-card.direct { grid-column: auto; }
+      .section-heading { align-items: flex-start; }
+      .easel-card > summary { padding: 12px 42px 14px 12px; gap: 8px; }
+      .easel-title strong { font-size: 18px; }
+      .easel-body { padding: 12px 10px 15px; }
+      .ledger-section { padding: 11px 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .easel-card, .easel-chevron, .easel-card[open] .easel-roll { transition: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">✧</span>
+      <span class="rail-dot">▣</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local preview</span>
+      </header>
+      <main class="page">
+        <div class="page-kicker">Autumn Golden Hour · review drawer</div>
+        <h1>Sola’s Easel</h1>
+        <p class="page-intro">A separate, collapsible showrunner ledger. The six V3 review sections stay intact; the sample values are for layout only.</p>
+        <article class="chat-card">
+          <div class="chat-meta"><strong>Guinevere</strong><span>·</span><span>just now</span></div>
+          <p class="chat-message">Guinevere sets the letter beside the silver cup. The split falcon seal catches the late light. <em>“You have asked me to trust this letter. I asked who broke it.”</em></p>
+          <p class="preview-hint">The Easel remains collapsed in the chat until opened.</p>
+          <details class="easel-card">
+            <summary>
+              <svg class="easel-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="14.2" fill="none" stroke="var(--muted)" stroke-width=".75"/>
+                <path d="M16 3.4c1.8 7.4 4.3 10.3 12.6 12.6-8.3 2.3-10.8 5.2-12.6 12.6-1.8-7.4-4.3-10.3-12.6-12.6C11.7 13.7 14.2 10.8 16 3.4z" fill="rgba(243,183,75,.2)" stroke="var(--gold)" stroke-width="1.1" stroke-linejoin="round"/>
+                <path d="m16 11.9 1.5 2.6 2.6 1.5-2.6 1.5-1.5 2.6-1.5-2.6-2.6-1.5 2.6-1.5z" fill="var(--surface)" stroke="var(--amber)" stroke-width=".8" stroke-linejoin="round"/>
+                <circle cx="16" cy="16" r="1" fill="var(--coral)"/>
+              </svg>
+              <span class="easel-title"><strong>Sola’s Easel</strong><small>Director’s Ledger · Turn 42</small></span>
+              <span class="easel-badge">DIRECTOR SPOILERS</span>
+              <span class="easel-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="easel-roll">
+              <div class="easel-ribbon"><span class="ribbon-turn">Turn 42 · Illustrative review</span><span class="ribbon-note">Private showrunner notes · outside story</span></div>
+              <div class="easel-body" tabindex="0">
+                <span class="easel-sample">Sample values · not persistent story canon</span>
+
+                <section class="ledger-section core">
+                  <header class="section-heading"><span class="section-mark">0</span><div class="section-title"><h2>Overall Core Check</h2><p>Core invariants · immediate audit</p></div></header>
+                  <div class="checks">
+                    <div class="check-row"><div class="check-copy"><strong>Agency Integrity</strong><small>No assumed {{user}} dialogue, reaction, or forced crossroads.</small></div><span class="status pass">PASS</span></div>
+                    <div class="check-row"><div class="check-copy"><strong>Anti-Echo Protocol</strong><small>Guinevere acts forward; no premise restatement.</small></div><span class="status pass">PASS</span></div>
+                    <div class="check-row"><div class="check-copy"><strong>Character Spine</strong><small>Her boundary holds; no unearned softening.</small></div><span class="status pass">PASS</span></div>
+                    <div class="check-row"><div class="check-copy"><strong>Pacing Threshold</strong><small>Scene stays open; no forced cliffhanger.</small></div><span class="status pass">PASS</span></div>
+                    <div class="check-row"><div class="check-copy"><strong>Somatic Grounding</strong><small>Letter, wax, stone, and hand contact remain concrete.</small></div><span class="status pass">PASS</span></div>
+                  </div>
+                  <p class="section-footnote"><strong>N/A Invariants:</strong> None.</p>
+                </section>
+
+                <section class="ledger-section">
+                  <header class="section-heading"><span class="section-mark">I</span><div class="section-title"><h2>Staging &amp; Continuity</h2><p>Immediate scene check</p></div></header>
+                  <div class="field-grid">
+                    <div class="field-card"><span class="field-label">Spatial Coordinates</span><div class="field-value">Western gallery · four paces from the rose window.</div></div>
+                    <div class="field-card"><span class="field-label">Props in Motion</span><div class="field-value">Letter with the split falcon seal beside the silver cup; Guinevere’s hands free.</div></div>
+                    <div class="field-card"><span class="field-label">Sensory Anchor</span><div class="field-value">Dusk light along the leaded glass; rain ticks against the panes.</div></div>
+                    <div class="field-card"><span class="field-label">Continuity Note</span><div class="field-value">None.</div></div>
+                  </div>
+                </section>
+
+                <section class="ledger-section scene">
+                  <header class="section-heading"><span class="section-mark">II</span><div class="section-title"><h2>Scene Currents &amp; Subtext</h2><p>Scene energy · guarded emotion · body truth</p></div></header>
+                  <div class="energy-top">
+                    <div class="climate-card"><span class="field-label">The Climate</span><strong class="climate-name">Simmering Friction</strong><span class="climate-note">Her jaw stays set; her replies slow.</span></div>
+                    <div class="escalation-card"><span class="escalation-code">E1</span><span class="escalation-copy"><small>Escalation</small><strong>Simmer</strong></span></div>
+                  </div>
+                  <div class="scene-facts">
+                    <div class="scene-fact"><span class="field-label">Scene Initiative</span><p>Guinevere holds tempo; the visitor has the next move.</p></div>
+                    <div class="scene-fact"><span class="field-label">Behind the Teeth</span><p>She wants the letter opened. She will not ask twice.</p></div>
+                    <div class="scene-fact"><span class="field-label">The Body’s Truth</span><p>Her thumb presses the torn edge of the falcon seal.</p></div>
+                    <div class="scene-fact blindspot"><span class="field-label">The Blindspot</span><p>—</p></div>
+                  </div>
+                </section>
+
+                <section class="ledger-section living">
+                  <header class="section-heading"><span class="section-mark">III</span><div class="section-title"><h2>The Living Currents</h2><p>Persistent pressures · seeds · world drift</p></div></header>
+                  <div class="thread-grid">
+                    <article class="thread-card">
+                      <div class="thread-head"><span class="thread-id">C1</span><span class="thread-name">Regent’s Envoy</span><span class="thread-state">MNT</span></div>
+                      <p class="thread-copy"><strong>Catalyst:</strong> Sir Kay admits the messenger to the gallery.<br><strong>Looming event:</strong> The Regent may demand a reply before the council.</p>
+                    </article>
+                    <article class="thread-card">
+                      <div class="thread-head"><span class="thread-id">S1</span><span class="thread-name">“split falcon seal”</span><span class="thread-state">LAT</span></div>
+                      <p class="thread-copy"><strong>Payoff:</strong> Could show the letter opened before it arrived.</p>
+                    </article>
+                  </div>
+                  <div class="code-legend"><span><strong>Pressures:</strong> DRM · STR · MNT · THR · UNL</span><span><strong>Seeds:</strong> LAT · HEAT · SPRUNG</span></div>
+                  <div class="world-grid">
+                    <div class="world-item"><span class="field-label">Regional Drift</span><p>Rain runs in thin lines down the western panes.</p></div>
+                    <div class="world-item"><span class="field-label">Off-Screen NPC Arc</span><p>Sir Kay waits at the lower stair with the messenger.</p></div>
+                    <div class="world-item"><span class="field-label">Knowledge Ledger</span><p>Guinevere knows a Regent’s order is expected; believes the visitor saw the split seal; suspects the Regent opened it; wrong about —.</p></div>
+                    <div class="world-item"><span class="field-label">Open Loop / Unanswered</span><p>Who broke the seal?</p></div>
+                    <div class="world-item"><span class="field-label">Retired This Turn</span><p>None.</p></div>
+                  </div>
+                </section>
+
+                <section class="ledger-section storyboard">
+                  <header class="section-heading"><span class="section-mark">IV</span><div class="section-title"><h2>Branching Storyboard</h2><p>Conditions and possibilities · never scheduled events</p></div></header>
+                  <div class="story-grid">
+                    <div class="story-card direct"><span class="field-label">The Direct Line · if the current tempo holds</span><p>Guinevere waits for an answer without asking again.</p></div>
+                    <div class="story-card"><span class="field-label">The Fault Line · if her boundary is pressed</span><p>She keeps the letter between them and narrows the question.</p></div>
+                    <div class="story-card"><span class="field-label">The Blindside · if the messenger arrives first</span><p>The Regent’s demand may reach the gallery before Guinevere answers.</p></div>
+                    <div class="story-card"><span class="field-label">Cost of Silence · if the pause continues</span><p>Evening deepens. No new penalty is implied.</p></div>
+                    <div class="story-card"><span class="field-label">The Confluence · if the letter is opened</span><p>The split seal may link the Regent’s demand to the visitor’s route.</p></div>
+                  </div>
+                  <div class="pacing-row"><span class="field-label" style="margin:0">Pacing Gear</span><span class="pacing-gear">Gear 2 · Grounding → Next Target 2</span><span class="pacing-caption">Room for a quiet exchange; no forced step-down.</span></div>
+                </section>
+
+                <section class="ledger-section vault">
+                  <header class="section-heading"><span class="section-mark">V</span><div class="section-title"><h2>Sola’s Vault</h2><p>Previous dare rating · next-turn craft challenge</p></div></header>
+                  <div class="vault-grid">
+                    <div class="vault-rating"><span class="field-label">Previous Dare</span><span class="rating-pill">PASS</span><p>Kept the pause without forcing a reveal.</p></div>
+                    <div class="sola-note"><span class="field-label">Sola</span><p>Good restraint. Her thumb on the split seal holds the pause.</p></div>
+                  </div>
+                  <div class="dare"><span class="dare-seal" aria-hidden="true">✧</span><div class="dare-copy"><span class="dare-label">Sola’s Directorial Dare</span><div class="dare-text">Keep the next exchange to one question, then let Guinevere move the letter.</div></div></div>
+                </section>
+                <p class="dare-caption">This is a private showrunner ledger. Characters in the story do not see it.</p>
+              </div>
+            </div>
+          </details>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

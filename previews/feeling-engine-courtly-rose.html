@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sola — Feeling Engine · Rose of Avalon</title>
+  <style>
+    :root {
+      --bg: #121416;
+      --surface: #211e1a;
+      --panel: #1a1917;
+      --fg: #eadfcf;
+      --muted: #9AA87A;
+      --warning: #F3B74B;
+      --accent: #F4A261;
+      --copper: #E07A5F;
+      --terracotta: #C06C54;
+      --coral: #EE6C4D;
+      --rose: #F4845F;
+      --border: #765b3f;
+      color: var(--fg);
+      font-family: Georgia, "Times New Roman", serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--fg);
+      background:
+        radial-gradient(ellipse at 73% 16%, rgb(244 162 97 / 9%), transparent 38%),
+        radial-gradient(ellipse at 20% 82%, rgb(192 108 84 / 8%), transparent 42%),
+        linear-gradient(135deg, #111315, #1c1a17 58%, #141517);
+    }
+
+    .st-app { min-height: 100vh; display: grid; grid-template-columns: 58px minmax(0, 1fr); }
+    .st-rail {
+      display: flex; align-items: center; flex-direction: column; gap: 16px;
+      padding: 14px 8px; border-right: 1px solid rgb(243 183 75 / 16%);
+      background: rgb(10 12 14 / 84%); color: #a99a84;
+      font: 12px/1 ui-sans-serif, system-ui, sans-serif;
+    }
+    .st-mark, .rail-icon {
+      display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+    }
+    .st-mark { margin-bottom: 10px; border: 1px solid var(--border); color: var(--warning); font-weight: 650; }
+    .rail-icon { border: 1px solid transparent; }
+    .rail-icon.active { color: var(--warning); background: rgb(243 183 75 / 10%); border-color: rgb(243 183 75 / 24%); }
+    .st-main { min-width: 0; display: flex; flex-direction: column; }
+    .st-toolbar {
+      min-height: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 0 24px; border-bottom: 1px solid rgb(243 183 75 / 14%);
+      background: rgb(11 13 15 / 60%); color: #c4b59e;
+      font: 11px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .07em;
+    }
+    .toolbar-brand { color: var(--warning); font-weight: 700; letter-spacing: .14em; }
+    .toolbar-status { color: var(--muted); }
+
+    .page { width: min(1120px, 100%); margin: 0 auto; padding: 24px clamp(14px, 3vw, 36px) 32px; }
+    .chat-head {
+      max-width: 960px; margin: 0 auto; padding: 0 0 17px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      border-bottom: 1px solid rgb(243 183 75 / 15%); font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    h1, h2, h3, p { margin: 0; }
+    .chat-head h1 { font-size: 16px; font-weight: 550; letter-spacing: .025em; }
+    .chat-subtitle { margin-top: 4px; color: #9c907e; font-size: 11px; }
+    .chat-tag {
+      padding: 7px 10px; border: 1px solid rgb(243 183 75 / 27%); border-radius: 999px;
+      color: var(--warning); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; white-space: nowrap;
+    }
+
+    .turn { max-width: 960px; margin: 24px auto 0; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+    .avatar {
+      width: 34px; height: 34px; margin-top: 2px; display: grid; place-items: center;
+      border: 1px solid rgb(244 162 97 / 58%); border-radius: 50%;
+      color: var(--warning); background: radial-gradient(circle at 35% 30%, #4b3826, #171717 72%);
+      font: 600 10px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em;
+    }
+    .message-body { min-width: 0; }
+    .message-meta { display: flex; align-items: baseline; gap: 9px; margin: 0 0 9px; font: 12px/1.3 ui-sans-serif, system-ui, sans-serif; }
+    .message-author { color: #f0d6a9; font-weight: 600; }
+    .message-time { color: #887f71; font-size: 10px; }
+    .prose { max-width: 72ch; color: #e3d6c1; font-size: 16px; line-height: 1.65; }
+
+    .hud-shell {
+      margin-top: 18px; padding: 12px; border: 1px solid rgb(243 183 75 / 32%); border-radius: 18px;
+      background: linear-gradient(145deg, rgb(22 22 20 / 96%), rgb(29 25 20 / 95%));
+      box-shadow: 0 12px 36px rgb(0 0 0 / 30%), inset 0 1px rgb(255 225 173 / 4%);
+    }
+    .hud-digest {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 2px 8px 12px; color: #c7b697;
+      font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .hud-digest strong { color: var(--warning); font-weight: 600; white-space: nowrap; }
+    .hero {
+      overflow: hidden; padding: 22px 25px 24px; border: 1px solid var(--border); border-radius: 20px;
+      background: var(--surface);
+    }
+    .panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-bottom: 15px; border-bottom: 1px solid var(--border); }
+    .panel-title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+    .section-kicker, .eyebrow, .micro, .reading-label, .current-label {
+      font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .15em; text-transform: uppercase;
+    }
+    .section-kicker { color: var(--warning); }
+    .panel-title h2 { font-size: 18px; font-weight: 500; letter-spacing: .035em; }
+    .micro { color: var(--muted); }
+    .hero-grid {
+      display: grid; grid-template-columns: minmax(300px, 1.05fr) minmax(300px, .95fr);
+      align-items: center; gap: clamp(20px, 4vw, 42px); padding: 24px 0 3px;
+    }
+    .crest-wrap { width: min(100%, 430px); justify-self: center; }
+    .crest { display: block; width: 100%; height: auto; overflow: visible; }
+
+    .readout { display: grid; gap: 18px; }
+    .weather-card { padding: 17px 18px 15px; border: 1px solid rgb(243 183 75 / 30%); border-radius: 15px; background: linear-gradient(140deg, rgb(55 43 29 / 62%), rgb(30 27 23 / 62%)); }
+    .weather-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .eyebrow { color: var(--muted); }
+    .iw-mark { color: var(--warning); font: 11px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; white-space: nowrap; }
+    .weather-card h3 { margin-top: 7px; color: #f1d7a9; font-size: clamp(32px, 4vw, 46px); line-height: 1; font-weight: 400; }
+    .weather-path { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin-top: 18px; }
+    .weather-step { min-width: 0; display: grid; justify-items: center; gap: 7px; color: #8f8779; text-align: center; font: 9px/1.25 ui-sans-serif, system-ui, sans-serif; }
+    .weather-step::before { content: ""; width: 7px; height: 7px; border: 1px solid #74624b; transform: rotate(45deg); background: #25221e; }
+    .weather-step.active { color: var(--warning); }
+    .weather-step.active::before { border-color: var(--warning); background: var(--warning); box-shadow: 0 0 12px rgb(243 183 75 / 45%); }
+
+    .currents-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 1px 2px 9px; }
+    .currents-heading h3 { color: #e9d8bd; font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .currents-heading span { color: var(--muted); font: 9px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .current-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .current {
+      min-height: 63px; display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; align-items: center; gap: 9px;
+      padding: 9px 10px; border: 1px solid rgb(118 91 63 / 66%); border-radius: 11px; background: rgb(18 18 17 / 70%);
+    }
+    .current-seal { width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid var(--current-color); color: var(--current-color); transform: rotate(45deg); font: 600 10px/1 ui-sans-serif, system-ui, sans-serif; }
+    .current-seal span { transform: rotate(-45deg); }
+    .current-name { color: #d8cab5; font: 11px/1.25 ui-sans-serif, system-ui, sans-serif; }
+    .current-score { color: var(--current-color); font: 600 16px/1 ui-sans-serif, system-ui, sans-serif; white-space: nowrap; }
+    .tenderness { --current-color: var(--rose); }
+    .fury { --current-color: var(--coral); }
+    .dread { --current-color: var(--muted); }
+    .yearning { --current-color: var(--warning); }
+
+    .composer {
+      width: min(960px, calc(100% - 28px)); margin: 0 auto 20px; padding: 14px 17px;
+      border: 1px solid rgb(243 183 75 / 17%); border-radius: 14px; background: rgb(12 14 16 / 76%);
+      color: #8e877c; font: 13px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    .composer span { float: right; color: var(--warning); }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+      .crest-wrap { width: min(100%, 360px); }
+    }
+    @media (max-width: 600px) {
+      .st-toolbar { padding: 0 12px; }
+      .st-toolbar span:nth-child(2) { display: none; }
+      .page { padding-top: 18px; }
+      .chat-head { padding-left: 0; align-items: flex-start; }
+      .hero { padding: 16px 13px 18px; }
+      .hud-shell { padding: 8px; }
+      .hud-digest { align-items: flex-start; flex-direction: column; }
+      .weather-card { padding: 14px 12px; }
+      .weather-step { font-size: 8px; }
+      .current { grid-template-columns: 24px minmax(0, 1fr) auto; gap: 7px; padding: 8px 6px; }
+      .current-seal { width: 23px; height: 23px; }
+      .current-name { font-size: 10px; }
+      .current-score { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="st-app">
+    <aside class="st-rail" aria-label="SillyTavern navigation">
+      <div class="st-mark">ST</div>
+      <div class="rail-icon">☰</div>
+      <div class="rail-icon active">◉</div>
+      <div class="rail-icon">▣</div>
+      <div class="rail-icon">⚙</div>
+    </aside>
+    <div class="st-main">
+      <header class="st-toolbar">
+        <span class="toolbar-brand">SILLYTAVERN</span>
+        <span>CHATS&nbsp; / &nbsp;GUINEVERE</span>
+        <span class="toolbar-status">●&nbsp; LOCAL PREVIEW</span>
+      </header>
+      <main class="page">
+        <header class="chat-head">
+          <div>
+            <h1>Guinevere</h1>
+            <p class="chat-subtitle">A Camelot scene · Sola tracker preview</p>
+          </div>
+          <div class="chat-tag">Autumn Golden Hour</div>
+        </header>
+        <article class="turn">
+          <div class="avatar" aria-hidden="true">G</div>
+          <div class="message-body">
+            <div class="message-meta">
+              <span class="message-author">Guinevere</span>
+              <span class="message-time">just now</span>
+            </div>
+            <p class="prose">Guinevere studies the rose window. Her voice remains cool; one gloved hand lingers on the old letter before she lets it fall back to the table.</p>
+            <div class="hud-shell">
+              <div class="hud-digest">
+                <span>Day 42 · Dusk · Guinevere: T3 F1 D0 Y4</span>
+                <strong>SHOWRUNNER HUD</strong>
+              </div>
+              <section class="hero" aria-labelledby="rose-title">
+                <div class="panel-heading">
+                  <div class="panel-title">
+                    <span class="section-kicker">Feeling Engine · Inner Weather</span>
+                    <h2 id="rose-title">The Rose of Avalon</h2>
+                  </div>
+                  <span class="micro">IW + FOUR CURRENTS</span>
+                </div>
+                <div class="hero-grid">
+                  <div class="crest-wrap">
+                    <svg class="crest" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" role="img" aria-label="A jeweled four-petal heraldic rose within an ornate Arthurian shield">
+                      <defs>
+                        <linearGradient id="rose-gilding" x1="0" y1="1" x2="1" y2="0">
+                          <stop offset="0" stop-color="var(--warning)"/>
+                          <stop offset=".48" stop-color="var(--copper)"/>
+                          <stop offset="1" stop-color="var(--accent)"/>
+                        </linearGradient>
+                        <linearGradient id="shield-enamel" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stop-color="#33271f"/>
+                          <stop offset=".55" stop-color="#211e1a"/>
+                          <stop offset="1" stop-color="#17191a"/>
+                        </linearGradient>
+                        <linearGradient id="petal-rose" x1="0" y1="1" x2="1" y2="0">
+                          <stop offset="0" stop-color="var(--rose)" stop-opacity=".46"/>
+                          <stop offset="1" stop-color="var(--accent)" stop-opacity=".2"/>
+                        </linearGradient>
+                        <linearGradient id="petal-flame" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stop-color="var(--coral)" stop-opacity=".46"/>
+                          <stop offset="1" stop-color="var(--warning)" stop-opacity=".2"/>
+                        </linearGradient>
+                        <linearGradient id="petal-mist" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0" stop-color="var(--muted)" stop-opacity=".42"/>
+                          <stop offset="1" stop-color="#d9c9a5" stop-opacity=".18"/>
+                        </linearGradient>
+                        <linearGradient id="petal-star" x1="0" y1="1" x2="1" y2="0">
+                          <stop offset="0" stop-color="var(--warning)" stop-opacity=".46"/>
+                          <stop offset="1" stop-color="var(--copper)" stop-opacity=".2"/>
+                        </linearGradient>
+                        <radialGradient id="moonstone" cx="34%" cy="27%">
+                          <stop offset="0" stop-color="#fff0c8"/>
+                          <stop offset=".42" stop-color="#dfb977"/>
+                          <stop offset="1" stop-color="#684b3a"/>
+                        </radialGradient>
+                      </defs>
+
+                      <g fill="none" stroke="url(#rose-gilding)" stroke-linejoin="round">
+                        <path d="M220 22 351 70v115c0 85-48 157-131 229-83-72-131-144-131-229V70z" fill="url(#shield-enamel)" stroke-width="2.2"/>
+                        <path d="M220 42 332 83v100c0 76-42 139-112 202-70-63-112-126-112-202V83z" stroke-width="1.1" opacity=".82"/>
+                        <path d="M220 55 318 91v91c0 67-37 124-98 181-61-57-98-114-98-181V91z" stroke="var(--border)" stroke-width=".9" opacity=".76"/>
+                      </g>
+
+                      <g fill="none" stroke="url(#rose-gilding)" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M118 104c22 6 34 22 37 43-8-10-17-13-28-12m195-31c-22 6-34 22-37 43 8-10 17-13 28-12" stroke-width="1.4"/>
+                        <path d="M120 270c20 4 32 18 37 37-9-8-18-10-28-8m191-29c-20 4-32 18-37 37 9-8 18-10 28-8" stroke-width="1.3"/>
+                        <path d="M156 103l5 8-5 8-5-8zM284 103l5 8-5 8-5-8zM120 220l5 8-5 8-5-8zM320 220l5 8-5 8-5-8z" stroke-width="1.1"/>
+                      </g>
+
+                      <g fill="url(#rose-gilding)" stroke="var(--warning)" stroke-width=".8" stroke-linejoin="round">
+                        <path d="M220 54c11 11 13 21 0 31-13-10-11-20 0-31z"/>
+                        <path d="M220 63c-5 8-12 12-20 12 5-8 11-11 20-12zm0 0c5 8 12 12 20 12-5-8-11-11-20-12z"/>
+                      </g>
+
+                      <g stroke="url(#rose-gilding)" stroke-width="1.5" stroke-linejoin="round">
+                        <path d="M220 112c36 29 42 62 0 102-42-40-36-73 0-102z" fill="url(#petal-flame)"/>
+                        <path d="M323 215c-29 36-62 42-102 0 40-42 73-36 102 0z" fill="url(#petal-mist)"/>
+                        <path d="M220 318c-36-29-42-62 0-102 42 40 36 73 0 102z" fill="url(#petal-star)"/>
+                        <path d="M117 215c29-36 62-42 102 0-40 42-73 36-102 0z" fill="url(#petal-rose)"/>
+                      </g>
+
+
+                      <circle cx="220" cy="215" r="43" fill="url(#moonstone)" stroke="url(#rose-gilding)" stroke-width="2"/>
+                      <circle cx="220" cy="215" r="34" fill="none" stroke="#f1d8a8" stroke-width=".8" opacity=".6"/>
+                      <path d="M220 183l7 22 22 10-22 7-7 22-7-22-22-7 22-10z" fill="none" stroke="#fff0c8" stroke-width="1.6" stroke-linejoin="round"/>
+                      <circle cx="220" cy="215" r="5" fill="var(--warning)"/>
+                      <circle cx="220" cy="215" r="1.8" fill="#fff4dc"/>
+
+                      <g fill="none" stroke="url(#rose-gilding)" stroke-width="1.2" stroke-linecap="round">
+                        <path d="M176 343c15 8 29 12 44 13m44-13c-15 8-29 12-44 13"/>
+                        <path d="M198 360l22 13 22-13M208 371l12 10 12-10"/>
+                      </g>
+                      <g fill="var(--warning)">
+                        <path d="M220 83l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+                        <circle cx="144" cy="215" r="2.2"/><circle cx="296" cy="215" r="2.2"/>
+                        <circle cx="220" cy="337" r="2.2"/>
+                      </g>
+                    </svg>
+                  </div>
+
+                  <div class="readout">
+                    <section class="weather-card" aria-labelledby="weather-title">
+                      <div class="weather-top">
+                        <div>
+                          <div class="eyebrow">Outward bearing · IW 1</div>
+                          <h3 id="weather-title">Cool</h3>
+                        </div>
+                        <span class="iw-mark">INNER<br>WEATHER</span>
+                      </div>
+                      <div class="weather-path" aria-label="IW states from Frostbound to Fervent; Cool is active">
+                        <div class="weather-step"><span>Frostbound</span></div>
+                        <div class="weather-step active"><span>Cool</span></div>
+                        <div class="weather-step"><span>Temperate</span></div>
+                        <div class="weather-step"><span>Warm Front</span></div>
+                        <div class="weather-step"><span>Fervent</span></div>
+                      </div>
+                    </section>
+
+                    <section aria-labelledby="currents-title">
+                      <div class="currents-heading">
+                        <h3 id="currents-title">Four currents</h3>
+                        <span>Separate measures</span>
+                      </div>
+                      <div class="current-grid">
+                        <div class="current tenderness">
+                          <span class="current-seal"><span>T</span></span>
+                          <span class="current-name">Tenderness</span>
+                          <span class="current-score">3↑</span>
+                        </div>
+                        <div class="current fury">
+                          <span class="current-seal"><span>F</span></span>
+                          <span class="current-name">Fury</span>
+                          <span class="current-score">1↓</span>
+                        </div>
+                        <div class="current dread">
+                          <span class="current-seal"><span>D</span></span>
+                          <span class="current-name">Dread</span>
+                          <span class="current-score">0</span>
+                        </div>
+                        <div class="current yearning">
+                          <span class="current-seal"><span>Y</span></span>
+                          <span class="current-name">Yearning</span>
+                          <span class="current-score">4↑</span>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </article>
+      </main>
+      <div class="composer">Write a message… <span>◈</span></div>
+    </div>
+  </div>
+</body>
+</html>

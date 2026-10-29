@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Tempo Agitator — Tracker Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #141516;
+      --surface: #1a1310;
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --neutral: #bac3c7;
+      --steady: #f4a261;
+      --drive: #ee6c4d;
+      --border: rgba(163, 148, 138, .24);
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 54% -10%, rgba(244, 162, 97, .12), transparent 42%), linear-gradient(180deg, #191715, #111211 75%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: var(--muted); }
+    .rail-mark, .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; }
+    .rail-mark { border: 1px solid rgba(243, 183, 75, .42); color: var(--gold); font: 12px/1 Georgia, serif; }
+    .rail-dot { color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border: 1px solid rgba(243, 183, 75, .28); background: rgba(243, 183, 75, .1); color: var(--gold); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: var(--gold); }
+    .page { width: min(100%, 1000px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(25px, 4vw, 34px)/1.16 Georgia, "Times New Roman", serif; }
+    .page-intro { max-width: 72ch; margin: 0; color: #b3a592; font: 12px/1.6 ui-sans-serif, system-ui, sans-serif; }
+    .chat-frame { margin-top: 21px; padding: 16px 18px 18px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .chat-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; padding-bottom: 9px; border-bottom: 1px solid rgba(163, 148, 138, .16); }
+    .chat-heading strong { color: #e7d2b7; font: 600 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .chat-heading span { color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .chat-line { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .preview-hint { margin: 12px 0 8px; color: #8f8478; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .tempo-card { --state: var(--steady); --shadowWidth: 0 !important; margin-top: 10px; overflow: hidden; border: 1px solid rgba(244, 162, 97, .34); border-left: 3px double rgba(244, 162, 97, .68); border-radius: 16px 11px 15px 9px; background: radial-gradient(ellipse at 4% 0, rgba(244, 162, 97, .09), transparent 56%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 4px 15px rgba(18, 13, 11, .3), inset 0 1px 0 rgba(240, 220, 196, .05); transition: border-color .3s ease, box-shadow .3s ease; }
+    .tempo-card[open] { border-color: rgba(244, 162, 97, .65); box-shadow: 0 8px 24px rgba(20, 12, 8, .5), 0 0 17px rgba(244, 162, 97, .1); }
+    .tempo-card > summary { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 9px 12px; min-width: 0; padding: 14px 48px 15px 16px; background: linear-gradient(98deg, rgba(244, 162, 97, .13), rgba(26, 19, 16, .22)); color: var(--amber); cursor: pointer; list-style: none; user-select: none; }
+    .tempo-card > summary::-webkit-details-marker { display: none; }
+    .tempo-card > summary::marker { content: ""; }
+    .tempo-card > summary:focus-visible { outline: 2px solid var(--amber); outline-offset: -4px; }
+    .tempo-mark { display: block; flex: 0 0 32px; width: 32px; height: 32px; overflow: visible; }
+    .tempo-mark .rim { fill: rgba(26, 19, 16, .58); stroke: rgba(163, 148, 138, .68); stroke-width: .8; }
+    .tempo-mark .swing-arc { fill: none; stroke: rgba(163, 148, 138, .56); stroke-width: .8; stroke-linecap: round; }
+    .tempo-mark .arm { stroke: var(--state); stroke-width: 1.25; stroke-linecap: round; }
+    .tempo-mark .pivot { fill: var(--gold); stroke: var(--amber); stroke-width: .65; }
+    .tempo-mark .rest-node { fill: #6e645c; stroke: #a3948a; stroke-width: .55; }
+    .tempo-mark .active-node { fill: var(--state); stroke: #f0dcc4; stroke-width: .55; }
+    .tempo-mark .dial-mark { stroke: rgba(163, 148, 138, .75); stroke-width: .65; stroke-linecap: round; }
+    .tempo-title { display: grid; flex: 1 1 14rem; min-width: 0; gap: 2px; }
+    .tempo-title strong { color: var(--ivory); font: 400 21px/1.2 Georgia, "Times New Roman", serif; }
+    .tempo-title small { color: var(--muted); font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .035em; }
+    .tempo-badge { flex: 0 0 auto; padding: 4px 9px; border: 1px solid rgba(244, 162, 97, .42); border-radius: 4px 9px 6px 3px; background: rgba(244, 162, 97, .13); color: #f4a261; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .chevron { position: absolute; top: 21px; right: 18px; width: 8px; height: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+    .tempo-card[open] .chevron { transform: rotate(225deg); }
+    .tempo-body { display: grid; gap: 12px; padding: 13px 16px 17px; border-top: 1px dashed rgba(163, 148, 138, .26); }
+    .sample-note { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(243, 183, 75, .28); border-radius: 999px; color: #f2d39b; font: 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .gear-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+    .gear-card { --mode: var(--neutral); min-width: 0; padding: 12px 13px; border: 1px solid rgba(163, 148, 138, .18); border-left: 3px solid color-mix(in srgb, var(--mode) 70%, transparent); border-radius: 6px 9px 7px 5px; background: rgba(18, 13, 11, .54); }
+    .gear-card.neutral { --mode: var(--neutral); }
+    .gear-card.steady { --mode: var(--steady); }
+    .gear-card.drive { --mode: var(--drive); }
+    .gear-card.active { border-color: color-mix(in srgb, var(--mode) 45%, rgba(163, 148, 138, .2)); border-left-width: 4px; background: linear-gradient(110deg, color-mix(in srgb, var(--mode) 10%, rgba(18, 13, 11, .8)), rgba(18, 13, 11, .52)); box-shadow: inset 0 1px 0 rgba(240, 220, 196, .035); }
+    .gear-heading { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; color: var(--mode); font: 700 9px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .gear-seal { display: grid; place-items: center; flex: 0 0 20px; width: 20px; height: 20px; border: 1px solid color-mix(in srgb, var(--mode) 48%, transparent); border-radius: 50%; color: var(--mode); font: 700 8px/1 ui-sans-serif, system-ui, sans-serif; }
+    .gear-heading small { margin-left: auto; color: #a3948a; font-size: 7px; letter-spacing: .08em; }
+    .gear-card p { margin: 0; color: #e8d6be; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .tempo-rule { position: relative; padding: 12px 14px; border: 1px solid rgba(244, 162, 97, .28); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgba(26, 19, 16, .025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .tempo-rule-label { display: block; margin-bottom: 4px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .tempo-rule p { margin: 0; color: #1a1310; font: 550 12px/1.5 Georgia, "Times New Roman", serif; }
+    .tempo-rule small { display: block; margin-top: 5px; color: #624b3e; font: 9px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .page-foot { margin: 12px 0 0; color: #897e73; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .tempo-card[open] .tempo-body { animation: reveal .4s cubic-bezier(.16, 1, .3, 1); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 48px; }
+      .chat-frame { padding: 13px 11px 14px; }
+      .tempo-card > summary { gap: 8px; padding: 12px 40px 13px 11px; }
+      .tempo-title strong { font-size: 18px; }
+      .tempo-badge { padding: 4px 7px; font-size: 7px; }
+      .tempo-body { padding: 11px 10px 14px; }
+    }
+    @media (max-width: 540px) { .gear-grid { grid-template-columns: minmax(0, 1fr); } }
+    @media (max-width: 380px) { .tempo-title small { max-width: 25ch; } .gear-heading small { font-size: 6px; } }
+    @media (prefers-reduced-motion: reduce) { .tempo-card, .chevron, .tempo-card[open] .tempo-body { transition: none; animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">◷</span>
+      <span class="rail-dot">✧</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local preview</span>
+      </header>
+      <section class="page">
+        <div class="page-kicker">Autumn Golden Hour · the three measures</div>
+        <h1>Tempo Agitator</h1>
+        <p class="page-intro">The three story gears live in a collapsible HUD drawer. Its header shows the example gear; open it to compare the modes and read the shift rule. The 32×32 pendulum sigil marks the active measure.</p>
+        <article class="chat-frame">
+          <header class="chat-heading"><strong>Guinevere · illustrative turn</strong><span>Autumn Golden Hour</span></header>
+          <p class="chat-line">She turns the petition until its split falcon seal faces Sir Kay. “You said the courier carried no mark.”</p>
+          <p class="preview-hint">Open the HUD dropdown to inspect the three gears. This is a visual proposal; no production prompt or regex was changed.</p>
+          <details class="tempo-card">
+            <summary>
+              <svg class="tempo-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <circle class="rim" cx="16" cy="16" r="13.3"/>
+                <path class="swing-arc" d="M7.8 21.5Q16 29.3 24.2 21.5"/>
+                <path class="dial-mark" d="M7 14.5l1.1.3m15.8-.3-1.1.3M16 3.8v1.5"/>
+                <path class="arm" d="M16 6.2v20.9"/>
+                <circle class="pivot" cx="16" cy="6.1" r="1.8"/>
+                <circle class="rest-node" cx="8.6" cy="21.3" r="1.25"/>
+                <circle class="active-node" cx="16" cy="27.1" r="1.65"/>
+                <circle class="rest-node" cx="23.4" cy="21.3" r="1.25"/>
+              </svg>
+              <span class="tempo-title"><strong>Sola’s Tempo Agitator</strong><small>Turn rhythm · three narrative gears</small></span>
+              <span class="tempo-badge">S · STEADY</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="tempo-body">
+              <span class="sample-note">Illustrative value · this reply uses Steady</span>
+              <div class="gear-grid">
+                <section class="gear-card neutral">
+                  <div class="gear-heading"><span class="gear-seal">N</span>Neutral<small>HOLD</small></div>
+                  <p>Hold plot and resolution; change one concrete room detail. Tends short.</p>
+                </section>
+                <section class="gear-card steady active" aria-current="true">
+                  <div class="gear-heading"><span class="gear-seal">S</span>Steady<small>ACTIVE EXAMPLE</small></div>
+                  <p>Advance one or two beats without forcing a turning point.</p>
+                </section>
+                <section class="gear-card drive">
+                  <div class="gear-heading"><span class="gear-seal">D</span>Drive<small>PUSH</small></div>
+                  <p>Escalate the scene; may use more of the available word ceiling.</p>
+                </section>
+              </div>
+              <section class="tempo-rule">
+                <span class="tempo-rule-label">Shift by recent history</span>
+                <p>After two quiet or NEUTRAL turns, step up one gear. After a peak beat, step down one gear.</p>
+                <small>NEUTRAL suppresses plot, not user agency; direct actions and questions still receive full answers.</small>
+              </section>
+            </div>
+          </details>
+        </article>
+        <p class="page-foot">The V3 prompt still defines NEUTRAL · STEADY · DRIVE. This preview proposes a collapsible HUD presentation; production prompts and regexes remain untouched.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

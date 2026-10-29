@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sola — Combined Tracker HUD Preview</title>
+  <style>
+    :root {
+      --bg: #121416;
+      --surface: #211e1a;
+      --panel: #1a1917;
+      --fg: #eadfcf;
+      --muted: #9AA87A;
+      --warning: #F3B74B;
+      --accent: #F4A261;
+      --c1: #E07A5F;
+      --c2: #C06C54;
+      --copper: #E07A5F;
+      --terracotta: #C06C54;
+      --coral: #EE6C4D;
+      --rose: #F4845F;
+      --border: #765b3f;
+      color: var(--fg);
+      font-family: Georgia, "Times New Roman", serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--fg);
+      background:
+        radial-gradient(ellipse at 73% 16%, rgb(244 162 97 / 9%), transparent 38%),
+        radial-gradient(ellipse at 20% 82%, rgb(192 108 84 / 8%), transparent 42%),
+        linear-gradient(135deg, #111315, #1c1a17 58%, #141517);
+    }
+
+    .st-app { min-height: 100vh; display: grid; grid-template-columns: 58px minmax(0, 1fr); }
+    .st-rail {
+      display: flex; align-items: center; flex-direction: column; gap: 16px;
+      padding: 14px 8px; border-right: 1px solid rgb(243 183 75 / 16%);
+      background: rgb(10 12 14 / 84%); color: #a99a84;
+      font: 12px/1 ui-sans-serif, system-ui, sans-serif;
+    }
+    .st-mark, .rail-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; }
+    .st-mark { margin-bottom: 10px; border: 1px solid var(--border); color: var(--warning); font-weight: 650; }
+    .rail-icon { border: 1px solid transparent; }
+    .rail-icon.active { color: var(--warning); background: rgb(243 183 75 / 10%); border-color: rgb(243 183 75 / 24%); }
+    .st-main { min-width: 0; display: flex; flex-direction: column; }
+    .st-toolbar {
+      min-height: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 0 24px; border-bottom: 1px solid rgb(243 183 75 / 14%);
+      background: rgb(11 13 15 / 60%); color: #c4b59e;
+      font: 11px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .07em;
+    }
+    .toolbar-brand { color: var(--warning); font-weight: 700; letter-spacing: .14em; }
+    .toolbar-status { color: var(--muted); }
+
+    .page { width: min(1320px, 100%); margin: 0 auto; padding: 24px clamp(14px, 3vw, 36px) 32px; }
+    .chat-head {
+      max-width: 1220px; margin: 0 auto; padding: 0 0 17px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      border-bottom: 1px solid rgb(243 183 75 / 15%); font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    h1, h2, h3, p { margin: 0; }
+    .chat-head h1 { font-size: 16px; font-weight: 550; letter-spacing: .025em; }
+    .chat-subtitle { margin-top: 4px; color: #9c907e; font-size: 11px; }
+    .chat-tag {
+      padding: 7px 10px; border: 1px solid rgb(243 183 75 / 27%); border-radius: 999px;
+      color: var(--warning); font-size: 10px; letter-spacing: .09em; text-transform: uppercase; white-space: nowrap;
+    }
+    .turn { max-width: 1220px; margin: 24px auto 0; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+    .avatar {
+      width: 34px; height: 34px; margin-top: 2px; display: grid; place-items: center;
+      border: 1px solid rgb(244 162 97 / 58%); border-radius: 50%;
+      color: var(--warning); background: radial-gradient(circle at 35% 30%, #4b3826, #171717 72%);
+      font: 600 10px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em;
+    }
+    .message-body { min-width: 0; }
+    .message-meta { display: flex; align-items: baseline; gap: 9px; margin: 0 0 9px; font: 12px/1.3 ui-sans-serif, system-ui, sans-serif; }
+    .message-author { color: #f0d6a9; font-weight: 600; }
+    .message-time { color: #887f71; font-size: 10px; }
+    .prose { max-width: 75ch; color: #e3d6c1; font-size: 16px; line-height: 1.65; }
+
+    .hud-shell {
+      display: block; margin-top: 18px; border: 1px solid rgba(244,162,97,.35); border-left: 4px solid #F4A261;
+      border-radius: 12px; background: rgba(26,19,16,.96); box-shadow: 0 3px 12px rgba(0,0,0,.22); overflow: hidden;
+    }
+    details.sola-card-hud { --shadowWidth: 0 !important; interpolate-size: allow-keywords; }
+    details.sola-card-hud > summary, details.sola-drawer-track > summary { list-style: none; cursor: pointer; }
+    details.sola-card-hud > summary::-webkit-details-marker, details.sola-drawer-track > summary::-webkit-details-marker { display: none; }
+    details.sola-card-hud > summary::marker, details.sola-drawer-track > summary::marker { content: ""; }
+    details.sola-card-hud > summary {
+      position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px;
+      padding: 15px 42px 15px 16px; color: #F3B74B; background: linear-gradient(90deg,rgba(244,162,97,.16),rgba(20,14,10,.3));
+      font: 700 1em/1.4 ui-sans-serif,system-ui,sans-serif; letter-spacing: .02em; user-select: none;
+    }
+    details.sola-card-hud > summary:focus-visible, details.sola-drawer-track > summary:focus-visible { outline: 2px solid #F4A261; outline-offset: -4px; }
+    .sola-drawer-title { display: flex; align-items: center; gap: 10px; flex: 1 1 14rem; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+    .sola-drawer-title svg { width: 32px; height: 32px; flex: 0 0 32px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .sola-drawer-title > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+    .sola-drawer-heading { display: block; font-family: Georgia,"Times New Roman",serif; font-size: 1.22em; font-weight: 400; line-height: 1.25; }
+    .sola-drawer-sub { display: block; margin-top: 4px; color: #F0DCC4; font-size: max(.75rem,.84em); font-weight: 400; line-height: 1.5; }
+    .sola-drawer-badge { flex: 0 1 auto; max-width: 100%; padding: 3px 8px; border: 1px solid rgba(244,162,97,.25); border-radius: 6px 9px 7px 5px; color: #F4A261; background: rgba(244,162,97,.09); font-size: max(.75em,.75rem); font-weight: 600; letter-spacing: .06em; line-height: 1.4; overflow-wrap: anywhere; }
+    .sola-drawer-chevron { position: absolute; top: 18px; right: 14px; display: inline-block; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .35s cubic-bezier(.16,1,.3,1); }
+    details.sola-card-hud[open] > summary .sola-drawer-chevron, details.sola-drawer-track[open] > summary .sola-drawer-chevron { transform: rotate(225deg); }
+    .sola-hud-badge { color: #A3948A; background: rgba(244,162,97,.08); border-color: rgba(244,162,97,.2); border-radius: 999px; text-transform: none; letter-spacing: .04em; }
+    .sola-hud-badge .digest-t { color: #F4A261; font-weight: 700; }
+    .sola-hud-badge .digest-f { color: #EE6C4D; font-weight: 700; }
+    .sola-hud-badge .digest-d { color: #9AA87A; font-weight: 700; }
+    .sola-hud-badge .digest-y { color: #F3B74B; font-weight: 700; }
+    .sola-hud-body { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; padding: 12px 14px 16px; box-sizing: border-box; }
+    .sola-card-hud > .sola-hud-body > div:has(>details.sola-drawer-track) { display: contents; }
+    .sola-card-hud > .sola-hud-body > div:not(:has(>details.sola-drawer-track)) { flex: 1 0 100%; min-width: 0; max-width: 100%; order: 1000; }
+    .sola-drawer-track {
+      --shadowWidth: 0 !important; position: relative; flex: 0 0 calc(50% - 5px); width: calc(50% - 5px); min-width: 0; max-width: 100%;
+      margin: 0; border: 1px solid rgba(244,162,97,.3); border-left: 3px double rgba(163,148,138,.6);
+      border-radius: 17px 13px 16px 10px; color: #F0DCC4;
+      background: repeating-linear-gradient(101deg,rgba(240,220,196,.018) 0,rgba(240,220,196,.018) 1px,transparent 1px,transparent 5px),radial-gradient(ellipse at 0 0,rgba(244,162,97,.075),transparent 65%),linear-gradient(#1A1310,#120D0B);
+      box-shadow: 0 3px 12px rgba(0,0,0,.16); overflow: hidden; box-sizing: border-box;
+      transition: border-color .8s ease,box-shadow .8s cubic-bezier(.16,1,.3,1),flex-basis .8s cubic-bezier(.16,1,.3,1),margin .8s cubic-bezier(.16,1,.3,1),border-radius .8s cubic-bezier(.16,1,.3,1);
+    }
+    .sola-drawer-track > summary {
+      position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 9px 12px; justify-content: flex-start;
+      padding: 15px 42px 15px 16px; color: #F4A261; background: linear-gradient(95deg,rgba(244,162,97,.12),rgba(26,19,16,.2));
+      font: 600 1em/1.4 ui-sans-serif,system-ui,sans-serif; letter-spacing: .01em; user-select: none;
+    }
+    .sola-drawer-track > summary:hover { background: linear-gradient(95deg,rgba(244,162,97,.16),rgba(26,19,16,.25)); }
+    .sola-drawer-track > summary .sola-drawer-chevron { color: #A3948A; }
+    .sola-track-body { margin: 0 14px 14px; padding: 16px 18px; border-left: 1px dashed rgba(163,148,138,.4); border-radius: 3px 8px 8px 3px; color: #F0DCC4; background: rgba(18,13,11,.36); line-height: 1.65; overflow-wrap: anywhere; box-sizing: border-box; }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) { min-height: 50px; height: auto; border: 1px solid rgba(244,162,97,.25); border-radius: 25px; background: rgba(244,162,97,.08); }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) > summary { min-height: 48px; height: auto; flex-wrap: nowrap; gap: 8px; padding: 7px 12px; border: 0; border-radius: 25px; background: transparent; font-size: .88rem; line-height: 1.4; }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) > summary > :not(.sola-drawer-title):not(.sola-drawer-chevron), .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) .sola-drawer-sub, .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) .sola-drawer-chevron { display: none; }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) > summary .sola-drawer-title { flex: 1 1 auto; width: auto; gap: 8px; }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track[open] { flex: 0 0 100%; width: 100%; margin: 6px 0 2px; border-radius: 10px; border-color: rgba(244,162,97,.55); box-shadow: 0 4px 16px rgba(20,12,8,.5),0 0 12px rgba(244,162,97,.14); }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track[open] > summary { padding: 10px 42px 10px 14px; border-bottom: 1px solid rgba(244,162,97,.22); border-radius: 10px 10px 0 0; }
+    .sola-card-hud > .sola-hud-body .sola-drawer-track[open] > summary .sola-drawer-chevron { position: absolute; top: 18px; right: 14px; display: inline-block; }
+    details.sola-card-hud[open] { border-color: rgba(244,162,97,.65); box-shadow: 0 8px 28px rgba(20,12,8,.7),0 0 20px rgba(244,162,97,.18); }
+    details.sola-card-hud::details-content, details.sola-drawer-track::details-content { transition: height .8s cubic-bezier(.16,1,.3,1),opacity .65s ease,content-visibility .8s allow-discrete; height: 0; opacity: 0; overflow: clip; }
+    details.sola-card-hud[open]::details-content, details.sola-drawer-track[open]::details-content { height: auto; opacity: 1; }
+    details.sola-card-hud[open] > .sola-hud-body, details.sola-drawer-track[open] > .sola-track-body { animation: solaHudReveal .8s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes solaHudReveal { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { details.sola-card-hud::details-content,details.sola-drawer-track::details-content,details.sola-card-hud[open]>.sola-hud-body,details.sola-drawer-track[open]>.sola-track-body,.sola-drawer-chevron { transition: none !important; animation: none !important; } }
+    .read-label { font: 9px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
+    .module-content { display: grid; grid-template-columns: minmax(165px, .78fr) minmax(0, 1.22fr); align-items: center; gap: 16px; padding-top: 14px; }
+    .art-wrap { width: min(100%, 250px); justify-self: center; }
+    .art { display: block; width: 100%; height: auto; overflow: visible; }
+    .readout { min-width: 0; display: grid; gap: 11px; }
+    .sola-feeling-caption { color: #a99a84; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+
+    .sola-astro-body { display: grid; gap: 12px; padding: 3px 2px 2px; }
+    .sola-astro-dial { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; border: 1px solid rgb(244 162 97 / 34%); border-radius: 10px; background: linear-gradient(100deg, rgb(244 162 97 / 9%), rgb(18 18 17 / 52%)); }
+    .sola-astro-dial-pill { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font: 9px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; }
+    .sola-astro-dial-pill svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; }
+    .sola-astro-time-text { color: #f1d7a9; font-size: 23px; line-height: 1; }
+    .astro-layout { display: grid; grid-template-columns: minmax(180px, .78fr) minmax(0, 1.22fr); align-items: center; gap: 14px; }
+    .astro-layout .art-wrap { width: min(100%, 280px); }
+    .astro-info { min-width: 0; display: grid; gap: 9px; }
+    .astro-facts { display: grid; grid-template-columns: minmax(90px, .55fr) minmax(0, 1.45fr); gap: 8px; }
+    .sola-astro-day-leaf, .sola-astro-cal-leaf, .sola-astro-elapsed-ribbon, .sola-astro-whisper { min-width: 0; padding: 10px 11px; border: 1px solid rgb(118 91 63 / 55%); border-radius: 9px; background: rgb(18 18 17 / 54%); }
+    .sola-astro-day-leaf > span, .sola-astro-cal-leaf > span, .sola-astro-elapsed-ribbon > span, .sola-astro-whisper > span { display: block; color: var(--muted); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; }
+    .sola-astro-day-leaf strong, .sola-astro-cal-leaf strong, .sola-astro-elapsed-ribbon strong { display: block; margin-top: 5px; color: #f1d7a9; font-size: 16px; line-height: 1.25; font-weight: 400; }
+    .sola-astro-day-leaf strong { font-size: 24px; }
+    .sola-astro-elapsed-ribbon { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-color: rgb(244 162 97 / 30%); }
+    .sola-astro-elapsed-ribbon strong { margin: 0; color: var(--accent); font-size: 15px; text-align: right; }
+    .sola-astro-whisper { border-color: rgb(243 183 75 / 25%); background: linear-gradient(110deg, rgb(243 183 75 / 7%), rgb(18 18 17 / 48%)); }
+    .sola-astro-whisper p { margin-top: 6px; color: #d5c5ac; font-size: 13px; line-height: 1.55; font-style: italic; }
+    .other-tracker-value { color: #f1d7a9; font-size: 19px; }
+    .matrix-dossier { display: grid; gap: 11px; min-width: 0; padding: 2px 1px; }
+    .matrix-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(154 168 122 / 32%); border-radius: 999px; color: var(--muted); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .matrix-spatial-bar { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(180px, .7fr); gap: 9px; }
+    .matrix-panel { min-width: 0; padding: 11px 12px; border: 1px solid rgb(118 91 63 / 55%); border-radius: 9px; background: rgb(18 18 17 / 58%); }
+    .matrix-field-label { display: flex; align-items: center; gap: 8px; color: var(--accent); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .matrix-field-label::before { content: ""; flex: 0 0 6px; width: 6px; height: 6px; border: 1px solid currentColor; transform: rotate(45deg); }
+    .matrix-value { margin-top: 7px; color: #eadfcf; font-size: 13px; line-height: 1.45; overflow-wrap: anywhere; }
+    .matrix-detail { display: block; margin-top: 4px; color: #a99a84; font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .matrix-orbit-status, .matrix-canon-chip { margin-left: auto; padding: 3px 7px; border: 1px solid rgb(154 168 122 / 36%); border-radius: 999px; color: var(--muted); font: 8px/1.25 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; }
+    .matrix-core-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.05fr) minmax(0, 1.15fr); gap: 9px; }
+    .matrix-orientation { background: linear-gradient(135deg, rgb(244 162 97 / 7%), rgb(18 18 17 / 58%)); }
+    .matrix-canon-chip { color: var(--warning); border-color: rgb(243 183 75 / 32%); }
+    .matrix-trait-list { display: grid; gap: 7px; margin-top: 7px; }
+    .matrix-trait-row { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 5px; align-items: baseline; }
+    .matrix-trait-row span { color: var(--muted); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; }
+    .matrix-trait-row strong { color: #eadfcf; font-size: 11px; font-weight: 400; line-height: 1.4; overflow-wrap: anywhere; }
+    .matrix-duality-title { color: #a99a84; font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .matrix-duality { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .matrix-face { min-width: 0; padding: 12px 14px; border: 1px solid; border-radius: 9px; }
+    .matrix-face-mask { border-color: rgb(244 162 97 / 36%); background: linear-gradient(110deg, rgb(244 162 97 / 10%), rgb(18 18 17 / 55%)); }
+    .matrix-face-mask .matrix-field-label { color: var(--accent); }
+    .matrix-face-internal { border-color: rgb(154 168 122 / 35%); background: linear-gradient(110deg, rgb(154 168 122 / 9%), rgb(18 18 17 / 55%)); }
+    .matrix-face-internal .matrix-field-label { color: var(--muted); }
+    .matrix-boundary { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid rgb(238 108 77 / 28%); border-left: 3px solid var(--coral); border-radius: 4px 9px 7px 4px; background: linear-gradient(100deg, rgb(238 108 77 / 8%), rgb(18 18 17 / 55%)); }
+    .matrix-boundary-seal { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid rgb(238 108 77 / 48%); border-radius: 50%; color: var(--coral); font-size: 16px; }
+    .matrix-boundary .matrix-field-label { color: var(--coral); }
+    .matrix-boundary .matrix-value { margin-top: 4px; }
+    .matrix-audit { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: center; padding: 12px 14px; border: 1px solid rgb(244 162 97 / 34%); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; color: #1a1310; background: repeating-linear-gradient(97deg, rgb(26 19 16 / 3%) 0, rgb(26 19 16 / 3%) 1px, transparent 1px, transparent 6px), linear-gradient(112deg, #F0DCC4, #FDF6F0); }
+    .matrix-audit-seal { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid rgb(143 63 46 / 55%); border-radius: 50%; color: #8f3f2e; font-size: 14px; }
+    .matrix-audit-label { color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .matrix-audit-quote { margin-top: 3px; color: #1a1310; font-size: 12px; line-height: 1.5; font-weight: 550; }
+    .heart-dossier { display: grid; gap: 12px; min-width: 0; padding: 2px 1px; }
+    .heart-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(224 122 95 / 34%); border-radius: 999px; color: var(--copper); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .heart-intro { display: grid; gap: 5px; padding: 11px 13px; border: 1px solid rgb(224 122 95 / 28%); border-radius: 4px 9px 7px 4px; background: linear-gradient(100deg, rgb(224 122 95 / 7%), rgb(18 18 17 / 52%)); }
+    .heart-intro-title { display: flex; align-items: center; gap: 8px; color: var(--copper); font: 700 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    .heart-intro-title::before { content: ""; width: 6px; height: 6px; flex: 0 0 6px; border: 1px solid var(--warning); transform: rotate(45deg); }
+    .heart-intro p { color: #b8a990; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .heart-faculties { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .heart-faculty { --faculty: var(--accent); min-width: 0; display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: start; gap: 10px; padding: 12px; border: 1px solid rgb(244 162 97 / 24%); border-left: 2px solid var(--faculty); border-radius: 4px 9px 7px 4px; background: linear-gradient(120deg, rgb(244 162 97 / 6%), rgb(18 18 17 / 58%)); }
+    .heart-faculty-icon { display: grid; place-items: center; width: 36px; height: 36px; color: var(--faculty); }
+    .heart-faculty-icon svg { display: block; width: 32px; height: 32px; overflow: visible; }
+    .heart-faculty-copy { min-width: 0; }
+    .heart-faculty-label { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; color: var(--faculty); font: 700 9px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .heart-faculty-kind { color: #928674; font: 7px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; text-align: right; text-transform: uppercase; }
+    .heart-faculty p { margin-top: 7px; color: #eadfcf; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+    .heart-ego { --faculty: var(--warning); border-left-color: var(--warning); background: linear-gradient(120deg, rgb(243 183 75 / 7%), rgb(18 18 17 / 58%)); }
+    .heart-nerve { --faculty: var(--coral); border-left-color: var(--coral); background: linear-gradient(120deg, rgb(238 108 77 / 7%), rgb(18 18 17 / 58%)); }
+    .heart-body { --faculty: var(--accent); border-left-color: var(--accent); background: linear-gradient(120deg, rgb(244 162 97 / 7%), rgb(18 18 17 / 58%)); }
+    .heart-psyche { --faculty: var(--muted); border-left-color: var(--muted); background: linear-gradient(120deg, rgb(154 168 122 / 7%), rgb(18 18 17 / 58%)); }
+    @media (max-width: 520px) {
+      .heart-faculties { grid-template-columns: minmax(0, 1fr); }
+    }
+    .bond-dossier { display: grid; gap: 12px; min-width: 0; padding: 2px 1px; }
+    .bond-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(224 122 95 / 34%); border-radius: 999px; color: var(--copper); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .bond-stage { display: grid; grid-template-columns: minmax(120px, .38fr) minmax(0, 1.62fr); align-items: center; gap: 14px; padding: 13px 15px; border: 1px solid rgb(224 122 95 / 31%); border-radius: 10px 6px 11px 7px; background: linear-gradient(110deg, rgb(224 122 95 / 7%), rgb(18 18 17 / 52%) 48%, rgb(243 183 75 / 5%)); }
+    .bond-art { width: min(100%, 180px); justify-self: center; }
+    .bond-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .bond-stage-copy { min-width: 0; display: grid; gap: 6px; }
+    .bond-stage-kicker { color: var(--copper); font: 700 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+    .bond-stage-title { color: #f1d7a9; font-size: 18px; font-weight: 400; line-height: 1.2; }
+    .bond-stage-copy p { max-width: 58ch; color: #b8a990; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .bond-pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .bond-pair-slip { min-width: 0; padding: 12px; border: 1px solid rgb(244 162 97 / 25%); border-left: 3px solid var(--copper); border-radius: 5px 10px 8px 5px; background: linear-gradient(125deg, rgb(244 162 97 / 6%), rgb(18 18 17 / 60%)); }
+    .bond-pair-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 7px 10px; padding-bottom: 9px; border-bottom: 1px dashed rgb(163 148 138 / 30%); }
+    .bond-pair-name { color: #f0dcc4; font-size: 15px; font-weight: 600; line-height: 1.3; }
+    .bond-pair-join { color: var(--copper); font-weight: 400; }
+    .bond-dynamic { max-width: 100%; padding: 3px 9px; border: 1px solid rgb(244 162 97 / 31%); border-radius: 999px; color: var(--accent); background: rgb(244 162 97 / 8%); font: 600 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; overflow-wrap: anywhere; }
+    .bond-shifts { display: grid; gap: 6px; margin-top: 9px; }
+    .bond-shift { display: grid; grid-template-columns: 25px minmax(0, 1fr); gap: 7px; align-items: start; padding: 6px 8px; border: 1px solid rgb(154 168 122 / 27%); border-radius: 6px; color: #eadfcf; background: rgb(154 168 122 / 5%); font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .bond-shift-mark { font-weight: 700; letter-spacing: .04em; }
+    .bond-shift-positive { border-color: rgb(154 168 122 / 33%); background: rgb(154 168 122 / 7%); }
+    .bond-shift-positive .bond-shift-mark { color: var(--muted); }
+    .bond-shift-negative { border-color: rgb(238 108 77 / 30%); background: rgb(238 108 77 / 6%); }
+    .bond-shift-negative .bond-shift-mark { color: var(--coral); }
+    .bond-sola-whisper { margin-top: 9px; padding-top: 8px; border-top: 1px solid rgb(224 122 95 / 18%); }
+    .bond-sola-label { color: var(--copper); font: 700 7px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .bond-sola-whisper p { margin-top: 4px; color: #d5c5ac; font-size: 11px; line-height: 1.45; font-style: italic; overflow-wrap: anywhere; }
+    .bond-legend { padding-top: 9px; border-top: 1px dashed rgb(163 148 138 / 27%); color: #a99a84; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .bond-legend strong { color: var(--muted); font-weight: 650; }
+    .bond-legend .bond-legend-down { color: var(--coral); }
+    @media (max-width: 680px) {
+      .bond-stage { grid-template-columns: minmax(0, 1fr); }
+      .bond-art { width: min(100%, 145px); }
+      .bond-stage-copy { text-align: center; }
+    }
+    @media (max-width: 520px) {
+      .bond-pairs { grid-template-columns: minmax(0, 1fr); }
+    }
+    .thought-dossier { display: grid; gap: 11px; min-width: 0; }
+    .thought-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(224 122 95 / 34%); border-radius: 999px; color: var(--copper); font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .thought-opening { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; padding: 12px 14px; border: 1px solid rgb(244 162 97 / 34%); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgb(26 19 16 / 3%) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .thought-opening-seal { display: grid; place-items: center; width: 26px; aspect-ratio: 1; border: 1px solid rgb(143 63 46 / 48%); border-radius: 50%; color: #8f3f2e; font: 16px/1 Georgia, "Times New Roman", serif; }
+    .thought-opening-copy { min-width: 0; }
+    .thought-opening-label { display: block; margin-bottom: 5px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .thought-opening-action { color: #5e4a3c; font-size: 11px; font-style: italic; line-height: 1.45; }
+    .thought-opening-greeting { margin-top: 5px; color: #1a1310; font: italic 12px/1.5 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .thought-opening-greeting strong { color: #8f3f2e; font: 700 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .thought-interview { display: grid; min-width: 0; border: 1px solid rgb(244 162 97 / 24%); border-radius: 9px 6px 10px 7px; background: linear-gradient(115deg, rgb(244 162 97 / 4%), rgb(18 18 17 / 58%)); }
+    .thought-pair { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; align-items: start; padding: 11px 13px; border-bottom: 1px dashed rgb(163 148 138 / 27%); }
+    .thought-pair:last-child { border-bottom: 0; }
+    .thought-ordinal { display: grid; place-items: center; width: 22px; aspect-ratio: 1; border: 1px solid rgb(243 183 75 / 38%); border-radius: 50%; color: var(--warning); font: 11px/1 Georgia, "Times New Roman", serif; }
+    .thought-pair-copy { display: grid; gap: 4px; min-width: 0; }
+    .thought-question { color: var(--accent); font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .thought-answer { color: #f0dcc4; font-size: 13px; line-height: 1.55; overflow-wrap: anywhere; }
+    .thought-answer strong { color: #f1d7a9; font-weight: 650; }
+    .thought-unsaid { display: grid; grid-template-columns: 25px minmax(0, 1fr); gap: 9px; align-items: start; padding: 14px 15px; border: 1px solid rgb(244 162 97 / 38%); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgb(26 19 16 / 3%) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; box-shadow: 2px 4px 0 rgb(18 13 11 / 28%); }
+    .thought-unsaid-seal { display: grid; place-items: center; width: 23px; aspect-ratio: 1; border: 1px solid rgb(143 63 46 / 52%); border-radius: 50%; color: #8f3f2e; font: 11px/1 Georgia, "Times New Roman", serif; }
+    .thought-unsaid-copy { min-width: 0; }
+    .thought-unsaid-title { margin-bottom: 6px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; }
+    .thought-unsaid-question { color: #62483b; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .thought-unsaid-answer { margin-top: 8px; color: #1a1310; font: 14px/1.55 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .thought-unsaid-answer strong { color: #8f3f2e; font: 700 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    @media (max-width: 520px) {
+      .thought-opening { grid-template-columns: 24px minmax(0, 1fr); gap: 8px; padding: 10px; }
+      .thought-opening-seal { width: 23px; }
+      .thought-pair { padding: 10px; }
+      .thought-unsaid { grid-template-columns: 22px minmax(0, 1fr); gap: 7px; padding: 11px 10px; }
+      .thought-unsaid-seal { width: 21px; }
+    }
+    .ic-dossier { display: grid; gap: 11px; min-width: 0; }
+    .ic-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(133 146 230 / 30%); border-radius: 999px; color: #aeb8ff; font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .ic-cadence-panel { display: grid; gap: 14px; min-width: 0; padding: 14px 15px; border: 1px solid rgb(244 162 97 / 26%); border-left: 3px solid var(--warning); border-radius: 8px 5px 10px 6px; background: radial-gradient(ellipse at 0% 0%, rgb(244 162 97 / 7%), transparent 68%), linear-gradient(115deg, rgb(35 27 20 / 88%), rgb(18 18 17 / 76%)); }
+    .ic-cadence-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; min-width: 0; }
+    .ic-field-label { color: var(--accent); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .ic-cadence-readout { display: flex; align-items: baseline; gap: 8px; margin-top: 5px; }
+    .ic-cadence-number { color: #f1d7a9; font: 400 34px/1 Georgia, "Times New Roman", serif; letter-spacing: -.04em; }
+    .ic-cadence-unit { color: #d5c5ac; font: 11px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .ic-window-stamp { max-width: 100%; padding: 5px 8px; border: 1px solid rgb(243 183 75 / 30%); border-radius: 5px 8px 6px 7px; color: var(--warning); font: 700 7px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-align: center; }
+    .ic-phase-track { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: 0; padding: 0; list-style: none; }
+    .ic-phase-track::before { content: ""; position: absolute; z-index: 0; top: 4px; right: 11%; left: 11%; height: 1px; background: linear-gradient(90deg, rgb(163 148 138 / 28%), rgb(244 162 97 / 50%)); }
+    .ic-phase { position: relative; z-index: 1; display: grid; justify-items: center; gap: 5px; min-width: 0; color: #968c7d; text-align: center; }
+    .ic-phase-node { width: 8px; height: 8px; border: 1px solid #74624b; background: #25221e; box-shadow: 0 0 0 3px #17120f; transform: rotate(45deg); }
+    .ic-phase-name { color: inherit; font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .05em; text-transform: uppercase; overflow-wrap: anywhere; }
+    .ic-phase-detail { color: #968c7d; font: 9px/1.3 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .ic-phase[aria-current="step"] { color: var(--warning); }
+    .ic-phase[aria-current="step"] .ic-phase-node { border-color: var(--warning); background: var(--warning); box-shadow: 0 0 0 3px #17120f, 0 0 9px rgb(243 183 75 / 45%); }
+    .ic-phase[aria-current="step"] .ic-phase-detail { color: #d5c5ac; }
+    .ic-readouts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .ic-readout { display: grid; align-content: center; gap: 8px; min-width: 0; padding: 12px 14px; border: 1px solid rgb(244 162 97 / 21%); border-left: 3px solid var(--muted); border-radius: 8px 6px 10px 7px; background: linear-gradient(120deg, rgb(244 162 97 / 5%), rgb(18 18 17 / 63%)); }
+    .ic-readout-focus { border-left-color: #8592e6; }
+    .ic-readout-state { border-left-color: var(--coral); }
+    .ic-readout-value { color: #f0dcc4; font: 18px/1.3 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .ic-state-pill { display: inline-flex; align-items: center; gap: 7px; justify-self: start; max-width: 100%; padding: 5px 9px; border: 1px solid rgb(244 162 97 / 34%); border-radius: 999px; color: var(--accent); background: rgb(244 162 97 / 9%); font: 700 9px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .07em; text-transform: uppercase; overflow-wrap: anywhere; }
+    .ic-state-pill::before { content: ""; width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
+    @media (max-width: 520px) {
+      .ic-cadence-panel { padding: 12px 10px; }
+      .ic-cadence-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .ic-phase-track { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; }
+      .ic-phase-track::before { display: none; }
+      .ic-phase { grid-template-columns: 10px minmax(0, 1fr); justify-items: start; align-items: center; gap: 2px 7px; text-align: left; }
+      .ic-phase-node { grid-row: 1 / span 2; }
+      .ic-phase-name { font-size: 8px; letter-spacing: .04em; text-align: left; }
+      .ic-phase-detail { font-size: 8px; text-align: left; }
+      .ic-readouts { grid-template-columns: minmax(0, 1fr); }
+    }
+    .wardrobe-dossier { display: grid; gap: 12px; min-width: 0; }
+    .wardrobe-sample-note { justify-self: start; padding: 4px 8px; border: 1px solid rgb(122 139 153 / 34%); border-radius: 999px; color: #bac3c7; font: 8px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .wardrobe-slip { display: grid; gap: 11px; min-width: 0; padding: 14px; border: 1px solid rgb(244 162 97 / 23%); border-left: 3px solid var(--muted); border-radius: 9px 6px 11px 7px; background: repeating-linear-gradient(101deg, rgb(240 220 196 / 2%) 0 1px, transparent 1px 5px), linear-gradient(120deg, rgb(35 27 22 / 88%), rgb(18 18 17 / 72%)); }
+    .wardrobe-slip-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 9px; border-bottom: 1px dashed rgb(163 148 138 / 28%); }
+    .wardrobe-name { color: #f0dcc4; font: 600 17px/1.25 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .wardrobe-condition { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 4px 9px; border: 1px solid; border-radius: 999px; font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; overflow-wrap: anywhere; }
+    .wardrobe-condition-clean { border-color: rgb(154 168 122 / 42%); color: #c4d2a2; background: rgb(154 168 122 / 9%); }
+    .wardrobe-condition-dented { border-color: rgb(238 108 77 / 42%); color: #ee8c73; background: rgb(238 108 77 / 9%); }
+    .wardrobe-condition-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 6px currentColor; }
+    .wardrobe-layer-section { display: grid; gap: 6px; min-width: 0; }
+    .wardrobe-section-label { color: var(--accent); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .wardrobe-layer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+    .wardrobe-layer { display: grid; gap: 3px; min-width: 0; padding: 7px 9px; border: 1px solid rgb(244 162 97 / 15%); border-radius: 5px 8px 6px 7px; background: rgb(18 18 17 / 64%); }
+    .wardrobe-layer-label { color: #a3948a; font: 700 7px/1.3 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .wardrobe-layer-value { color: #f0dcc4; font: 11px/1.4 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .wardrobe-tell-box { display: grid; gap: 4px; padding: 8px 10px; border-left: 2px solid var(--copper); background: rgb(224 122 95 / 5%); }
+    .wardrobe-tell-copy { color: #d5c5ac; font: italic 11px/1.5 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .wardrobe-note { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 8px; min-width: 0; padding: 10px 12px; border: 1px solid rgb(244 162 97 / 30%); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgb(26 19 16 / 3%) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .wardrobe-note-seal { display: grid; place-items: center; width: 20px; aspect-ratio: 1; border: 1px solid rgb(143 63 46 / 52%); border-radius: 50%; color: #8f3f2e; font: 13px/1 Georgia, "Times New Roman", serif; }
+    .wardrobe-note-copy { display: grid; gap: 4px; min-width: 0; }
+    .wardrobe-note-label { color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .wardrobe-note-text { color: #1a1310; font: italic 550 12px/1.5 Georgia, "Times New Roman", serif; text-shadow: 0 1px 2px rgb(0 0 0 / 65%); overflow-wrap: anywhere; }
+    .wardrobe-caption { padding-top: 8px; border-top: 1px dashed rgb(163 148 138 / 28%); color: #a3948a; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    @media (max-width: 520px) {
+      .wardrobe-slip { padding: 11px 9px; }
+      .wardrobe-layer { padding: 7px; }
+      .wardrobe-note { grid-template-columns: 20px minmax(0, 1fr); gap: 7px; padding: 9px; }
+    }
+    @media (max-width: 680px) {
+      .matrix-spatial-bar, .matrix-core-grid, .matrix-duality { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .weather-state { padding: 10px; border: 1px solid rgb(243 183 75 / 25%); border-radius: 11px; background: rgb(55 43 29 / 38%); }
+    .weather-state-top { display: flex; justify-content: space-between; align-items: baseline; gap: 7px; }
+    .weather-state-top strong { color: #f1d7a9; font-size: 21px; font-weight: 400; }
+    .weather-state-top span { color: var(--warning); font: 9px/1.2 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .weather-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; margin-top: 8px; }
+    .weather-step { min-width: 0; display: grid; justify-items: center; gap: 5px; color: #8f8779; text-align: center; font: 7px/1.2 ui-sans-serif, system-ui, sans-serif; }
+    .weather-step::before { content: ""; width: 6px; height: 6px; border: 1px solid #74624b; transform: rotate(45deg); background: #25221e; }
+    .weather-step.active { color: var(--warning); }
+    .weather-step.active::before { border-color: var(--warning); background: var(--warning); box-shadow: 0 0 8px rgb(243 183 75 / 45%); }
+    .currents { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; }
+    .current { display: flex; align-items: center; justify-content: space-between; gap: 5px; padding: 6px 7px; border: 1px solid rgb(118 91 63 / 55%); border-radius: 8px; background: rgb(18 18 17 / 70%); font: 9px/1.2 ui-sans-serif, system-ui, sans-serif; }
+    .current span:first-child { color: #cfc0a9; }
+    .current strong { color: var(--current-color); font: 600 12px/1 ui-sans-serif, system-ui, sans-serif; white-space: nowrap; }
+    .tenderness { --current-color: var(--rose); }
+    .fury { --current-color: var(--coral); }
+    .dread { --current-color: var(--muted); }
+    .yearning { --current-color: var(--warning); }
+
+    .composer {
+      width: min(1220px, calc(100% - 28px)); margin: 0 auto 20px; padding: 14px 17px;
+      border: 1px solid rgb(243 183 75 / 17%); border-radius: 14px; background: rgb(12 14 16 / 76%);
+      color: #8e877c; font: 13px/1.4 ui-sans-serif, system-ui, sans-serif;
+    }
+    .composer span { float: right; color: var(--warning); }
+
+    @media (max-width: 980px) {
+      .module-content { grid-template-columns: minmax(145px, .72fr) minmax(0, 1.28fr); gap: 12px; }
+      .astro-layout { grid-template-columns: minmax(150px, .7fr) minmax(0, 1.3fr); gap: 10px; }
+      .art-wrap { width: min(100%, 210px); }
+    }
+    @media (max-width: 740px) {
+      .page { padding-top: 18px; }
+      .chat-head { padding-left: 0; align-items: flex-start; }
+      .st-toolbar { padding: 0 12px; }
+      .st-toolbar span:nth-child(2) { display: none; }
+      .sola-hud-body { padding: 10px; }
+    }
+    @media (max-width: 600px) {
+      .sola-card-hud > .sola-hud-body .sola-drawer-track:not([open]) { flex-basis: 100%; width: 100%; }
+      .astro-layout { grid-template-columns: minmax(0, 1fr); }
+      .astro-layout .art-wrap { width: min(100%, 300px); }
+    }
+    @media (max-width: 480px) {
+      .st-app { grid-template-columns: 44px minmax(0, 1fr); }
+      .chat-head { gap: 8px; }
+      .chat-tag { font-size: 8px; }
+      .module-content { grid-template-columns: minmax(0, 1fr); }
+      .astro-facts { grid-template-columns: minmax(0, 1fr); }
+      .sola-card-hud > summary { padding-left: 12px; }
+      .sola-hud-badge { flex-basis: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="st-app">
+    <aside class="st-rail" aria-label="SillyTavern navigation">
+      <div class="st-mark">ST</div>
+      <div class="rail-icon">☰</div>
+      <div class="rail-icon active">◉</div>
+      <div class="rail-icon">▣</div>
+      <div class="rail-icon">⚙</div>
+    </aside>
+    <div class="st-main">
+      <header class="st-toolbar">
+        <span class="toolbar-brand">SILLYTAVERN</span>
+        <span>CHATS&nbsp; / &nbsp;GUINEVERE</span>
+        <span class="toolbar-status">●&nbsp; LOCAL PREVIEW</span>
+      </header>
+      <main class="page">
+        <header class="chat-head">
+          <div>
+            <h1>Guinevere</h1>
+            <p class="chat-subtitle">Open the Showrunner HUD, then open a tracker to expand its card</p>
+          </div>
+          <div class="chat-tag">Autumn Golden Hour</div>
+        </header>
+        <article class="turn">
+          <div class="avatar" aria-hidden="true">G</div>
+          <div class="message-body">
+            <div class="message-meta">
+              <span class="message-author">Guinevere</span>
+              <span class="message-time">just now</span>
+            </div>
+            <p class="prose">Guinevere watches the last light leave the western tower. Her voice stays cool, though her gaze lingers on the rose window.</p>
+            <details class="hud-shell sola-card-hud">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">✧ SOLA SHOWRUNNER HUD</span>
+                <span class="sola-drawer-badge sola-hud-badge">Day 42 · Dusk · Lantern · Guinevere: <span class="digest-t">T3</span> · <span class="digest-f">F1</span> · <span class="digest-d">D0</span> · <span class="digest-y">Y4</span></span>
+                <span class="sola-drawer-chevron" aria-hidden="true"></span>
+              </summary>
+              <div class="sola-hud-body">
+                <div class="full-trackers">
+                  <details class="sola-drawer sola-drawer-track sola-card-calendar">
+                    <summary class="sola-drawer-summary">
+                      <span class="sola-drawer-title">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <circle cx="16" cy="16" r="12.2" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+                          <circle cx="16" cy="16" r="9.4" fill="none" stroke="var(--muted)" stroke-width=".65"/>
+                          <g transform="translate(16 16)" fill="none" stroke="var(--muted)" stroke-width=".7">
+                            <path d="M0-12.2v2.2"/><path d="M0-12.2v1.5" transform="rotate(30)"/><path d="M0-12.2v1.5" transform="rotate(60)"/>
+                            <path d="M0-12.2v2.2" transform="rotate(90)"/><path d="M0-12.2v1.5" transform="rotate(120)"/><path d="M0-12.2v1.5" transform="rotate(150)"/>
+                            <path d="M0-12.2v2.2" transform="rotate(180)"/><path d="M0-12.2v1.5" transform="rotate(210)"/><path d="M0-12.2v1.5" transform="rotate(240)"/>
+                            <path d="M0-12.2v2.2" transform="rotate(270)"/><path d="M0-12.2v1.5" transform="rotate(300)"/><path d="M0-12.2v1.5" transform="rotate(330)"/>
+                          </g>
+                          <path d="M16 9.2 17.7 14.3 22.8 16l-5.1 1.7L16 22.8l-1.7-5.1L9.2 16l5.1-1.7z" fill="none" stroke="var(--warning)" stroke-width=".9" stroke-linejoin="round"/>
+                          <path d="M16 16 23.5 8.5" fill="none" stroke="var(--accent)" stroke-width="1.1"/>
+                          <path d="m23.5 8.5-1.2 4.1-2.9-2.9z" fill="var(--accent)" stroke="var(--accent)" stroke-width=".5" stroke-linejoin="round"/>
+                          <circle cx="16" cy="16" r="1.2" fill="var(--warning)" stroke="none"/>
+                          <path d="M16 1.5 17.1 3.8 16 6l-1.1-2.2z" fill="var(--warning)" stroke="var(--accent)" stroke-width=".6"/>
+                        </svg>
+                        <span><span class="sola-drawer-heading">Sola’s Celestial Astrolabe</span><span class="sola-drawer-sub">Chronology · seasonal progression &amp; elapsed hours</span></span>
+                      </span>
+                      <span class="sola-drawer-badge">ASTROLABE</span>
+                      <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+                    </summary>
+                    <div class="sola-track-body" tabindex="0">
+                      <div class="sola-astro-body">
+                        <div class="sola-astro-dial" data-time="Dusk">
+                          <div class="sola-astro-dial-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M3 12h1m8-9v1m8 8h1m-9 8v1"/></svg><span>HORIZON</span></div>
+                          <div class="sola-astro-time-text">Dusk</div>
+                        </div>
+                        <div class="astro-layout">
+                          <div class="art-wrap">
+                      <svg class="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="Medieval celestial astrolabe with zodiac ring and alidade">
+                        <defs>
+                          <linearGradient id="astrolabe-gilding" x1="0" y1="1" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--warning)"/>
+                            <stop offset=".5" stop-color="var(--c1)"/>
+                            <stop offset="1" stop-color="var(--accent)"/>
+                          </linearGradient>
+                          <radialGradient id="astrolabe-enamel">
+                            <stop offset="0" stop-color="var(--surface)" stop-opacity=".48"/>
+                            <stop offset="1" stop-color="var(--surface)" stop-opacity=".06"/>
+                          </radialGradient>
+                        </defs>
+                        <g fill="none" stroke="url(#astrolabe-gilding)" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="210" cy="210" r="181" stroke-width="1.6"/>
+                          <circle cx="210" cy="210" r="171" stroke="var(--border)" stroke-width="1"/>
+                          <circle cx="210" cy="210" r="143" stroke-width="1.2"/>
+                          <circle cx="210" cy="210" r="83" stroke="var(--border)" stroke-width="1"/>
+                          <circle cx="210" cy="210" r="68" stroke-width="1.3"/>
+                        </g>
+                        <g transform="translate(210 210)" fill="none" stroke="var(--muted)" stroke-linecap="round">
+                          <path d="M0 -181v16" stroke="url(#astrolabe-gilding)" stroke-width="1.6"/>
+                          <path d="M0 -181v8" transform="rotate(30)"/>
+                          <path d="M0 -181v8" transform="rotate(60)"/>
+                          <path d="M0 -181v16" transform="rotate(90)" stroke="url(#astrolabe-gilding)" stroke-width="1.6"/>
+                          <path d="M0 -181v8" transform="rotate(120)"/>
+                          <path d="M0 -181v8" transform="rotate(150)"/>
+                          <path d="M0 -181v16" transform="rotate(180)" stroke="url(#astrolabe-gilding)" stroke-width="1.6"/>
+                          <path d="M0 -181v8" transform="rotate(210)"/>
+                          <path d="M0 -181v8" transform="rotate(240)"/>
+                          <path d="M0 -181v16" transform="rotate(270)" stroke="url(#astrolabe-gilding)" stroke-width="1.6"/>
+                          <path d="M0 -181v8" transform="rotate(300)"/>
+                          <path d="M0 -181v8" transform="rotate(330)"/>
+                        </g>
+                        <g fill="url(#astrolabe-enamel)" stroke="url(#astrolabe-gilding)" stroke-width="1.2">
+                          <path d="M210 48l5 7-5 7-5-7z"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(30 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(60 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(90 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(120 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(150 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(180 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(210 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(240 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(270 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(300 210 210)"/>
+                          <path d="M210 48l5 7-5 7-5-7z" transform="rotate(330 210 210)"/>
+                        </g>
+                        <g fill="none" stroke="var(--muted)" stroke-width="1">
+                          <ellipse cx="210" cy="210" rx="34" ry="78" transform="rotate(34 210 210)"/>
+                          <ellipse cx="210" cy="210" rx="34" ry="78" transform="rotate(-34 210 210)"/>
+                          <path d="M135 210h150 M210 135v150"/>
+                          <path d="M157 157l106 106 M263 157L157 263" opacity=".45"/>
+                        </g>
+                        <circle cx="210" cy="210" r="64" fill="url(#astrolabe-enamel)" stroke="url(#astrolabe-gilding)" stroke-width="1.2"/>
+                        <path d="M210 151l9 40 34-24-24 34 42 9-42 9 24 34-34-24-9 42-9-42-34 24 24-34-42-9 42-9-24-34 34 24z" fill="none" stroke="url(#astrolabe-gilding)" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M218 180a31 31 0 1 0 23 48a24 24 0 1 1-23-48z" fill="url(#astrolabe-gilding)" fill-opacity=".22" stroke="url(#astrolabe-gilding)" stroke-width="1.4"/>
+                        <path d="M210 210l77-77" stroke="url(#astrolabe-gilding)" stroke-width="1.6" stroke-linecap="round"/>
+                        <path d="M287 133l-2 15-9-9z" fill="url(#astrolabe-gilding)" stroke="url(#astrolabe-gilding)" stroke-width="1"/>
+                        <circle cx="210" cy="210" r="5" fill="var(--warning)"/>
+                        <g fill="var(--accent)">
+                          <circle cx="210" cy="126" r="2.5"/><circle cx="294" cy="210" r="2.5"/>
+                          <circle cx="210" cy="294" r="2.5"/><circle cx="126" cy="210" r="2.5"/>
+                        </g>
+                        <g fill="none" stroke="url(#astrolabe-gilding)" stroke-width="1.5" stroke-linejoin="round">
+                          <path d="M210 9l10 22-10-5-10 5z"/><path d="M210 411l10-22-10 5-10-5z"/>
+                          <path d="M9 210l22-10-5 10 5 10z"/><path d="M411 210l-22-10 5 10-5 10z"/>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="astro-info">
+                      <div class="astro-facts">
+                        <div class="sola-astro-day-leaf"><span>CAMPAIGN DAY</span><strong>42</strong></div>
+                        <div class="sola-astro-cal-leaf"><span>MACRO CHRONOLOGY</span><strong>Mid-Autumn · 4th Year of the Eclipse</strong></div>
+                      </div>
+                      <div class="sola-astro-elapsed-ribbon"><span>ELAPSED BEAT</span><strong>~20 minutes</strong></div>
+                      <div class="sola-astro-whisper"><span>SOLA’S CHRONOMETER NOTE</span><p>The last gold rests across the western tower.</p></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details class="sola-drawer sola-drawer-track sola-card-bond">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M5 7c5-4 10-2 11 5s-5 7-3 12 7 5 12 1" fill="none" stroke="var(--accent)" stroke-width="1.25" stroke-linecap="round"/>
+                    <path d="M27 7c-5-4-10-2-11 5s5 7 3 12-7 5-12 1" fill="none" stroke="var(--coral)" stroke-width="1.25" stroke-linecap="round"/>
+                    <path d="m16 12 3 4-3 4-3-4z" fill="var(--surface)" stroke="var(--warning)" stroke-width=".9" stroke-linejoin="round"/>
+                    <path d="m5 4 1 2 2 1-2 1-1 2-1-2-2-1 2-1zM27 22l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="var(--warning)" stroke="var(--copper)" stroke-width=".45" stroke-linejoin="round"/>
+                  </svg>
+                  <span><span class="sola-drawer-heading">Sola’s Bond &amp; Chemistry Radar</span><span class="sola-drawer-sub">Relational gravity · unspoken friction</span></span>
+                </span>
+                <span class="sola-drawer-badge">CHEMISTRY</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="bond-dossier">
+                  <div class="bond-sample-note">Illustrative pairs and shifts · layout study only</div>
+                  <div class="bond-stage">
+                    <div class="bond-art">
+                      <svg viewBox="0 0 260 160" role="img" aria-label="Two star-linked threads woven into an Arthurian fate knot">
+                        <defs>
+                          <linearGradient id="bond-thread-gold" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--warning)"/><stop offset="1" stop-color="var(--accent)"/>
+                          </linearGradient>
+                          <linearGradient id="bond-thread-coral" x1="1" y1="0" x2="0" y2="1">
+                            <stop offset="0" stop-color="var(--coral)"/><stop offset="1" stop-color="var(--copper)"/>
+                          </linearGradient>
+                        </defs>
+                        <path d="M38 80C66 29 101 29 122 71M138 89C159 131 194 131 222 80" fill="none" stroke="url(#bond-thread-gold)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M38 80C66 131 101 131 122 89M138 71C159 29 194 29 222 80" fill="none" stroke="url(#bond-thread-coral)" stroke-width="3" stroke-linecap="round"/>
+                        <path d="m130 68 11 12-11 12-11-12z" fill="#211e1a" stroke="url(#bond-thread-gold)" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="m130 73 6 7-6 7-6-7z" fill="var(--coral)" fill-opacity=".28" stroke="var(--coral)" stroke-width="1"/>
+                        <path d="m38 67 3 9 10 4-10 4-3 9-3-9-10-4 10-4zM222 67l3 9 10 4-10 4-3 9-3-9-10-4 10-4z" fill="#211e1a" stroke="url(#bond-thread-gold)" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle cx="38" cy="80" r="2" fill="var(--warning)"/><circle cx="222" cy="80" r="2" fill="var(--coral)"/>
+                        <path d="M62 25l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM198 25l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM62 121l2 5 5 2-5 2-2 5-2-5-5-2 5-2zM198 121l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="var(--warning)" opacity=".72"/>
+                      </svg>
+                    </div>
+                    <div class="bond-stage-copy">
+                      <div class="bond-stage-kicker">The oath-knot</div>
+                      <h3 class="bond-stage-title">Every pair has its own current</h3>
+                      <p>Trust, intimacy, suspicion, and strain belong to each relationship; a turn can carry both a deepening and a fracture.</p>
+                    </div>
+                  </div>
+                  <div class="bond-pairs">
+                    <section class="bond-pair-slip">
+                      <div class="bond-pair-header">
+                        <div class="bond-pair-name">You <span class="bond-pair-join">&amp;</span> Guinevere</div>
+                        <span class="bond-dynamic">Guarded Fascination</span>
+                      </div>
+                      <div class="bond-shifts">
+                        <div class="bond-shift bond-shift-positive"><span class="bond-shift-mark">▲ +</span><span>A quiet confidence held through the pause.</span></div>
+                        <div class="bond-shift bond-shift-negative"><span class="bond-shift-mark">▼ −</span><span>Reserve returned when the question sharpened.</span></div>
+                      </div>
+                      <div class="bond-sola-whisper">
+                        <div class="bond-sola-label">Sola’s whisper</div>
+                        <p>Some warmth, yes. Do not mistake it for surrender~</p>
+                      </div>
+                    </section>
+                    <section class="bond-pair-slip">
+                      <div class="bond-pair-header">
+                        <div class="bond-pair-name">You <span class="bond-pair-join">&amp;</span> Arthur</div>
+                        <span class="bond-dynamic">Wary Truce</span>
+                      </div>
+                      <div class="bond-shifts">
+                        <div class="bond-shift bond-shift-positive"><span class="bond-shift-mark">▲ +</span><span>Kept faith with the agreement when it mattered.</span></div>
+                        <div class="bond-shift bond-shift-negative"><span class="bond-shift-mark">▼ −</span><span>Old suspicion resurfaced around the oath.</span></div>
+                      </div>
+                      <div class="bond-sola-whisper">
+                        <div class="bond-sola-label">Sola’s whisper</div>
+                        <p>A truce is progress; it is not trust. He knows the difference~</p>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="bond-legend"><strong>▲ +</strong> deepened trust or intimacy &nbsp;·&nbsp; <strong class="bond-legend-down">▼ −</strong> friction or strain</div>
+                </div>
+              </div>
+            </details>
+
+            <details class="sola-drawer sola-drawer-track sola-card-feeling">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M16 2.2 27.5 6.4v7.4c0 7.8-4.4 12.9-11.5 16-7.1-3.1-11.5-8.2-11.5-16V6.4z" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.1" stroke-linejoin="round"/>
+                    <path d="M16 5.1c3 2.3 3.5 4.8 0 8.4-3.5-3.6-3-6.1 0-8.4z" fill="var(--accent)" fill-opacity=".72" stroke="var(--accent)" stroke-width=".75"/>
+                    <path d="M26.9 16c-2.3 3-4.8 3.5-8.4 0 3.6-3.5 6.1-3 8.4 0z" fill="var(--muted)" fill-opacity=".76" stroke="var(--muted)" stroke-width=".75"/>
+                    <path d="M16 26.9c-3-2.3-3.5-4.8 0-8.4 3.5 3.6 3 6.1 0 8.4z" fill="var(--warning)" fill-opacity=".76" stroke="var(--warning)" stroke-width=".75"/>
+                    <path d="M5.1 16c2.3-3 4.8-3.5 8.4 0-3.6 3.5-6.1 3-8.4 0z" fill="var(--coral)" fill-opacity=".76" stroke="var(--coral)" stroke-width=".75"/>
+                    <circle cx="16" cy="16" r="2.15" fill="var(--surface)" stroke="var(--warning)" stroke-width=".9"/>
+                    <circle cx="16" cy="16" r=".65" fill="#fff0c8" stroke="none"/>
+                  </svg>
+                  <span><span class="sola-drawer-heading">Sola’s Feeling Engine</span><span class="sola-drawer-sub">Inner weather · emotional measures</span></span>
+                </span>
+                <span class="sola-drawer-badge">METRONOMICS</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="module-content">
+                  <div class="art-wrap">
+                  <svg class="art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" role="img" aria-label="Symmetrical four-color heraldic rose inside an Arthurian shield">
+                        <defs>
+                          <linearGradient id="rose-gilding" x1="0" y1="1" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--warning)"/><stop offset=".48" stop-color="var(--copper)"/><stop offset="1" stop-color="var(--accent)"/>
+                          </linearGradient>
+                          <linearGradient id="shield-enamel" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#33271f"/><stop offset=".55" stop-color="#211e1a"/><stop offset="1" stop-color="#17191a"/>
+                          </linearGradient>
+                          <linearGradient id="petal-rose" x1="0" y1="1" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--rose)" stop-opacity=".46"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".2"/>
+                          </linearGradient>
+                          <linearGradient id="petal-flame" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--coral)" stop-opacity=".46"/><stop offset="1" stop-color="var(--warning)" stop-opacity=".2"/>
+                          </linearGradient>
+                          <linearGradient id="petal-mist" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--muted)" stop-opacity=".42"/><stop offset="1" stop-color="#d9c9a5" stop-opacity=".18"/>
+                          </linearGradient>
+                          <linearGradient id="petal-star" x1="0" y1="1" x2="1" y2="0">
+                            <stop offset="0" stop-color="var(--warning)" stop-opacity=".46"/><stop offset="1" stop-color="var(--copper)" stop-opacity=".2"/>
+                          </linearGradient>
+                          <radialGradient id="moonstone" cx="34%" cy="27%">
+                            <stop offset="0" stop-color="#fff0c8"/><stop offset=".42" stop-color="#dfb977"/><stop offset="1" stop-color="#684b3a"/>
+                          </radialGradient>
+                        </defs>
+                        <g fill="none" stroke="url(#rose-gilding)" stroke-linejoin="round">
+                          <path d="M220 22 351 70v115c0 85-48 157-131 229-83-72-131-144-131-229V70z" fill="url(#shield-enamel)" stroke-width="2.2"/>
+                          <path d="M220 42 332 83v100c0 76-42 139-112 202-70-63-112-126-112-202V83z" stroke-width="1.1" opacity=".82"/>
+                          <path d="M220 55 318 91v91c0 67-37 124-98 181-61-57-98-114-98-181V91z" stroke="var(--border)" stroke-width=".9" opacity=".76"/>
+                        </g>
+                        <g fill="none" stroke="url(#rose-gilding)" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M118 104c22 6 34 22 37 43-8-10-17-13-28-12m195-31c-22 6-34 22-37 43 8-10 17-13 28-12" stroke-width="1.4"/>
+                          <path d="M120 270c20 4 32 18 37 37-9-8-18-10-28-8m191-29c-20 4-32 18-37 37 9-8 18-10 28-8" stroke-width="1.3"/>
+                          <path d="M156 103l5 8-5 8-5-8zM284 103l5 8-5 8-5-8zM120 220l5 8-5 8-5-8zM320 220l5 8-5 8-5-8z" stroke-width="1.1"/>
+                        </g>
+                        <g fill="url(#rose-gilding)" stroke="var(--warning)" stroke-width=".8" stroke-linejoin="round">
+                          <path d="M220 54c11 11 13 21 0 31-13-10-11-20 0-31z"/>
+                          <path d="M220 63c-5 8-12 12-20 12 5-8 11-11 20-12zm0 0c5 8 12 12 20 12-5-8-11-11-20-12z"/>
+                        </g>
+                        <g stroke="url(#rose-gilding)" stroke-width="1.5" stroke-linejoin="round">
+                          <path d="M220 112c36 29 42 62 0 102-42-40-36-73 0-102z" fill="url(#petal-flame)"/>
+                          <path d="M323 215c-29 36-62 42-102 0 40-42 73-36 102 0z" fill="url(#petal-mist)"/>
+                          <path d="M220 318c-36-29-42-62 0-102 42 40 36 73 0 102z" fill="url(#petal-star)"/>
+                          <path d="M117 215c29-36 62-42 102 0-40 42-73 36-102 0z" fill="url(#petal-rose)"/>
+                        </g>
+                        <circle cx="220" cy="215" r="43" fill="url(#moonstone)" stroke="url(#rose-gilding)" stroke-width="2"/>
+                        <circle cx="220" cy="215" r="34" fill="none" stroke="#f1d8a8" stroke-width=".8" opacity=".6"/>
+                        <path d="M220 183l7 22 22 10-22 7-7 22-7-22-22-7 22-10z" fill="none" stroke="#fff0c8" stroke-width="1.6" stroke-linejoin="round"/>
+                        <circle cx="220" cy="215" r="5" fill="var(--warning)"/>
+                        <circle cx="220" cy="215" r="1.8" fill="#fff4dc"/>
+                        <g fill="none" stroke="url(#rose-gilding)" stroke-width="1.2" stroke-linecap="round">
+                          <path d="M176 343c15 8 29 12 44 13m44-13c-15 8-29 12-44 13"/>
+                          <path d="M198 360l22 13 22-13M208 371l12 10 12-10"/>
+                        </g>
+                        <g fill="var(--warning)">
+                          <path d="M220 83l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+                          <circle cx="144" cy="215" r="2.2"/><circle cx="296" cy="215" r="2.2"/><circle cx="220" cy="337" r="2.2"/>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="readout">
+                      <div class="weather-state">
+                        <div class="weather-state-top">
+                          <div><div class="read-label">Inner Weather · IW 1</div><strong>Cool</strong></div>
+                          <span>OUTWARD<br>BEARING</span>
+                        </div>
+                        <div class="weather-steps" aria-label="Frostbound, Cool, Temperate, Warm Front, Fervent; Cool is active">
+                          <div class="weather-step"><span>Frostbound</span></div>
+                          <div class="weather-step active"><span>Cool</span></div>
+                          <div class="weather-step"><span>Temperate</span></div>
+                          <div class="weather-step"><span>Warm Front</span></div>
+                          <div class="weather-step"><span>Fervent</span></div>
+                        </div>
+                      </div>
+                      <div class="currents">
+                        <div class="current tenderness"><span>T · Tenderness</span><strong>3↑</strong></div>
+                        <div class="current fury"><span>F · Fury</span><strong>1↓</strong></div>
+                        <div class="current dread"><span>D · Dread</span><strong>0</strong></div>
+                        <div class="current yearning"><span>Y · Yearning</span><strong>4↑</strong></div>
+                      </div>
+                      <p class="sola-feeling-caption">Inner Weather: 0 Frostbound · 1 Cool · 2 Temperate · 3 Warm Front · 4 Fervent · TFDY 0–4 scale</p>
+                    </div>
+                  </div>
+              </div>
+            </details>
+
+            <details class="sola-drawer sola-drawer-track sola-card-thought">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5.5 5.5h13l5 5v16H7a1.5 1.5 0 0 1-1.5-1.5z" fill="rgb(18 18 17 / 90%)" stroke="var(--muted)"/><path d="M18.5 5.5v5h5M9.5 14h8.5M9.5 17.5h6" stroke="currentColor"/><path d="M8 26.5c3.4-9.3 9.1-16.5 18.1-21-1.4 8.4-6.4 15-16 19.7z" fill="var(--warning)" fill-opacity=".15" stroke="var(--warning)"/><path d="m7.5 27.5 15.2-20M13.6 19.5l4.3 1.4M17.4 14.5l4.1 1.6" stroke="var(--accent)"/><circle cx="23.5" cy="24" r="3.1" fill="var(--coral)" stroke="var(--warning)" stroke-width=".8"/><path d="m23.5 22.5.5 1 .9.5-.9.5-.5 1-.5-1-.9-.5.9-.5z" fill="#f0dcc4" stroke="none"/></svg>
+                  <span><span class="sola-drawer-heading">Sola’s Thought Engine</span><span class="sola-drawer-sub">Five-question interview · backstage, outside the scene</span></span>
+                </span>
+                <span class="sola-drawer-badge">BACKSTAGE</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="thought-dossier">
+                  <span class="thought-sample-note">Illustrative transcript · layout study only</span>
+                  <div class="thought-opening">
+                    <span class="thought-opening-seal" aria-hidden="true">✧</span>
+                    <div class="thought-opening-copy">
+                      <span class="thought-opening-label">Sola’s Backstage Folio</span>
+                      <p class="thought-opening-action">Sola sits in her chair and gives a gentle smile.</p>
+                      <p class="thought-opening-greeting"><strong>Sola:</strong> “Thanks for coming back for our check-in. Let’s start.”</p>
+                    </div>
+                  </div>
+                  <div class="thought-interview">
+                    <div class="thought-pair">
+                      <span class="thought-ordinal" aria-hidden="true">I</span>
+                      <div class="thought-pair-copy">
+                        <div class="thought-question">What’s your goal right now?</div>
+                        <div class="thought-answer"><strong>Guinevere:</strong> To find out whether you meant what you said.</div>
+                      </div>
+                    </div>
+                    <div class="thought-pair">
+                      <span class="thought-ordinal" aria-hidden="true">II</span>
+                      <div class="thought-pair-copy">
+                        <div class="thought-question">How do you feel about what just happened?</div>
+                        <div class="thought-answer"><strong>Guinevere:</strong> I’m still angry you left me waiting.</div>
+                      </div>
+                    </div>
+                    <div class="thought-pair">
+                      <span class="thought-ordinal" aria-hidden="true">III</span>
+                      <div class="thought-pair-copy">
+                        <div class="thought-question">Where is your mind?</div>
+                        <div class="thought-answer"><strong>Guinevere:</strong> On your last answer, and the one you avoided.</div>
+                      </div>
+                    </div>
+                    <div class="thought-pair">
+                      <span class="thought-ordinal" aria-hidden="true">IV</span>
+                      <div class="thought-pair-copy">
+                        <div class="thought-question">Why do you care?</div>
+                        <div class="thought-answer"><strong>Guinevere:</strong> Because I gave my word, and I mean to keep it.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="thought-unsaid">
+                    <span class="thought-unsaid-seal" aria-hidden="true">V</span>
+                    <div class="thought-unsaid-copy">
+                      <div class="thought-unsaid-title">BEHIND THEIR TEETH</div>
+                      <div class="thought-unsaid-question">If you could speak your mind right now, what would you actually say?</div>
+                      <div class="thought-unsaid-answer"><strong>Guinevere:</strong> I want you to stay, and I resent how much I want it.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <details class="sola-drawer sola-drawer-track sola-card-current">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 16a4 4 0 0 1 -.8 -7.92a7 7 0 0 1 13.6 0a4 4 0 0 1 -.8 7.92z"/><circle cx="8" cy="20" r="1.5"/><circle cx="5" cy="21.5" r="1"/></svg>
+                  <span><span class="sola-drawer-heading">Sola’s Inner Current</span><span class="sola-drawer-sub">Private thought cadence · 3–5 turn window</span></span>
+                </span>
+                <span class="sola-drawer-badge">THOUGHT CADENCE</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="ic-dossier">
+                  <span class="ic-sample-note">Illustrative HUD state</span>
+                  <section class="ic-cadence-panel" aria-label="Inner Current cadence">
+                    <div class="ic-cadence-head">
+                      <div>
+                        <span class="ic-field-label">Cadence Rhythm</span>
+                        <div class="ic-cadence-readout"><strong class="ic-cadence-number">2</strong><span class="ic-cadence-unit">turns remaining</span></div>
+                      </div>
+                      <span class="ic-window-stamp">THOUGHT WINDOW</span>
+                    </div>
+                    <ol class="ic-phase-track" aria-label="Thought cadence progression">
+                      <li class="ic-phase">
+                        <span class="ic-phase-node" aria-hidden="true"></span>
+                        <span class="ic-phase-name">Dormant</span>
+                        <span class="ic-phase-detail">3–5 turns</span>
+                      </li>
+                      <li class="ic-phase" aria-current="step">
+                        <span class="ic-phase-node" aria-hidden="true"></span>
+                        <span class="ic-phase-name">Gathering</span>
+                        <span class="ic-phase-detail">2 remaining</span>
+                      </li>
+                      <li class="ic-phase">
+                        <span class="ic-phase-node" aria-hidden="true"></span>
+                        <span class="ic-phase-name">Primed</span>
+                        <span class="ic-phase-detail">1 turn</span>
+                      </li>
+                      <li class="ic-phase">
+                        <span class="ic-phase-node" aria-hidden="true"></span>
+                        <span class="ic-phase-name">Window Open</span>
+                        <span class="ic-phase-detail">Emitted</span>
+                      </li>
+                    </ol>
+                  </section>
+                  <div class="ic-readouts">
+                    <section class="ic-readout ic-readout-focus">
+                      <span class="ic-field-label" style="color:#8592E6;">Mind Focus</span>
+                      <strong class="ic-readout-value">Guinevere</strong>
+                    </section>
+                    <section class="ic-readout ic-readout-state">
+                      <span class="ic-field-label" style="color:var(--coral);">Internal State</span>
+                      <span class="ic-state-pill">Gathering</span>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details class="sola-drawer sola-drawer-track sola-card-matrix">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M6.5 23V12a9.5 9.5 0 0 1 19 0v11" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>
+                    <path d="M16 4v19M5 25h22M10 28h12" fill="none" stroke="var(--border)" stroke-width="1.1" stroke-linecap="round"/>
+                    <path d="M11.8 10.5c-1.7 0-2.9 1.3-2.9 3.1 0 1.8 1.2 3.1 2.9 3.1s2.9-1.3 2.9-3.1c0-1.8-1.2-3.1-2.9-3.1z" fill="none" stroke="var(--accent)" stroke-width="1"/>
+                    <path d="M21 10.2l1.2 2.5 2.7.4-1.9 1.8.5 2.7-2.5-1.3-2.4 1.3.4-2.7-1.9-1.8 2.7-.4z" fill="var(--muted)" stroke="var(--warning)" stroke-width=".7" stroke-linejoin="round"/>
+                    <circle cx="16" cy="27" r="2" fill="var(--coral)" stroke="var(--warning)" stroke-width=".7"/>
+                  </svg>
+                  <span><span class="sola-drawer-heading">Sola’s Character Matrix</span><span class="sola-drawer-sub">Psychological spine · autonomy &amp; boundary audit</span></span>
+                </span>
+                <span class="sola-drawer-badge">CHARACTER SPINE</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="matrix-dossier">
+                  <div class="matrix-sample-note">Illustrative entries · layout study only</div>
+                  <div class="matrix-spatial-bar">
+                    <section class="matrix-panel">
+                      <div class="matrix-field-label">Location</div>
+                      <div class="matrix-value">Western gallery</div>
+                      <span class="matrix-detail">Watching the rose window as the last light fades.</span>
+                    </section>
+                    <section class="matrix-panel">
+                      <div class="matrix-field-label">Orbit <span class="matrix-orbit-status">CO-PRESENT</span></div>
+                      <span class="matrix-detail">Remains by choice, not to follow.</span>
+                    </section>
+                  </div>
+                  <div class="matrix-core-grid">
+                    <section class="matrix-panel matrix-orientation">
+                      <div class="matrix-field-label">Orientation <span class="matrix-canon-chip">FIXED CANON</span></div>
+                      <div class="matrix-value">As written on the character card.</div>
+                      <span class="matrix-detail">Unchanged by scene pressure or closeness.</span>
+                    </section>
+                    <section class="matrix-panel">
+                      <div class="matrix-field-label">Traits</div>
+                      <div class="matrix-trait-list">
+                        <div class="matrix-trait-row"><span>POS</span><strong>Watchful composure</strong></div>
+                        <div class="matrix-trait-row"><span>NEG</span><strong>Proud restraint</strong></div>
+                      </div>
+                    </section>
+                    <section class="matrix-panel">
+                      <div class="matrix-field-label">Voice</div>
+                      <div class="matrix-value">Measured diction · cool courtly cadence</div>
+                    </section>
+                  </div>
+                  <div class="matrix-duality-title">The outward face / the private motive</div>
+                  <div class="matrix-duality">
+                    <section class="matrix-face matrix-face-mask">
+                      <div class="matrix-field-label">Mask</div>
+                      <div class="matrix-value">Courtly composure</div>
+                      <span class="matrix-detail">The posture she shows the room.</span>
+                    </section>
+                    <section class="matrix-face matrix-face-internal">
+                      <div class="matrix-field-label">Internal</div>
+                      <div class="matrix-value">Keeps the measured front while delaying her answer.</div>
+                    </section>
+                  </div>
+                  <div class="matrix-boundary">
+                    <span class="matrix-boundary-seal" aria-hidden="true">✦</span>
+                    <div>
+                      <div class="matrix-field-label">Boundary</div>
+                      <div class="matrix-value">She decides whether the exchange continues; no concession is owed.</div>
+                    </div>
+                  </div>
+                  <div class="matrix-audit">
+                    <span class="matrix-audit-seal" aria-hidden="true">✶</span>
+                    <div>
+                      <div class="matrix-audit-label">AUDIT</div>
+                      <p class="matrix-audit-quote">Held her own position through the exchange; no unearned softening or user-mirroring.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details class="sola-drawer sola-drawer-track sola-card-heart">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M16 27.2S5 20.4 5 12.2C5 7.4 10.6 5.1 16 10c5.4-4.9 11-2.6 11 2.2 0 8.2-11 15-11 15z" fill="var(--surface)" stroke="var(--coral)" stroke-width="1.1" stroke-linejoin="round"/>
+                    <path d="M5.8 16.2h5.1l2.2-3.4 3.1 7.2 2.1-4.2h7.9" fill="none" stroke="var(--warning)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 8.8v2.3m-7.2 9.8 1.4 1.8m13-1.8-1.4 1.8" fill="none" stroke="var(--accent)" stroke-width=".7" stroke-linecap="round" opacity=".9"/>
+                  </svg>
+                  <span><span class="sola-drawer-heading">Sola’s Heart Engine</span><span class="sola-drawer-sub">Fourfold interior · Ego, Nerve, Body &amp; Psyche</span></span>
+                </span>
+                <span class="sola-drawer-badge">SOVEREIGN VITALS</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="heart-dossier">
+                  <div class="heart-sample-note">Illustrative values · layout study only</div>
+                  <div class="heart-intro">
+                    <div class="heart-intro-title">Four sovereign faculties</div>
+                    <p>Four separate readings: conscious calculation, nervous response, physical state, and raw feeling.</p>
+                  </div>
+                  <div class="heart-faculties">
+                    <section class="heart-faculty heart-ego">
+                      <span class="heart-faculty-icon">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <path d="m5 10 6.4 4.8L16 6l4.6 8.8L27 10l-2.3 11.2H7.3z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                          <path d="M8.5 24h15M10 21.4v2.3m12-2.3v2.3" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                          <circle cx="5" cy="10" r="1.4" fill="currentColor"/><circle cx="16" cy="6" r="1.4" fill="currentColor"/><circle cx="27" cy="10" r="1.4" fill="currentColor"/>
+                        </svg>
+                      </span>
+                      <div class="heart-faculty-copy">
+                        <div class="heart-faculty-label">Ego<span class="heart-faculty-kind">Calculation · mask</span></div>
+                        <p>Weighs the answer before allowing it to reach the room.</p>
+                      </div>
+                    </section>
+                    <section class="heart-faculty heart-nerve">
+                      <span class="heart-faculty-icon">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <path d="M16 3.5 20.4 14 16 18.7 11.6 14z" fill="currentColor" fill-opacity=".16" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+                          <path d="M16 6.5v9.1M8.5 18.5h15l-3 3h-9zM14 21.5h4v4h-4zM14 25.5l2 2.8 2-2.8z" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M5 9.5 7 11m20-1.5L25 11M4.5 16h2.8m20.2 0h-2.8" fill="none" stroke="var(--warning)" stroke-width=".9" stroke-linecap="round"/>
+                        </svg>
+                      </span>
+                      <div class="heart-faculty-copy">
+                        <div class="heart-faculty-label">Nerve<span class="heart-faculty-kind">Composure · reflex</span></div>
+                        <p>Composure holds, though a fine tremor betrays the strain.</p>
+                      </div>
+                    </section>
+                    <section class="heart-faculty heart-body">
+                      <span class="heart-faculty-icon">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <path d="M7.3 4.5h17.4v3.2c0 5.1-4 9.1-8.7 9.8v5h4.1v2.7H11.9v-2.7H16v-5c-4.7-.7-8.7-4.7-8.7-9.8z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+                          <path d="M8.7 9.1h14.6c-.6 3.9-3.4 6.3-7.3 6.3S9.3 13 8.7 9.1z" fill="#8F263D" stroke="var(--rose)" stroke-width=".65" stroke-linejoin="round"/>
+                          <path d="M9 8.7c3.9 1.2 10.1 1.2 14 0M11 26.5h10m-6-3.8h2" fill="none" stroke="var(--warning)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="m16 18.5 1 1.6 1.8.6-1.8.6-1 1.6-1-1.6-1.8-.6 1.8-.6z" fill="var(--warning)"/>
+                        </svg>
+                      </span>
+                      <div class="heart-faculty-copy">
+                        <div class="heart-faculty-label">Body<span class="heart-faculty-kind">Breath · pulse</span></div>
+                        <p>Breath runs shallow; tension gathers along the jaw.</p>
+                      </div>
+                    </section>
+                    <section class="heart-faculty heart-psyche">
+                      <span class="heart-faculty-icon">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                          <path d="M16 14c-2.2-5.2-7.8-9.1-11.2-6.4-.1 5.7 3.2 9.4 9.3 10.1-5.5.7-7.7 4-5.3 8 4.6.1 7.5-2.7 7.2-7.6.3 4.9 2.6 7.7 7.2 7.6 2.4-4 .2-7.3-5.3-8 6.1-.7 9.4-4.4 9.3-10.1C23.8 4.9 18.2 8.8 16 14z" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+                          <path d="M16 12v11" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+                          <circle cx="16" cy="16.5" r="1.5" fill="var(--warning)"/>
+                        </svg>
+                      </span>
+                      <div class="heart-faculty-copy">
+                        <div class="heart-faculty-label">Psyche<span class="heart-faculty-kind">Feeling · intuition</span></div>
+                        <p>A private ache persists beneath the practiced restraint.</p>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </details>
+            <details class="sola-drawer sola-drawer-track sola-card-wardrobe">
+              <summary class="sola-drawer-summary">
+                <span class="sola-drawer-title">
+                  <svg viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M11 4.5 16 7.2l5-2.7 4.2 2.9 3.3 4.6-4.2 3.4-2.7-2.5v14.6H10.4V12.9l-2.7 2.5-4.2-3.4 3.3-4.6z" fill="rgb(18 18 17 / 90%)" stroke="var(--muted)" stroke-width="1.1" stroke-linejoin="round"/>
+                    <path d="M11 4.5 13.3 8 16 6.7 18.7 8 21 4.5M10.4 12.9 16 16l5.6-3.1M16 16v10M12.4 26v-4M19.6 26v-4" fill="none" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="m16 9.2 2 2.1-2 2.1-2-2.1z" fill="var(--warning)" stroke="var(--warning)" stroke-width=".7" stroke-linejoin="round"/>
+                  </svg>
+                  <span><span class="sola-drawer-heading">Sola’s Atelier &amp; Wardrobe</span><span class="sola-drawer-sub">Active layers · condition · somatic tells</span></span>
+                </span>
+                <span class="sola-drawer-badge">ATELIER</span>
+                <span class="sola-drawer-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+              </summary>
+              <div class="sola-track-body" tabindex="0">
+                <div class="wardrobe-dossier">
+                  <span class="wardrobe-sample-note">Illustrative slips · Guinevere + user persona Sir Gareth</span>
+                  <article class="wardrobe-slip">
+                    <header class="wardrobe-slip-header">
+                      <span class="wardrobe-name">Guinevere</span>
+                      <span class="wardrobe-condition wardrobe-condition-clean"><span class="wardrobe-condition-dot"></span>Clean</span>
+                    </header>
+                    <section class="wardrobe-layer-section">
+                      <div class="wardrobe-section-label">Active Layers</div>
+                      <div class="wardrobe-layer-grid">
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Outer</span><span class="wardrobe-layer-value">Embroidered blue mantle</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Upper</span><span class="wardrobe-layer-value">Ivory linen gown</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Lower</span><span class="wardrobe-layer-value">Dark green kirtle</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Footwear</span><span class="wardrobe-layer-value">Leather slippers</span></div>
+                      </div>
+                    </section>
+                    <section class="wardrobe-tell-box">
+                      <div class="wardrobe-section-label">Somatic Tells</div>
+                      <p class="wardrobe-tell-copy">The mantle pulls at her left shoulder; its clasp presses against the linen collar.</p>
+                    </section>
+                    <aside class="wardrobe-note">
+                      <span class="wardrobe-note-seal" aria-hidden="true">✧</span>
+                      <div class="wardrobe-note-copy">
+                        <span class="wardrobe-note-label">Sola’s Atelier Note</span>
+                        <p class="wardrobe-note-text">Shift the clasp toward the seam; the heavy wool will sit better across her shoulder.</p>
+                      </div>
+                    </aside>
+                  </article>
+                  <article class="wardrobe-slip">
+                    <header class="wardrobe-slip-header">
+                      <span class="wardrobe-name">Sir Gareth</span>
+                      <span class="wardrobe-condition wardrobe-condition-dented"><span class="wardrobe-condition-dot"></span>Armor Dented</span>
+                    </header>
+                    <section class="wardrobe-layer-section">
+                      <div class="wardrobe-section-label">Active Layers</div>
+                      <div class="wardrobe-layer-grid">
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Outer</span><span class="wardrobe-layer-value">Weathered blue surcoat</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Upper</span><span class="wardrobe-layer-value">Quilted gambeson over mail</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Lower</span><span class="wardrobe-layer-value">Wool hose</span></div>
+                        <div class="wardrobe-layer"><span class="wardrobe-layer-label">Footwear</span><span class="wardrobe-layer-value">Mud-dark riding boots</span></div>
+                      </div>
+                    </section>
+                    <section class="wardrobe-tell-box">
+                      <div class="wardrobe-section-label">Somatic Tells</div>
+                      <p class="wardrobe-tell-copy">A shoulder plate rides high; dried mud clings in the seams of his boots.</p>
+                    </section>
+                    <aside class="wardrobe-note">
+                      <span class="wardrobe-note-seal" aria-hidden="true">✧</span>
+                      <div class="wardrobe-note-copy">
+                        <span class="wardrobe-note-label">Sola’s Atelier Note</span>
+                        <p class="wardrobe-note-text">The bent plate's edge rubs at the collar; the strap still holds.</p>
+                      </div>
+                    </aside>
+                  </article>
+                  <div class="wardrobe-caption">Single tracker · one attire slip per active participant.</div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </details>
+          </div>
+        </article>
+      </main>
+      <div class="composer">Write a message… <span>◈</span></div>
+    </div>
+  </div>
+</body>
+</html>

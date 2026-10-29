@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Scene Cast &amp; Spatial Ledger — Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #141516;
+      --surface: #1a1310;
+      --panel: #211e1a;
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --bluegray: #7a8b99;
+      --pale-blue: #bac3c7;
+      --coral: #ee6c4d;
+      --sage: #9aa87a;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 54% -10%, rgba(244, 162, 97, .12), transparent 42%), linear-gradient(180deg, #191715, #111211 75%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: var(--muted); }
+    .rail-mark, .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; }
+    .rail-mark { border: 1px solid rgba(122, 139, 153, .45); color: var(--pale-blue); font: 12px/1 Georgia, serif; }
+    .rail-dot { color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border: 1px solid rgba(122, 139, 153, .28); background: rgba(122, 139, 153, .11); color: var(--pale-blue); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: var(--pale-blue); }
+    .page { width: min(100%, 1060px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(25px, 4vw, 34px)/1.16 Georgia, "Times New Roman", serif; }
+    .page-intro { max-width: 70ch; margin: 0; color: #b3a592; font: 12px/1.55 ui-sans-serif, system-ui, sans-serif; }
+    .chat-card { margin-top: 25px; padding: 18px 20px 20px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .chat-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .chat-meta strong { color: #e7d2b7; font-weight: 650; }
+    .chat-line { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .preview-hint { margin: 14px 0 8px; color: #8f8478; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+
+    .scene-card { --shadowWidth: 0 !important; margin-top: 10px; overflow: hidden; border: 1px solid rgba(122, 139, 153, .34); border-left: 3px double rgba(122, 139, 153, .72); border-radius: 16px 11px 15px 9px; background: radial-gradient(ellipse at 4% 0, rgba(122, 139, 153, .1), transparent 56%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 4px 15px rgba(18, 13, 11, .3), inset 0 1px 0 rgba(240, 220, 196, .05); transition: border-color .3s ease, box-shadow .3s ease; }
+    .scene-card[open] { border-color: rgba(122, 139, 153, .65); box-shadow: 0 8px 24px rgba(20, 12, 8, .5), 0 0 17px rgba(122, 139, 153, .11); }
+    .scene-card > summary { position: relative; display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 48px 15px 16px; background: linear-gradient(98deg, rgba(122, 139, 153, .14), rgba(26, 19, 16, .22)); color: var(--pale-blue); cursor: pointer; list-style: none; user-select: none; }
+    .scene-card > summary::-webkit-details-marker { display: none; }
+    .scene-card > summary::marker { content: ""; }
+    .scene-card > summary:focus-visible { outline: 2px solid var(--pale-blue); outline-offset: -4px; }
+    .scene-mark { flex: 0 0 32px; width: 32px; height: 32px; }
+    .scene-title { display: grid; flex: 1 1 14rem; min-width: 0; gap: 2px; }
+    .scene-title strong { color: #f0dcc4; font: 400 21px/1.2 Georgia, "Times New Roman", serif; }
+    .scene-title small { color: var(--muted); font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .035em; }
+    .scene-badge { flex: 0 0 auto; padding: 4px 9px; border: 1px solid rgba(122, 139, 153, .4); border-radius: 4px 9px 6px 3px; background: rgba(122, 139, 153, .13); color: var(--pale-blue); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .chevron { position: absolute; top: 21px; right: 18px; width: 8px; height: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+    .scene-card[open] .chevron { transform: rotate(225deg); }
+    .scene-body { display: grid; gap: 10px; padding: 13px 16px 17px; border-top: 1px dashed rgba(163, 148, 138, .26); }
+    .sample-note { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(133, 146, 230, .3); border-radius: 999px; color: #aeb8ff; font: 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .location-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px 10px; padding: 9px 12px; border: 1px solid rgba(122, 139, 153, .32); border-left: 3px solid rgba(122, 139, 153, .75); border-radius: 8px 5px 9px 6px; background: linear-gradient(95deg, rgba(122, 139, 153, .16), rgba(26, 19, 16, .3)); }
+    .location-label, .field-label { color: var(--bluegray); font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    .location-value { min-width: 0; color: #f0dcc4; font: 13px/1.45 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .cast-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .cast-panel { min-width: 0; padding: 10px 12px; border: 1px solid rgba(122, 139, 153, .24); border-top: 2px solid rgba(122, 139, 153, .52); border-radius: 8px 5px 9px 6px; background: rgba(18, 13, 11, .52); }
+    .cast-panel.ambient { border-top-color: rgba(163, 148, 138, .42); background: rgba(18, 13, 11, .36); }
+    .field-label { display: block; margin-bottom: 5px; }
+    .ambient .field-label { color: var(--muted); }
+    .cast-value { color: var(--pale-blue); font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; font-weight: 600; overflow-wrap: anywhere; }
+    .ambient .cast-value { color: #c9bcae; font-weight: 400; font-style: italic; }
+    .facts-box { min-width: 0; padding: 11px 12px 12px; border: 1px solid rgba(122, 139, 153, .25); border-radius: 8px 5px 9px 6px; background: linear-gradient(180deg, rgba(122, 139, 153, .1), rgba(18, 13, 11, .44)); }
+    .facts-heading { margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid rgba(122, 139, 153, .28); color: var(--bluegray); font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    .facts-list { display: grid; gap: 6px; }
+    .fact-row { display: grid; grid-template-columns: minmax(90px, .34fr) minmax(0, 1fr); gap: 10px; padding: 5px 0; border-bottom: 1px dashed rgba(163, 148, 138, .17); }
+    .fact-row:last-child { border-bottom: 0; }
+    .fact-name { color: #e9cf9a; font: 600 11px/1.45 Georgia, "Times New Roman", serif; }
+    .fact-value { color: #e8d6be; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .sola-note { position: relative; margin: 2px 0 0; padding: 11px 13px; border: 1px solid rgba(244, 162, 97, .32); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgba(26, 19, 16, .025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .sola-note::before { position: absolute; top: -6px; left: 19px; width: 34px; height: 11px; border: 1px solid rgba(210, 185, 160, .8); background: rgba(244, 220, 196, .72); content: ""; transform: rotate(-1deg); }
+    .note-label { display: block; margin-bottom: 2px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .sola-note p { margin: 0; color: #1a1310; font: italic 550 12px/1.5 Georgia, "Times New Roman", serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+    .page-foot { margin: 12px 0 0; color: #897e73; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .scene-card[open] .scene-body { animation: reveal .4s cubic-bezier(.16, 1, .3, 1); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 48px; }
+      .chat-card { padding: 14px 12px 15px; }
+      .scene-card > summary { gap: 8px; padding: 12px 40px 13px 11px; }
+      .scene-title strong { font-size: 18px; }
+      .scene-badge { padding: 4px 7px; font-size: 7px; }
+      .scene-body { padding: 11px 10px 14px; }
+      .cast-grid { grid-template-columns: minmax(0, 1fr); }
+      .fact-row { grid-template-columns: minmax(76px, .35fr) minmax(0, 1fr); }
+    }
+    @media (max-width: 380px) { .scene-title small { max-width: 25ch; } .fact-row { grid-template-columns: 1fr; gap: 1px; } }
+    @media (prefers-reduced-motion: reduce) { .scene-card, .chevron, .scene-card[open] .scene-body { transition: none; animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">♙</span>
+      <span class="rail-dot">▣</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local preview</span>
+      </header>
+      <section class="page">
+        <div class="page-kicker">Autumn Golden Hour · stage traffic</div>
+        <h1>Active Scene Facts</h1>
+        <p class="page-intro">A collapsible V3 scene-cast ledger for multi-NPC scenes or changes in room geography. It records who is present, who has the floor, and what can be physically observed—never private thoughts.</p>
+        <article class="chat-card">
+          <div class="chat-meta"><strong>Guinevere</strong><span>·</span><span>illustrative scene</span></div>
+          <p class="chat-line">The exchange holds in the western gallery as rain darkens the leaded glass.</p>
+          <p class="preview-hint">This V3 module is optional and disabled in the Flame preset. Open the drawer to view its exact field shape.</p>
+          <details class="scene-card">
+            <summary>
+              <svg class="scene-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M4 28V15.5a12 12 0 0 1 24 0V28" fill="rgba(26,19,16,.45)" stroke="var(--bluegray)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3.5 28h25" fill="none" stroke="var(--muted)" stroke-width=".9" stroke-linecap="round"/>
+                <path d="m16 2.7 2 2.2-2 2.2-2-2.2z" fill="var(--gold)" stroke="var(--amber)" stroke-width=".55" stroke-linejoin="round"/>
+                <circle cx="11.2" cy="14" r="2" fill="var(--gold)"/>
+                <path d="M7.5 24v-2.2a3.7 3.7 0 0 1 7.4 0V24" fill="none" stroke="var(--gold)" stroke-width="1.25" stroke-linecap="round"/>
+                <circle cx="21" cy="16" r="1.75" fill="var(--pale-blue)"/>
+                <path d="M17.6 24v-1.8a3.4 3.4 0 0 1 6.8 0V24" fill="none" stroke="var(--pale-blue)" stroke-width="1.15" stroke-linecap="round"/>
+                <circle cx="11.2" cy="26" r=".75" fill="var(--amber)"/>
+                <circle cx="21" cy="26" r=".75" fill="var(--amber)"/>
+              </svg>
+              <span class="scene-title"><strong>Sola’s Scene Cast &amp; Spatial Ledger</strong><small>Stage traffic · observable physical facts &amp; room blocking</small></span>
+              <span class="scene-badge">SPATIAL LEDGER</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="scene-body">
+              <span class="sample-note">Illustrative values · one multi-NPC scene</span>
+              <div class="location-row"><span class="location-label">Location</span><span class="location-value">Western Gallery · rose window west; north door four paces east.</span></div>
+              <div class="cast-grid">
+                <section class="cast-panel"><span class="field-label">Active Speakers</span><span class="cast-value">Guinevere · Sir Kay</span></section>
+                <section class="cast-panel ambient"><span class="field-label">Ambient NPCs</span><span class="cast-value">Sir Bors at the stair — adjusts his glove; no dialogue.</span></section>
+              </div>
+              <section class="facts-box">
+                <h2 class="facts-heading">Observable Facts · one physical tell per NPC</h2>
+                <div class="facts-list">
+                  <div class="fact-row"><span class="fact-name">Guinevere</span><span class="fact-value">Left cuff dark with rainwater.</span></div>
+                  <div class="fact-row"><span class="fact-name">Sir Kay</span><span class="fact-value">Right hand braced on the north-door latch.</span></div>
+                  <div class="fact-row"><span class="fact-name">Sir Bors</span><span class="fact-value">Wet mud along the hem of his surcoat.</span></div>
+                </div>
+              </section>
+              <blockquote class="sola-note"><span class="note-label">Sola</span><p>Sir Bors remains at the stair; the north door stays within Sir Kay’s reach.</p></blockquote>
+            </div>
+          </details>
+        </article>
+        <p class="page-foot">V3 fields: Location · Active Speakers · Ambient NPCs · Observable Facts · Sola. The sample facts are visible or physical, not inferred motives.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

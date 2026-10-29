@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Unified Tracker HUD — Showcase</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #141516;
+      --surface: #1a1310;
+      --panel: #211e1a;
+      --panel-deep: #120d0b;
+      --border: rgba(163, 148, 138, .25);
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --cider: #e9a036;
+      --copper: #e07a5f;
+      --coral: #ee6c4d;
+      --rose: #f4845f;
+      --sage: #9aa87a;
+      --bluegray: #bac3c7;
+      --lavender: #a5adf0;
+      --paper: #fdf6f0;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 52% -12%, rgba(244, 162, 97, .12), transparent 42%), linear-gradient(180deg, #191715, #111211 75%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: var(--muted); }
+    .rail-mark, .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; }
+    .rail-mark { border: 1px solid rgba(243, 183, 75, .42); color: var(--gold); font: 12px/1 Georgia,'Times New Roman',serif; }
+    .rail-dot { color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border: 1px solid rgba(243, 183, 75, .28); background: rgba(243, 183, 75, .1); color: var(--gold); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: var(--sage); }
+    .page { width: min(100%, 1120px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(27px, 4vw, 38px)/1.15 Georgia, "Times New Roman", serif; }
+    .intro { max-width: 74ch; margin: 0; color: #b3a592; font: 12px/1.6 ui-sans-serif, system-ui, sans-serif; }
+    .index { display: flex; flex-wrap: wrap; gap: 6px; margin: 17px 0 0; }
+    .index a { padding: 5px 9px; border: 1px solid rgba(163, 148, 138, .23); border-radius: 999px; color: #cfbea7; background: rgba(22, 16, 14, .65); font: 9px/1.35 ui-sans-serif, system-ui, sans-serif; text-decoration: none; }
+    .index a:hover, .index a:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
+    .turn { margin-top: 22px; padding: 18px 20px 20px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .turn-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .turn-meta strong { color: #e7d2b7; font-weight: 600; }
+    .turn-copy { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .turn-note { margin: 11px 0 8px; color: #8f8478; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .hud-shell { --shadowWidth: 0 !important; margin-top: 13px; overflow: hidden; border: 1px solid rgba(244, 162, 97, .38); border-left: 3px double rgba(244, 162, 97, .72); border-radius: 17px 12px 16px 10px; background: radial-gradient(ellipse at 4% 0, rgba(244, 162, 97, .085), transparent 56%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 5px 18px rgba(18, 13, 11, .32), inset 0 1px 0 rgba(240, 220, 196, .05); }
+    .hud-shell > summary { position: relative; display: flex; align-items: center; gap: 12px; min-width: 0; padding: 15px 49px 15px 17px; color: var(--amber); background: linear-gradient(98deg, rgba(244, 162, 97, .13), rgba(26, 19, 16, .22)); cursor: pointer; list-style: none; user-select: none; }
+    .hud-shell > summary::-webkit-details-marker, .track-card > summary::-webkit-details-marker { display: none; }
+    .hud-shell > summary::marker, .track-card > summary::marker { content: ""; }
+    .hud-shell > summary:focus-visible, .track-card > summary:focus-visible { outline: 2px solid currentColor; outline-offset: -4px; }
+    .hud-crest { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; border: 1px solid rgba(243, 183, 75, .48); border-radius: 50%; color: var(--gold); }
+    .hud-crest svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+    .hud-title { display: grid; min-width: 0; gap: 2px; }
+    .hud-title strong { color: var(--ivory); font: 400 22px/1.2 Georgia, "Times New Roman", serif; }
+    .hud-title small { color: var(--muted); font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em; }
+    .hud-count { flex: 0 0 auto; margin-left: auto; padding: 4px 9px; border: 1px solid rgba(243, 183, 75, .34); border-radius: 4px 9px 6px 3px; color: #f2d39b; background: rgba(243, 183, 75, .09); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .hud-chevron, .card-chevron { position: absolute; top: 50%; right: 19px; width: 9px; height: 9px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-70%) rotate(45deg); transition: transform .25s ease; }
+    .hud-shell[open] > summary .hud-chevron, .track-card[open] > summary .card-chevron { transform: translateY(-25%) rotate(225deg); }
+    .hud-body { display: grid; gap: 8px; padding: 12px 14px 16px; border-top: 1px dashed rgba(163, 148, 138, .28); }
+    .hud-disclaimer { margin: 0 2px 3px; color: #988b7c; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .track-card { --accent: var(--amber); --shadowWidth: 0 !important; min-width: 0; overflow: hidden; border: 1px solid rgba(163, 148, 138, .2); border-left: 3px double var(--accent); border-radius: 13px 9px 12px 8px; background: radial-gradient(ellipse at 3% 0, rgba(244, 162, 97, .045), transparent 58%), linear-gradient(#1a1310, #120d0b); transition: border-color .25s ease, box-shadow .25s ease; }
+    .track-card[open] { border-color: color-mix(in srgb, var(--accent) 62%, rgba(163, 148, 138, .2)); box-shadow: 0 5px 16px rgba(0, 0, 0, .22), 0 0 15px color-mix(in srgb, var(--accent) 11%, transparent); }
+    .track-card > summary { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 11px; min-width: 0; padding: 11px 46px 11px 13px; color: var(--accent); background: linear-gradient(98deg, color-mix(in srgb, var(--accent) 10%, transparent), rgba(26, 19, 16, .18)); cursor: pointer; list-style: none; user-select: none; }
+    .track-icon { display: block; flex: 0 0 32px; width: 32px; height: 32px; overflow: visible; }
+    .track-icon .line { fill: none; stroke: currentColor; stroke-width: 1.15; stroke-linecap: round; stroke-linejoin: round; }
+    .track-icon .fill { fill: color-mix(in srgb, currentColor 17%, transparent); stroke: currentColor; stroke-width: 1; stroke-linejoin: round; }
+    .track-name { display: grid; flex: 1 1 15rem; min-width: 0; gap: 2px; }
+    .track-name strong { color: var(--ivory); font: 400 19px/1.2 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .track-name small { color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .035em; overflow-wrap: anywhere; }
+    .track-badge { flex: 0 0 auto; max-width: 100%; padding: 4px 8px; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); border-radius: 4px 8px 5px 3px; color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, transparent); font: 700 7px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; overflow-wrap: anywhere; }
+    .track-body { display: grid; gap: 11px; min-width: 0; padding: 12px 14px 15px; border-top: 1px dashed rgba(163, 148, 138, .23); }
+    .sample-tag { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(163, 148, 138, .25); border-radius: 999px; color: #d0bea6; background: rgba(18, 13, 11, .42); font: 700 7px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; overflow-wrap: anywhere; }
+    .subpanel { min-width: 0; padding: 11px 12px; border: 1px solid rgba(163, 148, 138, .18); border-radius: 8px 5px 9px 6px; background: rgba(18, 13, 11, .48); }
+    .panel-label { display: block; margin-bottom: 4px; color: var(--accent); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .panel-value { color: #e8d6be; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .panel-note { margin: 4px 0 0; color: #a99b89; font: italic 10px/1.45 Georgia, "Times New Roman", serif; overflow-wrap: anywhere; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .label-row { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 9px; margin-bottom: 4px; }
+    .label-row .panel-label { margin: 0; }
+    .micro-label { color: #a3948a; font: 700 7px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .paper-note, .matrix-sola-note { position: relative; padding: 13px 15px; border: 1px solid #aa8959; border-left-color: #8f6b3e; border-radius: 4px 8px 6px 3px; background: radial-gradient(ellipse at 0% 100%, rgba(115,73,34,.15), transparent 65%), repeating-linear-gradient(97deg, rgba(78,49,24,.025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #dec18e, #ead5ae); color: #1a1310; }
+    .paper-note .panel-label { color: #654321; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; }
+    .paper-note p, .matrix-sola-note p { margin: 0; color: #1a1310; font: italic 550 13px/1.65 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .astro { --accent: var(--gold); }
+    .feeling { --accent: var(--rose); }
+    .matrix { --accent: var(--bluegray); }
+    .matrix-register { position: relative; border: 1px solid #8e744d; background: linear-gradient(105deg, rgba(243,183,75,.035), transparent 50%), #191816; color: #eee0ce; box-shadow: inset 0 0 0 4px #191816, inset 0 0 0 5px rgba(214,175,112,.18); }
+    .matrix-nameplate { position: relative; display: flex; align-items: center; justify-content: center; gap: 28px; padding: 22px 30px; border-bottom: 3px double #806844; background: radial-gradient(ellipse at 30% 50%, rgba(214,175,112,.12), transparent 65%), repeating-linear-gradient(90deg, transparent 0 16px, rgba(214,175,112,.025) 16px 17px), linear-gradient(100deg, #30261c, #211e19); }
+    .matrix-nameplate::before, .matrix-nameplate::after { position: absolute; top: 12px; bottom: 12px; width: 18px; border-top: 1px solid #ab8750; border-bottom: 1px solid #ab8750; content: ""; pointer-events: none; }
+    .matrix-nameplate::before { left: 12px; border-left: 1px solid #ab8750; }
+    .matrix-nameplate::after { right: 12px; border-right: 1px solid #ab8750; }
+    .matrix-cameo { display: block; flex: 0 0 148px; width: 148px; height: 180px; }
+    .matrix-heading { min-width: 0; max-width: 360px; }
+    .matrix-heading::after { display: block; width: 90px; height: 5px; margin-top: 15px; border-top: 1px solid #b58e52; border-bottom: 1px solid #695437; content: ""; }
+    .matrix-nameplate h2 { margin: 3px 0 4px; color: #f5dfbe; font: 400 29px/1.15 Georgia,'Times New Roman',serif; }
+    .matrix-nameplate p { margin: 0; color: #baa98e; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .matrix-register-label { color: #dab779; font: 600 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .matrix-presence { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 14px 24px; border-bottom: 1px solid #494034; }
+    .matrix-presence p { margin: 3px 0 0; color: #e8d6be; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .matrix-traits { display: grid; grid-template-columns: 1fr 1fr; margin: 0 24px; padding: 18px 0; gap: 24px; border-bottom: 1px solid #665843; }
+    .matrix-trait { min-width: 0; }
+    .matrix-trait strong { display: block; margin-top: 5px; color: #f0dcc4; font: 400 18px/1.35 Georgia,'Times New Roman',serif; }
+    .matrix-trait:last-child { padding-left: 24px; border-left: 1px solid #665843; }
+    .matrix-entries { margin: 0; padding: 0 24px 8px; }
+    .matrix-entries > div { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: baseline; gap: 18px; padding: 13px 0; border-bottom: 1px solid #39352e; }
+    .matrix-entries > div:last-child { border-bottom: 0; }
+    .matrix-entries dt { color: #dab779; font: 600 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .matrix-entries dd { margin: 0; color: #e8d6be; font: 13px/1.55 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    .matrix-entries .matrix-boundary { border-top: 1px solid #665843; margin-top: 3px; }
+    .matrix-sola-note { margin: 4px 24px 22px; }
+    .matrix-sola-note h3 { margin: 0 0 5px; color: #654321; font: 600 12px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .matrix-sola-note small { display: block; margin-top: 6px; color: #634b37; font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .heart { --accent: var(--coral); }
+    .bond { --accent: var(--copper); }
+    .thought { --accent: var(--cider); }
+    .current { --accent: var(--lavender); }
+    .wardrobe { --accent: var(--sage); }
+    .easel { --accent: var(--gold); }
+    .arrow { --accent: var(--coral); }
+    .wind-emblem { display: grid; place-items: center; margin: 15px 0 20px; padding: 12px 0; border-top: 1px solid #79603f; border-bottom: 3px double #79603f; background: radial-gradient(ellipse, rgba(212,176,103,.09), transparent 65%); }
+    .wind-emblem svg { display: block; width: 300px; max-width: 100%; height: auto; }
+    .sola-card-arrow .sola-arrow-dossier { display: flex; flex-direction: column; gap: 16px; min-width: 0; white-space: normal; }
+    details.sola-card-arrow .sola-arrow-banner { --flight-color: #bac3c7; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 18px; border: 1px solid var(--flight-color)!important; border-left-width: 4px!important; border-radius: 2px!important; background: linear-gradient(100deg, #282017, #181410)!important; box-shadow: inset 0 -5px 0 rgba(212,176,103,.04)!important; overflow-wrap: anywhere; }
+    details.sola-card-arrow .sola-arrow-banner[data-trajectory="Bullseye" i] { --flight-color: #9aa87a; }
+    details.sola-card-arrow .sola-arrow-banner[data-trajectory="Grazing Shot" i] { --flight-color: #f3b74b; }
+    details.sola-card-arrow .sola-arrow-banner[data-trajectory="Wind Drift" i] { --flight-color: #ee6c4d; }
+    details.sola-card-arrow .sola-arrow-banner .sola-traj-pill { display: inline-flex; align-items: center; gap: 10px!important; max-width: 100%; padding: 0!important; border: 0!important; border-radius: 0!important; background: transparent!important; color: var(--flight-color)!important; font: 400 25px/1.35 Georgia,'Times New Roman',serif!important; letter-spacing: .02em!important; text-transform: none!important; }
+    details.sola-card-arrow .sola-arrow-banner .sola-traj-desc { flex: 0 1 auto!important; color: #c4b39a!important; font: 11px/1.6 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .08em; }
+    details.sola-card-arrow .sola-arrow-banner .sola-traj-icon { display: none!important; width: 22px!important; height: 22px!important; }
+    details.sola-card-arrow .sola-arrow-banner[data-trajectory="Bullseye" i] .sola-traj-icon-bullseye, details.sola-card-arrow .sola-arrow-banner[data-trajectory="Grazing Shot" i] .sola-traj-icon-grazing, details.sola-card-arrow .sola-arrow-banner[data-trajectory="Wind Drift" i] .sola-traj-icon-wind { display: inline-block!important; }
+    details.sola-card-arrow .sola-arrow-banner:not([data-trajectory="Bullseye" i]):not([data-trajectory="Grazing Shot" i]):not([data-trajectory="Wind Drift" i]) .sola-traj-icon-neutral { display: inline-block!important; }
+    .sola-card-arrow .sola-arrow-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .sola-card-arrow .sola-arrow-cell { min-width: 0; padding: 16px!important; border: 1px solid #79603f!important; border-left-width: 1px!important; border-top: 3px double #9d8051!important; border-radius: 2px!important; background: rgba(25,20,15,.8)!important; gap: 10px!important; overflow-wrap: anywhere; }
+    .sola-card-arrow .sola-arrow-friction { border-top-color: #bc7557!important; }
+    .sola-card-arrow .sola-arrow-cell-tag { color: #d4b067!important; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .06em!important; }
+    .sola-card-arrow .sola-arrow-friction .sola-arrow-cell-tag { color: #dfa07c!important; }
+    .sola-card-arrow .sola-arrow-cell-tag svg { flex-shrink: 0; width: 17px!important; height: 17px!important; }
+    .sola-card-arrow .sola-arrow-gamble-val, .sola-card-arrow .sola-arrow-friction-val { color: #eadcc6!important; font: 15px/1.7 Georgia,'Times New Roman',serif!important; }
+    .sola-card-arrow .sola-arrow-gamble:not(:has(.sola-arrow-gamble-val:not(:empty))), .sola-card-arrow .sola-arrow-friction:not(:has(.sola-arrow-friction-val:not(:empty))), .sola-card-arrow .sola-arrow-whisper:not(:has(.sola-arrow-whisper-text:not(:empty))) { display: none!important; }
+    @media (max-width: 540px) { .sola-card-arrow .sola-arrow-split { grid-template-columns: minmax(0, 1fr); } .sola-card-arrow .sola-arrow-banner { padding: 14px; } }
+    .inventory { --accent: #d4a373; }
+    .scene { --accent: var(--bluegray); }
+    .notebook { --accent: var(--gold); }
+    .notebook-codex { position: relative; margin: 24px 0 8px; padding: 16px; border: 1px solid #9c774b; border-radius: 7px 10px 10px 5px; background: #3c2920; box-shadow: 0 7px 18px rgba(0,0,0,.3), inset 0 0 0 5px #483326; }
+    .notebook-codex::before { content: ""; position: absolute; inset: 7px; border: 1px solid #8a6b43; border-radius: 3px 6px 6px 2px; pointer-events: none; }
+    .notebook-codex::after { content: ""; position: absolute; top: -5px; right: 54px; width: 20px; height: 52px; background: linear-gradient(90deg, #5b302a, #a05c46 50%, #66382e); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%); pointer-events: none; }
+    .sola-card-notebook .sola-notes-dossier { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "threads motives" "seeds horizon" ". whisper"; gap: 0 26px; min-width: 0; padding: 28px 14px; border-right: 3px double #b89b70; border-bottom: 4px double #b89b70; border-radius: 2px 3px 7px 2px; background: linear-gradient(90deg, #d8b98e, #ead8b4 5%, #e5cda6 45%, #c4a57a 49.5%, #a38760 50%, #ccb087 50.5%, #e9d5b0 55%, #e3c69b 95%, #cfad81); color: #302319; white-space: normal; }
+    .sola-card-notebook .sola-notes-threads { grid-area: threads; }
+    .sola-card-notebook .sola-notes-seeds { grid-area: seeds; }
+    .sola-card-notebook .sola-notes-motives { grid-area: motives; }
+    .sola-card-notebook .sola-notes-horizon { grid-area: horizon; }
+    .sola-card-notebook .sola-notes-cell { min-width: 0; padding: 18px 22px 24px!important; border: 0!important; border-radius: 0!important; background: none!important; gap: 13px!important; }
+    .sola-card-notebook .sola-notes-cell-tag { gap: 8px!important; color: #715027!important; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .08em!important; }
+    .sola-card-notebook .sola-notes-seeds .sola-notes-cell-tag { color: #884b27!important; }
+    .sola-card-notebook .sola-notes-motives .sola-notes-cell-tag { color: #66516c!important; }
+    .sola-card-notebook .sola-notes-horizon .sola-notes-cell-tag { color: #8c4130!important; }
+    .sola-card-notebook .sola-notes-cell-tag svg { width: 17px!important; height: 17px!important; flex-shrink: 0; }
+    .sola-card-notebook :is(.sola-notes-threads-val, .sola-notes-seeds-val, .sola-notes-motives-val, .sola-notes-horizon-val) { color: #302319!important; font: 16px/1.85 Georgia,'Times New Roman',serif!important; white-space: pre-line; overflow-wrap: anywhere; }
+    .sola-card-notebook .sola-notes-whisper { grid-area: whisper!important; min-width: 0; margin: 10px 22px 8px!important; padding: 15px 0 0!important; border: 0!important; border-top: 1px solid #a18156!important; border-radius: 0!important; background: none!important; box-shadow: none!important; }
+    .sola-card-notebook .sola-notes-whisper::before { display: none!important; }
+    .sola-card-notebook .sola-notes-whisper .sola-director-label { display: block; margin-bottom: 7px; color: #6b4729!important; font: 700 10px/1.6 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .06em; }
+    .sola-card-notebook .sola-notes-whisper .sola-director-quote { display: block; color: #302319!important; font: italic 550 13px/1.8 ui-sans-serif, system-ui, sans-serif!important; white-space: pre-line; overflow-wrap: anywhere; }
+    .sola-card-notebook .sola-notes-whisper, .sola-card-notebook .sola-notes-whisper * { text-shadow: none!important; }
+    .sola-card-notebook .sola-notes-whisper-text:not(:empty)::before { content: "“"; }
+    .sola-card-notebook .sola-notes-whisper-text:not(:empty)::after { content: "”"; }
+    .sola-card-notebook .sola-notes-threads:not(:has(.sola-notes-threads-val:not(:empty))), .sola-card-notebook .sola-notes-seeds:not(:has(.sola-notes-seeds-val:not(:empty))), .sola-card-notebook .sola-notes-motives:not(:has(.sola-notes-motives-val:not(:empty))), .sola-card-notebook .sola-notes-horizon:not(:has(.sola-notes-horizon-val:not(:empty))), .sola-card-notebook .sola-notes-whisper:not(:has(.sola-notes-whisper-text:not(:empty))) { display: none!important; }
+    .sola-card-notebook .sola-notes-dossier:not(:has(:is(.sola-notes-motives-val, .sola-notes-horizon-val):not(:empty))), .sola-card-notebook .sola-notes-dossier:not(:has(:is(.sola-notes-threads-val, .sola-notes-seeds-val):not(:empty))) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "threads" "seeds" "motives" "horizon" "whisper"; background: linear-gradient(100deg, #ddc096, #ead8b4 15%, #e4c89e); }
+    @media (max-width: 640px) {
+      .notebook-codex { padding: 9px; }
+      .notebook-codex::after { right: 27px; height: 40px; width: 15px; }
+      .sola-card-notebook .sola-notes-dossier { grid-template-columns: minmax(0, 1fr); grid-template-areas: "threads" "seeds" "motives" "horizon" "whisper"; padding: 24px 0 18px; background: linear-gradient(100deg, #ddc096, #ead8b4 15%, #e4c89e); }
+      .sola-card-notebook .sola-notes-cell { padding: 18px 15px!important; }
+      .sola-card-notebook .sola-notes-whisper { margin: 10px 15px 8px!important; }
+    }
+    .tempo { --accent: var(--amber); }
+    .astro-layout { display: grid; grid-template-columns: minmax(210px, .85fr) minmax(0, 1.15fr); align-items: center; gap: 13px; }
+    .astro-art { display: block; width: min(100%, 290px); height: auto; margin: 0 auto; }
+    .astro-art .engrave { fill: none; stroke: url(#astro-gold); stroke-linecap: round; stroke-linejoin: round; }
+    .astro-art .fine { fill: none; stroke: #a3948a; stroke-width: 1; }
+    .astro-art .gem { fill: rgba(243, 183, 75, .18); stroke: url(#astro-gold); stroke-width: 1.1; }
+    .astro-almanac { position: relative; min-width: 0; padding: 20px; border-top: 3px double #a4844f; border-bottom: 3px double #a4844f; background: repeating-linear-gradient(90deg, rgba(221,184,113,.025) 0 1px, transparent 1px 10px), linear-gradient(135deg, #2b2419, #191714); }
+    .astro-almanac::before, .astro-almanac::after { position: absolute; top: 7px; bottom: 7px; width: 10px; border-top: 1px solid #92713f; border-bottom: 1px solid #92713f; content: ""; pointer-events: none; }
+    .astro-almanac::before { left: 5px; border-left: 1px solid #92713f; }
+    .astro-almanac::after { right: 5px; border-right: 1px solid #92713f; }
+    .almanac-label { display: block; color: #c4ad82; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+    .almanac-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 18px; padding-bottom: 16px; border-bottom: 1px solid #6d5939; }
+    .almanac-day { padding-right: 18px; border-right: 1px solid #6d5939; }
+    .almanac-day strong { display: block; margin-top: 3px; color: #efcb88; font: 400 52px/1 Georgia,'Times New Roman',serif; font-variant-numeric: lining-nums; }
+    .almanac-horizon strong { display: block; margin-top: 5px; color: #e5b776; font: 400 30px/1.2 Georgia,'Times New Roman',serif; }
+    .almanac-chronology { padding: 15px 0; border-bottom: 1px solid #6d5939; }
+    .almanac-chronology strong { display: block; margin-top: 5px; color: #ead6b2; font: 400 18px/1.5 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    .almanac-elapsed { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 15px; flex-wrap: wrap; }
+    .almanac-elapsed strong { color: #e1bd83; font: 400 18px/1.4 Georgia,'Times New Roman',serif; }
+    .almanac-graduation { height: 8px; margin-top: 10px; border-top: 1px solid #806640; background: repeating-linear-gradient(90deg, #806640 0 1px, transparent 1px 12px); opacity: .65; }
+    .feeling-layout { display: grid; grid-template-columns: minmax(220px, .88fr) minmax(0, 1.12fr); align-items: center; gap: 14px; }
+    .feeling-art { width: min(100%, 300px); margin: 0 auto; }
+    .feeling-art svg { display: block; width: 100%; height: auto; }
+    .weather-readout { min-width: 0; padding: 16px; border: 1px solid #886a4c; border-radius: 3px 14px 3px 14px; background: linear-gradient(135deg, rgba(224,122,95,.08), transparent 55%), #201a16; box-shadow: inset 0 0 0 4px #201a16, inset 0 0 0 5px rgba(189,150,103,.18); }
+    .weather-state { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 3px 0 13px; border-bottom: 1px solid #715841; }
+    .weather-label { display: block; color: #c9ad88; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .weather-state strong { display: block; margin-top: 3px; color: #efe0ca; font: 400 32px/1.2 Georgia,'Times New Roman',serif; }
+    .weather-kind { color: #a99a85; font: 600 9px/1.6 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-align: right; }
+    .weather-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; margin: 12px 0 16px; padding: 0; list-style: none; }
+    .weather-steps li { min-width: 0; padding: 6px 2px; border-bottom: 2px solid #665744; color: #a79985; font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; text-align: center; overflow-wrap: anywhere; }
+    .weather-steps b { display: block; margin-bottom: 3px; color: #c1a57b; font: 400 13px/1 Georgia,'Times New Roman',serif; }
+    .weather-steps .active { border-color: #d8b471; color: #f0d7a4; background: linear-gradient(0deg, rgba(243,183,75,.12), transparent); }
+    .currents-caption { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; color: #bfa68a; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .currents-caption small { font-size: 9px; color: #a79985; letter-spacing: 0; }
+    .current-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .current-stat { min-width: 0; padding: 11px 10px; border: 1px solid color-mix(in srgb, var(--stat) 38%, #473b30); border-top: 2px solid var(--stat); border-radius: 2px 7px 2px 7px; background: linear-gradient(135deg, color-mix(in srgb, var(--stat) 11%, transparent), rgba(14,12,10,.5)); }
+    .current-stat-label { display: block; color: #ecddc7; font: 600 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .current-stat-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; }
+    .current-stat strong { color: var(--stat); font: 400 24px/1 Georgia,'Times New Roman',serif; white-space: nowrap; }
+    .current-trend { display: inline-block; margin-left: 3px; font: 14px/1 ui-sans-serif, system-ui, sans-serif; vertical-align: middle; }
+    .current-measure { display: flex; gap: 5px; flex: 0 0 auto; }
+    .current-measure i { display: block; width: 10px; height: 10px; border: 1px solid color-mix(in srgb, var(--stat) 48%, #473b30); background: #211b16; transform: rotate(45deg); }
+    .current-measure .filled { background: color-mix(in srgb, var(--stat) 72%, #211b16); border-color: var(--stat); box-shadow: inset 0 0 0 2px rgba(20,15,10,.2); }
+    .faculty-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .faculty { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 22px 14px 18px; border: 1px solid color-mix(in srgb, var(--fac) 48%, #30271e); border-radius: 24px 24px 5px 5px; background: radial-gradient(ellipse at 50% 20%, color-mix(in srgb, var(--fac) 12%, transparent), transparent 64%), #191511; text-align: center; box-shadow: inset 0 0 0 4px #191511, inset 0 0 0 5px color-mix(in srgb, var(--fac) 20%, transparent); }
+    .faculty::after { display: block; width: 40px; margin-top: auto; padding-top: 14px; border-bottom: 3px double color-mix(in srgb, var(--fac) 60%, transparent); content: ""; }
+    .faculty svg { display: block; flex: 0 0 auto; width: 112px; height: 128px; max-width: 100%; fill: none; stroke: var(--fac); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+    .faculty h3 { margin: 12px 0 3px; color: var(--fac); font: 400 22px/1.2 Georgia,'Times New Roman',serif; }
+    .faculty .faculty-domain { display: block; color: #bcae9c; font: 600 9px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .07em; text-transform: uppercase; }
+    .faculty p { margin: 12px 0 0; color: #e9dac7; font: 13px/1.55 Georgia,'Times New Roman',serif; }
+    .heart-caption { margin: 0; color: #baa98e; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    @media (min-width: 541px) and (max-width: 900px) { .faculty-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .knot-art { display: block; width: min(100%, 240px); height: auto; margin: 0 auto; }
+    .pair-slip { padding: 11px 12px; border: 1px solid rgba(224, 122, 95, .24); border-left: 3px solid var(--copper); border-radius: 6px 9px 7px 5px; background: rgba(18, 13, 11, .52); }
+    .pair-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .pair-head strong { color: var(--ivory); font: 600 14px/1.3 Georgia,'Times New Roman',serif; }
+    .dynamic { padding: 3px 8px; border: 1px solid rgba(244, 162, 97, .3); border-radius: 999px; color: var(--amber); font: 700 7px/1.35 ui-sans-serif, system-ui, sans-serif; }
+    .shift-list { display: grid; gap: 5px; }
+    .shift { padding: 6px 8px; border: 1px solid rgba(154, 168, 122, .22); border-radius: 5px; color: #e8d6be; background: rgba(154, 168, 122, .045); font: 10px/1.45 ui-sans-serif, system-ui, sans-serif; }
+    .shift.negative { border-color: rgba(238, 108, 77, .25); background: rgba(238, 108, 77, .05); }
+    .thought-folio { position: relative; overflow: hidden; border: 1px solid #80603e; border-left: 8px solid #50372b; border-radius: 5px 16px 16px 5px; background: repeating-linear-gradient(95deg, rgba(233,190,129,.018) 0 1px, transparent 1px 8px), linear-gradient(110deg, #251c16, #191512); box-shadow: inset 3px 0 0 #a67c48, inset 7px 0 0 #211610, 4px 4px 0 #120e0b; }
+    .thought-frontispiece { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; align-items: center; padding: 22px 28px; border-bottom: 3px double #725333; background: radial-gradient(ellipse at 25% 40%, rgba(233,160,54,.1), transparent 70%); }
+    .thought-illustration { display: block; width: 180px; height: 180px; }
+    .thought-frontispiece h2 { margin: 7px 0; color: #f1d2a5; font: 400 28px/1.15 Georgia,'Times New Roman',serif; }
+    .thought-frontispiece p { margin: 0; max-width: 38ch; color: #c2ad95; font: 12px/1.6 Georgia,'Times New Roman',serif; }
+    .thought-kicker { color: #d4aa6c; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .thought-preamble { padding: 20px 26px 0; }
+    .thought-preamble .sola-thought-action { margin: 0 0 12px; color: #c2ad95; font: italic 14px/1.7 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    @media (max-width: 600px) { .thought-preamble { padding: 18px 12px 0; } }
+    .interview { display: grid; gap: 0; padding: 0 26px 20px; }
+    .qa { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 14px; align-items: start; padding: 18px 0; border-bottom: 1px solid #4e3a29; }
+    .ordinal { display: block; padding-top: 2px; color: #c29558; font: 400 22px/1.2 Georgia,'Times New Roman',serif; text-align: center; }
+    .qa q { display: block; color: #d7af75; font: 600 12px/1.5 ui-sans-serif, system-ui, sans-serif; quotes: none; }
+    .qa p { margin: 7px 0 0; color: #ecdecd; font: 15px/1.65 Georgia,'Times New Roman',serif; }
+    .qa.unspoken { margin-top: 16px; padding: 16px 14px 18px 0; border: 1px solid #825443; border-left: 3px solid #cf8567; background: linear-gradient(110deg, rgba(190,103,77,.12), rgba(0,0,0,.1)); }
+    .qa.unspoken .ordinal { color: #e0a38b; }
+    .unspoken-label { display: block; margin-bottom: 7px; color: #e0a38b; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    @media (max-width: 600px) {
+      .thought-frontispiece { grid-template-columns: minmax(0, 1fr); gap: 6px; padding: 20px; text-align: center; }
+      .thought-illustration { width: 150px; height: 150px; margin: 0 auto; }
+      .thought-frontispiece h2 { font-size: 25px; }
+      .thought-frontispiece p { margin: 0 auto; }
+      .interview { padding: 0 12px 14px; }
+      .qa { grid-template-columns: 23px minmax(0, 1fr); gap: 9px; }
+      .qa p { font-size: 14px; }
+    }
+    .phase-track { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+    .phase { padding: 8px; border: 1px solid rgba(163, 148, 138, .17); border-radius: 5px 8px 6px 4px; color: #b6a996; background: rgba(18, 13, 11, .45); text-align: center; }
+    .phase.active { border-color: rgba(165, 173, 240, .46); color: var(--lavender); background: rgba(133, 146, 230, .1); }
+    .phase strong { display: block; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .phase small { display: block; margin-top: 3px; font: 8px/1.35 ui-sans-serif, system-ui, sans-serif; }
+    .armory-locker { position: relative; margin-top: 20px; padding: 0 0 0 42px; border-top: 5px double #8d8066; border-bottom: 5px double #8d8066; background: linear-gradient(90deg, #30312c 0 34px, #181510 34px); }
+    .armory-key { position: absolute; top: 18px; left: 5px; display: block; width: 24px; height: 96px; }
+    .sola-card-inventory .sola-inv-slip { position: relative; min-width: 0; margin: 0!important; padding: 22px 20px!important; border: 0!important; border-bottom: 5px double #6e6553!important; border-radius: 0!important; background: repeating-linear-gradient(0deg, rgba(212,163,115,.025) 0 1px, transparent 1px 8px), #261e17!important; box-shadow: none!important; white-space: normal; overflow-wrap: anywhere; }
+    .sola-card-inventory .sola-inv-slip::before { content: ""; position: absolute; left: -37px; top: 140px; width: 24px; height: 50px; border: 1px solid #a18e68; border-radius: 3px; background: radial-gradient(circle at 50% 9px, #c2ac7c 0 2px, transparent 2.5px), radial-gradient(circle at 50% 40px, #c2ac7c 0 2px, transparent 2.5px), linear-gradient(90deg, #48483d, #272b26); pointer-events: none; }
+    .sola-card-inventory .sola-inv-header { padding-bottom: 16px!important; margin-bottom: 20px!important; border-bottom: 1px solid #66543c!important; gap: 12px!important; }
+    .sola-card-inventory .sola-inv-char { min-width: 0; padding: 5px 14px; border: 1px solid #9c835b; background: #343328; color: #f0dcc4!important; font: 400 23px/1.3 Georgia,'Times New Roman',serif!important; }
+    .sola-card-inventory .sola-inv-status-badge { padding: 0!important; border: 0!important; border-radius: 0!important; background: none!important; color: #baab90!important; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif!important; }
+    .sola-card-inventory .sola-inv-status-dot { display: none!important; }
+    .sola-card-inventory .sola-inv-rows { display: grid!important; grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(0, 1fr)); gap: 0!important; }
+    .sola-card-inventory :is(.sola-inv-inhand, .sola-inv-carried, .sola-inv-concealed) { padding: 16px!important; border: 0!important; border-radius: 0!important; background: none!important; min-width: 0; }
+    .sola-card-inventory .sola-inv-inhand { background: linear-gradient(160deg, rgba(243,183,75,.09), transparent)!important; }
+    .sola-card-inventory .sola-inv-carried { border-left: 1px solid #625e51!important; background: rgba(122,139,153,.045)!important; }
+    .sola-card-inventory .sola-inv-concealed { border-left: 1px solid #625e51!important; background: linear-gradient(135deg, rgba(133,146,230,.06), rgba(0,0,0,.2))!important; }
+    .sola-card-inventory :is(.sola-inv-inhand, .sola-inv-carried, .sola-inv-concealed) > div:first-child { gap: 8px!important; margin-bottom: 13px!important; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .05em!important; }
+    .sola-card-inventory .sola-inv-rows svg { flex-shrink: 0; width: 18px!important; height: 18px!important; }
+    .sola-card-inventory :is(.sola-inv-inhand-val, .sola-inv-carried-val, .sola-inv-concealed-val) { color: #eadcc6!important; font: 15px/1.8 Georgia,'Times New Roman',serif!important; }
+    .sola-card-inventory .sola-inv-inhand-val { color: #eed6a6!important; font-size: 17px!important; }
+    details.sola-card-inventory .sola-inv-whisper { margin-top: 20px!important; }
+    .sola-card-inventory .sola-inv-carried:not(:has(.sola-inv-carried-val:not(:empty))), .sola-card-inventory .sola-inv-concealed:not(:has(.sola-inv-concealed-val:not(:empty))), .sola-card-inventory .sola-inv-whisper:not(:has(.sola-inv-whisper-text:not(:empty))) { display: none!important; }
+    .sola-card-inventory .sola-inv-rows:not(:has(.sola-inv-carried-val:not(:empty))) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sola-card-inventory .sola-inv-rows:not(:has(.sola-inv-concealed-val:not(:empty))) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .sola-card-inventory .sola-inv-rows:not(:has(:is(.sola-inv-carried-val, .sola-inv-concealed-val):not(:empty))) { grid-template-columns: minmax(0, 1fr); }
+    .sola-card-inventory .sola-inv-slip:last-child { border-bottom: 0!important; }
+    @media (max-width: 640px) {
+      .armory-locker { padding-left: 28px; background: linear-gradient(90deg, #30312c 0 22px, #181510 22px); }
+      .armory-key { left: 3px; width: 16px; height: 75px; }
+      .sola-card-inventory .sola-inv-slip { padding: 18px 12px!important; }
+      .sola-card-inventory .sola-inv-slip::before { left: -26px; width: 20px; }
+      .sola-card-inventory .sola-inv-rows { grid-template-columns: minmax(0, 1fr)!important; }
+      .sola-card-inventory :is(.sola-inv-inhand, .sola-inv-carried, .sola-inv-concealed) { padding: 15px 9px!important; border-left: 0!important; border-top: 1px solid #625e51!important; }
+    }
+    .atelier-needle { position: relative; z-index: 1; display: block; width: min(100%, 300px); height: auto; margin: 14px 0 -15px auto; pointer-events: none; }
+    .sola-card-wardrobe .sola-ward-slip { position: relative; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px 26px; min-width: 0; box-sizing: border-box; margin: 18px 0 28px!important; padding: 28px 26px 34px!important; border: 0!important; border-top: 5px solid #8d7652!important; border-radius: 0 0 12px 2px!important; background: repeating-linear-gradient(0deg, rgba(215,210,167,.035) 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, rgba(215,210,167,.035) 0 1px, transparent 1px 5px), #30342b!important; box-shadow: 0 6px 12px rgba(0,0,0,.2)!important; white-space: normal; overflow-wrap: anywhere; }
+    .sola-card-wardrobe .sola-ward-slip::after { content: ""; position: absolute; inset: 10px 10px 12px; border: 1px dashed #857e5d; border-top: 0; pointer-events: none; }
+    .sola-card-wardrobe .sola-ward-header { grid-column: 1 / -1; gap: 16px!important; padding-bottom: 15px!important; margin-bottom: 0!important; border-bottom: 1px dashed #8f8b68!important; }
+    .sola-card-wardrobe .sola-ward-char { color: #efe3c9!important; font: 400 28px/1.25 Georgia,'Times New Roman',serif!important; min-width: 0; overflow-wrap: anywhere; }
+    .sola-card-wardrobe .sola-ward-cond-badge { position: relative; max-width: 100%; box-sizing: border-box; padding: 8px 13px!important; border: 1px solid #b99c68!important; border-radius: 1px 1px 8px 1px!important; background: #554a32!important; color: #f0dfb7!important; font: 600 12px/1.5 ui-sans-serif, system-ui, sans-serif!important; transform: rotate(2deg); }
+    .sola-card-wardrobe .sola-ward-cond-badge > span:first-child { flex-shrink: 0; width: 5px!important; height: 5px!important; background: #cdb582!important; box-shadow: none!important; border-radius: 50%!important; }
+    .sola-card-wardrobe .sola-ward-section { grid-column: 1; margin-bottom: 0!important; }
+    .sola-card-wardrobe .sola-ward-label { color: #c7c39b!important; font: 700 11px/1.5 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .1em!important; margin-bottom: 10px!important; }
+    .sola-card-wardrobe .sola-ward-layers { padding: 0!important; border: 0!important; border-radius: 0!important; background: none!important; color: #f0e3c9!important; font: 19px/1.85 Georgia,'Times New Roman',serif!important; }
+    .sola-card-wardrobe .sola-ward-tells-box { grid-column: 1; margin-bottom: 0!important; padding-top: 16px; border-top: 1px dashed #857e5d; }
+    .sola-card-wardrobe .sola-ward-tells { padding: 0!important; color: #d5d2b5!important; font: italic 15px/1.8 Georgia,'Times New Roman',serif!important; }
+    details.sola-card-wardrobe .sola-ward-whisper { grid-column: 2; grid-row: 2 / span 2; align-self: start; transform: rotate(-1deg); }
+    .sola-card-wardrobe .sola-ward-whisper::after { content: ""; position: absolute; top: -4px; right: 14px; width: 9px; height: 9px; border: 1px solid #e3c78b; border-radius: 50%; background: #a1854e; box-shadow: 0 2px 3px rgba(0,0,0,.35); }
+    .sola-card-wardrobe .sola-ward-slip:not(:has(.sola-ward-whisper-text:not(:empty))) { grid-template-columns: minmax(0, 1fr); }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note { --shadowWidth: 0!important; position: relative; margin: 0!important; padding: 13px 15px!important; border: 1px solid #aa8959!important; border-left-color: #8f6b3e!important; border-radius: 4px 8px 6px 3px!important; background: radial-gradient(ellipse at 0% 100%, rgba(115,73,34,.15), transparent 65%), repeating-linear-gradient(97deg, rgba(78,49,24,.025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #dec18e, #ead5ae)!important; color: #1a1310!important; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note::before { display: none!important; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note .sola-director-label { display: block; margin-bottom: 3px; color: #654321!important; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif!important; letter-spacing: .06em; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note .sola-director-quote { display: block; color: #1a1310!important; font: italic 550 13px/1.65 ui-sans-serif, system-ui, sans-serif!important; overflow-wrap: anywhere; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note, :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-note * { text-shadow: none!important; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-quote:not(:empty)::before { content: "“"; }
+    :is(.sola-card-wardrobe, .sola-card-arrow, .sola-card-inventory, .sola-card-cast) .sola-director-quote:not(:empty)::after { content: "”"; }
+    .sola-card-wardrobe .sola-ward-whisper:not(:has(.sola-ward-whisper-text:not(:empty))), .sola-card-wardrobe .sola-ward-tells-box:not(:has(.sola-ward-tells:not(:empty))) { display: none!important; }
+    .sola-card-wardrobe .sola-ward-slip:last-child { margin-bottom: 0!important; }
+    @media (max-width: 640px) {
+      .sola-card-wardrobe .sola-ward-slip { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 24px 20px 30px!important; }
+      .sola-card-wardrobe .sola-ward-char { font-size: 25px!important; }
+      .sola-card-wardrobe .sola-ward-layers { font-size: 17px!important; }
+      details.sola-card-wardrobe .sola-ward-whisper { grid-column: 1; grid-row: auto; margin: 3px 0!important; transform: none; }
+    }
+    .easel-chart { overflow: hidden; border: 1px solid #806c43; background: linear-gradient(rgba(212,176,103,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(212,176,103,.025) 1px, transparent 1px), #171916; background-size: 24px 24px; }
+    .easel-heading { display: flex; align-items: center; justify-content: center; gap: 22px; padding: 22px; border-bottom: 3px double #6b6045; background: radial-gradient(ellipse at center, rgba(243,183,75,.08), transparent 70%); }
+    .easel-heading svg { display: block; width: 128px; height: 128px; flex: 0 0 128px; }
+    .easel-heading h2 { margin: 5px 0 7px; color: #edcf98; font: 400 28px/1.2 Georgia,'Times New Roman',serif; }
+    .easel-heading p { margin: 0; color: #b6aa95; font: 11px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .easel-chart h3 { margin: 0 0 10px; color: #dfbf85; font: 400 17px/1.3 Georgia,'Times New Roman',serif; }
+    .easel-chart h3 span { margin-right: 7px; color: #a3916e; font: 12px/1.4 Georgia,'Times New Roman',serif; }
+    .easel-checks, .easel-currents, .easel-storyboard, .easel-vault { padding: 18px 22px; border-bottom: 1px solid #514a37; }
+    .easel-check-list { display: flex; flex-wrap: wrap; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .easel-check-list li { padding: 6px 9px; border: 1px solid #60704c; color: #d1ddbb; background: rgba(154,168,122,.07); font: 11px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .easel-check-list li::before { margin-right: 6px; color: #acbe8d; content: "✓"; }
+    .easel-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-bottom: 1px solid #514a37; }
+    .easel-stage section { min-width: 0; padding: 20px 22px; }
+    .easel-stage section + section { border-left: 1px solid #514a37; }
+    .easel-chart p { color: #e1d6c1; font: 13px/1.6 Georgia,'Times New Roman',serif; }
+    .easel-stage p, .easel-currents p, .easel-vault p { margin: 0; }
+    .easel-currents { border-left: 3px solid #9aa87a; background: rgba(154,168,122,.035); }
+    .easel-branches { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; padding: 19px 0 0; margin: 16px 0 0; list-style: none; }
+    .easel-branches::before { position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: #a78b53; content: ""; }
+    .easel-branches li { position: relative; padding: 10px 6px; border: 1px solid #7d6942; background: #26251b; color: #e8ca92; font: 12px/1.45 Georgia,'Times New Roman',serif; text-align: center; overflow-wrap: anywhere; }
+    .easel-branches li::before { position: absolute; top: -20px; left: 50%; width: 1px; height: 19px; background: #a78b53; content: ""; }
+    .easel-vault { border-bottom: 0; background: rgba(224,122,95,.06); }
+    .easel-vault h3 { color: #e0a18a; }
+    .easel-vault strong { color: #d2dfbb; font-weight: 600; }
+    @media (max-width: 600px) {
+      .easel-heading { flex-direction: column; gap: 9px; padding: 18px 14px; text-align: center; }
+      .easel-heading svg { width: 112px; height: 112px; flex-basis: 112px; }
+      .easel-heading h2 { font-size: 24px; }
+      .easel-stage { grid-template-columns: minmax(0, 1fr); }
+      .easel-stage section + section { border-left: 0; border-top: 1px solid #514a37; }
+      .easel-stage section, .easel-checks, .easel-currents, .easel-storyboard, .easel-vault { padding: 16px 14px; }
+      .easel-branches { grid-template-columns: minmax(0, 1fr); padding: 0 0 0 16px; gap: 8px; }
+      .easel-branches::before { top: 0; bottom: 0; left: 0; right: auto; width: 1px; height: auto; }
+      .easel-branches li { text-align: left; padding: 8px 12px; }
+      .easel-branches li::before { top: 50%; left: -17px; width: 16px; height: 1px; }
+    }
+    .cast-playhouse { --cast-clearance: 150px; position: relative; margin-top: 18px; overflow: hidden; border-bottom: 6px double #8e7049; background: radial-gradient(ellipse at 30% 15%, rgba(212,176,103,.1), transparent 60%), #1b1915; box-shadow: inset 1px 0 #624b36, inset -1px 0 #624b36; }
+    .cast-canopy { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 150px; pointer-events: none; }
+    .sola-card-cast .sola-cast-dossier { position: relative; display: grid!important; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 0!important; min-width: 0; white-space: normal; }
+    .sola-card-cast .sola-cast-dossier:not(:has(.sola-cast-loc-bar)) { padding-top: var(--cast-clearance); }
+    .sola-card-cast :is(.sola-cast-loc-bar, .sola-cast-facts-box, .sola-cast-whisper) { grid-column: 1 / -1; }
+    .sola-card-cast .sola-cast-loc-bar { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 38px 100px 30px; border: 0; border-radius: 0; background: none; text-align: center; }
+    .sola-card-cast :is(.sola-cast-loc-lab, .sola-cast-lab) { display: block; color: #baa98d; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .sola-card-cast .sola-cast-loc-lab { color: #d4b067; }
+    .sola-card-cast .sola-cast-loc-val { color: #f0dcc4; font: 19px/1.6 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    .sola-card-cast :is(.sola-cast-speakers, .sola-cast-ambient) { min-width: 0; padding: 26px 28px; border: 0; border-radius: 0; background: none; opacity: 1; }
+    .sola-card-cast .sola-cast-speakers { padding-bottom: 34px; background: radial-gradient(ellipse at 50% 0%, rgba(212,176,103,.07), transparent 80%); }
+    .sola-card-cast .sola-cast-speakers .sola-cast-lab { color: #d4b067; }
+    .sola-card-cast .sola-cast-ambient { border-left: 1px dashed #75654c; background: rgba(0,0,0,.1); }
+    .sola-card-cast .sola-cast-speakers-val { display: block; margin-top: 15px; color: #ead2a1; font: 400 27px/1.5 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    .sola-card-cast .sola-cast-ambient-val { display: block; margin-top: 15px; color: #cfc2ae; font: italic 15px/1.8 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    .sola-card-cast .sola-cast-facts-box { margin: 0 24px; padding: 20px 0; border: 0; border-top: 3px double #716148; border-radius: 0; background: none; }
+    .sola-card-cast .sola-cast-facts-box .sola-cast-lab { margin-bottom: 10px; }
+    .sola-card-cast .sola-cast-facts-box .sola-cast-lab::after { display: none; }
+    .sola-card-cast .sola-cast-facts-val { display: block; color: #e0d0b7; font: 15px/1.9 Georgia,'Times New Roman',serif; overflow-wrap: anywhere; }
+    details.sola-card-cast .sola-cast-whisper { margin: 10px 24px 24px!important; }
+    .sola-card-cast .sola-cast-dossier:not(:has(.sola-cast-speakers)) .sola-cast-ambient, .sola-card-cast .sola-cast-dossier:not(:has(.sola-cast-ambient)) .sola-cast-speakers { grid-column: 1 / -1; border-left: 0; }
+    .sola-card-cast :is(.sola-cast-loc-bar, .sola-cast-speakers, .sola-cast-ambient, .sola-cast-facts-box, .sola-cast-whisper):not(:has(:is(.sola-cast-loc-val, .sola-cast-speakers-val, .sola-cast-ambient-val, .sola-cast-facts-val, .sola-cast-whisper-text):not(:empty))) { display: none!important; }
+    @media (max-width: 540px) {
+      .cast-playhouse { --cast-clearance: 95px; }
+      .cast-canopy { height: 95px; }
+      .sola-card-cast .sola-cast-dossier { grid-template-columns: minmax(0, 1fr); padding-top: 55px; }
+      .sola-card-cast .sola-cast-loc-bar { padding: 25px 16px; }
+      .sola-card-cast :is(.sola-cast-speakers, .sola-cast-ambient) { padding: 20px 16px; }
+      .sola-card-cast .sola-cast-speakers-val { font-size: 25px; }
+      .sola-card-cast .sola-cast-ambient { border-left: 0; }
+      .sola-card-cast .sola-cast-facts-box { margin: 0 16px; }
+      details.sola-card-cast .sola-cast-whisper { margin: 10px 16px 20px!important; }
+    }
+    details.sola-card-tempo { --cadence: #bac3c7; --accent: var(--cadence); }
+    .tempo-drawer-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; flex: 1; min-width: 0; }
+    .tempo-drawer-title .track-name { flex: 1 1 150px; }
+    details.sola-card-tempo:has(.sola-tempo-steady) { --cadence: #f4a261; }
+    details.sola-card-tempo:has(.sola-tempo-drive) { --cadence: #ee6c4d; }
+    .sola-card-tempo .sola-tempo-gate { display: inline-flex!important; flex: 0 1 auto; max-width: 100%; margin: 0!important; padding: 4px 8px!important; border: 1px solid var(--cadence)!important; border-radius: 2px!important; background: transparent!important; box-shadow: none!important; font: 600 10px/1.5 ui-sans-serif, system-ui, sans-serif!important; }
+    .sola-card-tempo .sola-tempo-gate > span { display: none!important; padding: 0!important; border: 0!important; border-radius: 0!important; background: none!important; box-shadow: none!important; color: var(--cadence)!important; font: inherit!important; text-shadow: none!important; }
+    .sola-card-tempo .sola-tempo-neutral > span:nth-child(2), .sola-card-tempo .sola-tempo-steady > span:nth-child(3), .sola-card-tempo .sola-tempo-drive > span:nth-child(4) { display: inline!important; }
+    .tempo-measure { padding: 24px 0 8px; border-top: 3px double #806c48; border-bottom: 3px double #806c48; margin-top: 20px; }
+    .tempo-measure-label { color: #c9ad7a; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+    .tempo-score { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 20px; }
+    .tempo-score::before { content: ""; position: absolute; left: 0; right: 0; top: 26px; height: 37px; background: repeating-linear-gradient(to bottom, #766346 0 1px, transparent 1px 12px); pointer-events: none; }
+    .tempo-note { position: relative; display: grid; justify-items: center; min-width: 0; color: #8c7e64; opacity: .6; }
+    .tempo-note svg { display: block; width: 50px; height: 90px; fill: currentColor; stroke: currentColor; }
+    .tempo-cues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 7px 0 22px; }
+    .tempo-cue { min-width: 0; }
+    .tempo-gear-name { color: #b9a78b; font: 700 11px/1.6 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .tempo-cue h3 { margin: 10px 0 12px; color: #e2c99f; font: 400 23px/1.35 Georgia,'Times New Roman',serif; }
+    .tempo-cue p { margin: 0; color: #cdbca7; font: 14px/1.8 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .sola-card-tempo:has(.sola-tempo-neutral) .tempo-note-neutral, .sola-card-tempo:has(.sola-tempo-steady) .tempo-note-steady, .sola-card-tempo:has(.sola-tempo-drive) .tempo-note-drive { color: var(--cadence); opacity: 1; filter: drop-shadow(0 0 5px var(--cadence)); }
+    .sola-card-tempo:has(.sola-tempo-neutral) .tempo-cue-neutral .tempo-gear-name, .sola-card-tempo:has(.sola-tempo-steady) .tempo-cue-steady .tempo-gear-name, .sola-card-tempo:has(.sola-tempo-drive) .tempo-cue-drive .tempo-gear-name { color: var(--cadence); }
+    .sola-card-tempo .paper-note { margin-top: 20px; }
+    .tempo-length { padding-top: 16px; border-top: 1px solid #5e503b; color: #b4a28a; font: italic 12px/1.7 ui-sans-serif, system-ui, sans-serif; }
+    @media (max-width: 640px) {
+      .tempo-cues { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+      .tempo-cue { padding-top: 16px; border-top: 1px solid #5e503b; }
+      .tempo-cue h3 { margin: 7px 0 9px; font-size: 22px; }
+    }
+    .footer { margin: 13px 0 0; color: #897e73; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .track-card[open] .track-body { animation: reveal .38s cubic-bezier(.16, 1, .3, 1); }
+    .hud-shell[open] .hud-body { animation: reveal .38s cubic-bezier(.16, 1, .3, 1); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 760px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 50px; }
+      .turn { padding: 14px 12px 15px; }
+      .astro-layout, .feeling-layout { grid-template-columns: minmax(0, 1fr); }
+      .astro-art { width: min(100%, 240px); }
+      .feeling-art { width: min(100%, 245px); }
+      .hud-shell > summary { padding: 12px 42px 13px 12px; gap: 8px; }
+      .hud-title strong { font-size: 19px; }
+      .hud-count { margin-left: 46px; }
+      .track-card > summary { padding: 10px 39px 10px 10px; gap: 7px; }
+      .track-name strong { font-size: 17px; }
+      .track-body { padding: 10px; }
+    }
+    @media (max-width: 540px) {
+      .grid-2, .grid-3, .faculty-grid { grid-template-columns: minmax(0, 1fr); }
+      .astro-almanac { padding: 17px; }
+      .almanac-heading { gap: 12px; }
+      .almanac-day { padding-right: 12px; }
+      .almanac-day strong { font-size: 44px; }
+      .almanac-horizon strong { font-size: 26px; }
+      .weather-readout { padding: 13px; }
+      .weather-steps { grid-template-columns: minmax(0, 1fr); margin-bottom: 14px; gap: 0; }
+      .weather-steps li { display: flex; gap: 10px; align-items: center; padding: 5px 8px; border-bottom: 1px solid #514334; text-align: left; font-size: 10px; }
+      .weather-steps b { flex: 0 0 14px; margin: 0; font-size: 12px; }
+      .weather-steps .active { border-left: 2px solid #d8b471; border-bottom-color: #8e7148; background: rgba(243,183,75,.09); }
+      .current-grid { grid-template-columns: minmax(0, 1fr); }
+      .phase-track { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .turn-copy { font-size: 15px; }
+      .matrix-nameplate { flex-direction: column; padding: 20px 22px; gap: 12px; text-align: center; }
+      .matrix-nameplate h2 { font-size: 27px; }
+      .matrix-cameo { flex-basis: auto; width: 126px; height: 154px; }
+      .matrix-heading::after { margin: 13px auto 0; }
+      .matrix-presence { grid-template-columns: minmax(0, 1fr); padding: 12px 14px; gap: 12px; }
+      .matrix-traits { grid-template-columns: minmax(0, 1fr); margin: 0 14px; gap: 14px; }
+      .matrix-trait:last-child { padding: 12px 0 0; border-left: 0; border-top: 1px solid #494034; }
+      .matrix-entries { padding: 0 14px 6px; }
+      .matrix-entries > div { grid-template-columns: minmax(0, 1fr); gap: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hud-shell, .track-card, .hud-chevron, .card-chevron, .hud-shell[open] .hud-body, .track-card[open] .track-body { transition: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">✦</span>
+      <span class="rail-dot">▣</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local showcase</span>
+      </header>
+      <main class="page">
+        <div class="page-kicker">Autumn Golden Hour · unified tracker preview</div>
+        <h1>Sola’s Celestial HUD</h1>
+        <p class="intro">A shareable mockup of the redesigned tracker set: zodiac instruments, heraldic sigils, folios, and collapsible cards on the obsidian V3 chat surface. Open any tracker row to inspect its design. All values are illustrative; this file does not change prompts or regexes.</p>
+        <nav class="index" aria-label="Tracker index">
+          <a href="#astrolabe">Astrolabe</a><a href="#feeling">Feeling Engine</a><a href="#matrix">Character Matrix</a><a href="#heart">Heart Engine</a><a href="#bond">Bond &amp; Chemistry</a><a href="#thought">Thought Engine</a><a href="#current">Inner Current</a><a href="#wardrobe">Wardrobe</a><a href="#easel">Easel</a><a href="#arrow">Wind’s Arrow</a><a href="#inventory">Carried Inventory</a><a href="#scene">Active Scene Facts</a><a href="#notebook">Director Notebook</a><a href="#tempo">Tempo Agitator</a>
+        </nav>
+        <article class="turn">
+          <div class="turn-meta"><strong>Guinevere</strong><span>·</span><span>illustrative scene</span></div>
+          <p class="turn-copy">The petition rests beside the silver cup. Its split falcon seal catches the last light through the western gallery window.</p>
+          <p class="turn-note">The outer HUD is open for this showcase. Each tracker drawer below starts collapsed, as it would in chat.</p>
+          <details class="hud-shell" open>
+            <summary>
+              <span class="hud-crest" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5 14.4 9.6 21.5 12l-7.1 2.4L12 21.5l-2.4-7.1L2.5 12l7.1-2.4z"/><circle cx="12" cy="12" r="2.2"/></svg></span>
+              <span class="hud-title"><strong>Sola’s Unified Tracker HUD</strong><small>Fourteen distinct sigils · one dark, collapsible system</small></span>
+              <span class="hud-count">14 DESIGNS</span>
+              <span class="hud-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="hud-body">
+              <p class="hud-disclaimer">Concept gallery only. Optional V3 modules remain optional; sample values are not live story state.</p>
+
+              <details class="track-card astro" id="astrolabe">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><circle class="line" cx="16" cy="16" r="13.2"/><circle class="line" cx="16" cy="16" r="10.2" opacity=".55"/><path class="line" d="M16 2.8v3m0 20.4v3M2.8 16h3m20.4 0h3M6.7 6.7l2.1 2.1m14.4 14.4 2.1 2.1M25.3 6.7l-2.1 2.1M8.8 23.2l-2.1 2.1"/><path d="m16 9.8 1.7 4.5 4.5 1.7-4.5 1.7-1.7 4.5-1.7-4.5-4.5-1.7 4.5-1.7z" fill="none" stroke="var(--gold)" stroke-width=".9"/><path class="line" d="m16 16 7.2-7.2" stroke="var(--amber)"/><path d="m23.2 8.8-1 3.3-2.3-2.3z" fill="var(--amber)"/></svg>
+                  <span class="track-name"><strong>Sola’s Celestial Astrolabe</strong><small>Chronology · seasonal progression &amp; elapsed hours</small></span>
+                  <span class="track-badge">ASTROLABE</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Illustrative chronology</span>
+                  <div class="astro-layout">
+                    <svg class="astro-art" viewBox="0 0 260 260" role="img" aria-label="Engraved zodiac astrolabe with solar star, lunar crescent and alidade">
+                      <defs><linearGradient id="astro-gold" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#e07a5f"/><stop offset=".52" stop-color="#f3b74b"/><stop offset="1" stop-color="#f4a261"/></linearGradient><radialGradient id="astro-enamel"><stop stop-color="#f3b74b" stop-opacity=".16"/><stop offset="1" stop-color="#1a1310" stop-opacity=".02"/></radialGradient></defs>
+                      <circle class="engrave" cx="130" cy="130" r="112" stroke-width="1.35"/><circle class="fine" cx="130" cy="130" r="103"/><circle class="engrave" cx="130" cy="130" r="82" stroke-width="1.05"/><circle class="fine" cx="130" cy="130" r="58"/>
+                      <g class="fine" stroke-linecap="round"><path d="M130 18v13m0 201v10M18 130h13m201 0h10M51 51l9 9m140 140 9 9M209 51l-9 9M60 200l-9 9"/><path d="M130 18v7m0 220v7M18 130h7m220 0h7M51 51l5 5m148 148 5 5M209 51l-5 5M56 204l-5 5" opacity=".75"/></g>
+                      <g class="gem"><path d="m130 24 4 5-4 5-4-5z"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(30 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(60 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(90 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(120 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(150 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(180 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(210 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(240 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(270 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(300 130 130)"/><path d="m130 24 4 5-4 5-4-5z" transform="rotate(330 130 130)"/></g>
+                      <g class="fine" opacity=".6"><ellipse cx="130" cy="130" rx="22" ry="49" transform="rotate(35 130 130)"/><ellipse cx="130" cy="130" rx="22" ry="49" transform="rotate(-35 130 130)"/><path d="M80 130h100M130 80v100"/></g>
+                      <circle cx="130" cy="130" r="42" fill="url(#astro-enamel)" stroke="url(#astro-gold)" stroke-width="1.2"/><path d="m130 91 6 26 22-15-15 22 26 6-26 6 15 22-22-15-6 26-6-26-22 15 15-22-26-6 26-6-15-22 22 15z" fill="none" stroke="url(#astro-gold)" stroke-width="1.2" stroke-linejoin="round"/><path d="M136 110a18 18 0 1 0 14 27 14 14 0 1 1-14-27z" fill="url(#astro-gold)" fill-opacity=".3" stroke="url(#astro-gold)" stroke-width="1"/><path d="M130 130 178 82" stroke="url(#astro-gold)" stroke-width="1.5"/><path d="m178 82-2 10-6-6z" fill="url(#astro-gold)"/><circle cx="130" cy="130" r="3" fill="#f3b74b"/>
+                    </svg>
+                    <div class="astro-almanac">
+                      <div class="almanac-heading">
+                        <div class="almanac-day"><span class="almanac-label">Campaign Day</span><strong>42</strong></div>
+                        <div class="almanac-horizon"><span class="almanac-label">Horizon</span><strong>Dusk</strong></div>
+                      </div>
+                      <div class="almanac-chronology"><span class="almanac-label">Macro Chronology</span><strong>Mid-Autumn · 4th Year of the Eclipse</strong></div>
+                      <div class="almanac-elapsed"><span class="almanac-label">Elapsed Beat</span><strong>~20 minutes</strong></div>
+                      <div class="almanac-graduation" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                  <aside class="paper-note"><span class="panel-label">Sola’s Chronometer Note</span><p>The last gold rests across the western tower.</p></aside>
+                </div>
+              </details>
+
+              <details class="track-card feeling" id="feeling">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2.5 27.5 6.5v7.2c0 7.8-4.4 13-11.5 16-7.1-3-11.5-8.2-11.5-16V6.5z" fill="rgba(26,19,16,.7)" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><path d="M16 5.2 24.8 8.4v5.3c0 5.9-3.4 10.2-8.8 12.9-5.4-2.7-8.8-7-8.8-12.9V8.4z" fill="none" stroke="rgba(240,220,196,.5)" stroke-width=".55"/><path d="M16 6c2.8 2.4 3.2 4.7 0 8-3.2-3.3-2.8-5.6 0-8z" fill="#f4a261"/><path d="M25.5 16c-2.4 2.8-4.7 3.2-8 0 3.3-3.2 5.6-2.8 8 0z" fill="#9aa87a"/><path d="M16 25.5c-2.8-2.4-3.2-4.7 0-8 3.2 3.3 2.8 5.6 0 8z" fill="#f3b74b"/><path d="M6.5 16c2.4-2.8 4.7-3.2 8 0-3.3 3.2-5.6 2.8-8 0z" fill="#ee6c4d"/><circle cx="16" cy="16" r="2.4" fill="#211e1a" stroke="#f3b74b" stroke-width=".7"/><circle cx="16" cy="16" r=".75" fill="#fff0c8"/></svg>
+                  <span class="track-name"><strong>Sola’s Feeling Engine</strong><small>Inner weather · emotional measures</small></span>
+                  <span class="track-badge">METRONOMICS</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Heraldic rose · four distinct currents</span>
+                  <div class="feeling-layout">
+                    <div class="feeling-art">
+                      <svg viewBox="0 0 440 440" role="img" aria-label="Ornate, symmetrical enamel shield with four color-coded rose petals and a central moonstone">
+                        <defs>
+                          <linearGradient id="feeling-gilding" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#f3b74b"/><stop offset=".52" stop-color="#e07a5f"/><stop offset="1" stop-color="#f4a261"/></linearGradient>
+                          <linearGradient id="feeling-enamel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#33271f"/><stop offset=".55" stop-color="#211e1a"/><stop offset="1" stop-color="#17191a"/></linearGradient>
+                          <linearGradient id="feeling-tenderness" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ee6c4d" stop-opacity=".48"/><stop offset="1" stop-color="#ee6c4d" stop-opacity=".18"/></linearGradient>
+                          <linearGradient id="feeling-fury" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4a261" stop-opacity=".5"/><stop offset="1" stop-color="#e07a5f" stop-opacity=".2"/></linearGradient>
+                          <linearGradient id="feeling-dread" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9aa87a" stop-opacity=".48"/><stop offset="1" stop-color="#d9c9a5" stop-opacity=".18"/></linearGradient>
+                          <linearGradient id="feeling-yearning" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#f3b74b" stop-opacity=".5"/><stop offset="1" stop-color="#e07a5f" stop-opacity=".2"/></linearGradient>
+                          <radialGradient id="feeling-moonstone" cx="34%" cy="27%"><stop stop-color="#fff0c8"/><stop offset=".42" stop-color="#dfb977"/><stop offset="1" stop-color="#684b3a"/></radialGradient>
+                        </defs>
+                        <g fill="none" stroke="url(#feeling-gilding)" stroke-linejoin="round">
+                          <path d="M220 22 351 70v115c0 85-48 157-131 229-83-72-131-144-131-229V70z" fill="url(#feeling-enamel)" stroke-width="2.2"/>
+                          <path d="M220 42 332 83v100c0 76-42 139-112 202-70-63-112-126-112-202V83z" stroke-width="1.1" opacity=".86"/>
+                          <path d="M220 55 318 91v91c0 67-37 124-98 181-61-57-98-114-98-181V91z" stroke="rgba(240,220,196,.55)" stroke-width=".9" opacity=".82"/>
+                        </g>
+                        <g fill="none" stroke="url(#feeling-gilding)" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M118 104c22 6 34 22 37 43-8-10-17-13-28-12m195-31c-22 6-34 22-37 43 8-10 17-13 28-12" stroke-width="1.5"/>
+                          <path d="M120 270c20 4 32 18 37 37-9-8-18-10-28-8m191-29c-20 4-32 18-37 37 9-8 18-10 28-8" stroke-width="1.4"/>
+                          <path d="M156 103l5 8-5 8-5-8zM284 103l5 8-5 8-5-8zM120 220l5 8-5 8-5-8zM320 220l5 8-5 8-5-8z" stroke-width="1.2"/>
+                        </g>
+                        <g fill="url(#feeling-gilding)" stroke="#f3b74b" stroke-width=".8" stroke-linejoin="round">
+                          <path d="M220 54c11 11 13 21 0 31-13-10-11-20 0-31z"/>
+                          <path d="M220 63c-5 8-12 12-20 12 5-8 11-11 20-12zm0 0c5 8 12 12 20 12-5-8-11-11-20-12z"/>
+                        </g>
+                        <g stroke="url(#feeling-gilding)" stroke-width="1.6" stroke-linejoin="round">
+                          <path d="M220 112c36 29 42 62 0 102-42-40-36-73 0-102z" fill="url(#feeling-fury)"/>
+                          <path d="M323 215c-29 36-62 42-102 0 40-42 73-36 102 0z" fill="url(#feeling-dread)"/>
+                          <path d="M220 318c-36-29-42-62 0-102 42 40 36 73 0 102z" fill="url(#feeling-yearning)"/>
+                          <path d="M117 215c29-36 62-42 102 0-40 42-73 36-102 0z" fill="url(#feeling-tenderness)"/>
+                        </g>
+                        <circle cx="220" cy="215" r="43" fill="url(#feeling-moonstone)" stroke="url(#feeling-gilding)" stroke-width="2"/>
+                        <circle cx="220" cy="215" r="34" fill="none" stroke="#f1d8a8" stroke-width=".9" opacity=".72"/>
+                        <path d="M220 183l7 22 22 10-22 7-7 22-7-22-22-7 22-10z" fill="none" stroke="#fff0c8" stroke-width="1.7" stroke-linejoin="round"/>
+                        <circle cx="220" cy="215" r="5" fill="#f3b74b"/><circle cx="220" cy="215" r="1.8" fill="#fff4dc"/>
+                        <g fill="none" stroke="url(#feeling-gilding)" stroke-width="1.25" stroke-linecap="round">
+                          <path d="M176 343c15 8 29 12 44 13m44-13c-15 8-29 12-44 13"/>
+                          <path d="M198 360l22 13 22-13M208 371l12 10 12-10"/>
+                        </g>
+                        <g fill="#f3b74b">
+                          <path d="M220 83l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
+                          <circle cx="144" cy="215" r="2.2"/><circle cx="296" cy="215" r="2.2"/><circle cx="220" cy="337" r="2.2"/>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="weather-readout">
+                      <div class="weather-state"><div><span class="weather-label">Inner Weather · IW 1</span><strong>Cool</strong></div><span class="weather-kind">OUTWARD<br>BEARING</span></div>
+                      <ol class="weather-steps" start="0" aria-label="Inner Weather scale, 0 to 4"><li><b>0</b>Frostbound</li><li class="active" aria-current="step"><b>1</b>Cool</li><li><b>2</b>Temperate</li><li><b>3</b>Warm Front</li><li><b>4</b>Fervent</li></ol>
+                      <div class="currents-caption"><span>Four Currents</span><small>TFDY · 0–4 each</small></div>
+                      <div class="current-grid">
+                        <div class="current-stat" style="--stat:#ee6c4d"><span class="current-stat-label">Tenderness</span><div class="current-stat-row"><strong>3<span class="current-trend" aria-label="rising">↑</span></strong><span class="current-measure" role="meter" aria-label="Tenderness" aria-valuemin="0" aria-valuemax="4" aria-valuenow="3"><i class="filled"></i><i class="filled"></i><i class="filled"></i><i></i></span></div></div>
+                        <div class="current-stat" style="--stat:#f4a261"><span class="current-stat-label">Fury</span><div class="current-stat-row"><strong>1<span class="current-trend" aria-label="falling">↓</span></strong><span class="current-measure" role="meter" aria-label="Fury" aria-valuemin="0" aria-valuemax="4" aria-valuenow="1"><i class="filled"></i><i></i><i></i><i></i></span></div></div>
+                        <div class="current-stat" style="--stat:#9aa87a"><span class="current-stat-label">Dread</span><div class="current-stat-row"><strong>0</strong><span class="current-measure" role="meter" aria-label="Dread" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><i></i><i></i><i></i><i></i></span></div></div>
+                        <div class="current-stat" style="--stat:#f3b74b"><span class="current-stat-label">Yearning</span><div class="current-stat-row"><strong>4<span class="current-trend" aria-label="rising">↑</span></strong><span class="current-measure" role="meter" aria-label="Yearning" aria-valuemin="0" aria-valuemax="4" aria-valuenow="4"><i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i></span></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="track-card matrix" id="matrix">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><ellipse cx="16" cy="16" rx="10" ry="13" fill="#28221b" stroke="#d6af70" stroke-width="1.1"/><ellipse cx="16" cy="16" rx="8" ry="11" fill="none" stroke="#d6af70" stroke-opacity=".45" stroke-width=".6"/><path d="M12 13c0-6 8-6 8 0l-1 4-3 2-3-2z" fill="#b18b59" stroke="#f0dcc4" stroke-width=".6"/><path d="m10 24 1-4 3-2 2 3 2-3 3 2 1 4-6 3z" fill="#665047" stroke="#d6af70" stroke-width=".8"/><path d="M3 20Q0 13 4 8m25 12q3-7-1-12M16 1v3m0 24v3" fill="none" stroke="#d6af70" stroke-width=".9"/></svg>
+                  <span class="track-name"><strong>Sola’s Character Matrix</strong><small>Character register · identity, disposition &amp; boundaries</small></span>
+                  <span class="track-badge">CHARACTER SPINE</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <div class="matrix-register">
+                    <header class="matrix-nameplate">
+                      <svg class="matrix-cameo" viewBox="0 0 180 220" role="img" aria-label="Universal faceless effigy in an engraved oval with mirrored foliate borders">
+                        <defs>
+                          <linearGradient id="matrix-brass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4d59a"/><stop offset=".4" stop-color="#c69450"/><stop offset=".7" stop-color="#e9bd76"/><stop offset="1" stop-color="#8c6340"/></linearGradient>
+                          <radialGradient id="matrix-enamel"><stop stop-color="#67513a"/><stop offset="1" stop-color="#211f1b"/></radialGradient>
+                          <linearGradient id="matrix-mantle" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#855b4c"/><stop offset=".5" stop-color="#513c35"/><stop offset="1" stop-color="#292a26"/></linearGradient>
+                          <linearGradient id="matrix-metal" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="#615344"/><stop offset=".46" stop-color="#d6bc91"/><stop offset=".55" stop-color="#9c835f"/><stop offset="1" stop-color="#4b443a"/></linearGradient>
+                          <clipPath id="matrix-portrait-window"><ellipse cx="90" cy="110" rx="48" ry="72"/></clipPath>
+                          <g id="matrix-foliage" fill="none" stroke="url(#matrix-brass)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M58 191C19 173 14 121 27 75c5-18 12-32 25-43"/>
+                            <path d="M32 158c-15-2-22-11-20-21 10 2 18 8 20 21zm-7-26c-14-5-19-15-15-25 10 5 15 13 15 25zm0-30C12 94 9 83 15 75c9 7 12 16 10 27zm8-30c-9-10-9-21-2-28 7 8 8 18 2 28zm-2 85c2-13 10-20 19-19-1 11-8 18-19 19zm-6-29c4-13 12-18 21-15-3 11-11 16-21 15zm3-30c7-11 16-14 24-9-6 10-14 13-24 9zm9-28c9-8 18-8 25-2-8 8-16 8-25 2z"/>
+                          </g>
+                        </defs>
+                        <use href="#matrix-foliage"/><use href="#matrix-foliage" transform="translate(180 0) scale(-1 1)"/>
+                        <ellipse cx="90" cy="110" rx="59" ry="87" fill="#191916" stroke="url(#matrix-brass)" stroke-width="2"/>
+                        <ellipse cx="90" cy="110" rx="54" ry="81" fill="url(#matrix-enamel)" stroke="url(#matrix-brass)" stroke-width=".8"/>
+                        <ellipse cx="90" cy="110" rx="50" ry="76" fill="none" stroke="#d6af70" stroke-width=".8" stroke-dasharray="1 5" stroke-linecap="round"/>
+                        <g clip-path="url(#matrix-portrait-window)">
+                          <path d="M39 191v-30c3-16 15-26 35-32h32c20 6 32 16 35 32v30z" fill="url(#matrix-mantle)" stroke="#c69a60" stroke-width="1.5"/>
+                          <path d="M76 109v14l-8 8 22 22 22-22-8-8v-14z" fill="url(#matrix-metal)" stroke="#b59470" stroke-width="1"/>
+                          <path d="M90 53c-16 0-24 12-24 30 0 21 11 38 24 41 13-3 24-20 24-41 0-18-8-30-24-30z" fill="url(#matrix-metal)" stroke="#d6b584" stroke-width="1.3"/>
+                          <path d="M74 79c0-10 5-17 12-19m20 19c0-10-5-17-12-19" fill="none" stroke="#ead6b0" stroke-opacity=".5" stroke-width=".8" stroke-linecap="round"/>
+                          <path d="m66 133 24 21-13 30-22-37zm48 0-24 21 13 30 22-37z" fill="url(#matrix-mantle)" stroke="#d6af70" stroke-width="1.2"/>
+                          <path d="m62 140 18 17-9 25m47-42-18 17 9 25M90 159v33" fill="none" stroke="#bd935c" stroke-width=".8"/>
+                          <circle cx="90" cy="151" r="5" fill="#a46e41" stroke="#eed09a" stroke-width="1.1"/><circle cx="90" cy="151" r="2.1" fill="#deb76c"/>
+                          <path d="M49 169q8-3 14 1m54 0q6-4 14-1" fill="none" stroke="#ad8258" stroke-width=".8"/>
+                        </g>
+                        <g fill="#34291d" stroke="url(#matrix-brass)" stroke-width="1.1">
+                          <path d="M90 9c-9 10-9 16 0 23 9-7 9-13 0-23z"/><path d="M90 188c-9 10-9 16 0 23 9-7 9-13 0-23z"/>
+                          <path d="M46 32c9-8 19-12 30-13m28 0c11 1 21 5 30 13M46 188c9 8 19 12 30 13m28 0c11-1 21-5 30-13" fill="none"/>
+                        </g>
+                        <circle cx="90" cy="21" r="2.2" fill="#edcb8a"/><circle cx="90" cy="201" r="2.2" fill="#edcb8a"/>
+                      </svg>
+                      <div class="matrix-heading"><span class="matrix-register-label">Character Register</span><h2>Guinevere</h2><p>Illustrative character entry<br>Universal effigy · no fixed likeness</p></div>
+                    </header>
+                    <div class="matrix-presence">
+                      <div><span class="matrix-register-label">Location</span><p>Western gallery</p></div>
+                      <div><span class="matrix-register-label">Orbit</span><p>Co-present · remains by choice, not to follow.</p></div>
+                    </div>
+                    <div class="matrix-traits">
+                      <div class="matrix-trait"><span class="matrix-register-label">Positive Trait</span><strong>Watchful composure</strong></div>
+                      <div class="matrix-trait"><span class="matrix-register-label">Negative Trait</span><strong>Proud restraint</strong></div>
+                    </div>
+                    <dl class="matrix-entries">
+                      <div><dt>Orientation</dt><dd>As written on the character card; unchanged by scene pressure or closeness.</dd></div>
+                      <div><dt>Voice</dt><dd>Measured diction · cool courtly cadence</dd></div>
+                      <div><dt>Mask</dt><dd>Courtly composure</dd></div>
+                      <div><dt>Internal</dt><dd>Delays her answer.</dd></div>
+                      <div class="matrix-boundary"><dt>Boundary</dt><dd>She decides whether the exchange continues; no concession is owed.</dd></div>
+                      <div><dt>Audit</dt><dd>Position held; no unearned softening or user-mirroring.</dd></div>
+                    </dl>
+                    <aside class="matrix-sola-note" aria-label="Sola’s Note">
+                      <h3>Sola’s Note</h3>
+                      <p>Let her answer arrive on her own terms. A pause is not a concession.</p>
+                      <small>Illustrative commentary · not live story state</small>
+                    </aside>
+                  </div>
+                </div>
+              </details>
+
+              <details class="track-card heart" id="heart">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S5 21 5 13c0-5 6-7 11-2 5-5 11-3 11 2 0 8-11 15-11 15z" fill="rgba(238,108,77,.15)" stroke="currentColor" stroke-width="1.1"/><path d="m10 5 3 2 3-4 3 4 3-2-1 5H11z" fill="none" stroke="var(--gold)" stroke-width="1"/><path d="M16 14v9m-4-5h8" stroke="var(--gold)" stroke-width=".8"/></svg>
+                  <span class="track-name"><strong>Sola’s Heart Engine</strong><small>Fourfold interior · Ego, Nerve, Body &amp; Psyche</small></span>
+                  <span class="track-badge">SOVEREIGN VITALS</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <p class="heart-caption">Four sovereign faculties · separate readings, not a combined score. Illustrative state.</p>
+                  <div class="faculty-grid">
+                    <section class="faculty" style="--fac:#f3b74b">
+                      <svg viewBox="0 0 100 116" role="img" aria-label="Jeweled sovereign crown on an engraved cushion">
+                        <ellipse cx="50" cy="54" rx="40" ry="43" stroke-opacity=".3"/><ellipse cx="50" cy="54" rx="35" ry="38" stroke-dasharray="1 5" stroke-opacity=".5"/>
+                        <path d="m22 40 14 11 14-24 14 24 14-11-6 32H28z" fill="#594125"/>
+                        <path d="m28 43 8 15 14-24 14 24 8-15M29 63h42M30 69h40" stroke="#f0d8a3" stroke-width=".8"/>
+                        <path d="m50 47 4 6-4 6-4-6z" fill="#b76148"/><circle cx="35" cy="63" r="2" fill="#9aa87a"/><circle cx="65" cy="63" r="2" fill="#9aa87a"/>
+                        <circle cx="22" cy="39" r="2.6" fill="#e9c17d"/><circle cx="50" cy="26" r="2.6" fill="#e9c17d"/><circle cx="78" cy="39" r="2.6" fill="#e9c17d"/>
+                        <path d="M20 83q30-12 60 0l-6 10H26z" fill="#43312c"/><path d="M26 86q24-6 48 0M30 93v5m40-5v5M28 100h44" stroke-width=".8"/>
+                        <path d="M50 7v6m-3-3h6M13 55h5m64 0h5" stroke-opacity=".7"/>
+                      </svg>
+                      <h3>Ego</h3><span class="faculty-domain">Calculation · Mask</span><p>Weighs the answer before it reaches the room.</p>
+                    </section>
+                    <section class="faculty" style="--fac:#b4b9eb">
+                      <svg viewBox="0 0 100 116" role="img" aria-label="Faceted crystal held under tension in a brass suspension">
+                        <path d="M24 89V41q0-27 26-27t26 27v48" stroke="#b39b73" stroke-width="1.6"/><path d="M29 82V42q0-22 21-22t21 22v40" stroke-opacity=".3"/>
+                        <path d="M50 15v14M25 47l13 8m37-8-13 8M50 79v10" stroke="#c7ab7b" stroke-width=".9"/>
+                        <path d="m50 29 14 27-14 23-14-23z" fill="#424352"/><path d="m50 29-4 27 4 23 4-23z" fill="#a3a8cf" fill-opacity=".5"/><path d="M36 56h28" stroke="#e0dbf1"/>
+                        <path d="M18 43l-6-3m70 3 6-3M18 62h-7m71 0h7M20 77l-6 3m66-3 6 3" stroke-opacity=".6"/>
+                        <path d="M20 90h60l-7 7H27zM31 98v5m38-5v5M27 105h46" fill="#332e2b" stroke="#b39b73"/>
+                        <circle cx="50" cy="56" r="2.4" fill="#eee5ca"/>
+                      </svg>
+                      <h3>Nerve</h3><span class="faculty-domain">Composure · Reflex</span><p>A fine tremor betrays the strain.</p>
+                    </section>
+                    <section class="faculty" style="--fac:#f4a261">
+                      <svg viewBox="0 0 100 116" role="img" aria-label="Engraved golden chalice holding red wine">
+                        <ellipse cx="50" cy="53" rx="38" ry="42" stroke-opacity=".25"/><path d="M20 23h60v17c0 17-12 30-30 32-18-2-30-15-30-32z" fill="#6b4831"/>
+                        <path d="M24 36h52v5c0 14-11 25-26 27-15-2-26-13-26-27z" fill="#72263c" stroke="#c87568" stroke-width=".8"/>
+                        <ellipse cx="50" cy="35" rx="26" ry="4" fill="#a23c4b" stroke="#dc9c7f" stroke-width=".8"/>
+                        <path d="M20 24q30 7 60 0M25 28q25 6 50 0" stroke="#efc68d"/>
+                        <path d="M46 72v16l-12 8h32l-12-8V72M30 99h40l4 5H26z" fill="#6b4831"/>
+                        <path d="m50 44 4 8-4 8-4-8z" stroke="#ebbb81"/><path d="M31 43q1 11 10 17m28-17q-1 11-10 17M41 100h18" stroke="#d7a777" stroke-width=".8"/>
+                        <path d="M50 7v6m-3-3h6M10 53h5m70 0h5" stroke-opacity=".65"/>
+                      </svg>
+                      <h3>Body</h3><span class="faculty-domain">Breath · Pulse</span><p>Breath runs shallow; tension gathers along the jaw.</p>
+                    </section>
+                    <section class="faculty" style="--fac:#e6a084">
+                      <svg viewBox="0 0 100 116" role="img" aria-label="Symmetrical illuminated moth with four patterned wings">
+                        <circle cx="50" cy="54" r="39" stroke-opacity=".25"/><circle cx="50" cy="54" r="34" stroke-dasharray="1 5" stroke-opacity=".35"/>
+                        <path d="M48 56C39 33 26 26 12 28c0 23 11 36 34 37-21 3-26 14-20 29 15-2 22-12 24-27 2 15 9 25 24 27 6-15 1-26-20-29 23-1 34-14 34-37-14-2-27 5-36 28z" fill="#49352f"/>
+                        <path d="M43 56C34 40 25 35 19 35c3 13 11 23 24 24m14-3c9-16 18-21 24-21-3 13-11 23-24 24M44 71q-14 4-13 15 10-4 13-15zm12 0q14 4 13 15-10-4-13-15z" stroke="#edbf9e" stroke-width=".8"/>
+                        <path d="M50 48v31m-1-31-6-7m8 7 6-7" stroke="#f0d8a3" stroke-width="1.5"/><circle cx="50" cy="52" r="3" fill="#dfb66c"/>
+                        <path d="M47 18a8 8 0 0 0 10-10 9 9 0 1 1-10 10z" fill="#e6c78e" stroke="#e6c78e" stroke-width=".6"/>
+                        <path d="M50 100v7m-3-3h6" stroke="#dfb66c"/>
+                      </svg>
+                      <h3>Psyche</h3><span class="faculty-domain">Feeling · Intuition</span><p>A private ache persists beneath restraint.</p>
+                    </section>
+                  </div>
+                  <aside class="paper-note"><span class="panel-label">Sola’s Note</span><p>Her measured answer and shallow breath can coexist. Let each faculty keep its own reading.</p><small style="display:block;margin-top:6px;color:#634b37;font:10px/1.4 ui-sans-serif,system-ui,sans-serif">Illustrative commentary · not live story state</small></aside>
+                </div>
+              </details>
+
+              <details class="track-card bond" id="bond">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="line" d="M4 7c5-4 10-2 12 5s-5 7-3 12 7 5 12 1"/><path d="M28 7c-5-4-10-2-12 5s5 7 3 12-7 5-12 1" fill="none" stroke="var(--coral)" stroke-width="1.2" stroke-linecap="round"/><path d="m16 12 3 4-3 4-3-4z" fill="var(--surface)" stroke="var(--gold)" stroke-width=".9"/></svg>
+                  <span class="track-name"><strong>Sola’s Bond &amp; Chemistry Radar</strong><small>Relational gravity · unspoken friction</small></span>
+                  <span class="track-badge">CHEMISTRY</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Oath-knot · qualitative movement, not a score</span>
+                  <svg class="knot-art" viewBox="0 0 220 88" role="img" aria-label="Interlaced gold and coral threads forming an oath knot"><path d="M15 44C42 5 78 7 101 38m18 12c23 31 59 33 86-6" fill="none" stroke="#f3b74b" stroke-width="3" stroke-linecap="round"/><path d="M15 44c27 39 63 37 86 6m18-12c23-31 59-33 86 6" fill="none" stroke="#ee6c4d" stroke-width="3" stroke-linecap="round"/><path d="m110 31 12 13-12 13-12-13z" fill="#211e1a" stroke="#f3b74b" stroke-width="1.8"/><path d="m110 36 7 8-7 8-7-8z" fill="rgba(238,108,77,.3)" stroke="#ee6c4d"/></svg>
+                  <div class="pair-slip"><div class="pair-head"><strong>You &amp; Guinevere</strong><span class="dynamic">Guarded Fascination</span></div><div class="shift-list"><div class="shift">▲ + A quiet confidence held through the pause.</div><div class="shift negative">▼ − Reserve returned when the question sharpened.</div></div><aside class="paper-note" style="margin-top:10px"><span class="panel-label">Sola’s Note</span><p>Some warmth, yes. Do not mistake it for surrender.</p></aside></div>
+                  <div class="pair-slip"><div class="pair-head"><strong>You &amp; Arthur</strong><span class="dynamic">Wary Truce</span></div><div class="shift-list"><div class="shift">▲ + A warning given without insult.</div><div class="shift negative">▼ − He reaches for the petition before she offers it.</div></div><aside class="paper-note" style="margin-top:10px"><span class="panel-label">Sola’s Note</span><p>Courtesy returned; trust remains conditional.</p></aside></div>
+                </div>
+              </details>
+
+              <details class="track-card thought" id="thought">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="fill" d="M5 5h14l7 7v16H7a2 2 0 0 1-2-2z"/><path class="line" d="M19 5v7h7M9 16h9M9 19h7"/><path d="M8 28C12 17 19 10 28 5c-1 9-7 16-17 22z" fill="rgba(243,183,75,.16)" stroke="var(--gold)" stroke-width="1"/><path class="line" d="m8 28 17-21" stroke="var(--coral)"/></svg>
+                  <span class="track-name"><strong>Sola’s Thought Engine</strong><small>Five-question interview · backstage, outside the scene</small></span>
+                  <span class="track-badge">BACKSTAGE</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <div class="thought-folio">
+                    <header class="thought-frontispiece">
+                      <svg class="thought-illustration" viewBox="0 0 180 180" role="img" aria-label="Engraved feather quill dipping into a brass inkwell, with a wax-sealed folio">
+                        <defs><linearGradient id="thought-brass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1d09a"/><stop offset=".5" stop-color="#c9954d"/><stop offset="1" stop-color="#946342"/></linearGradient><linearGradient id="thought-feather" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a68766"/><stop offset=".5" stop-color="#615346"/><stop offset="1" stop-color="#302c27"/></linearGradient></defs>
+                        <path d="M17 107q32-12 61 0v48q-30-10-61-3z" fill="#33281e" stroke="#b08c56" stroke-width="1"/>
+                        <path d="M78 107q30-12 62-1v46q-32-9-62 3z" fill="#29231d" stroke="#b08c56" stroke-width="1"/>
+                        <path d="M23 114q25-8 48-1m-48 8q25-8 48-1m-48 8q20-6 40-2M85 113q23-8 47-2m-47 8q23-8 47-2m-47 8q19-6 35-3M78 107v48" fill="none" stroke="#876d4b" stroke-width=".7"/>
+                        <path d="M88 125h42l7 30H81z" fill="#3b3027" stroke="url(#thought-brass)" stroke-width="1.5"/>
+                        <ellipse cx="109" cy="125" rx="21" ry="6" fill="#211916" stroke="url(#thought-brass)" stroke-width="1.2"/>
+                        <ellipse cx="109" cy="125" rx="13" ry="3" fill="#0c1112" stroke="#7e715f" stroke-width=".6"/>
+                        <path d="M86 149q23 5 46 0m-38-14 3 10m24-10-3 10" fill="none" stroke="#c49b65" stroke-width=".9"/>
+                        <path d="M107 120c-4-19 1-41 12-61 12-21 28-34 43-41-1 31-9 56-30 72l-10 4z" fill="url(#thought-feather)" stroke="url(#thought-brass)" stroke-width="1.2" stroke-linejoin="round"/>
+                        <path d="M107 126q13-54 48-99" fill="none" stroke="#e5c28c" stroke-width="1.4"/>
+                        <path d="m120 82 17-6m-12-7 18-6m-10-6 17-5m-10-7 14-4m-37 48-5-17m10 3-3-18m11 3-2-17m10 5-1-14" fill="none" stroke="#c4a77f" stroke-width=".7"/>
+                        <path d="m106 120-2 9 6-6" fill="#d8b67b" stroke="#e5c28c" stroke-width=".6"/>
+                        <path d="M21 157q16 6 31-1" fill="none" stroke="#99744b" stroke-width="1.1"/>
+                        <path d="M37 140c-4-3-8 0-8 5-4 4-1 10 4 10 4 4 10 1 10-3 5-4 3-10-2-10z" fill="#8c493a" stroke="#cb8061" stroke-width="1"/>
+                        <path d="M34 146h6m-3-3v6" stroke="#e4b27b" stroke-width=".8"/>
+                        <path d="M20 80c5-15 16-23 30-26m-8 0 8 0-4 7" fill="none" stroke="#806448" stroke-width=".8"/>
+                        <path d="M47 30h25M59 18v24" stroke="#a58152" stroke-width=".6" stroke-opacity=".6"/><circle cx="59" cy="30" r="3" fill="none" stroke="#b99661" stroke-width=".8"/>
+                      </svg>
+                      <div><span class="thought-kicker">Sola’s Backstage Folio</span><h2>A Private Interview</h2><p>Guinevere · five questions outside the scene.<br>Illustrative transcript, not shared character knowledge.</p></div>
+                    </header>
+                    <div class="sola-thought-intro thought-preamble">
+                      <p class="sola-thought-action">Sola sits in her chair and gives a gentle smile</p>
+                      <div class="paper-note sola-thought-whisper sola-director-note"><span class="panel-label sola-director-label">Sola</span><p class="sola-thought-whisper-text sola-director-quote">Thanks for coming back for our check-in. Lets start.</p></div>
+                    </div>
+                  <div class="interview">
+                    <div class="qa"><span class="ordinal">I</span><div><q>What’s your goal right now?</q><p>Guinevere: To find out whether you meant what you said.</p></div></div>
+                    <div class="qa"><span class="ordinal">II</span><div><q>How do you feel about what just happened?</q><p>Guinevere: I’m still angry you left me waiting.</p></div></div>
+                    <div class="qa"><span class="ordinal">III</span><div><q>Where is your mind?</q><p>Guinevere: On your last answer, and the one you avoided.</p></div></div>
+                    <div class="qa"><span class="ordinal">IV</span><div><q>Why do you care?</q><p>Guinevere: Because I gave my word, and I mean to keep it.</p></div></div>
+                    <div class="qa unspoken"><span class="ordinal">V</span><div><span class="unspoken-label">Behind Their Teeth · Unspoken</span><q>What would you actually say?</q><p>Guinevere: I want you to stay, and I resent how much I want it.</p></div></div>
+                  </div>
+                  </div>
+                  <aside class="paper-note"><span class="panel-label">Sola’s Note</span><p>She wants an answer and wants you to stay. Neither cancels her anger.</p><small style="display:block;margin-top:6px;color:#634b37;font:10px/1.4 ui-sans-serif,system-ui,sans-serif">Illustrative commentary · not live story state</small></aside>
+                </div>
+              </details>
+
+              <details class="track-card current" id="current">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="line" d="M7 20a5 5 0 0 1-1-9.8 9 9 0 0 1 17.5 0A5 5 0 0 1 23 20z"/><path class="line" d="M8 25l2-2m4 5 2-3m4 2 1-2"/><circle cx="23" cy="10" r="1.2" fill="var(--gold)"/><circle cx="27" cy="15" r="1" fill="var(--lavender)"/></svg>
+                  <span class="track-name"><strong>Sola’s Inner Current</strong><small>Private thought cadence · 3–5 turn window</small></span>
+                  <span class="track-badge">THOUGHT CADENCE</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Illustrative HUD state · private thought text stays out</span>
+                  <section class="subpanel"><div class="label-row"><span class="panel-label">Cadence Rhythm</span><span class="micro-label">Thought Window</span></div><div class="panel-value"><strong style="font:400 22px Georgia,'Times New Roman',serif;color:var(--lavender)">2</strong> turns remaining</div>
+                    <ol class="phase-track" style="margin:10px 0 0;padding:0;list-style:none"><li class="phase"><strong>Dormant</strong><small>3–5 turns</small></li><li class="phase active" aria-current="step"><strong>Gathering</strong><small>2 remaining</small></li><li class="phase"><strong>Primed</strong><small>1 turn</small></li><li class="phase"><strong>Window Open</strong><small>Emitted</small></li></ol>
+                  </section>
+                  <div class="grid-2"><section class="subpanel"><span class="panel-label" style="color:var(--lavender)">Mind Focus</span><div class="panel-value">Guinevere</div></section><section class="subpanel"><span class="panel-label" style="color:var(--coral)">Internal State</span><div class="panel-value">Gathering</div></section></div>
+                </div>
+              </details>
+
+              <details class="track-card wardrobe sola-card-wardrobe" id="wardrobe">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="fill" d="m11 4 5 3 5-3 4 3 4 5-4 3-3-2v14H10V13l-3 2-4-3 4-5z"/><path class="line" d="m11 4 2 4 3-1 3 1 2-4M10 13l6 3 6-3M16 16v10"/><path d="m16 9 2 2-2 2-2-2z" fill="var(--gold)"/></svg>
+                  <span class="track-name"><strong>Sola’s Atelier &amp; Wardrobe</strong><small>Active layers · condition · somatic tells</small></span>
+                  <span class="track-badge">ATELIER</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+<span class="sample-tag">Illustrative V3 attire slips · existing regex output</span>
+                  <svg class="atelier-needle" viewBox="0 0 320 40" aria-hidden="true">
+                    <path d="M12 23q50-24 112-2c35 12 60 5 73-1" fill="none" stroke="#b99a60" stroke-width="1.4"/>
+                    <path d="M198 20c-4-10 16-12 24-7l84 9-84 2c-10 4-25 4-24-4Z" fill="#b9bbaa" stroke="#eadcc0" stroke-width="1"/>
+                    <path d="M205 18q5-4 11 0-5 4-11 0Z" fill="#30342b" stroke="#7d806c" stroke-width=".8"/>
+                  </svg>
+<div class="sola-ward-slip" style="--shadowWidth:0!important;background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.22);border-left:3.5px solid #7A8B99;border-radius:9px;padding:15px 17px 14px;margin:10px 0 16px;box-shadow:0 3px 12px rgba(0,0,0,0.22);"><div class="sola-ward-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;border-bottom:1px dashed rgba(163,148,138,0.25);margin-bottom:12px;"><span class="sola-ward-char" style="font-family:Georgia,'Times New Roman',serif;font-size:1.22em;font-weight:600;color:#F0DCC4;">Guinevere</span><span class="sola-ward-cond-badge" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:rgba(122,139,153,0.14);border:1px solid rgba(122,139,153,0.4);color:#BAC3C7;font-size:max(.75rem,0.76em);font-weight:700;letter-spacing:0.04em;"><span style="width:6px;height:6px;border-radius:50%;background:#7A8B99;box-shadow:0 0 6px #7A8B99;"></span><span>Clean</span></span></div><div class="sola-ward-section" style="margin-bottom:10px;"><div class="sola-ward-label" style="font-size:0.75rem;letter-spacing:0.06em;font-weight:700;text-transform:uppercase;color:#F4A261;margin-bottom:4px;">Active Layers</div><div class="sola-ward-layers" style="font-size:max(.75rem,0.9em);line-height:1.5;color:#F0DCC4;padding:7px 11px;background:rgba(26,19,16,0.5);border:1px solid rgba(244,162,97,0.14);border-radius:6px;">Embroidered blue mantle / Ivory linen gown / Dark green kirtle / Leather slippers</div></div><div class="sola-ward-tells-box" style="margin-bottom:10px;"><div class="sola-ward-label" style="font-size:0.75rem;letter-spacing:0.06em;font-weight:700;text-transform:uppercase;color:#BAC3C7;margin-bottom:4px;">Somatic Tells</div><div class="sola-ward-tells" style="font-size:max(.75rem,0.88em);line-height:1.5;color:#E07A5F;font-style:italic;padding:2px 2px 4px;">The mantle pulls at her left shoulder.</div></div><div class="sola-ward-whisper sola-director-note"><div class="sola-director-label">SOLA’S ATELIER NOTE</div><div class="sola-ward-whisper-text sola-director-quote">Shift the clasp toward the seam.</div></div></div>
+<div class="sola-ward-slip" style="--shadowWidth:0!important;background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.22);border-left:3.5px solid #7A8B99;border-radius:9px;padding:15px 17px 14px;margin:10px 0 16px;box-shadow:0 3px 12px rgba(0,0,0,0.22);"><div class="sola-ward-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;border-bottom:1px dashed rgba(163,148,138,0.25);margin-bottom:12px;"><span class="sola-ward-char" style="font-family:Georgia,'Times New Roman',serif;font-size:1.22em;font-weight:600;color:#F0DCC4;">Sir Gareth</span><span class="sola-ward-cond-badge" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:rgba(122,139,153,0.14);border:1px solid rgba(122,139,153,0.4);color:#BAC3C7;font-size:max(.75rem,0.76em);font-weight:700;letter-spacing:0.04em;"><span style="width:6px;height:6px;border-radius:50%;background:#7A8B99;box-shadow:0 0 6px #7A8B99;"></span><span>Armor Dented</span></span></div><div class="sola-ward-section" style="margin-bottom:10px;"><div class="sola-ward-label" style="font-size:0.75rem;letter-spacing:0.06em;font-weight:700;text-transform:uppercase;color:#F4A261;margin-bottom:4px;">Active Layers</div><div class="sola-ward-layers" style="font-size:max(.75rem,0.9em);line-height:1.5;color:#F0DCC4;padding:7px 11px;background:rgba(26,19,16,0.5);border:1px solid rgba(244,162,97,0.14);border-radius:6px;">Weathered blue surcoat / Quilted gambeson over mail / Wool hose / Mud-dark riding boots</div></div><div class="sola-ward-tells-box" style="margin-bottom:10px;"><div class="sola-ward-label" style="font-size:0.75rem;letter-spacing:0.06em;font-weight:700;text-transform:uppercase;color:#BAC3C7;margin-bottom:4px;">Somatic Tells</div><div class="sola-ward-tells" style="font-size:max(.75rem,0.88em);line-height:1.5;color:#E07A5F;font-style:italic;padding:2px 2px 4px;">A shoulder plate rides high; dried mud clings to his boots.</div></div><div class="sola-ward-whisper sola-director-note"><div class="sola-director-label">SOLA’S ATELIER NOTE</div><div class="sola-ward-whisper-text sola-director-quote">Mind the raised shoulder plate when settling the surcoat.</div></div></div>
+                </div>
+              </details>
+
+              <details class="track-card easel" id="easel">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><circle class="line" cx="16" cy="16" r="14" opacity=".65"/><path d="M16 3.5c1.8 7.3 4.3 10.7 12.5 12.5-8.2 1.8-10.7 5.2-12.5 12.5-1.8-7.3-4.3-10.7-12.5-12.5C11.7 14.2 14.2 10.8 16 3.5z" fill="rgba(243,183,75,.2)" stroke="var(--gold)" stroke-width="1.05"/><path d="m16 11.8 1.5 2.7 2.7 1.5-2.7 1.5-1.5 2.7-1.5-2.7-2.7-1.5 2.7-1.5z" fill="var(--surface)" stroke="var(--amber)" stroke-width=".8"/></svg>
+                  <span class="track-name"><strong>Sola’s Easel</strong><small>Director’s ledger · six private review sections</small></span>
+                  <span class="track-badge">DIRECTOR SPOILERS</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <div class="easel-chart">
+                    <header class="easel-heading">
+                      <svg viewBox="0 0 160 160" role="img" aria-label="Engraved four-point star with interlaced diamond tracery">
+                        <defs><linearGradient id="easel-gilding" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3dba7"/><stop offset=".45" stop-color="#c3934c"/><stop offset="1" stop-color="#e9b963"/></linearGradient></defs>
+                        <g fill="none" stroke="url(#easel-gilding)" stroke-linejoin="round">
+                          <path d="m80 8 72 72-72 72L8 80z" stroke-width="1.2"/><path d="m80 19 61 61-61 61-61-61z" stroke-width=".6" opacity=".6"/>
+                          <path d="M80 11c7 43 26 62 69 69-43 7-62 26-69 69-7-43-26-62-69-69 43-7 62-26 69-69z" fill="#413821" stroke-width="1.5"/>
+                          <path d="m80 27 9 44 44 9-44 9-9 44-9-44-44-9 44-9z" fill="#28291e" stroke-width=".9"/>
+                          <path d="M80 32v96M32 80h96" stroke-width=".5" opacity=".5"/>
+                          <path d="m80 61 19 19-19 19-19-19z" fill="#b58a48" stroke-width="1.1"/><path d="m80 69 11 11-11 11-11-11z" fill="#f1d7a1" stroke-width=".7"/>
+                          <path d="M37 31h-8v8m94-8h8v8M37 129h-8v-8m94 8h8v-8M49 36l-13 13m75-13 13 13M49 124l-13-13m75 13 13-13" stroke-width="1"/>
+                          <path d="m80 2 3 5-3 5-3-5zm0 146 3 5-3 5-3-5zM2 80l5-3 5 3-5 3zm146 0 5-3 5 3-5 3z" fill="#cba45e" stroke-width=".7"/>
+                        </g>
+                      </svg>
+                      <div><span class="thought-kicker">Sola’s Easel · Turn 42</span><h2>The Director’s Chart</h2><p>Six private review sections.<br>Illustrative review · outside story canon.</p></div>
+                    </header>
+                    <section class="easel-checks"><h3><span>0</span>Overall Core Check</h3><ul class="easel-check-list" aria-label="Illustrative passing checks"><li>Agency integrity</li><li>Anti-Echo</li><li>Character Spine</li><li>Pacing</li><li>Somatic Grounding</li></ul></section>
+                    <div class="easel-stage">
+                      <section><h3><span>I</span>Staging &amp; Continuity</h3><p>Western gallery · letter by silver cup · rain on leaded glass.</p></section>
+                      <section><h3><span>II</span>Scene Currents &amp; Subtext</h3><p>Simmering friction · Guinevere holds tempo · the broken seal stays under her thumb.</p></section>
+                    </div>
+                    <section class="easel-currents"><h3><span>III</span>The Living Currents</h3><p>Regent’s envoy · split falcon seal · Sir Kay and messenger below.</p></section>
+                    <section class="easel-storyboard"><h3><span>IV</span>Branching Storyboard</h3><p style="margin:0">Possibilities, not scheduled events.</p><ul class="easel-branches"><li>Direct line</li><li>Fault line</li><li>Blindside</li><li>Cost of silence</li><li>Confluence</li></ul></section>
+                    <section class="easel-vault"><h3><span>V</span>Sola’s Vault</h3><p>Previous dare: <strong>PASS</strong>.<br>Next craft challenge: one question, then let Guinevere move the letter.</p></section>
+                  </div>
+                  <aside class="paper-note"><span class="panel-label">Sola’s Note</span><p>Keep the letter within reach. Let Guinevere decide whether to offer it.</p><small style="display:block;margin-top:6px;color:#634b37;font:10px/1.4 ui-sans-serif,system-ui,sans-serif">Illustrative commentary · not live story state</small></aside>
+                </div>
+              </details>
+
+              <details class="track-card arrow sola-card-arrow" id="arrow">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><circle class="line" cx="16" cy="16" r="14" opacity=".65"/><path class="line" d="M16 2v3m0 22v3M2 16h3m22 0h3"/><path d="m7 25 16-16" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/><path d="m19 7 7-2-2 7" fill="none" stroke="var(--amber)" stroke-width="1.2"/><path d="m26 2 1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="var(--gold)"/><path d="M3 11c2-1 4-1 6 0M3 15c2-.8 3.5-.7 5 .1" fill="none" stroke="var(--coral)" stroke-width=".8"/></svg>
+                  <span class="track-name"><strong>Sola’s Wind’s Arrow</strong><small>Binding kinetic fate · D20 threshold &amp; environmental friction</small></span>
+                  <span class="track-badge">KINETIC D20</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Illustrative values · no roll value added</span>
+                  <div class="wind-emblem">
+                    <svg viewBox="0 0 300 180" aria-hidden="true">
+                      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M145 24Q217 90 145 156" stroke="#8a6340" stroke-width="7"/>
+                        <path d="M145 24Q217 90 145 156" stroke="#d4b067" stroke-width="3"/>
+                        <path d="M145 24 109 90 145 156" stroke="#dfcfad" stroke-width="1"/>
+                        <path d="m143 22 4 4m-4 128 4 4" stroke="#f0d6a0" stroke-width="3"/>
+                        <path d="M178 78q7 12 0 24" stroke="#594332" stroke-width="8"/>
+                        <path d="m176 80 7 2m-6 3 7 2m-6 3 7 2m-7 3 6 2m-7 2 6 2" stroke="#c09961" stroke-width="1"/>
+                        <path d="M109 90H267" stroke="#e1c58e" stroke-width="2"/>
+                        <path d="m109 90 16-13h17l-13 13m-20 0 16 13h17l-13-13" transform="translate(251 0) scale(-1 1)" fill="#66775b" stroke="#c3ae7b" stroke-width="1"/>
+                        <path d="m280 90-29-12 6 12-6 12Z" fill="#b99a60" stroke="#ead2a1" stroke-width="1"/>
+                        <path d="M22 66h42c18 0 17-20 5-18-9 1-9 13-2 12M35 79h35M22 114h42c18 0 17 20 5 18-9-1-9-13-2-12M35 101h35" transform="translate(100 0) scale(-1 1)" stroke="#b99a60" stroke-width="1.2"/>
+                        <path d="m211 28 3 7 7 3-7 3-3 7-3-7-7-3 7-3Zm0 104 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z" stroke="#a78b5c" stroke-width=".9"/>
+                        <path d="M94 18h28m-28 144h28" stroke="#7f6946" stroke-width=".8"/>
+                      </g>
+                    </svg>
+                  </div>
+<div class="sola-arrow-dossier" style="--shadowWidth:0!important;"><div class="sola-arrow-banner" data-trajectory="Grazing Shot"><div class="sola-traj-pill" style="display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;"><svg class="sola-traj-icon sola-traj-icon-neutral" aria-hidden="true" focusable="false" style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12h8"/></svg><svg class="sola-traj-icon sola-traj-icon-bullseye" aria-hidden="true" focusable="false" style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg><svg class="sola-traj-icon sola-traj-icon-grazing" aria-hidden="true" focusable="false" style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M3 19l8-8 9-3m-6-3 6 3-3 6M5 21l-2-2-1-4"/><path d="M13 16l3 3"/></svg><svg class="sola-traj-icon sola-traj-icon-wind" aria-hidden="true" focusable="false" style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M3 8h12a3 3 0 1 0-3-3M2 12h17a3 3 0 1 1-3 3M4 16h5a3 3 0 1 1-3 3"/></svg><span>Grazing Shot</span></div><div class="sola-traj-desc" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.98em);font-style:italic;color:#F0DCC4;flex:1 1 16rem;">Binding Law of the Wind Outcome</div></div><div class="sola-arrow-split"><div class="sola-arrow-cell sola-arrow-gamble" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #7A8B99;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-arrow-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:5px;color:#7A8B99;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0z"/></svg> THE KINETIC GAMBLE</div><div class="sola-arrow-gamble-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.98em);line-height:1.55;color:#F0DCC4;">Guinevere vaults the rain-slick gap to catch the fallen seal.</div></div><div class="sola-arrow-cell sola-arrow-friction" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #EE6C4D;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-arrow-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;display:flex;align-items:center;gap:5px;color:#EE6C4D;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> TACTICAL &amp; SOMATIC FRICTION</div><div class="sola-arrow-friction-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.98em);line-height:1.55;color:#F0DCC4;">Her boot skids on the far coping; she catches herself against the stone.</div></div></div><div class="sola-arrow-whisper sola-director-note"><div class="sola-arrow-whisper-label sola-director-label">SOLA’S DIRECTORIAL ADJUDICATION</div><div class="sola-arrow-whisper-text sola-director-quote">The wind grants no clean landings.</div></div></div>
+                </div>
+              </details>
+
+              <details class="track-card inventory sola-card-inventory" id="inventory">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="line" d="M4 8h9m6 0h9"/><path d="M13 5h6v6h-6z" fill="var(--surface)" stroke="var(--gold)"/><path class="fill" d="M9 12c2-2 12-2 14 0l2 3v10a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3V15z"/><path class="line" d="M8 15c4 2 12 2 16 0M16 17v5m0 0h2"/><circle cx="16" cy="17" r="1.4" fill="var(--gold)"/></svg>
+                  <span class="track-name"><strong>Sola’s Armory &amp; Carried Gear</strong><small>In-hand · stowed · concealed props</small></span>
+                  <span class="track-badge">ARMORY</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">One slip per participant · illustrative equipment states</span>
+                  <div class="armory-locker">
+                    <svg class="armory-key" viewBox="0 0 28 110" aria-hidden="true">
+                      <path d="M14 0v12" stroke="#baaa84" stroke-width="1.4"/>
+                      <path d="m14 10 10 12-10 12L4 22Z" fill="#35392f" stroke="#d4b067" stroke-width="1.4"/>
+                      <path d="m14 16 5 6-5 6-5-6Z" fill="none" stroke="#b3a27b" stroke-width="1"/>
+                      <path d="M14 34v51h9v8h-5v-4h-4v9h-5V34" fill="#ac8c55" stroke="#ddc18c" stroke-width="1"/>
+                      <path d="M14 40v37" stroke="#f0d6a0" stroke-width=".8"/>
+                    </svg>
+<div class="sola-inv-slip" style="--shadowWidth:0!important;background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.22);border-left:3.5px solid #D4A373;border-radius:9px;padding:15px 17px 14px;margin:10px 0 16px;box-shadow:0 3px 12px rgba(0,0,0,0.22);box-sizing:border-box;"><div class="sola-inv-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;border-bottom:1px dashed rgba(163,148,138,0.25);margin-bottom:12px;"><span class="sola-inv-char" style="font-family:Georgia,'Times New Roman',serif;font-size:1.22em;font-weight:600;color:#F0DCC4;">Guinevere</span><span class="sola-inv-status-badge" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:rgba(212,163,115,0.14);border:1px solid rgba(212,163,115,0.45);color:#D4A373;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;white-space:normal;min-width:0;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;"><span class="sola-inv-status-dot" style="width:6px;height:6px;border-radius:50%;background:#D4A373;box-shadow:0 0 6px #D4A373;"></span><span>EQUIPMENT PROFILE</span></span></div><div class="sola-inv-rows" style="display:flex;flex-direction:column;gap:8px;"><div class="sola-inv-inhand" style="padding:8px 12px;background:rgba(26,19,16,0.6);border:1px solid rgba(243,183,75,0.25);border-left:3px solid #F3B74B;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#F3B74B;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"/><path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"/><path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"/></svg> IN-HAND (DRAWN / READY)</div><div class="sola-inv-inhand-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.5;color:#F0DCC4;font-weight:600;">Ivory-handled dagger in her right hand.</div></div><div class="sola-inv-carried" style="padding:8px 12px;background:rgba(26,19,16,0.5);border:1px solid rgba(186,195,199,0.2);border-left:3px solid #BAC3C7;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#BAC3C7;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg> CARRIED GEAR (STOWED / PACK)</div><div class="sola-inv-carried-val" style="font-size:max(.75rem,0.92em);line-height:1.5;color:#F0DCC4;">Wax-sealed letter · brass key · field satchel.</div></div><div class="sola-inv-concealed" style="padding:8px 12px;background:rgba(26,19,16,0.5);border:1px solid rgba(133,146,230,0.22);border-left:3px solid #8592E6;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#8592E6;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> CONCEALED (HIDDEN PROPS)</div><div class="sola-inv-concealed-val" style="font-size:max(.75rem,0.92em);line-height:1.5;color:#F0DCC4;font-style:italic;">Glass ampoule sewn into her left sleeve.</div></div></div><div class="sola-inv-whisper sola-director-note"><div class="sola-inv-whisper-label sola-director-label">SOLA’S ARMORY NOTE</div><div class="sola-inv-whisper-text sola-director-quote">The brass key stays on its ring until Guinevere takes it into her hand.</div></div></div>
+<div class="sola-inv-slip" style="--shadowWidth:0!important;background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.22);border-left:3.5px solid #D4A373;border-radius:9px;padding:15px 17px 14px;margin:10px 0 16px;box-shadow:0 3px 12px rgba(0,0,0,0.22);box-sizing:border-box;"><div class="sola-inv-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;border-bottom:1px dashed rgba(163,148,138,0.25);margin-bottom:12px;"><span class="sola-inv-char" style="font-family:Georgia,'Times New Roman',serif;font-size:1.22em;font-weight:600;color:#F0DCC4;">Sir Gareth</span><span class="sola-inv-status-badge" style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;background:rgba(212,163,115,0.14);border:1px solid rgba(212,163,115,0.45);color:#D4A373;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;white-space:normal;min-width:0;max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;"><span class="sola-inv-status-dot" style="width:6px;height:6px;border-radius:50%;background:#D4A373;box-shadow:0 0 6px #D4A373;"></span><span>EQUIPMENT PROFILE</span></span></div><div class="sola-inv-rows" style="display:flex;flex-direction:column;gap:8px;"><div class="sola-inv-inhand" style="padding:8px 12px;background:rgba(26,19,16,0.6);border:1px solid rgba(243,183,75,0.25);border-left:3px solid #F3B74B;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#F3B74B;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"/><path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"/><path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"/><path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"/></svg> IN-HAND (DRAWN / READY)</div><div class="sola-inv-inhand-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.5;color:#F0DCC4;font-weight:600;">Spear held low in his left hand.</div></div><div class="sola-inv-carried" style="padding:8px 12px;background:rgba(26,19,16,0.5);border:1px solid rgba(186,195,199,0.2);border-left:3px solid #BAC3C7;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#BAC3C7;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg> CARRIED GEAR (STOWED / PACK)</div><div class="sola-inv-carried-val" style="font-size:max(.75rem,0.92em);line-height:1.5;color:#F0DCC4;">Whetstone · belt purse · folded cloak.</div></div><div class="sola-inv-concealed" style="padding:8px 12px;background:rgba(26,19,16,0.5);border:1px solid rgba(133,146,230,0.22);border-left:3px solid #8592E6;border-radius:6px;box-sizing:border-box;"><div style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;color:#8592E6;text-transform:uppercase;margin-bottom:3px;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> CONCEALED (HIDDEN PROPS)</div><div class="sola-inv-concealed-val" style="font-size:max(.75rem,0.92em);line-height:1.5;color:#F0DCC4;font-style:italic;">None recorded in this illustrative sample.</div></div></div><div class="sola-inv-whisper sola-director-note"><div class="sola-inv-whisper-label sola-director-label">SOLA’S ARMORY NOTE</div><div class="sola-inv-whisper-text sola-director-quote">The spear remains in his left hand unless the scene shows him setting it down.</div></div></div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="track-card scene sola-card-cast" id="scene">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 28V15.5a12 12 0 0 1 24 0V28" fill="rgba(26,19,16,.45)" stroke="currentColor" stroke-width="1.1"/><path class="line" d="M3 28h26"/><path d="m16 3 2 2-2 2-2-2z" fill="var(--gold)"/><circle cx="11" cy="14" r="2" fill="var(--gold)"/><path class="line" d="M7.5 24v-2a3.5 3.5 0 0 1 7 0v2"/><circle cx="21" cy="16" r="1.7" fill="var(--bluegray)"/><path class="line" d="M17.5 24v-2a3.5 3.5 0 0 1 7 0v2"/></svg>
+                  <span class="track-name"><strong>Sola’s Scene Cast &amp; Spatial Ledger</strong><small>Stage traffic · observable physical facts &amp; room blocking</small></span>
+                  <span class="track-badge">SPATIAL LEDGER</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Illustrative multi-NPC scene · observable facts only</span>
+                  <div class="cast-playhouse">
+                    <svg class="cast-canopy" viewBox="0 0 600 150" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M0 0h600v15H0Z" fill="#5b3e29" stroke="#bd965b" stroke-width="1"/>
+                      <path d="M8 6h584" stroke="#d4b067" stroke-width=".8"/>
+                      <g stroke-linejoin="round">
+                        <path d="M0 16h115Q96 70 35 105L52 150H0Z" fill="#58332c" stroke="#b58d57" stroke-width="1"/>
+                        <path d="M12 18q12 54 25 78M35 18q12 40 21 65M60 18q6 30 9 51M85 18v35" fill="none" stroke="#8d5140" stroke-width="3"/>
+                        <path d="M0 106q24-10 39-5l-2 12Q18 109 0 120" fill="#b58d57" stroke="#dbbc80" stroke-width=".8"/>
+                        <path d="M37 111q19 5 21 21m-3-2 6 9-8 1Z" fill="#b58d57" stroke="#dbbc80" stroke-width="1"/>
+                      </g>
+                      <g transform="translate(600 0) scale(-1 1)" stroke-linejoin="round">
+                        <path d="M0 16h115Q96 70 35 105L52 150H0Z" fill="#58332c" stroke="#b58d57" stroke-width="1"/>
+                        <path d="M12 18q12 54 25 78M35 18q12 40 21 65M60 18q6 30 9 51M85 18v35" fill="none" stroke="#8d5140" stroke-width="3"/>
+                        <path d="M0 106q24-10 39-5l-2 12Q18 109 0 120" fill="#b58d57" stroke="#dbbc80" stroke-width=".8"/>
+                        <path d="M37 111q19 5 21 21m-3-2 6 9-8 1Z" fill="#b58d57" stroke="#dbbc80" stroke-width="1"/>
+                      </g>
+                      <path d="M120 20q180 25 360 0" fill="none" stroke="#8f734a" stroke-width="1"/>
+                    </svg>
+<div class="sola-cast-dossier">
+<div class="sola-cast-loc-bar"><span class="sola-cast-loc-lab">Location</span><span class="sola-cast-loc-val">Western Gallery · rose window west; north door four paces east.</span></div>
+<div class="sola-cast-speakers"><span class="sola-cast-lab">Active Speakers</span><span class="sola-cast-speakers-val">Guinevere · Sir Kay</span></div>
+<div class="sola-cast-ambient"><span class="sola-cast-lab">Ambient NPCs</span><span class="sola-cast-ambient-val">Sir Bors at the stair, adjusting his glove; no dialogue.</span></div>
+<div class="sola-cast-facts-box"><span class="sola-cast-lab">Observable Facts</span><span class="sola-cast-facts-val">Guinevere: Left cuff dark with rainwater. Sir Kay: Right hand braced on the north-door latch. Sir Bors: Wet mud along the hem of his surcoat.</span></div>
+<div class="sola-cast-whisper sola-director-note"><span class="sola-director-label">Sola</span><span class="sola-cast-whisper-text sola-director-quote">Sir Bors remains at the stair; the north door stays within Sir Kay’s reach.</span></div>
+</div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="track-card notebook sola-card-notebook" id="notebook">
+                <summary>
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path class="fill" d="M4 7c4-1 8-.3 12 2v18c-4-2-8-2.7-12-1.8z"/><path d="M28 7c-4-1-8-.3-12 2v18c4-2 8-2.7 12-1.8z" fill="rgba(26,19,16,.75)" stroke="var(--gold)" stroke-width="1"/><path class="line" d="M16 9v18M7 12h6m-6 4h6m5-4h6m-6 4h6m-14 9 15-17"/><path d="M20 8c1-4 5-6 9-6 0 4-2 7-7 9z" fill="rgba(243,183,75,.22)" stroke="var(--amber)"/><circle cx="29" cy="15" r="1" fill="var(--gold)"/><circle cx="29" cy="19" r="1" fill="var(--cider)"/><circle cx="29" cy="23" r="1" fill="var(--lavender)"/><circle cx="29" cy="27" r="1" fill="var(--coral)"/></svg>
+                  <span class="track-name"><strong>Sola’s Director Notebook</strong><small>Private continuity · open threads, planted seeds &amp; hidden motives</small></span>
+                  <span class="track-badge">PRIVATE FOLIO</span><span class="card-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body">
+                  <span class="sample-tag">Illustrative values · internal continuity only</span>
+                  <div class="notebook-codex">
+<div class="sola-notes-dossier" style="--shadowWidth:0!important;"><div class="sola-notes-cell sola-notes-threads" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #F3B74B;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-notes-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;color:#F3B74B;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M6 9h12"/><path d="M6 15h12"/></svg> ACTIVE PLOT THREADS</div><div class="sola-notes-threads-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.55;color:#F0DCC4;">The Regent’s demand still awaits Guinevere’s answer.</div></div><div class="sola-notes-cell sola-notes-seeds" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #E9A036;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-notes-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;color:#E9A036;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M12 10a6 6 0 0 0 -6 -6H3v2a6 6 0 0 0 6 6h3"/><path d="M12 14a6 6 0 0 1 6 -6h3v2a6 6 0 0 1 -6 6h-3"/><path d="M12 20v-10"/></svg> PLANTED SEEDS &amp; PROPS</div><div class="sola-notes-seeds-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.55;color:#F0DCC4;">Split falcon seal on the unopened petition.</div></div><div class="sola-notes-cell sola-notes-motives" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #8592E6;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-notes-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;color:#8592E6;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> UNREVEALED NPC MOTIVES</div><div class="sola-notes-motives-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.55;color:#F0DCC4;">The Regent wants a reply before the council convenes.</div></div><div class="sola-notes-cell sola-notes-horizon" style="background:rgba(22,16,14,0.78);border:1px solid rgba(244,162,97,0.18);border-left:3.5px solid #EE6C4D;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;box-sizing:border-box;"><div class="sola-notes-cell-tag" style="font-size:0.75rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;color:#EE6C4D;display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;vertical-align:-2px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg> DRAMATIC HORIZON &amp; CLOCK</div><div class="sola-notes-horizon-val" style="font-family:Georgia,'Times New Roman',serif;font-size:max(.75rem,0.96em);line-height:1.55;color:#F0DCC4;">The lower-stair messenger waits; council bell at dusk.</div></div><div class="sola-notes-whisper sola-director-note" style="grid-column:1/-1;"><div class="sola-notes-whisper-label sola-director-label">SOLA’S CONTINUITY NOTE</div><div class="sola-notes-whisper-text sola-director-quote">The broken seal is a clue, not proof of who handled the petition.</div></div></div>
+                  </div>
+                </div>
+              </details>
+
+              <details class="track-card tempo sola-card-tempo sola-drawer sola-drawer-track" id="tempo">
+                <summary class="sola-drawer-summary">
+                  <div class="sola-drawer-title tempo-drawer-title">
+                  <svg class="track-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 4C2 12 6 24 16 28 26 24 30 12 25 4M7 4c3 0 4 4 3 7m15-7c-3 0-4 4-3 7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M8 10h16M11 22h10M12 10v12m4-12v13m4-13v12" fill="none" stroke="var(--gold)" stroke-width="1"/><path d="m16 23 2 2-2 2-2-2Z" fill="var(--gold)"/></svg>
+                  <span class="track-name"><strong class="sola-tempo-heading">Sola’s Tempo Agitator</strong><small class="sola-tempo-sub">Turn rhythm · three narrative gears</small></span>
+<div class="sola-tempo-gate sola-tempo-steady" style="--shadowWidth:0!important;display:inline-flex;align-items:center;background:rgba(22,16,14,0.85);border:1px solid rgba(244,162,97,0.22);border-radius:8px;padding:3px 6px;gap:5px;font-size:0.75rem;font-weight:700;letter-spacing:0.06em;box-shadow:0 2px 8px rgba(0,0,0,0.2);margin:4px 0;vertical-align:middle;box-sizing:border-box;"><span style="color:#A3948A;font-size:0.75rem;letter-spacing:0.08em;padding-right:6px;border-right:1px solid rgba(163,148,138,0.3);display:inline-flex;align-items:center;gap:4px;"><svg style="width:11px;height:11px;vertical-align:-1px;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg> TEMPO</span><span style="padding:3px 6px;color:#6A5D54;">N</span><span style="padding:3px 8px;border-radius:5px;background:rgba(244,162,97,0.2);border:1px solid rgba(244,162,97,0.5);color:#F4A261;text-shadow:0 0 6px rgba(244,162,97,0.5);">S · STEADY</span><span style="padding:3px 6px;color:#6A5D54;">D</span></div>
+                  </div>
+                  <span class="card-chevron sola-drawer-chevron" aria-hidden="true"></span>
+                </summary>
+                <div class="track-body sola-track-body" tabindex="0">
+                  <span class="sample-tag">Illustrative turn · highlighting follows the V3 tempo chip</span>
+                  <div class="tempo-measure">
+                    <div class="tempo-measure-label">The Bard’s Measure</div>
+                    <div class="tempo-score" aria-hidden="true">
+                      <div class="tempo-note tempo-note-neutral"><svg viewBox="0 0 60 100"><path d="M22 47h15v12H22Z" stroke-width="1"/><path d="M37 49V25" fill="none" stroke-width="2"/></svg></div>
+                      <div class="tempo-note tempo-note-steady"><svg viewBox="0 0 60 100"><path d="m30 30 10 8-10 8-10-8Z" stroke-width="1"/><path d="M40 38v34" fill="none" stroke-width="2"/></svg></div>
+                      <div class="tempo-note tempo-note-drive"><svg viewBox="0 0 60 100"><path d="m20 17 9 8-9 8-9-8Zm20 12 9 8-9 8-9-8Z" stroke-width="1"/><path d="M29 25v45m20-33v33M29 70h20" fill="none" stroke-width="2"/></svg></div>
+                    </div>
+                    <div class="tempo-cues">
+                      <section class="tempo-cue tempo-cue-neutral"><span class="tempo-gear-name">N · Neutral / Hold</span><h3>Let the room breathe.</h3><p>Hold plot and resolution. Change one concrete room detail. Answer direct action and questions in full.</p></section>
+                      <section class="tempo-cue tempo-cue-steady"><span class="tempo-gear-name">S · Steady</span><h3>One beat. Then another.</h3><p>Advance one or two beats.</p></section>
+                      <section class="tempo-cue tempo-cue-drive"><span class="tempo-gear-name">D · Drive / Push</span><h3>Give the moment teeth.</h3><p>Push the scene forward; escalate.</p></section>
+                    </div>
+                    <p class="tempo-length">Neutral tends short. Drive may approach the word ceiling.</p>
+                  </div>
+                  <div class="paper-note"><span class="panel-label">Shift by recent history · V3 pacing rule</span><p>After two quiet or NEUTRAL turns, step up one gear. After a peak beat, step down one gear.</p></div>
+                </div>
+              </details>
+            </div>
+          </details>
+          <p class="footer">Fourteen tracker designs, one self-contained HTML file. No external assets or scripts. Preview only; no prompts or regexes were changed.</p>
+        </article>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

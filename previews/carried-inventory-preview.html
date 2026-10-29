@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Armory &amp; Carried Gear — Tracker Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #141516;
+      --surface: #1a1310;
+      --panel: #211e1a;
+      --border: rgba(163, 148, 138, .28);
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --bronze: #d4a373;
+      --bluegray: #bac3c7;
+      --lavender: #8592e6;
+      --coral: #ee6c4d;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 54% -10%, rgba(244, 162, 97, .12), transparent 42%), linear-gradient(180deg, #191715, #111211 75%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: var(--muted); }
+    .rail-mark, .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; }
+    .rail-mark { border: 1px solid rgba(212, 163, 115, .45); color: var(--bronze); font: 12px/1 Georgia, serif; }
+    .rail-dot { color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border: 1px solid rgba(212, 163, 115, .28); background: rgba(212, 163, 115, .1); color: var(--bronze); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: #d4a373; }
+    .page { width: min(100%, 1060px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(25px, 4vw, 34px)/1.16 Georgia, "Times New Roman", serif; }
+    .page-intro { max-width: 70ch; margin: 0; color: #b3a592; font: 12px/1.55 ui-sans-serif, system-ui, sans-serif; }
+    .chat-card { margin-top: 25px; padding: 18px 20px 20px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .chat-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .chat-meta strong { color: #e7d2b7; font-weight: 650; }
+    .chat-line { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .preview-hint { margin: 14px 0 8px; color: #8f8478; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+
+    .inventory-card { --shadowWidth: 0 !important; margin-top: 10px; overflow: hidden; border: 1px solid rgba(212, 163, 115, .34); border-left: 3px double rgba(212, 163, 115, .68); border-radius: 16px 11px 15px 9px; background: radial-gradient(ellipse at 4% 0, rgba(212, 163, 115, .09), transparent 56%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 4px 15px rgba(18, 13, 11, .3), inset 0 1px 0 rgba(240, 220, 196, .05); transition: border-color .3s ease, box-shadow .3s ease; }
+    .inventory-card[open] { border-color: rgba(212, 163, 115, .62); box-shadow: 0 8px 24px rgba(20, 12, 8, .5), 0 0 17px rgba(212, 163, 115, .1); }
+    .inventory-card > summary { position: relative; display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 48px 15px 16px; background: linear-gradient(98deg, rgba(212, 163, 115, .14), rgba(26, 19, 16, .22)); color: var(--bronze); cursor: pointer; list-style: none; user-select: none; }
+    .inventory-card > summary::-webkit-details-marker { display: none; }
+    .inventory-card > summary::marker { content: ""; }
+    .inventory-card > summary:focus-visible { outline: 2px solid var(--bronze); outline-offset: -4px; }
+    .inventory-mark { flex: 0 0 32px; width: 32px; height: 32px; }
+    .inventory-title { display: grid; flex: 1 1 14rem; min-width: 0; gap: 2px; }
+    .inventory-title strong { color: #f0dcc4; font: 400 21px/1.2 Georgia, "Times New Roman", serif; }
+    .inventory-title small { color: var(--muted); font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .035em; }
+    .armory-badge { flex: 0 0 auto; padding: 4px 9px; border: 1px solid rgba(212, 163, 115, .38); border-radius: 4px 9px 6px 3px; background: rgba(212, 163, 115, .12); color: var(--bronze); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .chevron { position: absolute; top: 21px; right: 18px; width: 8px; height: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+    .inventory-card[open] .chevron { transform: rotate(225deg); }
+    .inventory-body { display: grid; gap: 12px; padding: 13px 16px 17px; border-top: 1px dashed rgba(163, 148, 138, .26); }
+    .sample-note { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(133, 146, 230, .3); border-radius: 999px; color: #aeb8ff; font: 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .gear-slip { min-width: 0; padding: 13px 14px 12px; border: 1px solid rgba(244, 162, 97, .22); border-left: 3px solid var(--bronze); border-radius: 8px 5px 9px 6px; background: rgba(22, 16, 14, .78); box-shadow: 0 3px 12px rgba(0, 0, 0, .2); }
+    .slip-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 11px; padding-bottom: 9px; border-bottom: 1px dashed rgba(163, 148, 138, .25); }
+    .character-name { color: #f0dcc4; font: 600 19px/1.25 Georgia, "Times New Roman", serif; }
+    .profile-badge { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 3px 9px; border: 1px solid rgba(212, 163, 115, .42); border-radius: 999px; background: rgba(212, 163, 115, .14); color: var(--bronze); font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; overflow-wrap: anywhere; }
+    .profile-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: var(--bronze); box-shadow: 0 0 6px var(--bronze); }
+    .gear-rows { display: grid; gap: 8px; }
+    .gear-row { display: grid; grid-template-columns: 18px minmax(0, 1fr); align-items: start; gap: 8px; min-width: 0; padding: 9px 11px; border: 1px solid rgba(163, 148, 138, .18); border-left: 3px solid var(--gold); border-radius: 5px 8px 6px 4px; background: rgba(26, 19, 16, .58); }
+    .gear-row.carried { border-left-color: var(--bluegray); }
+    .gear-row.concealed { border-left-color: var(--lavender); }
+    .row-icon { width: 16px; height: 16px; margin-top: 1px; fill: none; stroke: currentColor; stroke-width: 1.45; stroke-linecap: round; stroke-linejoin: round; }
+    .in-hand .row-icon, .in-hand .field-label { color: var(--gold); }
+    .carried .row-icon, .carried .field-label { color: var(--bluegray); }
+    .concealed .row-icon, .concealed .field-label { color: #a5adf0; }
+    .gear-copy { min-width: 0; }
+    .field-label { display: block; margin-bottom: 3px; font: 700 9px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .085em; text-transform: uppercase; }
+    .gear-copy p { margin: 0; color: #f0dcc4; font: 12px/1.5 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .armory-note { position: relative; margin: 11px 0 0; padding: 11px 13px; border: 1px solid rgba(244, 162, 97, .3); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgba(26, 19, 16, .025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .armory-note::before { position: absolute; top: -6px; left: 19px; width: 34px; height: 11px; border: 1px solid rgba(210, 185, 160, .8); background: rgba(244, 220, 196, .72); content: ""; transform: rotate(-1deg); }
+    .note-label { display: block; margin-bottom: 2px; color: #8f3f2e; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .armory-note p { margin: 0; color: #1a1310; font: italic 550 12px/1.5 Georgia, "Times New Roman", serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+    .page-foot { margin: 12px 0 0; color: #897e73; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .inventory-card[open] .inventory-body { animation: reveal .4s cubic-bezier(.16, 1, .3, 1); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 48px; }
+      .chat-card { padding: 14px 12px 15px; }
+      .inventory-card > summary { gap: 8px; padding: 12px 40px 13px 11px; }
+      .inventory-title strong { font-size: 18px; }
+      .armory-badge { padding: 4px 7px; font-size: 7px; }
+      .inventory-body { padding: 11px 10px 14px; }
+      .gear-slip { padding: 11px 10px 10px; }
+    }
+    @media (max-width: 380px) { .inventory-title small { max-width: 25ch; } }
+    @media (prefers-reduced-motion: reduce) { .inventory-card, .chevron, .inventory-card[open] .inventory-body { transition: none; animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">▣</span>
+      <span class="rail-dot">✧</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local preview</span>
+      </header>
+      <section class="page">
+        <div class="page-kicker">Autumn Golden Hour · physical inventory</div>
+        <h1>Carried Inventory</h1>
+        <p class="page-intro">One collapsible Armory card holds a separate gear slip for each active participant. In-hand, carried, and concealed objects stay distinct; the examples are illustrative.</p>
+        <article class="chat-card">
+          <div class="chat-meta"><strong>Guinevere</strong><span>·</span><span>illustrative roster</span></div>
+          <p class="chat-line">Guinevere and Sir Gareth pause beneath the stable arch before the rain.</p>
+          <p class="preview-hint">Open the drawer to inspect the V3 inventory fields and per-character slips.</p>
+          <details class="inventory-card">
+            <summary>
+              <svg class="inventory-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M4.5 8h9m5 0h9" fill="none" stroke="var(--muted)" stroke-width="1.15" stroke-linecap="round"/>
+                <path d="M13.2 5.1h5.6v5.8h-5.6z" fill="var(--surface)" stroke="var(--gold)" stroke-width="1.05" stroke-linejoin="round"/>
+                <path d="M14.8 6.7h2.4v2.6h-2.4z" fill="none" stroke="var(--amber)" stroke-width=".75"/>
+                <path d="M9.4 11.2c1.4-1.2 3.5-1.8 6.6-1.8s5.2.6 6.6 1.8l2.3 3.1v10.1a3 3 0 0 1-3 3H10.1a3 3 0 0 1-3-3V14.3z" fill="rgba(26,19,16,.75)" stroke="var(--bronze)" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M8.7 14.4c2.7 2 12 2 14.6 0" fill="none" stroke="var(--amber)" stroke-width="1.05" stroke-linecap="round"/>
+                <circle cx="16" cy="17.2" r="1.65" fill="var(--gold)" stroke="var(--amber)" stroke-width=".65"/>
+                <path d="M16 18.8v2.5m0 0h1.5m-1.5 0v1.2" fill="none" stroke="var(--coral)" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 25.4h3m6 0h3" fill="none" stroke="var(--muted)" stroke-width=".65" stroke-linecap="round" stroke-dasharray=".6 1.2"/>
+              </svg>
+              <span class="inventory-title"><strong>Sola’s Armory &amp; Carried Gear</strong><small>Physical inventory · in-hand items, stowed gear &amp; concealed props</small></span>
+              <span class="armory-badge">ARMORY</span>
+              <span class="chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="inventory-body">
+              <span class="sample-note">One V3 inventory container · illustrative profiles</span>
+              <article class="gear-slip">
+                <header class="slip-head"><span class="character-name">Guinevere</span><span class="profile-badge"><span class="profile-dot"></span>Equipment Profile</span></header>
+                <div class="gear-rows">
+                  <section class="gear-row in-hand">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V13"/><path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0V13"/><path d="M14 11v-1a1.5 1.5 0 0 1 3 0v2"/><path d="M17 12a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7l-3.2-5a1.5 1.5 0 0 1 2.4-1.8L8 15"/></svg>
+                    <div class="gear-copy"><span class="field-label">In-Hand · Drawn / Ready</span><p>Ivory-handled dagger, drawn in her right hand.</p></div>
+                  </section>
+                  <section class="gear-row carried">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3.5 12h17"/><circle cx="12" cy="15.5" r="1"/></svg>
+                    <div class="gear-copy"><span class="field-label">Carried Gear · Stowed / Pack</span><p>Wax-sealed letter in belt pouch · brass key on belt ring · field satchel.</p></div>
+                  </section>
+                  <section class="gear-row concealed">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s3.2-6.5 9-6.5S21 12 21 12s-3.2 6.5-9 6.5S3 12 3 12z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 20 20 4"/></svg>
+                    <div class="gear-copy"><span class="field-label">Concealed · Hidden Props</span><p>A glass ampoule sewn into her left sleeve.</p></div>
+                  </section>
+                </div>
+                <blockquote class="armory-note"><span class="note-label">Sola’s Armory Note</span><p>The brass key stays on its ring until Guinevere takes it into her hand.</p></blockquote>
+              </article>
+              <article class="gear-slip">
+                <header class="slip-head"><span class="character-name">Sir Gareth</span><span class="profile-badge"><span class="profile-dot"></span>Equipment Profile</span></header>
+                <div class="gear-rows">
+                  <section class="gear-row in-hand">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V13"/><path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0V13"/><path d="M14 11v-1a1.5 1.5 0 0 1 3 0v2"/><path d="M17 12a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7l-3.2-5a1.5 1.5 0 0 1 2.4-1.8L8 15"/></svg>
+                    <div class="gear-copy"><span class="field-label">In-Hand · Drawn / Ready</span><p>Empty.</p></div>
+                  </section>
+                  <section class="gear-row carried">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8z"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3.5 12h17"/><circle cx="12" cy="15.5" r="1"/></svg>
+                    <div class="gear-copy"><span class="field-label">Carried Gear · Stowed / Pack</span><p>Sword in scabbard at left hip · field satchel · whetstone in outer pocket.</p></div>
+                  </section>
+                  <section class="gear-row concealed">
+                    <svg class="row-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12s3.2-6.5 9-6.5S21 12 21 12s-3.2 6.5-9 6.5S3 12 3 12z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 20 20 4"/></svg>
+                    <div class="gear-copy"><span class="field-label">Concealed · Hidden Props</span><p>None.</p></div>
+                  </section>
+                </div>
+                <blockquote class="armory-note"><span class="note-label">Sola’s Armory Note</span><p>His blade remains sheathed; no new gear appears.</p></blockquote>
+              </article>
+            </div>
+          </details>
+        </article>
+        <p class="page-foot">Guinevere and Sir Gareth are example participants; Sir Gareth stands in for the user persona. The V3 prompt still owns possession, retrieval, and continuity rules.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

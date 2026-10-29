@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Sola’s Wind’s Arrow — Tracker Preview</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #141516;
+      --surface: #1a1310;
+      --panel: #211e1a;
+      --border: rgba(163, 148, 138, .28);
+      --muted: #a3948a;
+      --ivory: #f0dcc4;
+      --gold: #f3b74b;
+      --amber: #f4a261;
+      --cider: #e9a036;
+      --coral: #ee6c4d;
+      --sage: #9aa87a;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--bg); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ivory);
+      background: radial-gradient(ellipse at 55% -10%, rgba(244, 162, 97, .12), transparent 42%), linear-gradient(180deg, #191715, #111211 75%);
+      font: 14px/1.55 Georgia, "Times New Roman", serif;
+    }
+    .app { display: grid; grid-template-columns: 48px minmax(0, 1fr); min-height: 100vh; }
+    .rail { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 13px 6px; border-right: 1px solid rgba(163, 148, 138, .14); background: rgba(10, 9, 8, .72); color: #a3948a; }
+    .rail-mark, .rail-dot { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; }
+    .rail-mark { border: 1px solid rgba(244, 162, 97, .45); color: var(--amber); font: 12px/1 Georgia, serif; }
+    .rail-dot { color: #897e73; font: 13px/1 ui-sans-serif, system-ui, sans-serif; }
+    .rail-dot.active { border: 1px solid rgba(238, 108, 77, .28); background: rgba(238, 108, 77, .1); color: var(--coral); }
+    .main { min-width: 0; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 54px; padding: 0 22px; border-bottom: 1px solid rgba(163, 148, 138, .16); background: rgba(15, 12, 10, .8); color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .topbar-brand { color: #e0c9a6; font-weight: 700; }
+    .topbar-state { color: var(--sage); }
+    .page { width: min(100%, 1060px); margin: 0 auto; padding: 30px 28px 72px; }
+    .page-kicker { color: var(--amber); font: 700 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 7px 0 5px; color: #f2d8b6; font: 400 clamp(25px, 4vw, 34px)/1.16 Georgia, "Times New Roman", serif; }
+    .page-intro { max-width: 68ch; margin: 0; color: #b3a592; font: 12px/1.55 ui-sans-serif, system-ui, sans-serif; }
+    .chat-card { margin-top: 25px; padding: 18px 20px 20px; border: 1px solid rgba(163, 148, 138, .2); border-radius: 11px 8px 13px 9px; background: linear-gradient(135deg, rgba(244, 162, 97, .045), rgba(18, 18, 17, .44)); }
+    .chat-meta { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; color: var(--muted); font: 9px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+    .chat-meta strong { color: #e7d2b7; font-weight: 650; }
+    .chat-line { margin: 0; color: #ede0cf; font-size: 16px; line-height: 1.7; }
+    .preview-hint { margin: 14px 0 8px; color: #8f8478; font: 10px/1.5 ui-sans-serif, system-ui, sans-serif; }
+
+    .arrow-card { --shadowWidth: 0 !important; margin-top: 10px; overflow: hidden; border: 1px solid rgba(238, 108, 77, .34); border-left: 3px double rgba(238, 108, 77, .68); border-radius: 16px 11px 15px 9px; background: radial-gradient(ellipse at 4% 0, rgba(238, 108, 77, .09), transparent 55%), repeating-linear-gradient(101deg, rgba(240, 220, 196, .014) 0 1px, transparent 1px 6px), linear-gradient(#1a1310, #120d0b); box-shadow: 0 4px 15px rgba(18, 13, 11, .3), inset 0 1px 0 rgba(240, 220, 196, .05); transition: border-color .3s ease, box-shadow .3s ease; }
+    .arrow-card[open] { border-color: rgba(238, 108, 77, .62); box-shadow: 0 8px 24px rgba(20, 12, 8, .5), 0 0 17px rgba(238, 108, 77, .1); }
+    .arrow-card > summary { position: relative; display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 48px 15px 16px; background: linear-gradient(98deg, rgba(238, 108, 77, .12), rgba(26, 19, 16, .22)); color: var(--coral); cursor: pointer; list-style: none; user-select: none; }
+    .arrow-card > summary::-webkit-details-marker { display: none; }
+    .arrow-card > summary::marker { content: ""; }
+    .arrow-card > summary:focus-visible { outline: 2px solid var(--coral); outline-offset: -4px; }
+    .arrow-mark { flex: 0 0 32px; width: 32px; height: 32px; overflow: visible; }
+    .arrow-title { display: grid; flex: 1 1 14rem; min-width: 0; gap: 2px; }
+    .arrow-title strong { color: #f0dcc4; font: 400 21px/1.2 Georgia, "Times New Roman", serif; }
+    .arrow-title small { color: var(--muted); font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .035em; }
+    .arrow-badge { flex: 0 0 auto; padding: 4px 9px; border: 1px solid rgba(238, 108, 77, .38); border-radius: 4px 9px 6px 3px; background: rgba(238, 108, 77, .1); color: #f08b70; font: 700 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; }
+    .arrow-chevron { position: absolute; top: 21px; right: 18px; width: 8px; height: 8px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(45deg); transition: transform .25s ease; }
+    .arrow-card[open] .arrow-chevron { transform: rotate(225deg); }
+    .arrow-content { display: grid; gap: 12px; padding: 13px 16px 17px; border-top: 1px dashed rgba(163, 148, 138, .26); }
+    .sample-note { justify-self: start; max-width: 100%; padding: 4px 8px; border: 1px solid rgba(133, 146, 230, .3); border-radius: 999px; color: #aeb8ff; font: 8px/1.4 ui-sans-serif, system-ui, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+    .trajectory-banner { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 13px 15px; border-radius: 8px 5px 9px 6px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .045), 0 3px 12px rgba(0, 0, 0, .2); }
+    .trajectory-banner[data-trajectory="Grazing Shot"] { border: 1px solid rgba(243, 183, 75, .45); border-left: 4px solid var(--gold); background: radial-gradient(circle at 100% 50%, rgba(243, 183, 75, .17), transparent 58%), linear-gradient(105deg, rgba(26, 19, 16, .94), rgba(243, 183, 75, .1)); }
+    .trajectory-sigil { display: grid; place-items: center; flex: 0 0 38px; width: 38px; height: 38px; border: 1px solid rgba(243, 183, 75, .42); border-radius: 50%; color: var(--gold); }
+    .trajectory-sigil svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+    .trajectory-copy { display: grid; min-width: 0; gap: 1px; }
+    .trajectory-label { color: #c7a55c; font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+    .trajectory-copy strong { color: #f3c867; font: 400 19px/1.25 Georgia, "Times New Roman", serif; }
+    .trajectory-copy small { color: #b7a88f; font: 10px/1.4 ui-sans-serif, system-ui, sans-serif; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .field-card { min-width: 0; padding: 11px 12px; border: 1px solid rgba(163, 148, 138, .17); border-left: 2px solid var(--amber); border-radius: 4px 8px 6px 4px; background: rgba(18, 18, 17, .47); }
+    .field-card.friction { border-left-color: var(--coral); }
+    .field-label { display: block; margin-bottom: 5px; color: var(--amber); font: 700 8px/1.35 ui-sans-serif, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+    .field-card p { margin: 0; color: #e8d6be; font: 12px/1.55 ui-sans-serif, system-ui, sans-serif; overflow-wrap: anywhere; }
+    .sola-note { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; align-items: start; margin: 0; padding: 11px 13px; border: 1px solid rgba(244, 162, 97, .34); border-left: 3px solid var(--coral); border-radius: 4px 10px 7px 3px; background: repeating-linear-gradient(97deg, rgba(26, 19, 16, .025) 0 1px, transparent 1px 6px), linear-gradient(112deg, #f0dcc4, #fdf6f0); color: #1a1310; }
+    .note-star { display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid rgba(143, 63, 46, .5); border-radius: 50%; color: #8f3f2e; font: 12px/1 Georgia, serif; }
+    .sola-note .field-label { margin-bottom: 2px; color: #8f3f2e; }
+    .sola-note p { margin: 0; color: #1a1310; font: italic 550 13px/1.5 Georgia, "Times New Roman", serif; text-shadow: 0 1px 2px rgba(0, 0, 0, .55); }
+    .page-foot { margin: 12px 0 0; color: #897e73; font: 9px/1.5 ui-sans-serif, system-ui, sans-serif; }
+    .arrow-card[open] .arrow-content { animation: reveal .4s cubic-bezier(.16, 1, .3, 1); }
+    @keyframes reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 700px) {
+      .app { grid-template-columns: minmax(0, 1fr); }
+      .rail { display: none; }
+      .page { padding: 24px 15px 48px; }
+      .chat-card { padding: 14px 12px 15px; }
+      .arrow-card > summary { gap: 8px; padding: 12px 40px 13px 11px; }
+      .arrow-title strong { font-size: 18px; }
+      .arrow-badge { padding: 4px 7px; font-size: 7px; }
+      .arrow-content { padding: 11px 10px 14px; }
+      .field-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 380px) { .arrow-title small { max-width: 25ch; } }
+    @media (prefers-reduced-motion: reduce) { .arrow-card, .arrow-chevron, .arrow-card[open] .arrow-content { transition: none; animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="rail" aria-label="SillyTavern navigation">
+      <span class="rail-mark">ST</span>
+      <span class="rail-dot">◉</span>
+      <span class="rail-dot active">↗</span>
+      <span class="rail-dot">▣</span>
+      <span class="rail-dot">⚙</span>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <span class="topbar-brand">SillyTavern</span>
+        <span>Chats / Guinevere</span>
+        <span class="topbar-state">● Local preview</span>
+      </header>
+      <section class="page">
+        <div class="page-kicker">Autumn Golden Hour · kinetic fate</div>
+        <h1>Sola’s Wind’s Arrow</h1>
+        <p class="page-intro">A collapsible V3 tracker card for high-stakes kinetic gambles. The 32×32 sigil combines a compass ring, a wind trail, and an arrow striking a four-point star.</p>
+        <article class="chat-card">
+          <div class="chat-meta"><strong>Guinevere</strong><span>·</span><span>illustrative turn</span></div>
+          <p class="chat-line">Guinevere reaches the far coping with the seal still clenched in her fist.</p>
+          <p class="preview-hint">The V3 module triggers only for uncertain, high-stakes kinetic actions. Open the drawer to see the V3 field shape.</p>
+          <details class="arrow-card">
+            <summary>
+              <svg class="arrow-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <circle cx="16" cy="16" r="14.1" fill="none" stroke="var(--muted)" stroke-width=".75"/>
+                <path d="M16 1.9v2.4m0 23.4v2.4M1.9 16h2.4m23.4 0h2.4" fill="none" stroke="var(--muted)" stroke-width=".8" stroke-linecap="round"/>
+                <path d="M3.2 10.7c2.1-1.1 4.1-1 5.8.2M2.9 14.7c1.7-.7 3.3-.6 4.8.2" fill="none" stroke="var(--coral)" stroke-width=".9" stroke-linecap="round"/>
+                <path d="m7.1 25 16.1-16.1" fill="none" stroke="var(--gold)" stroke-width="1.35" stroke-linecap="round"/>
+                <path d="m19.5 7.6 6.8-2-2 6.8" fill="none" stroke="var(--amber)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m8 24.1-2.7-2.7m4.2 1.2-2.6 2.8m.4-3.1 1.2 3.8" fill="none" stroke="var(--coral)" stroke-width=".95" stroke-linecap="round"/>
+                <path d="m26 2.4.9 2.5 2.5.9-2.5.9-.9 2.5-.9-2.5-2.5-.9 2.5-.9z" fill="var(--gold)" stroke="var(--amber)" stroke-width=".55" stroke-linejoin="round"/>
+              </svg>
+              <span class="arrow-title"><strong>Sola’s Wind’s Arrow</strong><small>Binding kinetic fate · D20 DC threshold &amp; environmental friction</small></span>
+              <span class="arrow-badge">KINETIC D20</span>
+              <span class="arrow-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="arrow-content">
+              <span class="sample-note">Illustrative values · V3 fields · no roll value added</span>
+              <div class="trajectory-banner" data-trajectory="Grazing Shot">
+                <span class="trajectory-sigil" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.5c1.5 6.1 3.4 8 9.5 9.5-6.1 1.5-8 3.4-9.5 9.5-1.5-6.1-3.4-8-9.5-9.5 6.1-1.5 8-3.4 9.5-9.5z"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+                <div class="trajectory-copy"><span class="trajectory-label">Trajectory</span><strong>Grazing Shot</strong><small>Costly success · 8–14</small></div>
+              </div>
+              <div class="field-grid">
+                <section class="field-card"><span class="field-label">Gamble</span><p>Guinevere vaults the rain-slick gap to catch the fallen seal.</p></section>
+                <section class="field-card friction"><span class="field-label">Friction</span><p>Her boot skids on the far coping; she catches herself hard against the stone.</p></section>
+              </div>
+              <blockquote class="sola-note"><span class="note-star" aria-hidden="true">✧</span><div><span class="field-label">Sola</span><p>The wind grants no clean landings.</p></div></blockquote>
+            </div>
+          </details>
+        </article>
+        <p class="page-foot">V3 output fields remain Gamble · Trajectory · Friction · Sola. The sample contains no numerical roll because the V3 tag does not expose one.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
