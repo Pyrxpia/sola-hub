@@ -353,6 +353,25 @@
   "extensions": {
     "regex_scripts": [
       {
+        "id": "80528431-1763-5887-a5cc-e68f8fc4eb23",
+        "scriptName": "15.01 Display: AI & User",
+        "findRegex": "/⠀/gi",
+        "replaceString": " ",
+        "trimStrings": [],
+        "placement": [
+          1,
+          2
+        ],
+        "disabled": false,
+        "runOnEdit": false,
+        "markdownOnly": true,
+        "promptOnly": false,
+        "minDepth": null,
+        "maxDepth": null,
+        "substituteRegex": 0,
+        "description": ""
+      },
+      {
         "id": "ce3852a9-33a8-429e-8497-12d231d95658",
         "scriptName": "Sola Kindling: Streaming — Hide unfinished fengine",
         "findRegex": "/(?:<fengine\\b(?:(?!<\\/fengine\\s*>)[\\s\\S])*|<(?:|f|fe|fen|feng|fengi|fengin))$/gi",
