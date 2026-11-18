@@ -1,24 +1,35 @@
-# Sola V5 Flame: RC01 beta
+# Sola V5 Flame: RC02 beta
 
-Release candidate 01 of Sola V5 Flame, plus Kindling V3. This is a beta: it has been checked against the host's own prompt assembler (Lumiverse) and upstream SillyTavern, but it has not been run against a live model, and Tavo has only been checked in a simulator, not on a device.
+Release candidate 02 of Sola V5 Flame, plus Kindling V3. This is a beta: it has been checked against the host's own prompt assembler (Lumiverse) and upstream SillyTavern, but it has not been run against a live model, and Tavo has only been checked in a simulator, not on a device.
+
+## What's new since RC01
+
+- **Hand-offs leave your move open.** Replies end on a live beat instead of handing you the next move, and without a seed the NPC acts and you answer.
+- **Dub-con follows Consent & Signals.** With Consent on, the frame opens only where the card, persona or world gives standing for it, and it closes on a hard line or a safeword.
+- **Replies no longer vanish behind an unclosed tracker tag.** A reply that started with a HUD, Easel, Chatterbox or Board tag that never closed could show as empty. Fixed in the regex.
+- **Scholar's Gloss is easier to read.** Its rows are small cards now, not plain text.
+- Smaller wording passes (Crossroads, Story Review, journal, Memory) and a few redundant "never" lines cut. The full list is in the changelog below.
+
+**Updating from RC01.** Import the RC02 preset, and the RC02 regex pack with it (or use a Complete file). Remove the RC01 regex pack first; only one pack (Full or Lite) should be imported at a time.
 
 ## Which file do I want?
 
 **Easiest: a "Complete" file.** The preset and the full regex pack in one file.
-- Lumiverse: `RC01 Sola V5 Flame Lumi - Complete` (or `Complete Lite` for the lighter regex pack).
-- SillyTavern: `RC01 Sola V5 Flame ST - Complete` (or `Complete Lite`). SillyTavern will ask once whether to allow the embedded regex; say yes.
-- Tavo: `RC01 Sola V5 Tavo - Complete.zip` (or `Complete Lite`). It holds the preset and its regex zip; import the two separately.
+- Lumiverse: `RC02 Sola V5 Flame Lumi - Complete` (or `Complete Lite` for the lighter regex pack).
+- SillyTavern: `RC02 Sola V5 Flame ST - Complete` (or `Complete Lite`). SillyTavern will ask once whether to allow the embedded regex; say yes.
+- Tavo: `RC02 Sola V5 Tavo - Complete.zip` (or `Complete Lite`). It holds the preset and its regex zip; import the two separately.
 
-**Separate files.** The preset on its own (`RC01 Sola V5 Flame Lumi / ST / Tavo`) and the regex packs (`RC01 Sola V5 Full` or `Lite - Regex Pack`, one per platform). Full is the whole pack; Lite is the smaller one (a few rules fewer, and it leaves out the Island Emphasis rules).
+**Separate files.** The preset on its own (`RC02 Sola V5 Flame Lumi / ST / Tavo`) and the regex packs (`RC02 Sola V5 Full` or `Lite - Regex Pack`, one per platform). Full is the whole pack; Lite is the smaller one (a few rules fewer, and it leaves out the Island Emphasis rules).
 
-**Kindling V3.** A smaller sibling preset, one file per platform, regex already inside.
+**Kindling V3.** A smaller sibling preset, one file per platform, regex already inside. It is unchanged since RC01.
 
 `Sola V5 WIP - Master Changelog.txt` is the full history of what changed.
 
 ## Notes
 - ST and Tavo builds cut the features that only exist in Lumiverse (Council, Memory, Now Playing, Pocket, Crossroads and a few others).
-- The Adult Fiction Note is a new small module and is off by default; switch it on in the preset if you want it.
+- The Adult Fiction Note is a small module and is off by default; switch it on in the preset if you want it.
 - Tavo: some regex rules use patterns that hung Tavo on Android before. The Island Emphasis rules (Full pack only) are the riskiest and are untested there; if the app stalls, use the Lite pack and tell me.
+- Crossroads (Lumiverse): once a choice or candle on a message has been used, rerolling that same message leaves its new card locked. That is how Lumiverse tracks use, not something the regex can change.
 
 Found a problem? Say which file, which platform, and what you did.
 
@@ -26,9 +37,9 @@ Found a problem? Say which file, which platform, and what you did.
 
 ## Changelog
 
-The full history of Sola V5, from the first export through RC01 (also in this folder as `Sola V5 WIP - Master Changelog.txt`).
+The full history of Sola V5, from the first export through RC02 (also in this folder as `Sola V5 WIP - Master Changelog.txt`).
 
-A short, readable history of V5 from the first export through RC01, the release candidate that replaces 25. Each entry is the headline of that version's detailed changelog (`Sola V5 WIP - Changelog X to Y.md`). The first section covers what V5 changed from V4.
+A short, readable history of V5 from the first export through RC02, the current release candidate (it replaces RC01 and 25, which stay as they shipped). Each entry is the headline of that version's detailed changelog (`Sola V5 WIP - Changelog X to Y.md`). The first section covers what V5 changed from V4.
 
 Notation: "Full / Lite" are the Lumi regex packs. ST, Tavo and V4 files are only updated when asked. From RC01 on, ST and Tavo are built from the Lumi files by a converter, and are listed in their own section near the end.
 
@@ -52,6 +63,7 @@ Notation: "Full / Lite" are the Lumi regex packs. ST, Tavo and V4 files are only
 - **24:** the review redesign settled and the saved test state reset: a new `mod_names` line, tonal and gradient wording tightened, Lightning's standalone call sheet rebuilt, and Stop Thinking So Hard reworked.
 - **25:** a quality-check pass: Lightning's call sheet order, two wording fixes, new faster `RC01` regex packs, and a fix for the Monitor's `racing` pulse loop.
 - **RC01:** replaces 25 as the version to ship. One more wording fix (Species Body), a new small module (Adult Fiction Note 🔞), and the first converted ST and Tavo builds, with Complete versions (preset and regex together) and Kindling V3.
+- **RC02:** replaces RC01 as the version to ship. Hand-offs now leave the user's move open, Dub-con follows Consent & Signals, a few redundant "never" tails go, and the regex gets two fixes: a reply can no longer vanish behind an unclosed tracker tag, and Scholar's Gloss shows as cards.
 
 ---
 
@@ -276,11 +288,26 @@ RC01 is the release candidate and replaces 25, which stays untouched. Detailed v
 - **Packs.** RC01 Full and Lite are the 25 packs with the performance and `racing` fixes, renamed. No other rule changed.
 - **Complete versions.** One file per flavour with the regex inside the preset: Lumi (468 Full, 464 Lite rules), ST (465 and 462), and a Tavo bundle of the preset plus its regex zip.
 
+### RC01 → RC02
+
+RC02 replaces RC01, which stays as it shipped. The preset is still 157 blocks. The changes are wording, two regex fixes, and rebuilt ST, Tavo and Complete files.
+
+- **Hand-offs leave {{user}}'s move open.** Agency-Lite, Embellished User, Director Mode, Combat Choreography, Absolute Cinema and Beat Craft no longer "hand the next move" over or stop at "a clear turning point". The reply ends on a live beat, which can be an NPC committing to their move. Without a seed, "I never commit {{user}}; the NPC acts and {{user}} answers."
+- **No setup before a fork.** Crossroads gets a "no setup" line: the prose ends on its own, and no NPC voices the fork or names the options. Story Review keeps NPC questions rare, and at a fork an NPC states their own move.
+- **Dub-con & Free-use follows Consent & Signals.** With Consent & Signals on, the frame opens only where the character card, the persona or world canon gives standing for it, and it closes on a hard line, a safeword or whole-body refusal. An NPC who has the standing may start without being asked; what {{user}} does in answer stays theirs (this line applies with Consent on or off).
+- **Journal and Memory wording.** The Secret Drawer journal takes every entry from the character card, the persona or what the story has established. Memory's "update it quietly" became "let the old note go".
+- **Clearer Story Review Placement picker.** It is now "Story Review Placement (Reasoning)", with a model hint on each option.
+- **A few redundant "never" tails cut:** two in HTML Tools, one in the Easel's world events, one in Now Playing. Tails that name a specific failure stay.
+- **Regex: a reply can no longer vanish behind an unclosed tracker tag.** If a reply began with a HUD, Easel, Chatterbox or Board tag that never closed (cut off by the token limit, or forgotten by the model), its text disappeared or sat inside a collapsed card. Three new safety rules drop such an opener, and the Board placeholder now hides only the board's own rows. Closed tags, and trackers at the end of a reply, are untouched.
+- **Regex: Scholar's Gloss rows are cards.** Each `- Term — entry` row under the Easel's Scholar's Gloss label now gets the same small ledger card as Pressures and Seeds, with a § mark, instead of plain text.
+- **Packs and builds.** Lumi Full 472 and Lite 468 rules (four new). ST and Tavo Full 469 and Lite 466. The Complete versions are rebuilt. Kindling V3 is unchanged.
+- **Checked:** the Lumiverse import check accepts every RC02 file. ST matches Lumi line for line on the default prompt and on the Consent and Dub-con switch combinations, and the Complete ST file renders correctly in real SillyTavern. No real model was used, and Tavo was only run through a simulator.
+
 ### ST and Tavo, and Kindling
 
 New with RC01. Detailed versions: `Conversion RC01/CONVERSION NOTES.md` and `Sola Kindling - Changelog V2 to V3.md`.
 
-- **ST and Tavo are built from the Lumi preset.** Lumi-only features are cut: Council Bridge, Lumiverse Memory, Now Playing, Pocket Bridge and Trackers, Sub / Obj persona, Risky MiMo and Crossroads. Full and Lite regex packs are built for each (ST 465 / 462 rules, Tavo likewise). Island Emphasis rules `12.06` and `12.07` are in the Full ST and Tavo packs; they use lookbehinds that may hang on Tavo.
+- **ST and Tavo are built from the Lumi preset.** Lumi-only features are cut: Council Bridge, Lumiverse Memory, Now Playing, Pocket Bridge and Trackers, Sub / Obj persona, Risky MiMo and Crossroads. Full and Lite regex packs are built for each (RC01: ST 465 / 462 rules, Tavo likewise). Island Emphasis rules `12.06` and `12.07` are in the Full ST and Tavo packs; they use lookbehinds that may hang on Tavo.
 - **Verified in upstream SillyTavern 1.19.0**, line for line against Lumi's own assembler across the switch cases, and in the browser for rendering. Tavo was only run through a simulator.
 - **Fixed after a user report:** Last Word 🎲 was empty in ST and Tavo (it depended on the D20 and Catalyst toggles, which the converter had frozen off), and Lightning had lost its standalone call sheet there. Both now follow the toggles; seven combinations match Lumi exactly.
 - **Kindling V3** (Lumi, ST, Tavo): the Oath, Anti-Therapy, Romanticism, Post History, Lightning and Easel brought up to Flame, 64 regex rules (was 40), a Scene Header, Flame's six POV blocks, and the Adult Fiction Note. The ST and Tavo builds also fix a persona that was sent twice. V2 is untouched.
@@ -296,3 +323,4 @@ New with RC01. Detailed versions: `Conversion RC01/CONVERSION NOTES.md` and `Sol
 - The Board template carries example content instead of bracketed placeholders (not rechecked for RC01).
 - Closed: the duplicate Board rule `id`s (none in the RC01 ST and Tavo packs) and D4.
 - The hand-made Kindling V2 ST and Tavo files still have the doubled persona; V3 does not.
+- Crossroads: once a choice or candle on a message has been used, rerolling that same message leaves its new card locked. Lumiverse tracks use per message, not per swipe, so the regex cannot fix it. Typing a reply still works.
