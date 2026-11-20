@@ -57,8 +57,8 @@
   {
     "id": "1f5ede9c16fb7ea3c94964b73920fbe9",
     "scriptName": "00.01 Prose: Unwrap Hard-Wrapped Lines",
-    "findRegex": "/((?:\\(\\(OOC\\b[\\s\\S]*?\\)\\)|<scene_break\\b[^<>]*\\/?>|<(letter|sms|discord|parchment|sms_chat|discord_chat|terminal|notification|retainer|poem|journal|lore|codex|translate|cipher|sense|easel|chatterbox|sola_hud|sola_easel|hud_summary|easel_summary|details|blockquote|pre|table|thought|chapter|tempo|fengine|bond|cabinet|thought_engine|date|wardrobe|inventory|scene_cast|scene_state|bodies|roster|story_notes|solatag|char_matrix|heart|current|arrow|omen|monitor|sola_choices|sola_council_notes)(:[^\\s<>]+)?(?=[\\s>])[^<>]*>[\\s\\S]*?(?:<\\/\\2\\3\\s*>|(?![\\s\\S]))))|(?<![\\r\\n \\t>])[ \\t]*\\r?\\n[ \\t]*(?![\\r\\n \\t<]|[-*+•][ \\t]|\\d+[.)][ \\t]|#|>)/gi",
-    "replaceString": "$1 ",
+    "findRegex": "/((?:\\(\\([Oo][Oo][Cc]\\b[\\s\\S]*?\\)\\)|<scene_break\\b[^<>]*\\/?>|<(letter|sms|discord|parchment|sms_chat|discord_chat|terminal|notification|retainer|poem|journal|lore|codex|translate|cipher|sense|easel|chatterbox|sola_hud|sola_easel|hud_summary|easel_summary|details|blockquote|pre|table|thought|chapter|tempo|fengine|bond|cabinet|thought_engine|date|wardrobe|inventory|scene_cast|scene_state|bodies|roster|story_notes|solatag|char_matrix|heart|current|arrow|omen|monitor|sola_choices|sola_council_notes)(:[^\\s<>]+)?(?=[\\s>])[^<>]*>[\\s\\S]*?(?:<\\/\\2\\3\\s*>|(?![\\s\\S]))))|^([^\\r\\n]{39,}[^\\s.!?…\"'”’“‘*_~)\\]}`>])[ \\t]*\\r?\\n[ \\t]*(?=[a-z])/gm",
+    "replaceString": "$1$4 ",
     "trimStrings": [],
     "placement": [
       2
@@ -70,7 +70,7 @@
     "minDepth": null,
     "maxDepth": null,
     "substituteRegex": 0,
-    "description": ""
+    "description": "Joins a line break only when it looks like a hard wrap: a long line (40+ characters) that does not end in sentence punctuation, a quote or a closing mark, followed by a line that starts with a lowercase letter. Paragraph breaks, one-line-per-beat dialogue and action lines, short lines, lists, headings and tags are left alone."
   },
   {
     "id": "83ff8244_0589_5f91_9242_e343331675e3_pass1",

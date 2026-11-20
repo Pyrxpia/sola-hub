@@ -502,6 +502,25 @@ V2 to V3.md.
   the Adult Fiction Note. The ST and Tavo builds also fix a persona that was sent twice. V2 is
   untouched.
 
+New with RC03. Diffed against RC02 by block, not by memory: 141 blocks -> 144, nine blocks edited,
+four functional changes.
+
+- Living Psyche (new, optional). A block for Sola's inner life, off by default behind `on_living_psyche`.
+  The Oath's blueprint pulls `sola_core_psyche`, so switching it on is the only step.
+- Length decoupled from the Oath. The hard-coded ~400-500 word rule and its check_length setvar are gone;
+  the style block now supplies the target. The Easel and the post-history length lines are wrapped in
+  {{if::{{len::...}}}}, so they disappear rather than point at an empty variable. Two style blocks added:
+  Bookey-quo (400-500 words) and Adaptive (No Target).
+- Colour tags are display only. NPC Dialogue Colors and Gradient ALL The Time both gained the same rule:
+  the tag colours the speech line, and a character's looks, metaphors and moods come from <character>,
+  never from the palette name. The NPC Roster's goal now also tracks dialogue colour.
+- Monitor and Secret Drawer hardened. The Monitor states its thoughts are private to Sola and the reader
+  and the scene proceeds as if unheard. The Secret Drawer states entries are consented and drawn only
+  from the table, and caps Sola's asides at fifteen words.
+- Mind Palace rebuilt as a CoT block; the old block is replaced, not renamed alongside.
+- Nine edited blocks: Oath, NPC Dialogue Colors, Gradient ALL The Time, Sola's Monitor, NPC Roster,
+  Easel Director Notes, Master Blueprint, Secret Drawer, Post-History Instructions.
+
 ________________________________________________________________________
 
 Still open (carried forward)

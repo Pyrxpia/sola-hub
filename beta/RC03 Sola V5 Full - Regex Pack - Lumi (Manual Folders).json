@@ -114,9 +114,9 @@
     },
     {
       "name": "00.01 Prose: Unwrap Hard-Wrapped Lines",
-      "find_regex": "((?:\\(\\(OOC\\b[\\s\\S]*?\\)\\)|<scene_break\\b[^<>]*\\/?>|<(letter|sms|discord|parchment|sms_chat|discord_chat|terminal|notification|retainer|poem|journal|lore|codex|translate|cipher|sense|easel|chatterbox|sola_hud|sola_easel|hud_summary|easel_summary|details|blockquote|pre|table|thought|chapter|tempo|fengine|bond|cabinet|thought_engine|date|wardrobe|inventory|scene_cast|scene_state|bodies|roster|story_notes|solatag|char_matrix|heart|current|arrow|omen|monitor|sola_choices|sola_council_notes)(:[^\\s<>]+)?(?=[\\s>])[^<>]*>[\\s\\S]*?(?:<\\/\\2\\3\\s*>|(?![\\s\\S]))))|(?<![\\r\\n \\t>])[ \\t]*\\r?\\n[ \\t]*(?![\\r\\n \\t<]|[-*+•][ \\t]|\\d+[.)][ \\t]|#|>)",
-      "replace_string": "$1 ",
-      "flags": "gi",
+      "find_regex": "((?:\\(\\([Oo][Oo][Cc]\\b[\\s\\S]*?\\)\\)|<scene_break\\b[^<>]*\\/?>|<(letter|sms|discord|parchment|sms_chat|discord_chat|terminal|notification|retainer|poem|journal|lore|codex|translate|cipher|sense|easel|chatterbox|sola_hud|sola_easel|hud_summary|easel_summary|details|blockquote|pre|table|thought|chapter|tempo|fengine|bond|cabinet|thought_engine|date|wardrobe|inventory|scene_cast|scene_state|bodies|roster|story_notes|solatag|char_matrix|heart|current|arrow|omen|monitor|sola_choices|sola_council_notes)(:[^\\s<>]+)?(?=[\\s>])[^<>]*>[\\s\\S]*?(?:<\\/\\2\\3\\s*>|(?![\\s\\S]))))|^([^\\r\\n]{39,}[^\\s.!?…\"'”’“‘*_~)\\]}`>])[ \\t]*\\r?\\n[ \\t]*(?=[a-z])",
+      "replace_string": "$1$4 ",
+      "flags": "gm",
       "placement": [
         "ai_output"
       ],
@@ -132,7 +132,7 @@
       "substitute_macros": "none",
       "disabled": false,
       "sort_order": 4,
-      "description": "",
+      "description": "Joins a line break only when it looks like a hard wrap: a long line (40+ characters) that does not end in sentence punctuation, a quote or a closing mark, followed by a line that starts with a lowercase letter. Paragraph breaks, one-line-per-beat dialogue and action lines, short lines, lists, headings and tags are left alone.",
       "metadata": {},
       "folder": "Sola V5 - 00. Normalise",
       "script_id": "",
