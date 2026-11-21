@@ -73,6 +73,60 @@
     "description": "Joins a line break only when it looks like a hard wrap: a long line (40+ characters) that does not end in sentence punctuation, a quote or a closing mark, followed by a line that starts with a lowercase letter. Paragraph breaks, one-line-per-beat dialogue and action lines, short lines, lists, headings and tags are left alone."
   },
   {
+    "id": "8adcf2601660d7feddcaf23e5ececa5c",
+    "scriptName": "00.03 Normalise: Unfence glued OOC",
+    "findRegex": "/^[ \\t]*(?:~{3,}|`{3,})[ \\t]*(?=\\(\\(OOC\\b)/gm",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "runOnEdit": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "minDepth": null,
+    "maxDepth": null,
+    "substituteRegex": 0,
+    "description": "Removes a code-fence opener (~~~ or ```) glued to the front of an OOC note on the same line, so the note is not swallowed into a code block."
+  },
+  {
+    "id": "f5e8b30c1b6ca0def7e19705f055f112",
+    "scriptName": "00.03a Normalise: Strip trailing fence after OOC",
+    "findRegex": "/(\\(\\(OOC\\b[^\\n]*?\\)\\))[ \\t]*(?:~{3,}|`{3,})[ \\t]*$/gm",
+    "replaceString": "$1",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "runOnEdit": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "minDepth": null,
+    "maxDepth": null,
+    "substituteRegex": 0,
+    "description": "Removes a stray closing fence (~~~ or ```) left on the same line after an OOC note, e.g. ~~~((OOC: x))~~~."
+  },
+  {
+    "id": "4290f4c15897be09ab94181f6b0d8f7a",
+    "scriptName": "00.04 Normalise: Unwrap fenced OOC",
+    "findRegex": "/^[ \\t]*(~{3,}|`{3,})[^\\n]*\\n[ \\t]*(\\(\\(OOC\\b[\\s\\S]*?\\)\\))[ \\t]*\\n[ \\t]*\\1[ \\t]*$/gm",
+    "replaceString": "$2",
+    "trimStrings": [],
+    "placement": [
+      2
+    ],
+    "disabled": false,
+    "runOnEdit": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "minDepth": null,
+    "maxDepth": null,
+    "substituteRegex": 0,
+    "description": "Unwraps an OOC note that is the only content of a fenced block. The closing fence must be bare and match the opener, so ordinary code blocks around an OOC line are left alone."
+  },
+  {
     "id": "83ff8244_0589_5f91_9242_e343331675e3_pass1",
     "scriptName": "13.00a Bodies: Escape Open Angles (pass 1)",
     "findRegex": "/<(?!\\/?bodies>)(?<=<bodies>[^<]{0,100000}<)/g",

@@ -548,7 +548,8 @@ prompt 24,622 -> 21,895 tokens by the changelog's own counter; 72 blocks active 
 
 New with RC05. Block-level diff against RC04: same 164 blocks, same ids and order, 55 blocks with
 changed text, 119 variable definitions (118 before; `on_prose_textures` became `pick_textures`,
-`on_soapbox` added). No output template, tag or field changed, so the regex packs are RC03's, renamed.
+`on_soapbox` added). No output template, tag or field changed; the regex packs are RC03's plus RC04's OOC fence guard (three
+`00.` Normalise scripts, run before the OOC box).
 
 - Trim pass over 02 to 05, 08 to 11 and the tracker preamble: duplicate rules deleted, sibling bullets
   merged, shared tracker rules stated once in the Secret Drawer, Heart Engine's four faculty rules

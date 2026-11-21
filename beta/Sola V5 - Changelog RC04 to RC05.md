@@ -1,6 +1,6 @@
 # Sola V5 — Changelog RC04 → RC05
 
-**Status:** RC05 is RC04 with a trim pass over panels 02–05, 08–11 and the tracker preamble: duplicate rules deleted, sibling bullets merged, shared tracker rules stated once in the Drawer preamble, Prose Textures turned into a three-way pick (Off / Lean / Full, default Full), and a new optional **Soapbox 📣** mode for Chatterbox (default off). No output template, tag or field changed; the regex packs are unchanged. Engine: blocks 164 | enabled 164 | prompt variables 119 (`on_prose_textures` → `pick_textures`, same slot and id; `on_soapbox` added) | chars 279805 → 271799 (−8006, Soapbox's two branches included).
+**Status:** RC05 is RC04 with a trim pass over panels 02–05, 08–11 and the tracker preamble: duplicate rules deleted, sibling bullets merged, shared tracker rules stated once in the Drawer preamble, Prose Textures turned into a three-way pick (Off / Lean / Full, default Full), and a new optional **Soapbox 📣** mode for Chatterbox (default off). No output template, tag or field changed; the regex packs carry RC04's OOC fence guard (three `00.` Normalise scripts, see below). Engine: blocks 164 | enabled 164 | prompt variables 119 (`on_prose_textures` → `pick_textures`, same slot and id; `on_soapbox` added) | chars 279805 → 271799 (−8006, Soapbox's two branches included).
 
 **Default prompt, measured on Lumiverse's own assembler** (full dry-run render, same test character, RC04 vs RC05 at defaults): 24,022 → 22,734 tokens (−1,288, −5.4%). That counter includes the surrounding scaffold, so it is not comparable to `tokens.py` (RC04 = 21,895 there); `tokens.py` has not been run on the final file, and the v1 draft measured −1,143 on it. Soapbox on: 22,952 (+218 over RC05 defaults); Soapbox off renders Chatterbox byte for byte as RC04 did.
 
@@ -60,15 +60,15 @@ Per-block detail: the combined draft's appendix (kept in the drafts folder).
 Built from the Lumi preset by the converter (`Conversion RC05/`, `Complete RC05/`): Lumi, ST and Tavo presets; Full and Lite regex packs for Lumi, ST and Tavo; Complete (preset + embedded regexes) and Complete Lite for each.
 
 - Converter suite: 38 checks, 0 failed.
-- Lumiverse's real import path: all three Lumi presets import; both Lumi regex packs import 472 / 468 scripts, 0 skipped, 0 errors.
+- Lumiverse's real import path: all three Lumi presets import; both Lumi regex packs imported 472 / 468 scripts, 0 skipped, 0 errors, before the OOC fence guard was added (see below); the 475 / 471 packs have not been re-imported.
 - Lumi assembler dry-run, RC05 with Soapbox off / on / on with Chatterbox off: all render, no literal macros left; Soapbox off renders the Chatterbox block identical to RC04's; the Drawer reminder appears only with both switches on.
-- Regex packs: the ST packs and the Tavo zips are byte-identical to RC03's (same file names and contents), because no tag or template changed.
+- Regex packs: RC04's OOC fence guard was missing from the first RC05 packs (they were exported from a copy without it). Added `00.03 Unfence glued OOC`, `00.03a Strip trailing fence after OOC` and `00.04 Unwrap fenced OOC` to the Lumi Full (475) and Lite (471) packs, placed right after `00.01` (sort 5-7 / 4-6), so they run before `01.00a`, `01.00` and `01.01` (RC04's export had them at 168/178/188, after `01.01`, where they cannot fire). ST (472 / 469) and Tavo (472 / 469) packs and all Complete files regenerated through the converter. Chain tested in Node on 9 cases (the RC04 note's table); not run in Lumi's engine.
 - Converter change: Lumi's `on_soapbox` is an inline switch, which the generic converter would freeze to its default, so ST and Tavo would have lost the mod. The converter now ships the classic Chatterbox as is and adds a **disabled prompt `Sola Soapbox 📣`** right after it; enabling it replaces the Chatterbox rules and sets a flag (`sola_soapbox`) that the Drawer reminder reads. The Mind block zeroes the flag each turn. Checked structurally and with the converter's tests; not run in a real ST or Tavo.
 
 ## ST / Tavo
 
 - Done: ST and Tavo presets, regex packs and Complete builds are in `Conversion RC05/` and `Complete RC05/`.
-- No output template, tag or field changed, so the regex packs are RC03's, renamed, byte for byte.
+- No output template, tag or field changed. The regex packs are RC03's plus the three OOC fence guard scripts from RC04.
 - `pick_textures` has no ST equivalent: the builds bake it at Full (the Lean gates drop out); carry Lean as a second disabled prompt if wanted.
 - Soapbox ships as one disabled prompt after Chatterbox: enable it (with Chatterbox on) to switch the mode.
 - Two sentences added to the preamble inside the `sola_trackers_any` gate; the rest is deleted or merged bullets in plain text.

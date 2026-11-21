@@ -11,7 +11,7 @@ Release candidate 05 of Sola V5 Flame, plus Kindling V3. This is a beta: it has 
 - **Five modules are now off by default** (RC04): Dirty Talk, Sola Directors OOC, Sola's Infirmary, NPC Roster and Sola's Marginalia. Switch on any you want.
 - The Mind Palace placement pick is now `Mind Palace Placement (CoT)`. Heart Engine loses its four faculty rules (the output fields already define them).
 
-**Updating from RC03 (or RC04).** Import the RC05 preset and the RC05 regex pack with it (or use a Complete file). Remove the old regex pack first; only one pack (Full or Lite) should be imported at a time. The regex packs are the same rules as RC03's, renamed, because no tag or template changed. Saved values for `on_anti_name_slop` and `on_prose_textures` do not carry over to the new picks; check them once.
+**Updating from RC03 (or RC04).** Import the RC05 preset and the RC05 regex pack with it (or use a Complete file). Remove the old regex pack first; only one pack (Full or Lite) should be imported at a time. The regex packs are RC03's rules plus RC04's OOC fence guard (three `00.` Normalise scripts that stop a code fence glued to an OOC note from turning the OOC box CSS into text), because no tag or template changed. Saved values for `on_anti_name_slop` and `on_prose_textures` do not carry over to the new picks; check them once.
 
 **Not tested yet.** The trimmed wording has no model test except Prose Textures. Soapbox was tested on 108 single-turn samples across three models (quiet turns stayed silent, notable turns posted, gaps were asked about), but not over several turns, on a local model, or with the display regex. The two warm rewrites (Authentic NPCs `shifting stance`, Anti-Softening `leverage` / `vulnerability`) were not probed.
 
