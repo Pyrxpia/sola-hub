@@ -1,8 +1,8 @@
 SOLA V5 WIP — MASTER CHANGELOG
 ==============================
 
-A short, readable history of V5 from the first export through RC02, the current release candidate
-(it replaces RC01 and 25, which stay as they shipped). Each entry is the headline of that version's
+A short, readable history of V5 from the first export through RC05, the current release candidate
+(it replaces RC04, RC03, RC02, RC01 and 25, which stay as they shipped). Each entry is the headline of that version's
 detailed changelog (Sola V5 WIP - Changelog X to Y.md). The first section covers what V5 changed
 from V4.
 
@@ -520,6 +520,39 @@ four functional changes.
 - Mind Palace rebuilt as a CoT block; the old block is replaced, not renamed alongside.
 - Nine edited blocks: Oath, NPC Dialogue Colors, Gradient ALL The Time, Sola's Monitor, NPC Roster,
   Easel Director Notes, Master Blueprint, Secret Drawer, Post-History Instructions.
+
+New with RC04 (RC03 beta with five defaults switched off, two signposts and a names pick). Default
+prompt 24,622 -> 21,895 tokens by the changelog's own counter; 72 blocks active at defaults (was 77).
+
+- Anti-Name-Slop is Off / Standard / Randomised (`pick_names`, replaces `on_anti_name_slop`). Randomised
+  brings back the per-turn first-letter draw as two lines under the `Names:` check in the Story Review,
+  each conditioned "if one is needed this turn"; Standard is the old block unchanged.
+- Two comment-only signposts (Switches only, no prompts) under the 16 and 17 categories. Nothing renders.
+- Five modules off by default: Dirty Talk, Sola Directors OOC, Sola's Infirmary, NPC Roster, Sola's
+  Marginalia.
+- The Mind Palace pick is relabelled Mind Palace Placement (CoT); Living Psyche's description loses
+  "Adds tokens."
+
+New with RC05. Block-level diff against RC04: same 164 blocks, same ids and order, 55 blocks with
+changed text, 119 variable definitions (118 before; `on_prose_textures` became `pick_textures`,
+`on_soapbox` added). No output template, tag or field changed, so the regex packs are RC03's, renamed.
+
+- Trim pass over 02 to 05, 08 to 11 and the tracker preamble: duplicate rules deleted, sibling bullets
+  merged, shared tracker rules stated once in the Secret Drawer, Heart Engine's four faculty rules
+  removed. Default prompt 24,022 -> 22,734 tokens on Lumiverse's assembler (-5.4%).
+- Prose Textures is Off / Lean / Full (`pick_textures`, default Full). Lean drops grief, tender and
+  quiet (they tested idle in a blind 144-sample run) and renders 212 tokens lighter.
+- Soapbox (new, optional, off by default, `on_soapbox`). An if/else inside Chatterbox: only the goal and
+  the first rule bullets swap, so Chatterbox renders byte for byte as before when it is off. On, Sola
+  posts only when something catches her and asks the user one short question when the story needs a
+  fact, motive or fork (at most one in three turns). Tested on 108 single-turn samples (three models):
+  quiet turns silent, notable turns posted, gaps asked 7/9. One pre-registered miss (forks asked on
+  odd turns). Multi-turn behaviour and local models untested. ST and Tavo carry it as a disabled
+  prompt after Chatterbox.
+- The ST and Tavo converter now handles the inline Soapbox switch (it would otherwise have frozen it
+  off). Converter suite 38 checks, Lumiverse import and assembler dry-run pass.
+- Not probed: Authentic NPCs `shifting stance` and Anti-Softening `leverage` / `vulnerability`.
+  Block-level detail: Sola V5 - Changelog RC04 to RC05.md.
 
 ________________________________________________________________________
 
