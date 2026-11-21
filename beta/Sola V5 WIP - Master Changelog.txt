@@ -50,6 +50,19 @@ The big picture
 - RC02: replaces RC01 as the version to ship. Hand-offs now leave the user's move open, Dub-con
   follows Consent & Signals, a few redundant "never" tails go, and the regex gets two fixes: a reply
   can no longer vanish behind an unclosed tracker tag, and Scholar's Gloss shows as cards.
+- RC03: Living Psyche 🫀 (new, optional, off by default, behind on_living_psyche), the length target
+  moved out of the Oath into the style block (two new styles: Bookey-quo and Adaptive), colour tags
+  made display-only, the Monitor's thoughts and the Secret Drawer hardened, and Mind Palace rebuilt as
+  a CoT block.
+- RC04: five modules off by default (Dirty Talk, Sola Directors OOC, Sola's Infirmary, NPC Roster,
+  Sola's Marginalia), Anti-Name-Slop becomes Off / Standard / Randomised with the first-letter draw
+  back as an option, a relabelled Mind Palace Placement pick, and two comment-only signposts. Default
+  prompt 24,622 -> 21,895 tokens.
+- RC05: a trim pass (duplicate rules deleted, siblings merged, shared tracker rules stated once in
+  the Secret Drawer, Heart Engine's faculty rules removed; default prompt about 5% lighter), Prose
+  Textures as an Off / Lean / Full pick, and Soapbox 📣, a new optional Chatterbox mode where Sola
+  speaks only when something catches her and asks the user instead of guessing. The ST and Tavo
+  converter now carries Soapbox as a disabled prompt.
 
 ________________________________________________________________________
 
