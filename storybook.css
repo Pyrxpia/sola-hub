@@ -95,6 +95,11 @@ html[data-theme="twilight"] .hero-sparks i{background:#d6e3ff;box-shadow:0 0 9px
 .book-page[data-mind-detail="velvet"]::before{content:"❧"}
 .book-page[data-mind-detail="mystic"]::before{content:"✧"}
 .book-page[data-mind-detail="scholar"]::before{content:"✎";transform:rotate(-20deg)}
+.book-page[data-mind-detail="golden"]::before{content:"☼"}
+.book-page[data-mind-detail="kitsune"]::before{content:"✿";transform:rotate(12deg)}
+.book-page[data-mind-detail="doomer"]::before{content:"▭"}
+.sb-release-banner{margin:0 0 26px;border-radius:12px;overflow:hidden;border:1px solid #e1b68a42;box-shadow:0 20px 55px #0004}
+.sb-release-banner img{display:block;width:100%;height:auto}
 .sola-note{max-width:500px;margin-top:22px;color:var(--paper)}
 .sola-note summary{display:inline-flex;align-items:center;cursor:pointer;list-style:none;padding:10px 15px;border:1px solid var(--whimsy-line);border-radius:8px;background:var(--whimsy-wash);color:var(--whimsy-ink);font-weight:800;font-size:13px}
 .sola-note summary::-webkit-details-marker,.golden-surprise summary::-webkit-details-marker{display:none}
