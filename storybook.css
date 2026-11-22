@@ -97,7 +97,8 @@ html[data-theme="twilight"] .hero-sparks i{background:#d6e3ff;box-shadow:0 0 9px
 .book-page[data-mind-detail="scholar"]::before{content:"✎";transform:rotate(-20deg)}
 .book-page[data-mind-detail="golden"]::before{content:"☼"}
 .book-page[data-mind-detail="kitsune"]::before{content:"✿";transform:rotate(12deg)}
-.book-page[data-mind-detail="doomer"]::before{content:"▭"}
+.book-page[data-mind-detail="doomer"]::before{content:"";width:28px;height:28px;top:30px;background-color:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2.5' y='3.5' width='19' height='13' rx='2.2'/%3E%3Cpath d='M9 20.5h6M12 16.5v4'/%3E%3Cpath d='M6 8.5l2 1.5-2 1.5' stroke-width='1.5'/%3E%3Crect x='10' y='11.2' width='3.6' height='1.5' rx='.4' fill='%23000' stroke='none'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2.5' y='3.5' width='19' height='13' rx='2.2'/%3E%3Cpath d='M9 20.5h6M12 16.5v4'/%3E%3Cpath d='M6 8.5l2 1.5-2 1.5' stroke-width='1.5'/%3E%3Crect x='10' y='11.2' width='3.6' height='1.5' rx='.4' fill='%23000' stroke='none'/%3E%3C/svg%3E") center/contain no-repeat}
+@media (prefers-reduced-motion:no-preference){.book-page[data-mind-detail="doomer"]::before{animation:sola-crt 2.4s steps(1,end) infinite}@keyframes sola-crt{0%,100%{opacity:1}50%{opacity:.55}}}
 .sb-release-banner{margin:0 0 26px;border-radius:12px;overflow:hidden;border:1px solid #e1b68a42;box-shadow:0 20px 55px #0004}
 .sb-release-banner img{display:block;width:100%;height:auto}
 .sola-note{max-width:500px;margin-top:22px;color:var(--paper)}
