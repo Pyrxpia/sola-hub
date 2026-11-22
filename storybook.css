@@ -272,3 +272,10 @@ html body .minds .book-page[data-mind-detail="doomer"]::before{--sym:url("data:i
   @keyframes sb-doomer{0%{transform:scaleY(.06);opacity:.3}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1)}}
 }
 @media(max-width:700px){html body .minds .book-page::before{width:38px;height:38px;top:18px;right:58px}}
+
+/* ---- GitHub button in the nav ---- */
+.sb-nav-links .nav-gh{display:inline-flex;align-items:center;gap:7px;padding:8px 15px}
+.sb-nav-links .nav-gh svg{flex:none}
+.sb-nav-links .nav-gh:hover{background:#edbb72;color:#25160e;border-color:#edbb72}
+html[data-theme="twilight"] .sb-nav-links .nav-gh:hover{background:#bac4ff;color:#171527;border-color:#bac4ff}
+@media(max-width:1100px){.sb-nav-links .nav-gh{padding:8px 10px}.nav-gh-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
