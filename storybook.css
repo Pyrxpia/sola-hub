@@ -228,3 +228,18 @@ html[data-theme="twilight"] main .code-box{background:#100e19;color:#e0e6f2}
 
 @media(max-width:1020px){.sb-nav-links{gap:18px}}
 @media(max-width:940px){.sb-nav-links a:not(.nav-button){display:none}}
+
+/* ---- the whole book takes the mind's colour ---- */
+.minds{--book-base:#2b1d17;--book-ink:#fff4e6}
+html[data-theme="twilight"] .minds{--book-base:#1c1829;--book-ink:#f1f2ff}
+html body .minds .book{background:color-mix(in srgb,var(--mind) 24%,var(--book-base));border-color:color-mix(in srgb,var(--mind) 60%,transparent)}
+html body .minds .portrait{background:color-mix(in srgb,var(--mind) 34%,var(--book-base))}
+html body .minds .portrait::after{box-shadow:inset 0 0 70px color-mix(in srgb,var(--mind) 40%,#0000),inset -1px 0 0 color-mix(in srgb,var(--mind) 50%,transparent)}
+html body .minds .book-page{background:radial-gradient(circle at 92% 0%,color-mix(in srgb,var(--mind) 40%,transparent),transparent 46%),linear-gradient(160deg,color-mix(in srgb,var(--mind) 28%,var(--book-base)),color-mix(in srgb,var(--mind) 12%,var(--book-base)))}
+html body .minds .book-page h3{color:color-mix(in srgb,var(--mind) 22%,var(--book-ink))}
+html body .minds .book-page blockquote{color:color-mix(in srgb,var(--mind) 30%,var(--book-ink))}
+html body .minds .book-page p{color:color-mix(in srgb,var(--mind) 12%,#eadfd2)}
+html body .minds .book-small{color:color-mix(in srgb,var(--mind) 45%,var(--book-ink))}
+html body .minds .selector button[aria-pressed="false"]{border-color:color-mix(in srgb,var(--mind) 50%,transparent);color:color-mix(in srgb,var(--mind) 15%,#f1e4d6)}
+html body .minds .book-page::after{color:#1b1411}
+@media (prefers-reduced-motion:no-preference){html body .minds .book,html body .minds .portrait,html body .minds .book-page,html body .minds .book-page h3,html body .minds .book-page blockquote,html body .minds .book-small{transition:background .5s ease,border-color .5s ease,color .5s ease,box-shadow .5s ease}}
