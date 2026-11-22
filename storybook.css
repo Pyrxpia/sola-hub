@@ -255,19 +255,19 @@ html body .minds .book-page[data-mind-detail="kitsune"]::before{--sym:url("data:
 html body .minds .book-page[data-mind-detail="doomer"]::before{--sym:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22 fill=%22none%22 stroke=%22%23000%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Crect x=%223%22 y=%224%22 width=%2226%22 height=%2218%22 rx=%223%22/%3E%3Cpath d=%22M12 28.5h8M16 22v6.5%22/%3E%3Cpath d=%22M8 10.2l3 2.5-3 2.5%22/%3E%3Crect x=%2213.4%22 y=%2214.6%22 width=%225%22 height=%222%22 rx=%22.5%22 fill=%22%23000%22 stroke=%22none%22/%3E%3Cpath d=%22M23.2 11.6l-1.9-1.8a1.2 1.2 0 0 1 1.9-1.6 1.2 1.2 0 0 1 1.9 1.6z%22 fill=%22%23000%22 stroke-width=%22.8%22/%3E%3C/svg%3E");transform:none}
 @media (prefers-reduced-motion:no-preference){
   html body .minds .book-page[data-mind-detail="riot"]::before{animation:sb-riot .9s cubic-bezier(.3,.7,.3,1) both}
-  @keyframes sb-riot{0%{transform:rotate(-14deg) scale(.6);opacity:0}45%{transform:rotate(10deg) scale(1.12);opacity:1}70%{transform:rotate(-16deg)}100%{transform:rotate(-12deg)}}
+  @keyframes sb-riot{0%{transform:translateY(-26px) rotate(-12deg);opacity:0}35%{transform:translateY(0) rotate(-12deg) scale(1.18,.78);opacity:1}48%{transform:rotate(-12deg) scale(.94,1.08)}58%{transform:translateX(-3px) rotate(-12deg)}66%{transform:translateX(3px) rotate(-12deg)}74%{transform:translateX(-2px) rotate(-12deg)}82%{transform:translateX(2px) rotate(-12deg)}100%{transform:rotate(-12deg)}}
   html body .minds .book-page[data-mind-detail="golden"]::before{animation:sb-golden .9s cubic-bezier(.3,.7,.3,1) both}
   @keyframes sb-golden{0%{transform:translateY(8px);opacity:0}60%{transform:translateY(-3px);opacity:1}100%{transform:translateY(0)}}
-  html body .minds .book-page[data-mind-detail="gremlin"]::before{animation:sb-gremlin .9s cubic-bezier(.3,.7,.3,1) both}
-  @keyframes sb-gremlin{0%{transform:scale(.4) rotate(0);opacity:0}30%{transform:scale(1.15) rotate(14deg);opacity:1}50%{transform:rotate(-14deg)}70%{transform:rotate(9deg)}85%{transform:rotate(-5deg)}100%{transform:rotate(6deg)}}
+  html body .minds .book-page[data-mind-detail="gremlin"]::before{animation:sb-gremlin .8s steps(1,end) both}
+  @keyframes sb-gremlin{0%{transform:translate(6px,-4px) skewX(20deg);opacity:0}12%{transform:translate(-5px,3px) skewX(-18deg) scale(1.2);opacity:1}24%{transform:translate(4px,2px) rotate(16deg);opacity:.35}36%{transform:translate(-3px,-3px) skewY(12deg) scale(.85);opacity:1}48%{transform:translate(2px,0) rotate(-10deg) scale(1.1);opacity:.6}60%{transform:translate(-1px,1px) skewX(8deg);opacity:1}72%{transform:rotate(9deg) scale(1.04)}100%{transform:rotate(6deg)}}
   html body .minds .book-page[data-mind-detail="velvet"]::before{animation:sb-velvet .9s cubic-bezier(.3,.7,.3,1) both}
   @keyframes sb-velvet{0%{transform:scale(.85) rotate(-8deg);opacity:0}100%{transform:scale(1) rotate(4deg);opacity:1}}
   html body .minds .book-page[data-mind-detail="mystic"]::before{animation:sb-mystic .9s cubic-bezier(.3,.7,.3,1) both}
   @keyframes sb-mystic{0%{transform:perspective(200px) rotateY(180deg);opacity:.2}100%{transform:perspective(200px) rotateY(0)}}
   html body .minds .book-page[data-mind-detail="scholar"]::before{animation:sb-scholar .9s cubic-bezier(.3,.7,.3,1) both}
   @keyframes sb-scholar{0%{transform:translate(6px,-6px) rotate(-40deg);opacity:0}100%{transform:translate(0,0) rotate(-20deg);opacity:1}}
-  html body .minds .book-page[data-mind-detail="kitsune"]::before{animation:sb-kitsune .9s cubic-bezier(.3,.7,.3,1) both}
-  @keyframes sb-kitsune{0%{transform:translateY(10px) scale(.7);opacity:0}45%{transform:translateY(-5px) rotate(-9deg) scale(1.08);opacity:1}65%{transform:rotate(8deg)}82%{transform:rotate(-5deg)}100%{transform:rotate(0)}}
+  html body .minds .book-page[data-mind-detail="kitsune"]::before{animation:sb-kitsune 1s ease-out both}
+  @keyframes sb-kitsune{0%{transform:translateY(0) scale(1,.6);opacity:0}18%{transform:translateY(-14px) scale(.9,1.18);opacity:1}36%{transform:translateY(0) scale(1.16,.84)}54%{transform:translateY(-8px) scale(.94,1.1)}70%{transform:translateY(0) scale(1.08,.92)}84%{transform:scale(1.06)}100%{transform:none}}
   html body .minds .book-page[data-mind-detail="doomer"]::before{animation:sb-doomer .9s cubic-bezier(.3,.7,.3,1) both,sola-crt 2.6s steps(1,end) 1.2s infinite}
   @keyframes sb-doomer{0%{transform:scaleY(.06);opacity:.3}40%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1)}}
 }
