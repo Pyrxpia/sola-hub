@@ -59,7 +59,7 @@ SillyTavern and Tavo packs leave out the `16.00 Crossroads` choice card and the 
 - Regex parity across eight switch states on both ST and Tavo, comparing what the model receives, not just the pack text.
 - Display performance on three real replies: 3 KB 1.1 ms, 26 KB 12.5 ms, 52 KB 24.8 ms for the whole Full chain. Desktop JavaScriptCore.
 
-The full list of changes is in `Sola V5 - Changelog RC05 to RC06.md`. RC05 files are still in this folder and are superseded.
+The full list of changes is in `Sola V5 - Changelog RC05 to RC06.md`. RC05 is superseded and its files have been pulled from this folder; they are still reachable in the repository's history if you need to go back.
 
 ## Files
 
