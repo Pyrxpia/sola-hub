@@ -27,11 +27,11 @@ Choose the file for your app: **Lumi** for Lumiverse, **ST** for SillyTavern, or
 | Preset | Download |
 |---|---|
 | 🔥 Flame V5 | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
-| 🔥 Flame V5 Complete | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Lumi%20-%20Complete%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20ST%20-%20Complete%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/Sola%20V5%20Tavo%20-%20Complete.zip) |
-| 🔥 Flame V5 Complete Lite | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Lumi%20-%20Complete%20Lite%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20ST%20-%20Complete%20Lite%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/Sola%20V5%20Tavo%20-%20Complete%20Lite.zip) |
+| 🔥 Flame V5 Complete | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Lumi%20-%20Complete%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20ST%20-%20Complete%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
+| 🔥 Flame V5 Complete Lite | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20Lumi%20-%20Complete%20Lite%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20V5%20Flame%20ST%20-%20Complete%20Lite%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
 | 🧡 Kindling V3 | [Lumi](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V3%20Lumi%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [ST](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V3%20ST%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) · [Tavo](./presets/%E2%98%80%EF%B8%8F%20%F0%9F%A7%A1%20Sola%20Kindling%20V3%20Tavo%20%F0%9F%A7%A1%20%E2%98%80%EF%B8%8F.json) |
 
-The Tavo Complete downloads are ZIP files holding the preset and its regex pack; import the two separately. SillyTavern asks once whether to allow a Complete file’s embedded regex; say yes.
+Complete is for Lumiverse and SillyTavern; on Tavo, use Flame V5 with a regex pack below. SillyTavern asks once whether to allow a Complete file’s embedded regex; say yes.
 
 ### Flame V5 companion regex packs
 
