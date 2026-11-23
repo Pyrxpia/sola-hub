@@ -1543,7 +1543,7 @@
       {
         "id": "b82d21cf4b1bf4efe9e26351a09b5f30",
         "scriptName": "06.20 Saver: Easel",
-        "findRegex": "/<\\s{0,8}sola_easel\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}sola_easel\\s{0,8}>|<\\s{0,8}sola_board\\b[\\s\\S]{0,50000}?<\\/\\s{0,8}sola_board\\s{0,8}>/gi",
+        "findRegex": "/<\\s{0,8}sola_easel\\b[\\s\\S]{0,20000}?<\\/\\s{0,8}sola_easel\\s{0,8}>|<\\s{0,8}sola_board\\b[\\s\\S]{0,20000}?<\\/\\s{0,8}sola_board\\s{0,8}>/gi",
         "replaceString": "",
         "trimStrings": [],
         "placement": [
@@ -1676,7 +1676,7 @@
       {
         "id": "0bd34f0369a5126bef8a27d1a33ef923",
         "scriptName": "06.23 Easel: METAR Pressure (THR/UNL)",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:THR|UNL))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:THR|UNL))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:THR|UNL)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:THR|UNL))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:THR|UNL))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:THR|UNL)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
         "replaceString": "<span class=\"sola-ec-metar\" data-state=\"$2$4$6\" title=\"THR · At Threshold / UNL · Unleashed\">$1$3$5</span>",
         "trimStrings": [],
         "placement": [
@@ -1695,7 +1695,7 @@
       {
         "id": "a15d195ac967f0614596ddde05718d78",
         "scriptName": "06.24 Easel: METAR Pressure (DRM)",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:DRM))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:DRM))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:DRM)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:DRM))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:DRM))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:DRM)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
         "replaceString": "<span class=\"sola-ec-metar\" data-state=\"$2$4$6\" title=\"DRM · Dormant\">$1$3$5</span>",
         "trimStrings": [],
         "placement": [
@@ -1714,7 +1714,7 @@
       {
         "id": "142dba5195081c60842858621e535949",
         "scriptName": "06.25 Easel: METAR Pressure (MNT/STR)",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:MNT|STR))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:MNT|STR))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:MNT|STR)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:MNT|STR))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:MNT|STR))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:MNT|STR)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
         "replaceString": "<span class=\"sola-ec-metar\" data-state=\"$2$4$6\" title=\"MNT · Mounting / STR · Stirring\">$1$3$5</span>",
         "trimStrings": [],
         "placement": [
@@ -1733,7 +1733,7 @@
       {
         "id": "fdf73bd0bc18f8e4603ce3e80920e25f",
         "scriptName": "06.26 Easel: METAR Seeds & Traps",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:LAT|HEAT|SPRUNG))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:LAT|HEAT|SPRUNG))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:LAT|HEAT|SPRUNG)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/g",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-metar\\b)[^>]*>[ \\t]*(((?:LAT|HEAT|SPRUNG))(?:[ \\t]*[·—–-][^<\\r\\n]*)?)[ \\t]*<\\/span>|\\[(((?:LAT|HEAT|SPRUNG))(?:[ \\t]*[·—–-][^\\]\\r\\n]*)?)\\]|\\b(((?:LAT|HEAT|SPRUNG)))\\b(?=[ \\t]*(?:→|->|—|–|-|\\||<br|<\\/div>|\\r?\\n|$))(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/g",
         "replaceString": "<span class=\"sola-ec-metar\" data-state=\"$2$4$6\" title=\"LAT · Latent / HEAT · Drawing Heat / SPRUNG · Sprung\">$1$3$5</span>",
         "trimStrings": [],
         "placement": [
@@ -1752,7 +1752,7 @@
       {
         "id": "2936ac26827c9e2d759a614df86ab2b4",
         "scriptName": "06.27 Easel: Escalation Chip",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-escalation\\b)[^>]*>[ \\t]*((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)[ \\t]*<\\/span>|\\[?\\b((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)\\b\\]?(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-escalation\\b)[^>]*>[ \\t]*((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)[ \\t]*<\\/span>|\\[?\\b((E[0-4])(?:[ \\t]*(?:[·—–-][ \\t]*)?(?:Baseline|Simmer|Spark|High Pressure|Climax))?)\\b\\]?(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
         "replaceString": "<span class=\"sola-ec-escalation\" data-level=\"$2$4\">$1$3</span>",
         "trimStrings": [],
         "placement": [
@@ -1771,7 +1771,7 @@
       {
         "id": "34da2840784cd819331b6da279cd588a",
         "scriptName": "06.28 Easel: Pacing Gear Target",
-        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-gear\\b)[^>]*>[ \\t]*(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)[ \\t]*<\\/span>|\\b(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)\\b(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[\\s\\S]*?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
+        "findRegex": "/(?:<span\\b(?![^>]*\\bsola-ec-gear\\b)[^>]*>[ \\t]*(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)[ \\t]*<\\/span>|\\b(Gear[ \\t]+[1-5](?:[ \\t]*[–—-][ \\t]*[1-5])?(?:[ \\t]*:[ \\t]*(?:Slow-Burn|Grounding|Momentum|Kinetic|Climax))?)\\b(?![^<]*<\\/span>))(?<!<[^<>]*)(?<!<span class=\"sola-audit-value\">[^<>\\r\\n]*)(?=(?=[[\\s\\S]{0,20000}?<span class=\"sola-easel-scope-end\")[^<]*(?:<(?!details\\b[^>]*\\bclass=\"[^\"]*\\bsola-card-|span class=\"sola-easel-scope-end\")[^<]*)*<span class=\"sola-easel-scope-end\")/gi",
         "replaceString": "<span class=\"sola-ec-gear\">$1$2</span>",
         "trimStrings": [],
         "placement": [
