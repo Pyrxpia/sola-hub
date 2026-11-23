@@ -50,15 +50,15 @@ Thanks to **Biotechie** for the Dialogue Colors compatibility patch: `06.36 Ease
 | `☀️ 🧡 RC06 Sola V5 Flame Lumi 🧡 ☀️.json` | 433,478 | `8452f6a542db2fc68f6e0cdaf87e4cf827c204b49078ccd0bced9fa0500954e4` |
 | `☀️ 🧡 RC06 Sola V5 Flame ST 🧡 ☀️.json` | 373,537 | `3070e7b6b2dea9ac0122360b6587d58e31eb0b84624b99f9954fe72b4b0960f4` |
 | `☀️ 🧡 RC06 Sola V5 Flame Tavo 🧡 ☀️.json` | 375,501 | `522d5bcb3aeb6f4c2fcfd78d18e6083109d36a66a219118bb7f9ff091c08417f` |
-| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | 1,616,686 | `00f4d9d3de82485a8fb1c76af706e357b956a653effc30bce32b916282f4d363` |
-| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | 1,481,061 | `3aab396b6e68eaf6cd1dcfe008364ff13e5582bfb87694001c741f606a9ee532` |
-| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | 1,611,776 | `18b8713e849e8a3b4266630c7d51d6df23ec1989e73a8548ac982cdf0bab2528` |
-| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | 1,476,315 | `26dc62bcafea95ec976d6ea1e9cb3798bcbe4645a1fd70b7b1e1582c08021a60` |
-| `RC06 Sola V5 Tavo - Complete.zip` | 511,869 | `420557bfaa19d9fe96c8d7d591282ac5ebba0ef86b3d805ccc75782e72408bc0` |
-| `RC06 Sola V5 Tavo - Complete Lite.zip` | 486,115 | `33d6447e5b28266e94bf795dd2444f24d0a497fbf69da64ebcb50b178ec609ca` |
-| `RC06 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | 1,302,066 | `4f376877edda2ddff012071e27824a48ad699870388eb07377a72066d7c2806a` |
-| `RC06 Sola V5 Full - Regex Pack - ST.json` | 1,133,240 | `63a648753ef8cae4ab28bd97e8c64364f8c86b46f9f85ad5088ce17ea225026c` |
-| `RC06 Sola V5 Full - Regex Pack - Tavo.zip` | 469,012 | `6e13477446f740b93576638c61088c3bb056edd1af6e4f9195fbde524369ee79` |
-| `RC06 Sola V5 Lite - Regex Pack - Lumi (Manual Folders).json` | 1,165,743 | `5fe598a75e45a52c071be1c63ee0e5750083c266e710a3611e575a7563568a38` |
-| `RC06 Sola V5 Lite - Regex Pack - ST.json` | 998,444 | `bef83da11d6c3d9ba9dd9587f75974bcd4dc5e5b1e54e3c7f078388510d62880` |
-| `RC06 Sola V5 Lite - Regex Pack - Tavo.zip` | 443,111 | `44cd10f43ca89eaedac2a7a5149ffb157bc40580311c9ad88afa45cfc18843b5` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | 1,616,838 | `509b4b874620710f106203c4b6d6e5bdcad6cac8f42eb7b8508e4d0651fbbe0a` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | 1,481,213 | `ef54d5d06f055ae922a0d09eec50988283e9cfafd650e4d57ba95508fdf54caa` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | 1,611,928 | `c94d8c626acf8d49a5d099fd4c302d438ca4c2644557208c7dbb9eeda19b6d22` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | 1,476,467 | `0f68f2e22bc45a55fd31c15aecbb83861f6e6dd1df03f9d974c770e127309867` |
+| `RC06 Sola V5 Tavo - Complete.zip` | 511,941 | `2bdf88afb2156ac2fb62f677c082b0e97c474b5354d93976c7e0f51aea649dd4` |
+| `RC06 Sola V5 Tavo - Complete Lite.zip` | 486,189 | `a7f9638ff7f60a31d51a7dc900b720d8bffd5df40ea8b19e69d43f425a8b84fc` |
+| `RC06 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | 1,302,216 | `e8e3452231390b5e2e469ef511ebf2287588bf70a2fed98a309b0b8af910edad` |
+| `RC06 Sola V5 Full - Regex Pack - ST.json` | 1,133,392 | `6ae090180abcc3fd5beb22e0a6c77e887a5361a8a06302eebed6e87d6b78b335` |
+| `RC06 Sola V5 Full - Regex Pack - Tavo.zip` | 469,093 | `0495447063543d97dda6aa2f573fb6c873b2250f041ad75bb8a8dd4456937f5d` |
+| `RC06 Sola V5 Lite - Regex Pack - Lumi (Manual Folders).json` | 1,165,893 | `c395d875b2166f5174db05961aac963b0a1215a767e780072fe90b1bbd3528b2` |
+| `RC06 Sola V5 Lite - Regex Pack - ST.json` | 998,596 | `e55f2aeac2654d8396d2171d7c3f13dbdce982c50bfe24bd6d3aaf795a141aa2` |
+| `RC06 Sola V5 Lite - Regex Pack - Tavo.zip` | 443,192 | `d44640393cce4e0ebca80fd2b2847e072473a0895836e95247b36c8e9414efe5` |
