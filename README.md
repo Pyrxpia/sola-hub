@@ -118,7 +118,7 @@ Everything new since V4, in one place. Lumi is Lumiverse, ST is SillyTavern.
 ### 🗑️ Removed
 
 - **Stylistic Excess 😘.** For the full-color look, pick Gradient ALL The Time.
-- **Tempo Agitator ⏱️ and Inner Current ☁️,** replaced by Story Movement and the Monitor.
+- **Inner Current ☁️,** replaced by Sola’s Monitor.
 
 ### 🧡 Kindling V3
 
