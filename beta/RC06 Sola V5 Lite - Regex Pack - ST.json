@@ -7240,7 +7240,7 @@
   {
     "id": "4d5ff893048cc81c1c300325effff538",
     "scriptName": "10.00 Header: Strip Dialogue Colors Font Tags (Scoped)",
-    "findRegex": "/<\\/?font\\b[^<>]*>(?<=<(?:scene_header|mobile_header)\\b(?:(?!\\/>)[^\\r\\n]){0,1600})/gi",
+    "findRegex": "/<\\/?font\\b[^<>]*>(?<=<(?:scene_header|mobile_header)\\b(?:(?!\\/>)[^\\r\\n]){0,1600})(?=[^\\r\\n]{0,800}?\\/>)/gi",
     "replaceString": "",
     "trimStrings": [],
     "placement": [
@@ -8069,7 +8069,7 @@
     "id": "dc75783dad57f6776ddcf541b355c04c",
     "scriptName": "12.00 Micro: Paragraph Markdown Boundaries",
     "findRegex": "/(^|\\r?\\n[ \\t]*\\r?\\n)(?!(?:[^\\r\\n]*(?:(?:\\r(?!\\n)|\\r?\\n(?![ \\t]*\\r?\\n))[^\\r\\n]*)*)<\\/?(?:style|details|div|p|table|section|article|aside|nav|main|header|footer|form|fieldset|figure|sola_hud|easel|chatterbox|letter|sms|discord)\\b)(?!(?:[^\\r\\n]*(?:(?:\\r(?!\\n)|\\r?\\n(?![ \\t]*\\r?\\n))[^\\r\\n]*)*)<(?:subtext|tell|lore|codex|translate|cipher|retract|swallow|sense)\\b(?=[\\s>])[^>]*>(?!(?:[^\\r\\n]*(?:(?:\\r(?!\\n)|\\r?\\n(?![ \\t]*\\r?\\n))[^\\r\\n]*)*)<\\/(?:subtext|tell|lore|codex|translate|cipher|retract|swallow|sense)\\s*>))(?=(?:[^\\r\\n]*(?:(?:\\r(?!\\n)|\\r?\\n(?![ \\t]*\\r?\\n))[^\\r\\n]*)*)<(?:subtext|tell|lore|codex|translate|cipher|retract|swallow|sense)\\b)([^\\r\\n]*(?:(?:\\r(?!\\n)|\\r?\\n(?![ \\t]*\\r?\\n))[^\\r\\n]*)*)(?=\\r?\\n[ \\t]*\\r?\\n|$)/gi",
-    "replaceString": "$1<div class=\"sola-inline-prose\"><style>:host>.sola-inline-prose{margin:0;}.sola-inline-prose p{display:inline;margin:0;}</style>\n\n$2\n\n</div>",
+    "replaceString": "$1<div class=\"sola-inline-prose\"><style>.sola-inline-prose{display:block;margin-block:var(--sola-prose-gap,1em);line-height:inherit;}.sola-inline-prose p{display:inline;margin:0;}</style>\n\n$2\n\n</div>",
     "trimStrings": [],
     "placement": [
       2
@@ -8230,7 +8230,7 @@
   {
     "id": "af2bbe912ec0eb83e3e1b2046756fd8c",
     "scriptName": "06.36 Easel: Strip Dialogue-Color Tags",
-    "findRegex": "/<font\\b[^<>]*>\\s*(<span\\b[^>]*>(?:(?!<\\/span>)[\\s\\S]){0,1500}?<\\/span>)\\s*<\\/font>(?=(?:(?!class=\"sola-)[\\s\\S]){0,2500}class=\"sola-)/gi",
+    "findRegex": "/<font\\b[^<>]*>\\s*(<span\\b[^>]*>(?:(?!<\\/span>)[\\s\\S]){0,1500}?<\\/span>)\\s*<\\/font>(?<=<details\\b(?=[^<>]*\\bclass=\"[^\"]*\\bsola-card-easel\\b)[^<>]*>(?:(?!<\\/details\\s*>)[\\s\\S]){0,120000})/gi",
     "replaceString": "$1",
     "trimStrings": [],
     "placement": [
@@ -8698,7 +8698,7 @@
   {
     "id": "2b95afb7643c97309482e0762ffb5ee7",
     "scriptName": "99.02 Whitespace: Collapse Inter-Tag Newlines",
-    "findRegex": "/(?<=<\\/(?:details|summary|style|svg|path|g|circle|rect|ul|ol|li|p|table|tr|td|th)>|<(?:br|hr)\\s*\\/?>)[^\\S\\n]*\\n\\s*</g",
+    "findRegex": "/(?<=<\\/(?:details|summary|style|svg|path|g|circle|rect|ul|ol|li|p|table|tr|td|th)>|<(?:br|hr)\\s*\\/?>)[^\\S\\n]*\\r?\\n[^\\S\\n]*</g",
     "replaceString": "<",
     "trimStrings": [],
     "placement": [
