@@ -1,40 +1,64 @@
-# Sola V5 Flame: RC05 beta
+# Sola V5 Flame: RC06 beta
 
-Release candidate 05 of Sola V5 Flame, plus Kindling V3. This is a beta: it has been checked against the host's own prompt assembler (Lumiverse) and upstream SillyTavern, but it has not been run against a live model, and Tavo has only been checked in a simulator, not on a device.
+Release candidate 06 of Sola V5 Flame. Every build here comes from the same Lumi preset.
 
-## What's new since RC03 (RC04 and RC05)
+This folder holds the presets and the regex packs. The Complete files are not here.
 
-- **Soapbox 📣, optional, off by default** (`on_soapbox`, next to Chatterbox, which it needs). Sola posts to the chatterbox only when something funny, amazing, shocking or odd catches her, and when the story needs a fact, a motive or a fork she doesn't know, she asks you one short question instead of guessing. Off, Chatterbox renders exactly as before. In ST and Tavo it is a disabled prompt right after Chatterbox; enable it to switch the mode on.
-- **A lighter prompt.** RC05 trims duplicate and overlapping rules across Core, Prose, World, Voice, Intimacy, Explicit, Story Rhythm, Beat Craft and the trackers. Measured on Lumiverse's assembler, the default prompt is about 5% smaller than RC04 (24,022 to 22,734 tokens). Shared tracker rules are now stated once, in the Secret Drawer.
-- **Prose Textures is Off / Lean / Full** (default Full). Lean keeps panic, rage, dissociative, joy and dreamy and drops grief, tender and quiet, which tested idle. In ST and Tavo it is baked at Full.
-- **Anti-Name-Slop is Off / Standard / Randomised** (RC04). Randomised brings back a per-turn first-letter draw, read under the `Names:` row of the Story Review (it does nothing with both reviews off).
-- **Five modules are now off by default** (RC04): Dirty Talk, Sola Directors OOC, Sola's Infirmary, NPC Roster and Sola's Marginalia. Switch on any you want.
-- The Mind Palace placement pick is now `Mind Palace Placement (CoT)`. Heart Engine loses its four faculty rules (the output fields already define them).
+## What's new since RC05
 
-**Updating from RC03 (or RC04).** Import the RC05 preset and the RC05 regex pack with it (or use a Complete file). Remove the old regex pack first; only one pack (Full or Lite) should be imported at a time. The regex packs are RC03's rules plus RC04's OOC fence guard (three `00.` Normalise scripts that stop a code fence glued to an OOC note from turning the OOC box CSS into text), because no tag or template changed. Saved values for `on_anti_name_slop` and `on_prose_textures` do not carry over to the new picks; check them once.
+- **Model Patches 🩹** (`pick_patch`, section 16), off by default. Six short habit blocks, one per model family: Gemini, GLM, Kimi/Qwen, MiMo, DeepSeek, and a flash-tier block for small models. **Auto** reads the model name and picks a branch; nothing renders when no branch matches. In ST and Tavo they are six disabled prompts named `Model Patch: <family>`.
+- **HTML Font Tags** joins the dialogue color pick, so the named palette can be written as plain `<font color="#hex">` tags for clients that strip CSS. Four modes: named colors, gradient, font tags, none.
+- **The reasoning stack was reworked.** Story Review, Lightning Story Review and Stop Thinking So Hard tag every line `[canon]`, `[craft]` or `[spark]`, ask one creative question per section, and check a fact before the anchors lock. Each Mind gains a spoken `BEAT:` example. Post-History gains a `carry`: two things from the sheet that must show in the reply.
+- **List of 20 📋** joins the names pick (`pick_names`): off, standard, randomized, or a 20-name draw in the thinking step for a name that will recur.
+- **Optional JB 🔓 was rewritten** as an adult-manuscript frame with a three-way pick: off, voice, voice and permission.
+- **Every block's comment was rewritten** and eight blocks were regrouped by what they do. None of it changes what the model receives.
+- **Two display fixes.** `06.36 Easel: Strip Dialogue-Color Tags` stops dialogue color `<font>` wrappers from landing inside Sola's own Easel markup; `10.00 Header: Strip Dialogue Colors Font Tags` does the same inside scene headers.
+- **Tavo packs cap the Easel audit scan.** `06.32` and `06.32a` look back from a `Check:` line to its opening card; in the Tavo packs that scan stops at 20,000 characters, which takes a long reply from roughly 60 ms to 25 ms on desktop. Lumi and ST keep the uncapped scan. A Check line more than 20,000 characters past its opening tag stays plain text in Tavo.
+- **US spelling** throughout prompt text, comments, rule names and folder names.
 
-**Not tested yet.** The trimmed wording has no model test except Prose Textures. Soapbox was tested on 108 single-turn samples across three models (quiet turns stayed silent, notable turns posted, gaps were asked about), but not over several turns, on a local model, or with the display regex. The two warm rewrites (Authentic NPCs `shifting stance`, Anti-Softening `leverage` / `vulnerability`) were not probed.
+## Which file do I want
 
-## Which file do I want?
+**Easiest: a Complete file.** The preset and the Full or Lite regex pack in one file.
 
-**Easiest: a "Complete" file.** The preset and the full regex pack in one file.
-- Lumiverse: `RC05 Sola V5 Flame Lumi - Complete` (or `Complete Lite` for the lighter regex pack).
-- SillyTavern: `RC05 Sola V5 Flame ST - Complete` (or `Complete Lite`). SillyTavern will ask once whether to allow the embedded regex; say yes.
-- Tavo: `RC05 Sola V5 Tavo - Complete.zip` (or `Complete Lite`). It holds the preset and its regex zip; import the two separately.
-
-**Or the pieces:** the base preset (`RC05 Sola V5 Flame Lumi`, `- ST` or `- Tavo`) plus one regex pack from the list below.
-
-## Regex packs
-
-| | Lumi | SillyTavern | Tavo |
+| | Lumiverse | SillyTavern | Tavo |
 |---|---|---|---|
-| Full | `RC05 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | `RC05 Sola V5 Full - Regex Pack - ST.json` | `RC05 Sola V5 Full - Regex Pack - Tavo.zip` |
-| Lite | `RC05 Sola V5 Lite - Regex Pack - Lumi (Manual Folders).json` | `RC05 Sola V5 Lite - Regex Pack - ST.json` | `RC05 Sola V5 Lite - Regex Pack - Tavo.zip` |
+| Complete (Full) | `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | `RC06 Sola V5 Tavo - Complete.zip` |
+| Complete Lite | `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | `RC06 Sola V5 Tavo - Complete Lite.zip` |
 
-Full and Lite differ in how much display work the regex does. Import one, never both.
+SillyTavern asks once whether to allow the embedded regex; say yes. The Tavo Complete zips hold the preset and its regex zip, which import separately.
 
-## Checks run
+**Or the pieces:** the base preset plus one regex pack. Full and Lite differ in how much display work the regex does; import one, never both.
 
-Lumiverse assembly and rendering, upstream SillyTavern for the ST builds (line for line against Lumi's assembler across the switch cases), and Tavo through a simulator. Nothing here has been run against a live model, and nothing on a real Tavo device.
+| | Lumiverse | SillyTavern | Tavo |
+|---|---|---|---|
+| Preset | `☀️ 🧡 RC06 Sola V5 Flame Lumi 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame ST 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame Tavo 🧡 ☀️.json` |
+| Full pack | `RC06 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | `RC06 Sola V5 Full - Regex Pack - ST.json` | `RC06 Sola V5 Full - Regex Pack - Tavo.zip` |
+| Lite pack | `RC06 Sola V5 Lite - Regex Pack - Lumi (Manual Folders).json` | `RC06 Sola V5 Lite - Regex Pack - ST.json` | `RC06 Sola V5 Lite - Regex Pack - Tavo.zip` |
 
-The full list of changes, and what is still open, is in `Sola V5 WIP - Master Changelog.txt`. The block-level detail for this release is in `Sola V5 - Changelog RC04 to RC05.md`.
+The SillyTavern and Tavo packs leave out the `16.00 Crossroads` choice card and the `17.00 Council` notes drawer, because those prompt blocks are cut in those builds.
+
+The full list of changes is in `Sola V5 - Changelog RC05 to RC06.md`.
+
+## Thanks
+
+Thanks to **Biotechie** for the Dialogue Colors compatibility patch: `06.36 Easel: Strip Dialogue-Color Tags` and `10.00 Header: Strip Dialogue Colors Font Tags (Scoped)`, which keep Dialogue Colors' `<font>` tags from breaking Sola's Easel and header markup. `10.00` ships as he wrote it; `06.36` ships as a forward-matching rewrite of the same idea.
+
+## Files
+
+| file | bytes | sha256 |
+|---|---|---|
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi 🧡 ☀️.json` | 433,671 | `5bbb5f73cfeca81ab37070ca47d1424129d80ed5f5f203679741e94486a96406` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST 🧡 ☀️.json` | 373,773 | `cf5901dcf989d36c3c464506c328ea8a8def80a8b815f9777d23956bd6560ca0` |
+| `☀️ 🧡 RC06 Sola V5 Flame Tavo 🧡 ☀️.json` | 375,737 | `a67e4e20ffbd770c9745e3da4b3205e55e67b2129971fb356db5e88e6af643ae` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | 1,617,031 | `fe78ef81b87cb0d6aea70eb5c0fb9f4603bf9fe1013c6edc35eaaa6827a25bb6` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | 1,481,406 | `1efd83d43b03d5bc7428c65a3dee5f50846b7eea484340055b3a8fd53c0ed4d0` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | 1,612,164 | `05010e75c40df484b08f33391424572aa0611fcd0b20cdb53566db1ba916f537` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | 1,476,703 | `af0206286ac23917b0bc7c6ebe5b7b495855e1632cedbfa63fc52d0d2c1e59b7` |
+| `RC06 Sola V5 Tavo - Complete.zip` | 512,040 | `dd944bc9772e0d5db1b72d0778c19566634529ae410e76b6677b8b616d4cbc54` |
+| `RC06 Sola V5 Tavo - Complete Lite.zip` | 486,288 | `2e96389f7bb62dd2cec792621ecfa48a35a8a533ddfbf844124747e611b99097` |
+| `RC06 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | 1,302,216 | `e8e3452231390b5e2e469ef511ebf2287588bf70a2fed98a309b0b8af910edad` |
+| `RC06 Sola V5 Full - Regex Pack - ST.json` | 1,133,392 | `6ae090180abcc3fd5beb22e0a6c77e887a5361a8a06302eebed6e87d6b78b335` |
+| `RC06 Sola V5 Full - Regex Pack - Tavo.zip` | 469,093 | `0495447063543d97dda6aa2f573fb6c873b2250f041ad75bb8a8dd4456937f5d` |
+| `RC06 Sola V5 Lite - Regex Pack - Lumi (Manual Folders).json` | 1,165,893 | `c395d875b2166f5174db05961aac963b0a1215a767e780072fe90b1bbd3528b2` |
+| `RC06 Sola V5 Lite - Regex Pack - ST.json` | 998,596 | `e55f2aeac2654d8396d2171d7c3f13dbdce982c50bfe24bd6d3aaf795a141aa2` |
+| `RC06 Sola V5 Lite - Regex Pack - Tavo.zip` | 443,192 | `d44640393cce4e0ebca80fd2b2847e072473a0895836e95247b36c8e9414efe5` |

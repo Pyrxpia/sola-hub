@@ -1,7 +1,7 @@
 SOLA V5 WIP — MASTER CHANGELOG
 ==============================
 
-A short, readable history of V5 from the first export through RC05, the current release candidate
+A short, readable history of V5 from the first export through RC06, the current release candidate
 (it replaces RC04, RC03, RC02, RC01 and 25, which stay as they shipped). Each entry is the headline of that version's
 detailed changelog (Sola V5 WIP - Changelog X to Y.md). The first section covers what V5 changed
 from V4.
@@ -511,7 +511,7 @@ V2 to V3.md.
   Catalyst toggles, which the converter had frozen off), and Lightning had lost its standalone call
   sheet there. Both now follow the toggles; seven combinations match Lumi exactly.
 - Kindling V3 (Lumi, ST, Tavo): the Oath, Anti-Therapy, Romanticism, Post History, Lightning and
-  Easel brought up to Flame, 64 regex rules (was 40), a Scene Header, Flame's six POV blocks, and
+  Easel brought up to Flame, 66 regex rules (was 40; 06.36 and 10.00 from Biotechie's patch), a Scene Header, Flame's six POV blocks, and
   the Adult Fiction Note. The ST and Tavo builds also fix a persona that was sent twice. V2 is
   untouched.
 
@@ -548,8 +548,7 @@ prompt 24,622 -> 21,895 tokens by the changelog's own counter; 72 blocks active 
 
 New with RC05. Block-level diff against RC04: same 164 blocks, same ids and order, 55 blocks with
 changed text, 119 variable definitions (118 before; `on_prose_textures` became `pick_textures`,
-`on_soapbox` added). No output template, tag or field changed; the regex packs are RC03's plus RC04's OOC fence guard (three
-`00.` Normalise scripts, run before the OOC box).
+`on_soapbox` added). No output template, tag or field changed, so the regex packs are RC03's, renamed.
 
 - Trim pass over 02 to 05, 08 to 11 and the tracker preamble: duplicate rules deleted, sibling bullets
   merged, shared tracker rules stated once in the Secret Drawer, Heart Engine's four faculty rules
@@ -568,6 +567,50 @@ changed text, 119 variable definitions (118 before; `on_prose_textures` became `
 - Not probed: Authentic NPCs `shifting stance` and Anti-Softening `leverage` / `vulnerability`.
   Block-level detail: Sola V5 - Changelog RC04 to RC05.md.
 
+New with RC06. Block-level diff against RC05: 168 blocks (was 164), 120 variable definitions (was 119;
+`pick_patch` arrived, `pick_color` gained a fourth mode, `on_optional_jb` gained a third option). Every
+block's comment was rewritten and eight blocks were regrouped by what they do; with the patches off the
+rendered prompt is unchanged.
+
+- Model Patches 🩹 (new, optional, off by default, `pick_patch`, section 16). Six short habit blocks, one
+  per model family: Gemini, GLM, Kimi/Qwen, MiMo, DeepSeek, and a flash-tier block for the small models.
+  Auto reads the model name through `matches` and picks one; no match renders nothing. Adapted from
+  ARIA 1.0 and put in Sola's voice. In ST and Tavo it ships as six disabled prompts named Model Patch:
+  <family>, because those targets cannot evaluate the switch.
+- HTML Font Tags, a fourth dialogue colour mode. The named palette written as plain
+  <font color="#hex"> tags, for clients that strip CSS: named colours, gradient, font tags, none.
+- Reasoning stack reworked. Story Review, Lightning Story Review and Stop Thinking So Hard tag every line
+  [canon], [craft] or [spark], ask one creative question per section, check a fact before the anchors
+  lock, and hand off cleanly between the three. Each Mind gains a spoken BEAT: example, Story Review's
+  first line and gut become one voice: bullet with per-state lines, and Post-History gains a carry: two
+  things from the sheet that must show in the reply.
+- List of 20 📋 joins the names pick: off, standard, randomized, or a 20-name draw in the thinking step
+  for a name that will recur.
+- Optional JB 🔓 rewritten as an adult-manuscript frame with a three-way pick: off, voice, voice and
+  permission. Adult Fiction Note and Policy Scan lose their policy-speak.
+- Comments and grouping. Every {{// }} comment rewritten in plain words, eight blocks regrouped by what
+  they do, and one comment that spelled a macro was letting about 500 characters of itself print at the
+  top of the prompt whenever a patch was on; fixed, and the export check now fails on a comment that
+  quotes a macro.
+- Two display strips from Ash's export. 06.36 Easel: Strip Dialogue-Color Tags stops dialogue-colour
+  <font> wrappers from landing inside Sola's own Easel markup, and 10.00 Header: Strip Dialogue Colors
+  Font Tags does the same inside scene headers. The exported 06.36 never fired (it anchored on a tag the
+  Easel rule had already replaced) and cost 2.2 s on a 28 KB coloured message; the shipped rule works
+  forward in the same time as before.
+- US spelling through prompt text, comments, rule names and folder names: colour, grey, humour, labelled,
+  randomised, Normalise, Behaviour.
+- Packs and builds. Lumi Full 493 / Lite 489 rules, ST 490 / 487, Tavo 490 / 487. ST and Tavo: 171
+  prompts, 74 enabled, six disabled Model Patch prompts. Complete builds regenerated from the same source.
+- Tavo only: the Easel audit check rules 06.32 and 06.32a cap their backward scan at 20,000 characters.
+  Unbounded, a stray Check: line with no card above it cost 50 ms at 52 KB and 174 ms at 104 KB on
+  desktop JavaScriptCore, and a phone pays several times that. The 52 KB display chain falls from about
+  60 ms to about 25 ms. Lumi and ST keep the uncapped scan. A Check line more than 20,000 characters past
+  its opening tag stays plain text in Tavo.
+- Checked: converter suite 41, regex suite 81, preset suite 438, Lumiverse importer 7 presets and 4
+  packs with no errors. Default prompt byte-identical to the RC06 export; eight patch states render with
+  no diagnostics and no model names; regex parity across eight switch states on ST and Tavo. No real
+  model was used for this release either.
+
 ________________________________________________________________________
 
 Still open (carried forward)
@@ -585,6 +628,14 @@ Still open (carried forward)
   RC01).
 - Closed: the duplicate Board rule ids (none in the RC01 ST and Tavo packs) and D4.
 - The hand-made Kindling V2 ST and Tavo files still have the doubled persona; V3 does not.
+- Model Patches is unprobed as behaviour. Two of the three probes run did not reproduce the habit with the
+  patch off, so a branch that does nothing is a real possibility, and Auto routing cannot be checked
+  offline because `matches` does not resolve outside Lumiverse.
+- Flash tier is matched before Gemini, so a `gemini-*-flash` id takes the flash branch. Undecided.
+- The regex packs have no rules for model-written `<font color>` tags, so HTML Font Tags is untested
+  against them.
+- Lumi and ST keep the uncapped Easel audit scan: a stray Check: line in a 104 KB reply costs about
+  174 ms there.
 - Crossroads: once a choice or candle on a message has been used, rerolling that same message leaves
   its new card locked. Lumiverse tracks use per message, not per swipe, so the regex cannot fix it.
   Typing a reply still works.
