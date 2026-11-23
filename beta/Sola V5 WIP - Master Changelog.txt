@@ -511,7 +511,7 @@ V2 to V3.md.
   Catalyst toggles, which the converter had frozen off), and Lightning had lost its standalone call
   sheet there. Both now follow the toggles; seven combinations match Lumi exactly.
 - Kindling V3 (Lumi, ST, Tavo): the Oath, Anti-Therapy, Romanticism, Post History, Lightning and
-  Easel brought up to Flame, 64 regex rules (was 40), a Scene Header, Flame's six POV blocks, and
+  Easel brought up to Flame, 66 regex rules (was 40; 06.36 and 10.00 from Biotechie's patch), a Scene Header, Flame's six POV blocks, and
   the Adult Fiction Note. The ST and Tavo builds also fix a persona that was sent twice. V2 is
   untouched.
 
