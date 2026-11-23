@@ -39,6 +39,10 @@ The SillyTavern and Tavo packs leave out the `16.00 Crossroads` choice card and 
 
 The full list of changes is in `Sola V5 - Changelog RC05 to RC06.md`.
 
+## Thanks
+
+Thanks to **Biotechie** for the Dialogue Colors compatibility patch: `06.36 Easel: Strip Dialogue-Color Tags` and `10.00 Header: Strip Dialogue Colors Font Tags (Scoped)`, which keep Dialogue Colors' `<font>` tags from breaking Sola's Easel and header markup. `10.00` ships as he wrote it; `06.36` ships as a forward-matching rewrite of the same idea.
+
 ## Files
 
 | file | bytes | sha256 |
