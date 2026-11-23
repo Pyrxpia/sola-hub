@@ -4,7 +4,7 @@
 
 Sola helps you build scenes with characters who have their own wants, voices, and boundaries. You bring the seeds; she brings the world, the people, and the details that help them grow.
 
-[Visit the Sola hub](https://Pyrxpia.github.io/sola-hub/) · [Downloads](#downloads) · [Getting started](#getting-started)
+[Visit the Sola hub](https://Pyrxpia.github.io/sola-hub/) · [Downloads](#downloads) · [Getting started](#getting-started) · [What's new](#whats-new-v4-to-v5)
 
 ---
 
@@ -12,7 +12,7 @@ Sola helps you build scenes with characters who have their own wants, voices, an
 
 ### 🔥 Flame V5
 
-The full Sola experience: a modular preset with adjustable point of view, agency, prose, worldbuilding, presentation, trackers, Sola’s Board, the Easel, and story review. Choose a standard preset and add a companion regex pack, or choose **Complete** to get a pack attached (Full or Lite).
+The full Sola experience: a modular preset with adjustable point of view, agency, prose, worldbuilding, presentation, trackers, Sola’s Board, the Easel, and story review. Choose a standard preset and add a companion regex pack, or choose **Complete** to get a pack attached (Full or Lite, for Lumiverse and SillyTavern).
 
 Flame V5 has eight minds: **Riot, Golden, Gremlin, Velvet, Mystic, Scholar, Kitsune, and Doomer**. Riot is picked when you import. In Lumiverse, choose another in the **Sola’s Mind** pick; in SillyTavern and Tavo, turn on one mind prompt.
 
@@ -55,6 +55,75 @@ Looking for Flame V4, Kindling V2, the V4 Rolecall variant, or other earlier fil
 5. In Kindling, meet Golden and choose any optional prompts you want to use.
 
 Sola’s default **Agency-Lite** approach leaves your character’s major decisions to you while she handles the world, NPCs, and the immediate outcomes of your actions. Flame also offers other agency options if you want a different balance. A few Flame modules need Lumiverse itself (Council Bridge, Memory, Now Playing, Pocket, and Crossroads), so the SillyTavern and Tavo files leave them out.
+
+## What's new: V4 to V5
+
+Everything new since V4, in one place. Lumi is Lumiverse, ST is SillyTavern.
+
+### 🌟 Minds
+
+- **Eight minds.** Kitsune 🦊 and Doomer 🪟 join Riot, Golden, Gremlin, Velvet, Mystic and Scholar.
+- **Every mind rewritten,** with her own voice in the story, in her thinking and in the trackers. Golden is now a pick of her own; Riot is picked on import.
+
+### 🎛️ Setting up
+
+- **Switches and picks (Lumi).** Every option sits in one panel with a plain-language description, and anything switched off costs no tokens.
+- **ST and Tavo** keep the same modules as prompts, in the same numbered sections.
+- **Reply length:** Rapid Fire, Bookey-quo (default), Novelistic Epic and Absolute Cinema, plus Adaptive and Model’s Choice for no fixed length.
+
+### ♟️ Trackers and the Easel
+
+- **Sola’s Board ♟️** follows up to 32 people, factions and threads on an 8×8 board.
+- **Sola’s Monitor 🩺** replaces Inner Current: NPC thoughts in a little terminal you open.
+- **NPC Roster 👤** keeps the named cast, and **Sola’s Infirmary 🩹** remembers wounds, fatigue and care.
+- **Sola’s Notebook 📓** is now her short story journal, and **Story Movement 🎼** (Sustain, Develop, Turn) replaces Tempo Agitator.
+- **The Easel 🎭** is now an evidence-based audit that folds open section by section, with optional Story Novelty 📖, Story Catalyst ✨ and Scholar’s Gloss 📜.
+
+### ✍️ Writing
+
+- **New modules:** Dirty Talk 🔥, Live Talk 🎙️, Living Psyche 🌱, Beat Craft 🥁, Prose Textures 🧶 and Banned Words 🚯.
+- **Your move stays yours.** Replies end on a live beat instead of handing you the next step.
+- **Anti-Name-Slop 🪪** is now a pick: Standard, Randomized or List of 20.
+- **Colors:** 64 dialogue colors in four palettes, a Dark Mode 🌙 option, and a new HTML Font Tags mode.
+- **Hover tags rebuilt (Interactive Mechanics 🔍):** matching icons, short reveals, and a new sense tag for smells, sounds and textures.
+- **Sola’s Marginalia 📝** leaves footnotes on your own writing: continuity slips, facts, and typos that change the meaning.
+- **Soapbox 📣,** a new Chatterbox mode where Sola speaks up only when something catches her.
+
+### ⭐ Planning
+
+- **Sola’s Story Review ⭐** is now a story sheet she fills before each reply.
+- **Lightning ⚡** works with it or on its own, and **Stop Thinking So Hard 🧠** is an optional add-on to either.
+
+### 🔓 Jailbreaks and model help
+
+- **A Jailbreaks section** holds Braille JB 👻, Policy Scan 🏢 and Optional JB 🔓 (rewritten, with Manuscript and Manuscript + Permission settings), plus the new **Adult Fiction Note 🔞**.
+- **Model Patches 🩹** (off by default): small habit fixes for Gemini, GLM, Kimi/Qwen, MiMo, DeepSeek and flash models. In Lumi, Auto picks one from the model name.
+
+### 🎨 Regex and looks
+
+- **Faster** on long chats.
+- **Sturdier.** A cut-off reply no longer vanishes behind an unclosed tracker, and single line breaks no longer collapse into a wall of text.
+- **Dialogue Colors friendly.** Scene headers and Easel cards stay clean when it’s on.
+- **Tavo:** the packs are tuned so long chats open without freezing.
+
+### 🌐 Lumiverse only
+
+- Council Bridge 🤝, Memory 🧠, Now Playing 🎵, Pocket 📱, Crossroads 🧭 (clickable story choices), the Mind Palace Placement pick, and pronouns read from your persona card. ST and Tavo leave these out.
+
+### 📦 Downloads
+
+- **Complete and Complete Lite** for Lumi and ST: the preset with its regex pack attached.
+- **On Tavo,** use Flame V5 with a Full or Lite regex pack; there is no Tavo Complete in V5.
+
+### 🗑️ Removed
+
+- **Stylistic Excess 😘.** For the full-color look, pick Gradient ALL The Time.
+- **Tempo Agitator ⏱️ and Inner Current ☁️,** replaced by Story Movement and the Monitor.
+
+### 🧡 Kindling V3
+
+- **Brought up to Flame V5’s writing,** with Flame’s six POV choices, a scene header and the Adult Fiction Note.
+- **66 regex rules of its own** (was 40), Dialogue Colors friendly, with optional Feeling Engine and Easel prompts. Still compact, still Golden.
 
 ## Behind the curtain
 
