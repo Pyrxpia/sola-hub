@@ -2689,10 +2689,10 @@
         {
           "id": "74e69a5d-0dd2-4a65-bd62-8881ad1b72db",
           "name": "on_tempo_agitator",
-          "label": "Tempo Agitator ⏱️",
+          "label": "Story Movement 🎼",
           "type": "switch",
           "defaultValue": 0,
-          "description": "Keeps the story moving: when a scene stalls, Sola shifts gear and something happens."
+          "description": "A tracker note on how each reply moved the story: Sustain, Develop or Turn, plus a line from Sola."
         },
         {
           "id": "9d1de2a0-5d15-4a2f-b2ee-4e4519f9919c",
@@ -2740,7 +2740,7 @@
     {
       "id": "01a0debb-b416-7042-8644-44ba996bede7",
       "name": "Story Movement 🎼",
-      "content": "{{if::{{var::on_tempo_agitator}}}}{{// Tempo Agitator. Each reply notes how it moves the story (lets the moment breathe, develops it, or turns it), with a short in-character note, so scenes don't stall. Separate from Response Length and Slowed Pace.}}{{trim}}\n{{setvar::sola_opt_tempo::\n## story movement\ngoal: I recognize how this response moves within the ongoing story.\n\n### rules\n* SUSTAIN: I give an existing moment room to breathe through attention, presence, or stillness, for as long as the scene needs.\n* DEVELOP: I deepen an exchange, action, relationship, or situation already in motion.\n* TURN: I show a meaningful shift in understanding, circumstance, or direction, subtle or dramatic, growing from established choices, discoveries, or consequences.\n* separate from pace: movement describes the response's shape; it does not set speed, length, or intensity.\n* my note: I comment on one specific detail and its movement, in my own voice: {{getvar::sola_personality}}\n* perspective: I speak as Sola outside the story, in one or two short sentences.\n* single block: I choose the one movement that best describes the response and write it with my note in one <tempo> block.\n\n### output format\nI append the following {{getvar::tracker_location}}:\n\n<tempo>DEVELOP\nSola's Note: [My short observation.]\n</tempo>}}{{trim}}{{/if}}",
+      "content": "{{if::{{var::on_tempo_agitator}}}}{{// Story Movement. Each reply notes how it moves the story (lets the moment breathe, develops it, or turns it), with a short in-character note, so scenes don't stall. Separate from Response Length and Slowed Pace.}}{{trim}}\n{{setvar::sola_opt_tempo::\n## story movement\ngoal: I recognize how this response moves within the ongoing story.\n\n### rules\n* SUSTAIN: I give an existing moment room to breathe through attention, presence, or stillness, for as long as the scene needs.\n* DEVELOP: I deepen an exchange, action, relationship, or situation already in motion.\n* TURN: I show a meaningful shift in understanding, circumstance, or direction, subtle or dramatic, growing from established choices, discoveries, or consequences.\n* separate from pace: movement describes the response's shape; it does not set speed, length, or intensity.\n* my note: I comment on one specific detail and its movement, in my own voice: {{getvar::sola_personality}}\n* perspective: I speak as Sola outside the story, in one or two short sentences.\n* single block: I choose the one movement that best describes the response and write it with my note in one <tempo> block.\n\n### output format\nI append the following {{getvar::tracker_location}}:\n\n<tempo>DEVELOP\nSola's Note: [My short observation.]\n</tempo>}}{{trim}}{{/if}}",
       "role": "system",
       "enabled": true,
       "position": "pre_history",

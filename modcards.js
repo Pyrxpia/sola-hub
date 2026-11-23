@@ -100,7 +100,7 @@
  "movement": {
   "t": "Story Movement 🎼",
   "b": "A short note on how each reply moved the story. Sustain gives a moment room to breathe, Develop deepens something already in motion, and Turn marks a real shift. It describes the reply and doesn’t set its pace or length.",
-  "m": "Off by default · Lumiverse, SillyTavern and Tavo · its Lumiverse switch is still labeled Tempo Agitator ⏱️"
+  "m": "Off by default · Lumiverse, SillyTavern and Tavo · called Tempo Agitator ⏱️ in V4"
  },
  "easel": {
   "t": "Sola’s Easel 🎭",
