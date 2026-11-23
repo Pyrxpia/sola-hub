@@ -18,7 +18,16 @@ This folder holds the presets and the regex packs. The Complete files are not he
 
 ## Which file do I want
 
-The base preset for your app, plus one regex pack. Full and Lite differ in how much display work the regex does; import one, never both.
+**Easiest: a Complete file.** The preset and the Full or Lite regex pack in one file.
+
+| | Lumiverse | SillyTavern | Tavo |
+|---|---|---|---|
+| Complete (Full) | `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | `RC06 Sola V5 Tavo - Complete.zip` |
+| Complete Lite | `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | `RC06 Sola V5 Tavo - Complete Lite.zip` |
+
+SillyTavern asks once whether to allow the embedded regex; say yes. The Tavo Complete zips hold the preset and its regex zip, which import separately.
+
+**Or the pieces:** the base preset plus one regex pack. Full and Lite differ in how much display work the regex does; import one, never both.
 
 | | Lumiverse | SillyTavern | Tavo |
 |---|---|---|---|
@@ -37,6 +46,12 @@ The full list of changes is in `Sola V5 - Changelog RC05 to RC06.md`.
 | `☀️ 🧡 RC06 Sola V5 Flame Lumi 🧡 ☀️.json` | 433,478 | `8452f6a542db2fc68f6e0cdaf87e4cf827c204b49078ccd0bced9fa0500954e4` |
 | `☀️ 🧡 RC06 Sola V5 Flame ST 🧡 ☀️.json` | 373,537 | `3070e7b6b2dea9ac0122360b6587d58e31eb0b84624b99f9954fe72b4b0960f4` |
 | `☀️ 🧡 RC06 Sola V5 Flame Tavo 🧡 ☀️.json` | 375,501 | `522d5bcb3aeb6f4c2fcfd78d18e6083109d36a66a219118bb7f9ff091c08417f` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete 🧡 ☀️.json` | 1,616,686 | `00f4d9d3de82485a8fb1c76af706e357b956a653effc30bce32b916282f4d363` |
+| `☀️ 🧡 RC06 Sola V5 Flame Lumi - Complete Lite 🧡 ☀️.json` | 1,481,061 | `3aab396b6e68eaf6cd1dcfe008364ff13e5582bfb87694001c741f606a9ee532` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete 🧡 ☀️.json` | 1,611,776 | `18b8713e849e8a3b4266630c7d51d6df23ec1989e73a8548ac982cdf0bab2528` |
+| `☀️ 🧡 RC06 Sola V5 Flame ST - Complete Lite 🧡 ☀️.json` | 1,476,315 | `26dc62bcafea95ec976d6ea1e9cb3798bcbe4645a1fd70b7b1e1582c08021a60` |
+| `RC06 Sola V5 Tavo - Complete.zip` | 511,869 | `420557bfaa19d9fe96c8d7d591282ac5ebba0ef86b3d805ccc75782e72408bc0` |
+| `RC06 Sola V5 Tavo - Complete Lite.zip` | 486,115 | `33d6447e5b28266e94bf795dd2444f24d0a497fbf69da64ebcb50b178ec609ca` |
 | `RC06 Sola V5 Full - Regex Pack - Lumi (Manual Folders).json` | 1,302,066 | `4f376877edda2ddff012071e27824a48ad699870388eb07377a72066d7c2806a` |
 | `RC06 Sola V5 Full - Regex Pack - ST.json` | 1,133,240 | `63a648753ef8cae4ab28bd97e8c64364f8c86b46f9f85ad5088ce17ea225026c` |
 | `RC06 Sola V5 Full - Regex Pack - Tavo.zip` | 469,012 | `6e13477446f740b93576638c61088c3bb056edd1af6e4f9195fbde524369ee79` |
