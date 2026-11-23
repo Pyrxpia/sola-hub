@@ -123,7 +123,39 @@ Everything new since V4, in one place. Lumi is Lumiverse, ST is SillyTavern.
 ### 🧡 Kindling V3
 
 - **Brought up to Flame V5’s writing,** with Flame’s six POV choices, a scene header and the Adult Fiction Note.
-- **66 regex rules of its own** (was 40), Dialogue Colors friendly, with optional Feeling Engine and Easel prompts. Still compact, still Golden.
+- **66 regex rules of its own** (was 40), Dialogue Colors friendly, with optional Feeling Engine and Easel prompts. Still compact, still Golden. The full list is in [Kindling: V2 to V3](#whats-new-in-kindling-v2-to-v3).
+
+## What's new in Kindling: V2 to V3
+
+Kindling is still the small, scene-focused Sola in Golden’s warm voice. Here’s what V3 changes.
+
+### ✍️ Writing
+
+- **Flame V5’s writing.** The Oath, Anti-Therapy, Romanticism, Post History, Lightning Review and the Easel now use Flame V5’s wording. Golden’s voice is unchanged.
+- **The Easel checks its work.** Like Flame’s, it now reviews the story against evidence, with matching cards on screen.
+
+### 👁️ Point of view
+
+- **Six POV choices from Flame:** Third-Person Present (on), Third-Person Past, First-Person Present, First-Person Past, Second-Person Present, and Hybrid (3rd World + 2nd Touch). Keep exactly one on.
+
+### 🎬 Headers
+
+- **New Scene Header** with five skies (dawn, day, dusk, night, noir), off by default.
+- **The old header is now Mobile Header** and stays on. Use one header at a time.
+
+### 🔞 New option
+
+- **Adult Fiction Note,** the same one-line note as Flame, off by default.
+
+### 🎨 Looks
+
+- **66 regex rules (was 40):** Easel evidence cards, the Scene Header art, and 23 updated rules.
+- **Dialogue Colors friendly.** Headers and Easel cards stay clean when it’s on, thanks to Biotechie.
+- **New Lumiverse cover.**
+
+### 🛠️ Fixes
+
+- **SillyTavern and Tavo sent your persona twice.** It’s now sent once, in its usual place.
 
 ## Behind the curtain
 
