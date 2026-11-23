@@ -2200,7 +2200,7 @@
     },
     {
       "name": "06.32 Easel: Evidence Check",
-      "find_regex": "^Check:[^\\S\\r\\n]*(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S]){0,20000})([^|\\r\\n<>]+?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Status:[^\\S\\r\\n]*(PASS|WARN|UNCERTAIN|N\\/A|NOT CHECKED)\\.?[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Scope:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Evidence:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Basis:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Finding:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Action:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\r?$",
+      "find_regex": "^Check:[^\\S\\r\\n]*(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*)([^|\\r\\n<>]+?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Status:[^\\S\\r\\n]*(PASS|WARN|UNCERTAIN|N\\/A|NOT CHECKED)\\.?[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Scope:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Evidence:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Basis:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Finding:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Action:[^\\S\\r\\n]*([^\\r\\n<>]*?)[^\\S\\r\\n]*\\r?$",
       "replace_string": "<details class=\"sola-audit-record\" data-audit-state=\"$2\"><summary><b>$1</b><span class=\"sola-audit-status\">$2</span><span class=\"sola-audit-chev\" aria-hidden=\"true\"></span></summary><div class=\"sola-audit-fields\"><div class=\"sola-af\"><span class=\"sola-ak\">Scope</span><span class=\"sola-av\">$3</span></div><div class=\"sola-af\"><span class=\"sola-ak\">Evidence</span><span class=\"sola-av\">$4</span></div><div class=\"sola-af\"><span class=\"sola-ak\">Basis</span><span class=\"sola-av\">$5</span></div><div class=\"sola-af sola-af-find\"><span class=\"sola-ak\">Finding</span><span class=\"sola-av\">$6</span></div><div class=\"sola-af sola-af-act\"><span class=\"sola-ak\">Action</span><span class=\"sola-av\">$7</span></div></div></details>",
       "flags": "gmi",
       "placement": [
@@ -2218,7 +2218,7 @@
       "substitute_macros": "none",
       "disabled": false,
       "sort_order": 81,
-      "description": "Easel audit Check record as a dropdown: title and status when closed; Scope, Evidence, Basis, Finding and Action rows when open. Tolerates extra or odd spaces around the bars and any label case. The backward scan for the opening tag is capped at 20,000 characters: uncapped, a Check line with no card above it cost 50 ms on a 52 KB reply and 174 ms on 104 KB in V8, and a mobile WebView pays several times that.",
+      "description": "Easel audit Check record as a dropdown: title and status when closed; Scope, Evidence, Basis, Finding and Action rows when open. Tolerates extra or odd spaces around the bars and any label case.",
       "metadata": {},
       "folder": "Sola V5 - 06. Easel",
       "script_id": "81c6c0ef_d1e3_5c58_9863_1838f84ae4d3",
@@ -2227,7 +2227,7 @@
     },
     {
       "name": "06.32a Easel: Evidence Check (Loose)",
-      "find_regex": "^Check:[^\\S\\r\\n]*(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S]){0,20000})([^|\\r\\n<>]+?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Status:[^\\S\\r\\n]*(PASS|WARN|UNCERTAIN|N\\/A|NOT CHECKED|FAIL|OK)\\.?[^\\S\\r\\n]*(?:\\|[^\\S\\r\\n]*([^\\r\\n<>]*?))?[^\\S\\r\\n]*\\r?$",
+      "find_regex": "^Check:[^\\S\\r\\n]*(?<=<\\s{0,8}sola_easel\\b[^>]*>(?:(?!<\\s{0,8}\\/?\\s{0,8}sola_easel\\b)[\\s\\S])*)([^|\\r\\n<>]+?)[^\\S\\r\\n]*\\|[^\\S\\r\\n]*Status:[^\\S\\r\\n]*(PASS|WARN|UNCERTAIN|N\\/A|NOT CHECKED|FAIL|OK)\\.?[^\\S\\r\\n]*(?:\\|[^\\S\\r\\n]*([^\\r\\n<>]*?))?[^\\S\\r\\n]*\\r?$",
       "replace_string": "<details class=\"sola-audit-record\" data-audit-state=\"$2\"><summary><b>$1</b><span class=\"sola-audit-status\">$2</span><span class=\"sola-audit-chev\" aria-hidden=\"true\"></span></summary><div class=\"sola-audit-fields\"><div class=\"sola-af sola-af-find\"><span class=\"sola-ak\">Details</span><span class=\"sola-av\">$3</span></div></div></details>",
       "flags": "gmi",
       "placement": [
@@ -2245,7 +2245,7 @@
       "substitute_macros": "none",
       "disabled": false,
       "sort_order": 82,
-      "description": "Fallback for a Check line whose Scope/Evidence/Basis/Finding/Action fields are missing or malformed: still a dropdown, with the rest of the line as Details. The backward scan for the opening tag is capped at 20,000 characters: uncapped, a Check line with no card above it cost 50 ms on a 52 KB reply and 174 ms on 104 KB in V8, and a mobile WebView pays several times that.",
+      "description": "Fallback for a Check line whose Scope/Evidence/Basis/Finding/Action fields are missing or malformed: still a dropdown, with the rest of the line as Details.",
       "metadata": {},
       "folder": "Sola V5 - 06. Easel",
       "script_id": "9887e1ed_ab2f_4539_b27c_7718702fd37f",
